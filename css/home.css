@@ -10,10 +10,15 @@
         margin-bottom:35px;
 }
 
-#bsc_search{
-    width:70%;
+#search{
+    width:80%;
     margin:0 auto;
     margin-top:25px;
+}
+
+#bsc_search{
+    width:80%;
+    margin:0 auto;
 }
 
 #adv_option{
@@ -23,8 +28,9 @@
 }
 
 #txt_search{
-    width:625px;
-    margin-right:10px;
+    width:70%;
+    margin-left:10%;
+
 }
 
 
@@ -36,4 +42,25 @@
     width:240px;
     margin:0 auto;
     margin-top:100px;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (max-width: 960px){
+    #bsc_search{
+        width:90%;
+    }
+
+    #txt_search{
+        margin-left:11%;
+    }
+}
+
+@media only screen and (max-width: 720px){
+    #logo_big{
+        height:30%;
+        width:30%;
+    }
 }

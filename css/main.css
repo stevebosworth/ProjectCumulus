@@ -197,14 +197,16 @@ table {
    ========================================================================== */
 
 
-#container{
+/*#container{
     margin:0 auto;
     width:1024px;
-}
+}*/
 
 #content_container{
-    margin-top:50px;
-    margin-bottom:50px;
+    width:100%;
+    padding-top:50px;
+    padding-bottom:50px;
+    margin:0 auto;
 }
 
 nav li{
@@ -223,19 +225,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1{
-    font-size:36px;
+    font-size:2.25em;
 }
 
 h2{
-    font-size:32px;
+    font-size:2em;
 }
 
 .fancy{
     font-family:arvo, serif;
 }
 
-label{
-}
 
 /* ==========================================================================
    Header styles
@@ -243,22 +243,35 @@ label{
 
 header{
     background-color:#001c2e;
-    height:70px;
-    margin-bottom:15px;
-    margin-top:-17px;
-    width:1024px;
+    height:60px;
+    width:100%;
 }
 
-#title{
-    float:left;
-    margin-top:25px;
-    margin-left:10px;
+#header_bar{
+    width:90%;
+    margin:0 auto;
+    height:50px;
+    /*padding-top:10px;*/
 }
+
+#logo{
+    float:left;
+    border:1px dashed yellow;
+    margin-top:3%;
+    margin-left:4%;
+    width:100%;
+    height:100%;
+}    
+
+#title{
+    float: left;
+}
+
 
 #nav_controls{
     float:right;
-    margin-top:36px;
-    margin-right:20px;
+    margin-right:13%;
+    padding-top:16px;
 }
 
 #nav_controls li a{
@@ -266,8 +279,9 @@ header{
 }
 
 #nav_main{
-    clear: both;
+    margin:0 auto;
     text-align:center;
+    margin-top:15px;
 }
 
 #nav_main li a{
@@ -301,10 +315,18 @@ footer{
     height:70px;
     margin-bottom:25px;
     margin-top:30px;
-    width:1024px;
+    margin:0 auto;
+    width:80%;
+}
+
+hr{
+    width:60%;
+    margin:0 auto;
+    margin-bottom:10px;
 }
 
 #nav_footer{
+    border:1px dashed blue;
     text-align:center;
 }
 
@@ -314,7 +336,7 @@ footer{
     color:#001c2e;
     text-decoration: none;
     font-family: arvo,serif;
-    font-size:13px; 
+    font-size:0.813em; 
 }
 
 #nav_footer a:hover{
@@ -344,12 +366,77 @@ small{
     float:left;
     margin-left:20px;
     margin-top:20px;
+    font-size: .5em;
 }
 
 
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
 
+@media only screen and (max-width: 960px){
+    h1{
+        font-size:1.75em;
+    }
+    
+    h2{
+        font-size:1.5em;
+    }
+}
 
+@media only screen and (max-width: 800px){
 
+    h1{
+        font-size: 1.4em;
+    }
+    h2{
+        font-size: 1.2em;
+    }
+}
+
+@media only screen and (max-width: 640px){
+    header{
+        height:90px;
+    }
+
+    #headerbar{
+        border:2px dashed yellow;
+        width:80%;
+        margin:0 auto;
+    }
+
+    #logo{
+        margin:0;
+    }
+
+    #title{
+        float:none;
+        border:1px dashed green;
+        height:80%;
+        width:80%;
+        margin:0 auto;
+        /*margin-left:11%;*/
+        padding-top:2%;
+    }
+
+    #nav_controls{
+        float:none;
+        border:1px dashed pink;
+        padding:0;
+        margin:0 auto;
+        width:80%;
+    }
+
+    #nav_controls ul{
+        width:80%;
+        margin:0 auto;
+    }
+
+    #nav_main{
+        border:1px dashed purple;
+        margin-top:45px;
+    }
+}
 
 
 
