@@ -64,3 +64,25 @@
         width:30%;
     }
 }
+
+@media only screen and (max-width: 640px){
+    #main_logo_title{
+        width:100%;
+    }
+
+    #search{
+        width:100%;
+        padding-left: 2%;
+    }
+
+    #txt_search{
+        width:95%;
+        margin:0 auto;
+    }
+
+    #btn_search{
+        width:4em;
+        margin-left:40%;
+        margin-top:1em;
+    }
+}
