@@ -10,6 +10,11 @@
 	private $enact_bill;
 	private $enact_sec;
 
+	public function displaySection(){
+		$display = "Section #: " . $this->sec_id . "<br/>Section Text: " . $this->sec_txt;
+		return $display;
+	}
 
+	
 
  ?>

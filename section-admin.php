@@ -1,7 +1,5 @@
 <?php 
-    require_once '';
-
-    $mySection = new 
+    require_once 'classes/Dbconn.class.php';
  ?>
 
 <!DOCTYPE html>
@@ -59,13 +57,10 @@
         </header>
 
         <div id="content_container">
-           <form name="" action="post">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-            </form>
+           <ul>
+            <?php foreach($laws as $l) : ?>
+                <li><?php echo $l['law_id']; ?>
+            <?php endforeach; ?>
         </div> <!-- /content_container -->
 
         <footer>

@@ -9,14 +9,22 @@
 		{
 			try{
 				$db = new PDO($this->dsn, $this->username, $this->password);
+				echo "Success!";
 			}
 			catch (Exception $e) {
 				$error = $e->getMessage();
-				include('database_error.php');
+				echo $error;
 				exit();
 			}
 
 			return $db;
 		}
+
 	}
+	$dbcon = new Dbconn();
+
+    $conn = $dbcon->getConn();
+    $laws_query = "SELECT * FROM books";
+
+    $laws = $conn->query($laws_query);
  ?>
