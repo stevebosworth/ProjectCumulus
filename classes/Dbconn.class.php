@@ -9,7 +9,6 @@
 		{
 			try{
 				$db = new PDO($this->dsn, $this->username, $this->password);
-				echo "Success!";
 			}
 			catch (Exception $e) {
 				$error = $e->getMessage();

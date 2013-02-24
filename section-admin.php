@@ -26,26 +26,7 @@ $conn = $dbcon->getConn();
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://use.edgefonts.net/arvo.js"></script>
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#sel_law').change(function(){
-                var law_id = $(this).val();
-                var datastring = 'law_id =' + law_id;
-                
-                $.ajax
-                ({
-                    type: "POST",
-                    url: "functions/section_admin_func.php",
-                    data: dataString,
-                    cache: false,
-                    success: function(html)
-                    {
-                    $(".test").html(html);
-                    }
-                });
-            }); 
-        });
-    </script>
+    <script type="text/javascript" src="js/section-admin.js"></script>
 </head>
 <body>
     <!--[if lt IE 7]>
@@ -92,12 +73,16 @@ $conn = $dbcon->getConn();
                             $laws_query = "SELECT * FROM laws";
                             $laws = $conn->query($laws_query); 
                             foreach($laws as $l) : ?>
-                            <option value="<?php echo $l['law_id']; ?>"><?php echo $l["law_name"]; ?></option>
+                            <option class="law" value="<?php echo $l['law_id']; ?>"><?php echo $l["law_name"]; ?></option>
                         <?php endforeach; ?>
                     </select>
                     <br />
                     <label for="sel_book">Book: </label>
                     <select name="sel_book" id="sel_book">
+                    </select>
+                    <br />
+                    <label for="sel_title">Title: </label>
+                    <select name="sel_title" id="sel_title">
                     </select>
                     <br />
                 </form>
