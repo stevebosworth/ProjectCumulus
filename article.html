@@ -114,13 +114,18 @@
             <section id="sidebar">
                 <aside id="word_cloud">
                     <h3>Parts of this law are mentioned in:</h3>
-                    <p class="tag3">1230.1</p>
+ 					<?php 
+                    include ('db_connection.php');
+                    foreach ($tagset as $tag) : ?>
+                    <p><a href="#"><?php echo $tag[1]; ?></a></p>
+                    <!--<p class="tag3">1230.1</p>
                     <p class="tag2">391.4</p>
                     <p class="tag1">45</p>
                     <p class="tag3">1084</p>
                     <p class="tag1">110.9b</p>
                     <p class="tag2">127</p>
-                    <p class="tag1">626</p>
+                    <p class="tag1">626</p>-->
+                    <?php endforeach; ?>
                 </aside>	
                 <div class="accordion">
     
@@ -146,8 +151,10 @@
                     <div class="panel">
                         <h5>Add descriptory tags by submitting the information below.</h5>
                         <p><label id="tags_label" name="tags_label">Tags:</label>
-                        <input type="text" id="txt_tags" name="txt_tags" /></p>
-                        <input type="button" id="btn_subtags" name="btn_subtags" onClick="subTags()" value="Submit" />
+                        <form id="create_tags" action="article_tags.php" method="post">
+                        	<input type="text" id="txt_tags" name="txt_tags" /></p>
+                        	<input type="submit" id="btn_subtags" name="btn_subtags" value="Submit" />
+                    	</form>
                     </div>
                     
                     <div class="panelshow"><h4>Comment</h4></div>
