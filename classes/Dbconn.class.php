@@ -1,7 +1,7 @@
 <?php 
 	class Dbconn
 	{
-		private $dsn = 'mysql:mysql2.cloudsites.gearhost.com;dbname=cumulus';
+		private $dsn = 'mysql:host=mysql2.cloudsites.gearhost.com;dbname=cumulus';
 		private $username = 'cumulus';
 		private $password = 'kbvEigBt';
 
@@ -19,12 +19,5 @@
 
 			return $db;
 		}
-
 	}
-	$dbcon = new Dbconn();
-
-    $conn = $dbcon->getConn();
-    $laws_query = "SELECT * FROM books";
-
-    $laws = $conn->query($laws_query);
  ?>

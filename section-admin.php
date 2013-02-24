@@ -1,6 +1,9 @@
 <?php 
-    require_once 'classes/Dbconn.class.php';
- ?>
+require_once 'classes/Dbconn.class.php';
+$dbcon = new Dbconn();
+$conn = $dbcon->getConn();
+
+?>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -20,8 +23,29 @@
     <link rel="stylesheet" href="css/main.css">
     <!-- Add your styles and rename this link -->
     <!-- <link rel="stylesheet" href="css/home.css"> -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://use.edgefonts.net/arvo.js"></script>
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#sel_law').change(function(){
+                var law_id = $(this).val();
+                var datastring = 'law_id =' + law_id;
+                
+                $.ajax
+                ({
+                    type: "POST",
+                    url: "functions/section_admin_func.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html)
+                    {
+                    $(".test").html(html);
+                    }
+                });
+            }); 
+        });
+    </script>
 </head>
 <body>
     <!--[if lt IE 7]>
@@ -57,12 +81,30 @@
         </header>
 
         <div id="content_container">
-           <ul>
-            <?php foreach($laws as $l) : ?>
-                <li><?php echo $l['law_id']; ?>
-            <?php endforeach; ?>
-        </div> <!-- /content_container -->
+            
 
+            <div id="add_section">
+                <form id="frm_add_section" name="frm_add_sections" method="post">
+                    <label for="sel_law">Law: </label>
+                    <select name="sel_law" id="sel_law">
+                        <option selected="selected">-- Choose a Law --</option>
+                        <?php 
+                            $laws_query = "SELECT * FROM laws";
+                            $laws = $conn->query($laws_query); 
+                            foreach($laws as $l) : ?>
+                            <option value="<?php echo $l['law_id']; ?>"><?php echo $l["law_name"]; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <br />
+                    <label for="sel_book">Book: </label>
+                    <select name="sel_book" id="sel_book">
+                    </select>
+                    <br />
+                </form>
+                <p class="test"></p>
+            </div>
+        </div> <!-- /content_container -->
+            
         <footer>
             <nav id="nav_footer">
                 <ul>
