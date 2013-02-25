@@ -65,7 +65,7 @@ $conn = $dbcon->getConn();
             
 
             <div id="add_section">
-                <form id="frm_add_section" name="frm_add_sections" method="post">
+                <form id="frm_add_section" name="frm_add_sections" action="add-section.php" method="post">
                     <label for="sel_law">Law: </label>
                     <select name="sel_law" id="sel_law">
                         <option selected="selected">-- Choose a Law --</option>
@@ -79,14 +79,64 @@ $conn = $dbcon->getConn();
                     <br />
                     <label for="sel_book">Book: </label>
                     <select name="sel_book" id="sel_book">
+                        <option selected="selected">-- Choose a Law First --</option>
                     </select>
                     <br />
                     <label for="sel_title">Title: </label>
                     <select name="sel_title" id="sel_title">
+                        <option selected="selected">-- Choose a Book First --</option>
+                    </select>
+                    <input type="button" id="btn_add_title" value="add">
+                    <br />
+                    <label for="sel_ch">Chapter: </label>
+                    <select name="sel_ch" id="sel_ch">
+                        <option selected="selected">-- Choose a Title First --</option>
                     </select>
                     <br />
+                    <label for="sel_div">Division: </label>
+                    <select name="sel_div" id="sel_div">
+                        <option selected="selected">-- Choose a Chapter First --</option>
+                    </select>
+                    <br />
+                    <label for="sel_sub_div">Sub-Division: </label>
+                    <select name="sel_sub_div" id="sel_sub_div">
+                        <option selected="selected">-- Choose a Division First --</option>
+                    </select>
+                    <br />
+                    <label for="sec_num">Section #: </label>
+                    <input type="text" name="sec_num">
+                    <br/>
+                    <label for="sec_title">Section Title: </label>
+                    <input type="text" name="sec_title">
+                    <br/>
+                    <label for="sec_text">Section Text: </label>
+                    <input type="text" name="sec_text">
+                    <br/>
+                    <label for="enact_year">Year of Enactment: </label>
+                    <input type="text" name="enact_year">
+                    <br/>
+                    <label for="enact_bill">Bill enacted: </label>
+                    <input type="text" name="enact_bill">
+                    <br>
+                    <label for="enact_sec">Section Enacted: </label>
+                    <input type="text" name="enact_sec">
+                    <br>
+                    <input type="submit">
                 </form>
                 <p class="test"></p>
+                <div id="add" style="display:none;">
+                    <form id="add_title" method="post" action="functions/add-title.php" name="add_title">
+                        <input type="hidden" id="add_title_book_id" name="book_id">
+                        <label for="title_num">Title #: </label>
+                        <input type="text" id="add_title_num" name="title_num">
+                        <br/>
+                        <label for="title_title">Title: </label>
+                        <input type="text" id="add_title_title" name="title_title">
+                        <br/>
+                        <input type="button" id="btn_ins_title" value="Add">
+                    </form>
+                </div>
+
             </div>
         </div> <!-- /content_container -->
             
