@@ -1,8 +1,7 @@
-<?php 
+<?php
 require_once 'classes/Dbconn.class.php';
 $dbcon = new Dbconn();
 $conn = $dbcon->getConn();
-
 ?>
 
 <!DOCTYPE html>
@@ -62,44 +61,44 @@ $conn = $dbcon->getConn();
         </header>
 
         <div id="content_container">
-            
+
 
             <div id="add_section">
-                <form id="frm_add_section" name="frm_add_sections" action="add-section.php" method="post">
+                <form id="frm_add_section" name="frm_add_sections" method="post">
                     <label for="sel_law">Law: </label>
-                    <select name="sel_law" id="sel_law">
+                    <select name="sel_law" id="sel_law" data-table="laws">
                         <option selected="selected">-- Choose a Law --</option>
-                        <?php 
+                        <?php
                             $laws_query = "SELECT * FROM laws";
-                            $laws = $conn->query($laws_query); 
+                            $laws = $conn->query($laws_query);
                             foreach($laws as $l) : ?>
                             <option class="law" value="<?php echo $l['law_id']; ?>"><?php echo $l["law_name"]; ?></option>
                         <?php endforeach; ?>
                     </select>
                     <br />
                     <label for="sel_book">Book: </label>
-                    <select name="sel_book" id="sel_book">
+                    <select name="sel_book" id="sel_book" data-table="books">
                         <option selected="selected">-- Choose a Law First --</option>
                     </select>
                     <br />
                     <label for="sel_title">Title: </label>
-                    <select name="sel_title" id="sel_title">
+                    <select name="sel_title" data-table="titles">
                         <option selected="selected">-- Choose a Book First --</option>
                     </select>
                     <input type="button" id="btn_add_title" value="add">
                     <br />
                     <label for="sel_ch">Chapter: </label>
-                    <select name="sel_ch" id="sel_ch">
+                    <select name="sel_ch" id="sel_ch" data-table="chapters">
                         <option selected="selected">-- Choose a Title First --</option>
                     </select>
                     <br />
                     <label for="sel_div">Division: </label>
-                    <select name="sel_div" id="sel_div">
+                    <select name="sel_div" id="sel_div" data-table="divisions">
                         <option selected="selected">-- Choose a Chapter First --</option>
                     </select>
                     <br />
                     <label for="sel_sub_div">Sub-Division: </label>
-                    <select name="sel_sub_div" id="sel_sub_div">
+                    <select name="sel_sub_div" id="sel_sub_div" data-table="sub-divisions">
                         <option selected="selected">-- Choose a Division First --</option>
                     </select>
                     <br />
@@ -139,7 +138,7 @@ $conn = $dbcon->getConn();
 
             </div>
         </div> <!-- /content_container -->
-            
+
         <footer>
             <nav id="nav_footer">
                 <ul>
