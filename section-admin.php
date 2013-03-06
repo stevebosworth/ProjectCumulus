@@ -22,10 +22,8 @@ $conn = $dbcon->getConn();
     <link rel="stylesheet" href="css/main.css">
     <!-- Add your styles and rename this link -->
     <!-- <link rel="stylesheet" href="css/home.css"> -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://use.edgefonts.net/arvo.js"></script>
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-    <script type="text/javascript" src="js/section-admin.js"></script>
 </head>
 <body>
     <!--[if lt IE 7]>
@@ -82,25 +80,28 @@ $conn = $dbcon->getConn();
                     </select>
                     <br />
                     <label for="sel_title">Title: </label>
-                    <select name="sel_title" data-table="titles">
+                    <select name="sel_title" id="sel_title" data-table="titles">
                         <option selected="selected">-- Choose a Book First --</option>
                     </select>
-                    <input type="button" id="btn_add_title" value="add">
+                    <input type="button" class="btn_add_meta" id="btn_add_title" value="add">
                     <br />
                     <label for="sel_ch">Chapter: </label>
                     <select name="sel_ch" id="sel_ch" data-table="chapters">
                         <option selected="selected">-- Choose a Title First --</option>
                     </select>
+                    <button class="btn_add_meta">Add</button>
                     <br />
                     <label for="sel_div">Division: </label>
                     <select name="sel_div" id="sel_div" data-table="divisions">
                         <option selected="selected">-- Choose a Chapter First --</option>
                     </select>
+                    <button class="btn_add_meta">Add</button>
                     <br />
                     <label for="sel_sub_div">Sub-Division: </label>
-                    <select name="sel_sub_div" id="sel_sub_div" data-table="sub-divisions">
+                    <select name="sel_sub_div" id="sel_sub_div" data-table="subdivisions">
                         <option selected="selected">-- Choose a Division First --</option>
                     </select>
+                    <button class="btn_add_meta">Add</button>
                     <br />
                     <label for="sec_num">Section #: </label>
                     <input type="text" name="sec_num">
@@ -124,8 +125,9 @@ $conn = $dbcon->getConn();
                 </form>
                 <p class="test"></p>
                 <div id="add" style="display:none;">
-                    <form id="add_title" method="post" action="functions/add-title.php" name="add_title">
-                        <input type="hidden" id="add_title_book_id" name="book_id">
+                    <form id="add_meta" method="post" name="add_title">
+                        <label for="meta_id"></label>
+                        <input type="hidden" id="meta_id" name="meta_id">
                         <label for="title_num">Title #: </label>
                         <input type="text" id="add_title_num" name="title_num">
                         <br/>
@@ -165,7 +167,7 @@ $conn = $dbcon->getConn();
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-
+    <script type="text/javascript" src="js/section-admin.js"></script>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <!--<script>
         var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
