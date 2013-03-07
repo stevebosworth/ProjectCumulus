@@ -89,19 +89,19 @@ $conn = $dbcon->getConn();
                     <select name="sel_ch" id="sel_ch" data-table="chapters">
                         <option selected="selected">-- Choose a Title First --</option>
                     </select>
-                    <button class="btn_add_meta">Add</button>
+                    <input type="button" class="btn_add_meta" id="btn_add_ch" value="add">
                     <br />
                     <label for="sel_div">Division: </label>
                     <select name="sel_div" id="sel_div" data-table="divisions">
                         <option selected="selected">-- Choose a Chapter First --</option>
                     </select>
-                    <button class="btn_add_meta">Add</button>
+                    <input type="button" class="btn_add_meta" id="btn_add_div" value="add">
                     <br />
                     <label for="sel_sub_div">Sub-Division: </label>
                     <select name="sel_sub_div" id="sel_sub_div" data-table="subdivisions">
                         <option selected="selected">-- Choose a Division First --</option>
                     </select>
-                    <button class="btn_add_meta">Add</button>
+                    <input type="button" class="btn_add_meta" id="btn_add_sub_div" value="add">
                     <br />
                     <label for="sec_num">Section #: </label>
                     <input type="text" name="sec_num">
@@ -126,15 +126,17 @@ $conn = $dbcon->getConn();
                 <p class="test"></p>
                 <div id="add" style="display:none;">
                     <form id="add_meta" method="post" name="add_title">
-                        <label for="meta_id"></label>
+                        <h3 id="add_meta_head"></h3>
+                        <br />
                         <input type="hidden" id="meta_id" name="meta_id">
-                        <label for="title_num">Title #: </label>
-                        <input type="text" id="add_title_num" name="title_num">
+                        <input type="hidden" id="meta_table" name="meta_table"
+                        <label for="title_num">Number: </label>
+                        <input type="text" id="add_num" name="title_num">
                         <br/>
                         <label for="title_title">Title: </label>
-                        <input type="text" id="add_title_title" name="title_title">
+                        <input type="text" id="add_title" name="title_title">
                         <br/>
-                        <input type="button" id="btn_ins_title" value="Add">
+                        <input type="button" id="btn_ins_meta" value="Add">
                     </form>
                 </div>
 
@@ -148,7 +150,7 @@ $conn = $dbcon->getConn();
                     <li><a href="#" class="nav_link">Join</a></li>
                     <li><a href="#" class="nav_link">Login</a></li>
                     <li><a href="#" class="nav_link">Contact</a></li>
-                    <li><a href="#" class="nav_link">Terms & Legal</a></li>
+                    <li><a href="#" class="nav_link">Terms &amp; Legal</a></li>
                 </ul>
             </nav>
             <nav id="nav_social">

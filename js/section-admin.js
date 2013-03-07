@@ -113,26 +113,92 @@ $(document).ready(function() {
         });
     });
 
-    //Show Add title form
-    $('.btn_add_meta').click(function(){
-        var id = $(this).prev().val();
+
+    //'Add' Buttons functionality
+    $('#btn_add_title').click(function(){
+        var id = $('#sel_book').val();
+        var table = $('#sel_title').attr('data-table');
+        var table = table.slice(0, -1);
+        console.log(table);
         console.log(id);
-        //if(!isNaN(id)){
+        if(id !== isNaN()){
             $('#add').show();
+            $('#add_meta_head').html("Add new " + table);
+            $('#meta_table').val(table);
             $('#meta_id').val(id);
-        //}else{
-        //    alert("You must select a first.");
-        //}
+        }else{
+           alert("You must select a Book first.");
+        }
+    })
+
+    $('#btn_add_ch').click(function(){
+        var id = $('#sel_title').val();
+        var table = $('#sel_ch').attr('data-table');
+        var table = table.slice(0, -1);
+        console.log(id);
+        if(!isNaN(id)){
+            $('#add').show();
+            $('#add_meta_head').html("Add new " + table);
+            $('#meta_table').val(table);
+            $('#meta_id').val(id);
+        }else{
+           console.log("You must select a Title first.");
+        }
+    })
+
+    $('#btn_add_div').click(function(){
+        var id = $('#sel_ch').val();
+        var table = $('#sel_div').attr('data-table');
+        var table = table.slice(0, -1);
+        console.log(id);
+        if(!isNaN(id)){
+            $('#add').show();
+            $('#add_meta_head').html("Add new " + table);
+            $('#meta_table').val(table);
+            $('#meta_id').val(id);
+        }else{
+           console.log("You must select a Chapter first.");
+        }
+    })
+
+    $('#btn_add_sub_div').click(function(){
+        var id = $('#sel_title').val();
+        var table = $('#sel_sub_div').attr('data-table');
+        console.log(id);
+        if(!isNaN(id)){
+            $('#add').show();
+            $('#add_meta_head').html("Add new " + table);
+            $('#meta_table').val(table);
+            $('#meta_id').val(id);
+        }else{
+           console.log("You must select a Division first.");
+        }
     });
 
     //Insert new title
-    $('#btn_ins_title').click(function(){
-        $.post('functions/add-title.php', {
-            id: $('#add_title_book_id').val(),
-            title_num: $('#add_title_num').val(),
-            title_title: $('#add_title_title').val()
+    $('#btn_ins_meta').click(function(){
+        $.post('include/add-meta.inc.php', {
+            id: $('#meta_id').val(),
+            num: $('#add_num').val(),
+            title: $('#add_title').val(),
+            table: $('#meta_table').val()
              }, function(html) {
+                console.log(html);
                 $('.test').html(html);
             });
     });
+
+
+     // //Show Add title form
+    // $('.btn_add_meta').click(function(){
+    //     var id = $(this).prev('select').val();
+    //     console.log(id);
+    //     //if(!isNaN(id)){
+    //         $('#add').show();
+    //         $('#meta_id').val(id);
+    //     //}else{
+    //     //    alert("You must select a first.");
+    //     //}
+    // });
+
 });
