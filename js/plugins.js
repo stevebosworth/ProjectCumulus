@@ -26,10 +26,9 @@
 // This plugin added by Chris Voorberg - February 9 2013 for the Articles page
 
 $(document).ready(function(e){
-				
-			$(".panelshow").click(function(){
-			$(this).toggleClass("active");
-			$(this).next(".panel").stop('true','true').slideToggle("slow");
-		});	
-		
-		});
+
+	$(".panelshow").click(function(){
+	$(this).toggleClass("active");
+	$(this).next(".panel").stop('true','true').slideToggle("slow");
+	});
+});

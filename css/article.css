@@ -154,29 +154,40 @@ footer {
 }
 
 i {
-        font-style:italic;
+   	font-style:italic;
 }
 
 b {
-        font-weight:bold;
+    font-weight:bold;
 }
 
 .resized {
-        width:150px;
-        float:right;
-        margin-right:20px;
+    width:150px;
+    float:right;
+    margin-right:20px;
 }
 
 form p {
-        clear:both;
-        margin:20px 0;
+    clear:both;
+    margin:20px 0;
 }
 
 .sub_button {
-        margin:20px 0 0 160px;
+    margin:20px 0 0 160px;
 }
 
+.cms_rows {
+	margin:20px 10px;
+}
 
+.cms_button {
+	background:#E0DFE4;
+	border:2px solid gray;
+	color:#000;
+	margin:0px 8px;
+	padding:3px;
+	text-decoration: none;
+}
 
 
 

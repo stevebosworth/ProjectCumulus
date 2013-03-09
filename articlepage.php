@@ -1,12 +1,15 @@
 <?php
-
+//including the cumulus database PDO connection
 require_once 'DBconn_test.php';
 
+//creating an instance of the class to use for queries
 $mydbconn = new DBconn();
 $conn = $mydbconn->getConn();
 
+//the sql query
 $listsql = "SELECT * FROM caselaw";
 
+//variable to hold the query results
 $result = $conn->query($listsql);
 
 ?>
@@ -39,6 +42,7 @@ $result = $conn->query($listsql);
                     <h4>Relevant Case Law</h4>
                     
                     <?php
+                        //displays caselaws from the database
                         foreach ($result as $row){
                             echo "<p><a href='".$row['url']."'>".$row['case_ref']."</a> "."&nbsp;";
                             echo "(<i>".$row['case_date']."</i>) "."&nbsp;";
