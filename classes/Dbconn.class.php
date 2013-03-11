@@ -1,4 +1,4 @@
-<?php 
+<?php
 	class Dbconn
 	{
 		private $dsn = 'mysql:host=mysql2.cloudsites.gearhost.com;dbname=cumulus';

@@ -4,30 +4,20 @@
 	$conn = $dbcon->getConn();
 
 	$table = $_POST['table'];
-	$num = $_POST['num'];
+	$num   = $_POST['num'];
 	$title = $_POST['title'];
-	$id = $_POST['id'];
+	$id    = $_POST['id'];
 
-	echo $table;
-	echo $num;
-	echo $title;
-	echo $id;
 	switch ($table) {
 		case 'title':
 			$query = "INSERT INTO titles (title_num, title_title, book_id) VALUES ('$num', '$title', '$id')";
 			$conn->exec($query);
-			echo $num;
-			echo $title;
-			echo $id;
-			//echo "success!";
+			echo "success!";
 		break;
 
 		case 'chapter':
 			$query = "INSERT INTO chapters (ch_num, ch_title, title_id) VALUES ('$num', '$title', '$id')";
 			$conn->exec($query);
-			echo $num;
-			echo $title;
-			echo $id;
 			echo "success!";
 		break;
 

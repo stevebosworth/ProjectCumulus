@@ -1,8 +1,18 @@
 $(document).ready(function() {
     $('#add').hide();
 
+    $('select').focus( function(){
+        $('#add').hide();
+    });
 
-    // Takes the selected value of a dropdown, queries the DB and returns the values to the following <select>
+    $('#btn_cancel_meta').click(function(){
+        $('#add').hide();
+        $('#meta_id').val('');
+            $('#add_title').val('');
+            $('#add_num').val('');
+    });
+
+        // Takes the selected value of a dropdown, queries the DB and returns the values to the following <select>
     // $("select").change(function(){
     //     console.log(this);
     //     //table id variable
@@ -119,13 +129,17 @@ $(document).ready(function() {
         var id = $('#sel_book').val();
         var table = $('#sel_title').attr('data-table');
         var table = table.slice(0, -1);
+        var table_val = $('#sel_book option:selected').text();
+        console.log(table_val);
         console.log(table);
         console.log(id);
-        if(id !== isNaN()){
+        if(!isNaN(id)){
             $('#add').show();
-            $('#add_meta_head').html("Add new " + table);
+            $('#add_meta_head').html("Add new " + table + " under '" + table_val + "'");
             $('#meta_table').val(table);
             $('#meta_id').val(id);
+            $('#add_title').val('');
+            $('#add_num').val('');
         }else{
            alert("You must select a Book first.");
         }
@@ -135,14 +149,19 @@ $(document).ready(function() {
         var id = $('#sel_title').val();
         var table = $('#sel_ch').attr('data-table');
         var table = table.slice(0, -1);
+        var table_val = $('#sel_title option:selected').text();
+        console.log(table_val);
+        console.log(table);
         console.log(id);
         if(!isNaN(id)){
             $('#add').show();
-            $('#add_meta_head').html("Add new " + table);
+            $('#add_meta_head').html("Add new " + table + " under '" + table_val + "'");
             $('#meta_table').val(table);
             $('#meta_id').val(id);
+            $('#add_title').val('');
+            $('#add_num').val('');
         }else{
-           console.log("You must select a Title first.");
+           alert("You must select a Title first.");
         }
     })
 
@@ -150,32 +169,42 @@ $(document).ready(function() {
         var id = $('#sel_ch').val();
         var table = $('#sel_div').attr('data-table');
         var table = table.slice(0, -1);
+        var table_val = $('#sel_ch option:selected').text();
+        console.log(table_val);
+        console.log(table);
         console.log(id);
         if(!isNaN(id)){
             $('#add').show();
-            $('#add_meta_head').html("Add new " + table);
+            $('#add_meta_head').html("Add new " + table + " under '" + table_val + "'");
             $('#meta_table').val(table);
             $('#meta_id').val(id);
+            $('#add_title').val('');
+            $('#add_num').val('');
         }else{
-           console.log("You must select a Chapter first.");
+           alert("You must select a Chapter first.");
         }
     })
 
     $('#btn_add_sub_div').click(function(){
         var id = $('#sel_title').val();
         var table = $('#sel_sub_div').attr('data-table');
+        var table_val = $('#sel_title option:selected').text();
+        console.log(table_val);
+        console.log(table);
         console.log(id);
         if(!isNaN(id)){
             $('#add').show();
-            $('#add_meta_head').html("Add new " + table);
+            $('#add_meta_head').html("Add new " + table + " under '" + table_val + "'");
             $('#meta_table').val(table);
             $('#meta_id').val(id);
+            $('#add_title').val('');
+            $('#add_num').val('');
         }else{
-           console.log("You must select a Division first.");
+           alert("You must select a Division first.");
         }
     });
 
-    //Insert new title
+    //Insert new title using AJAX
     $('#btn_ins_meta').click(function(){
         $.post('include/add-meta.inc.php', {
             id: $('#meta_id').val(),
@@ -188,6 +217,25 @@ $(document).ready(function() {
             });
     });
 
+
+    //on #btn_ins_sec click for #frm_add_section:select (if a select element is NaN)
+
+    //INSERT SECTION USING AJAX
+
+    $('#btn_ins_sec').click(function(){
+        $('#frm_add_section  select option:first-of-type').each(function(){
+            if(isNaN($(this).val())){
+                $(this).val('');
+                console.log($(this).val());
+            }
+        });
+        var section = $('#frm_add_section').not('[selected="selected"]').serialize();
+        console.log(section);
+
+        $.post('include/add-sec.inc.php', section, function(msg){
+            console.log(msg);
+        });
+    });
 
      // //Show Add title form
     // $('.btn_add_meta').click(function(){
