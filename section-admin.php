@@ -1,5 +1,6 @@
 <?php
 require_once 'classes/Dbconn.class.php';
+require_once 'classes/Laws.class.php';
 $dbcon = new Dbconn();
 $conn = $dbcon->getConn();
 ?>
@@ -20,6 +21,7 @@ $conn = $dbcon->getConn();
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/jquery-ui-1.10.1.custom.css">
     <!-- Add your styles and rename this link -->
     <!-- <link rel="stylesheet" href="css/home.css"> -->
     <script src="http://use.edgefonts.net/arvo.js"></script>
@@ -67,11 +69,11 @@ $conn = $dbcon->getConn();
                     <select name="sel_law" id="sel_law" data-table="laws">
                         <option selected="selected">-- Choose a Law --</option>
                         <?php
-                            $laws_query = "SELECT * FROM laws";
-                            $laws = $conn->query($laws_query);
-                            foreach($laws as $l) : ?>
-                            <option class="law" value="<?php echo $l['law_id']; ?>"><?php echo $l["law_name"]; ?></option>
-                        <?php endforeach; ?>
+                        $laws_query = "SELECT * FROM laws";
+                        $laws = $conn->query($laws_query);
+                        foreach($laws as $l) : ?>
+                        <option class="law" value="<?php echo $l['law_id']; ?>"><?php echo $l["law_name"]; ?></option>
+                    <?php endforeach; ?>
                     </select>
                     <br />
                     <label for="sel_book">Book: </label>
@@ -112,8 +114,8 @@ $conn = $dbcon->getConn();
                     <label for="sec_text">Section Text: </label>
                     <input type="text" name="sec_text">
                     <br/>
-                    <label for="enact_year">Year of Enactment: </label>
-                    <input type="text" name="enact_year">
+                    <label for="enact_yr">Year of Enactment: </label>
+                    <input type="text" name="enact_yr">
                     <br/>
                     <label for="enact_bill">Bill enacted: </label>
                     <input type="text" name="enact_bill">
@@ -121,56 +123,60 @@ $conn = $dbcon->getConn();
                     <label for="enact_sec">Section Enacted: </label>
                     <input type="text" name="enact_sec">
                     <br>
-                    <input type="submit">
+                    <input type="button" id="btn_ins_sec" value="submit">
                 </form>
-                <p class="test"></p>
-                <div id="add" style="display:none;">
-                    <form id="add_meta" method="post" name="add_title">
-                        <h3 id="add_meta_head"></h3>
-                        <br />
-                        <input type="hidden" id="meta_id" name="meta_id">
-                        <input type="hidden" id="meta_table" name="meta_table"
-                        <label for="title_num">Number: </label>
-                        <input type="text" id="add_num" name="title_num">
-                        <br/>
-                        <label for="title_title">Title: </label>
-                        <input type="text" id="add_title" name="title_title">
-                        <br/>
-                        <input type="button" id="btn_ins_meta" value="Add">
-                    </form>
-                </div>
-
             </div>
-        </div> <!-- /content_container -->
+            <p class="test"></p>
+        </div>
+        <div id="add" style="display:none;">
+            <form id="add_meta" method="post" name="add_meta">
+                <h3 id="add_meta_head"></h3>
+                <br />
+                <input type="hidden" id="meta_id" name="meta_id">
+                <input type="hidden" id="meta_table" name="meta_table"
+                <label for="title_num">Number: </label>
+                <input type="text" id="add_num" name="title_num">
+                <br/>
+                <label for="title_title">Title: </label>
+                <input type="text" id="add_title" name="title_title">
+                <br/>
+                <input type="button" id="btn_ins_meta" value="Add">
+                <input type="button" id="btn_cancel_meta" value="Cancel">
+            </form>
+        </div>
 
-        <footer>
-            <nav id="nav_footer">
-                <ul>
-                    <li><a href="#" class="nav_link">Home</a></li>
-                    <li><a href="#" class="nav_link">Join</a></li>
-                    <li><a href="#" class="nav_link">Login</a></li>
-                    <li><a href="#" class="nav_link">Contact</a></li>
-                    <li><a href="#" class="nav_link">Terms &amp; Legal</a></li>
-                </ul>
-            </nav>
-            <nav id="nav_social">
-                <ul>
-                    <li><a href="#" class="share"><img src="img/icons/facebook_icon_foot.png" alt="Facebook" title="Facebook" class="share_icon"></a></li>
-                    <li><a href="#" class="share"><img src="img/icons/twitter_icon_foot.png" alt="Twitter" title="Twitter" class="share_icon"></a></li>
-                    <li><a href="#" class="share"><img src="" alt="" class="share_icon"></a></li>
-                </ul>
-            </nav>
-            <small id="copyright">&copy; Project Cumulus, 2013.</small>
-        </footer>
-    </div> <!-- /container -->
+    </div>
+</div> <!-- /content_container -->
+
+<footer>
+    <nav id="nav_footer">
+        <ul>
+            <li><a href="#" class="nav_link">Home</a></li>
+            <li><a href="#" class="nav_link">Join</a></li>
+            <li><a href="#" class="nav_link">Login</a></li>
+            <li><a href="#" class="nav_link">Contact</a></li>
+            <li><a href="#" class="nav_link">Terms &amp; Legal</a></li>
+        </ul>
+    </nav>
+    <nav id="nav_social">
+        <ul>
+            <li><a href="#" class="share"><img src="img/icons/facebook_icon_foot.png" alt="Facebook" title="Facebook" class="share_icon"></a></li>
+            <li><a href="#" class="share"><img src="img/icons/twitter_icon_foot.png" alt="Twitter" title="Twitter" class="share_icon"></a></li>
+            <li><a href="#" class="share"><img src="" alt="" class="share_icon"></a></li>
+        </ul>
+    </nav>
+    <small id="copyright">&copy; Project Cumulus, 2013.</small>
+</footer>
+</div> <!-- /container -->
 
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-    <script type="text/javascript" src="js/section-admin.js"></script>
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+<script type="text/javascript" src="js/vendor/jquery-ui-1.10.1.custom.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+<script type="text/javascript" src="js/section-admin.js"></script>
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <!--<script>
         var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
