@@ -18,5 +18,17 @@
 
 			return $db;
 		}
+
+
+	public function getLaws()
+		{
+			$conn = $db;
+			$laws_query = "SELECT * FROM laws";
+			$laws = $conn->query($laws_query);
+			return $laws;
+		}
+
 	}
+
+	var_dump($laws);
  ?>

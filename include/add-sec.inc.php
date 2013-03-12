@@ -21,8 +21,6 @@ $enact_sec  =$_POST['enact_sec'];
 
 // $stmt = $conn->prepare("INSERT INTO sections (sec_num, sec_title, sec_txt, enact_yr, enact_bill, enact_sec, law_id, book_id, title_id, ch_id, div_id, sub_div_id) VALUES (:sec_num, :sec_title, :sec_txt, :enact_yr, :enact_bill, :enact_sec, :law_id, :book_id, :title_id, :ch_id, :div_id, :sub_div_id)")
 
-if(isset($law_id) && isset($sec_num) && isset($sec_text))
-{
 	$query = "INSERT INTO sections (sec_num, sec_title, sec_txt, enact_yr, enact_bill, enact_sec, law_id, book_id, title_id, ch_id, div_id, sub_div_id) VALUES (
 		'$sec_num',
 		'$sec_title',
@@ -37,10 +35,9 @@ if(isset($law_id) && isset($sec_num) && isset($sec_text))
 		'$div_id',
 		'$sub_div_id'
 		)";
+	var_dump($query);
 	$conn->exec($query);
 	echo "Section Added Successfully!";
-}else{
-	echo "Error: Not Added";
-}
+
 
 ?>
