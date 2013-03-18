@@ -40,8 +40,8 @@ $(document).ready(function() {
 
     //Set Book Drop Down
     $('#sel_law').change(function selectLaw(){
-        var law_id = $(this).val();
-        var dataString = 'law_id=' + law_id;
+        var lawID = $(this).val();
+        var dataString = 'law_id=' + lawID;
         $.ajax
         ({
             type: "POST",
@@ -57,8 +57,8 @@ $(document).ready(function() {
 
     //Set Title Drop Down
     $('#sel_book').change(function(){
-		var book_id = $(this).val();
-		var dataString = 'book_id=' + book_id;
+		var bookID = $(this).val();
+		var dataString = 'book_id=' + bookID;
 		$.ajax
         ({
             type: "POST",
@@ -75,8 +75,8 @@ $(document).ready(function() {
 
     //Set Chapter Drop Down
     $('#sel_title').change(function(){
-        var title_id = $(this).val();
-        var dataString = 'title_id=' + title_id;
+        var titleID = $(this).val();
+        var dataString = 'title_id=' + titleID;
         $.ajax
         ({
             type: "POST",
@@ -93,8 +93,8 @@ $(document).ready(function() {
 
     //Set Division Drop Down
     $('#sel_ch').change(function(){
-        var ch_id = $(this).val();
-        var dataString = 'ch_id=' + ch_id;
+        var chID = $(this).val();
+        var dataString = 'ch_id=' + chID;
         $.ajax
         ({
             type: "POST",
@@ -111,8 +111,8 @@ $(document).ready(function() {
 
     //Set Sub-Division Drop Down
     $('#sel_div').change(function(){
-        var div_id = $(this).val();
-        var dataString = 'div_id=' + div_id;
+        var divID = $(this).val();
+        var dataString = 'div_id=' + divID;
         $.ajax
         ({
             type: "POST",
@@ -128,18 +128,20 @@ $(document).ready(function() {
     });
 
 
-    //'Add' Buttons functionality
+    //Show Add Meta Button
     $('#btn_add_title').click(function(){
+        //get
         var id = $('#sel_book').val();
         var table = $('#sel_title').attr('data-table');
         var table = table.slice(0, -1);
-        var table_val = $('#sel_book option:selected').text();
-        console.log(table_val);
+        var tableVal = $('#sel_book option:selected').text();
+        console.log tableVal);
         console.log(table);
         console.log(id);
+        //
         if(!isNaN(id)){
             $('#add').show();
-            $('#add_meta_head').html("Add new " + table + " under '" + table_val + "'");
+            $('#add_meta_head').html("Add new " + table + " under '" + tableVal + "'");
             $('#meta_table').val(table);
             $('#meta_id').val(id);
             $('#add_title').val('');
@@ -153,19 +155,19 @@ $(document).ready(function() {
         var id = $('#sel_title').val();
         var table = $('#sel_ch').attr('data-table');
         var table = table.slice(0, -1);
-        var table_val = $('#sel_title option:selected').text();
-        console.log(table_val);
+        var tableVal = $('#sel_title option:selected').text();
+        console.log tableVal);
         console.log(table);
         console.log(id);
         if(!isNaN(id)){
             $('#add').show();
-            $('#add_meta_head').html("Add new " + table + " under '" + table_val + "'");
+            $('#add_meta_head').html("Add new " + table + " under '" + tableVal + "'");
             $('#meta_table').val(table);
             $('#meta_id').val(id);
             $('#add_title').val('');
             $('#add_num').val('');
         }else{
-           alert("You must select a Title first.");
+            alert("You must select a Title first.");
         }
     })
 
@@ -173,13 +175,13 @@ $(document).ready(function() {
         var id = $('#sel_ch').val();
         var table = $('#sel_div').attr('data-table');
         var table = table.slice(0, -1);
-        var table_val = $('#sel_ch option:selected').text();
-        console.log(table_val);
+        var tableVal = $('#sel_ch option:selected').text();
+        console.log tableVal);
         console.log(table);
         console.log(id);
         if(!isNaN(id)){
             $('#add').show();
-            $('#add_meta_head').html("Add new " + table + " under '" + table_val + "'");
+            $('#add_meta_head').html("Add new " + table + " under '" + tableVal + "'");
             $('#meta_table').val(table);
             $('#meta_id').val(id);
             $('#add_title').val('');
@@ -192,13 +194,13 @@ $(document).ready(function() {
     $('#btn_add_sub_div').click(function(){
         var id = $('#sel_title').val();
         var table = $('#sel_sub_div').attr('data-table');
-        var table_val = $('#sel_title option:selected').text();
-        console.log(table_val);
+        var tableVal = $('#sel_title option:selected').text();
+        console.log tableVal);
         console.log(table);
         console.log(id);
         if(!isNaN(id)){
             $('#add').show();
-            $('#add_meta_head').html("Add new " + table + " under '" + table_val + "'");
+            $('#add_meta_head').html("Add new " + table + " under '" + tableVal + "'");
             $('#meta_table').val(table);
             $('#meta_id').val(id);
             $('#add_title').val('');
