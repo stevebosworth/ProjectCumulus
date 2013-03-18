@@ -8,8 +8,8 @@ $(document).ready(function() {
     $('#btn_cancel_meta').click(function(){
         $('#add').hide();
         $('#meta_id').val('');
-            $('#add_title').val('');
-            $('#add_num').val('');
+        $('#add_title').val('');
+        $('#add_num').val('');
     });
 
         // Takes the selected value of a dropdown, queries the DB and returns the values to the following <select>
@@ -67,6 +67,7 @@ $(document).ready(function() {
             cache: false,
             success: function(html)
             {
+                console.log(html);
                 $('#sel_title').html(html);
             }
         });
@@ -84,6 +85,7 @@ $(document).ready(function() {
             cache: false,
             success: function(html)
             {
+                console.log(html);
                 $('#sel_ch').html(html);
             }
         });
@@ -101,6 +103,7 @@ $(document).ready(function() {
             cache: false,
             success: function(html)
             {
+                console.log(html);
                 $('#sel_div').html(html);
             }
         });
@@ -118,6 +121,7 @@ $(document).ready(function() {
             cache: false,
             success: function(html)
             {
+                console.log(html);
                 $('#sel_sub_div').html(html);
             }
         });
@@ -214,6 +218,7 @@ $(document).ready(function() {
              }, function(html) {
                 console.log(html);
                 $('.test').html(html);
+
             });
     });
 
@@ -232,8 +237,8 @@ $(document).ready(function() {
         var section = $('#frm_add_section').not('[selected="selected"]').serialize();
         console.log(section);
 
-        $.post('include/add-sec.inc.php', section, function(msg){
-            console.log(msg);
+        $.post('include/add-sec.inc.php', serialize, function(msg){
+           console.log(msg);
         });
     });
 

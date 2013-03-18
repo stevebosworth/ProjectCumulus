@@ -1,34 +1,25 @@
 <?php
-	class Dbconn
-	{
-		private $dsn = 'mysql:host=mysql2.cloudsites.gearhost.com;dbname=cumulus';
-		private $username = 'cumulus';
-		private $password = 'kbvEigBt';
+	class Dbconn{
 
-		public function getConn()
-		{
-			try{
-				$db = new PDO($this->dsn, $this->username, $this->password);
-			}
-			catch (Exception $e) {
-				$error = $e->getMessage();
-				echo $error;
-				exit();
-			}
+		private static $dsn = 'mysql:host=mysql2.cloudsites.gearhost.com;dbname=cumulus';
+		private static $username = 'cumulus';
+		private static $password = 'kbvEigBt';
+	    private static $db;
 
-			return $db;
-		}
+	    private function __construct() {}
 
-
-	public function getLaws()
-		{
-			$conn = $db;
-			$laws_query = "SELECT * FROM laws";
-			$laws = $conn->query($laws_query);
-			return $laws;
-		}
-
+	    public static function getDB () {
+	        if (!isset(self::$db)) {
+	            try {
+	                self::$db = new PDO(self::$dsn,
+	                                     self::$username,
+	                                     self::$password);
+	            } catch (PDOException $e) {
+	                $error_message = $e->getMessage();
+	                include('../errors/database_error.php');
+	                exit();
+	            }
+	        }
+	        return self::$db;
+	    }
 	}
-
-	var_dump($laws);
- ?>

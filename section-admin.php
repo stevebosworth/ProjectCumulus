@@ -1,8 +1,19 @@
 <?php
 require_once 'classes/Dbconn.class.php';
-require_once 'classes/Laws.class.php';
-$dbcon = new Dbconn();
-$conn = $dbcon->getConn();
+require_once 'classes/section.class.php';
+require_once 'classes/section_db.class.php';
+require_once 'classes/law.class.php';
+require_once 'classes/law_db.class.php';
+require_once 'classes/book.class.php';
+require_once 'classes/book_db.class.php';
+require_once 'classes/title.class.php';
+require_once 'classes/title_db.class.php';
+require_once 'classes/chapter.class.php';
+require_once 'classes/chapter_db.class.php';
+require_once 'classes/division.class.php';
+require_once 'classes/division_db.class.php';
+require_once 'classes/sub_division.class.php';
+require_once 'classes/sub_division_db.class.php';
 ?>
 
 <!DOCTYPE html>
@@ -33,101 +44,98 @@ $conn = $dbcon->getConn();
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div id="container">
-        <header>
-            <div id="title">
-                <a href="#"><img src="img/icons/header_logo.png" alt="Project-Cumulus-Logo" id="logo"></a>
-            </div>
-
-            <nav id="nav_controls">
-                <ul>
-                    <li class="usr_control"><a href="#"><img src="img/icons/chat_icon_head.png" alt="Chat" title="Chat" class="icon"></a></li>
-                    <li class="usr_control"><a href="#"><img src="img/icons/mail_icon_head.png" alt="Messages" title="Messages" class="icon"></a></li>
-                    <li class="usr_control"><a href="#"><img src="img/icons/profile_icon_head.png" alt="Profile" title="Profile" class="icon"></a></li>
-                    <li class="usr_control"><a href="#"><img src="img/icons/settings_icon_head.png" alt="Settings" title="Settings" class="icon"></a></li>
-                    <li class="usr_control"><a href="#"><img src="img/icons/logout_icon_head.png" alt="Logout" title="Logout" class="icon"></a></li>
-                </ul>
-            </nav>
-            <nav id="nav_main">
-                <ul>
-                    <li class="nav_header" class="nav_link"><a href="#">Home</a></li>
-                    <li class="nav_header" class="nav_link"><a href="#">About</a></li>
-                    <li class="nav_header" class="nav_link"><a href="#">Support</a></li>
-                    <li class="nav_header" class="nav_link"><a href="#">Blog</a></li>
-                    <li class="nav_header" class="nav_link"><a href="#">FAQ</a></li>
-                </ul>
-            </nav>
-
-        </header>
-
-        <div id="content_container">
-
-
-            <div id="add_section">
-                <form id="frm_add_section" name="frm_add_sections" method="post">
-                    <label for="sel_law">Law: </label>
-                    <select name="sel_law" id="sel_law" data-table="laws">
-                        <option selected="selected">-- Choose a Law --</option>
-                        <?php
-                        $laws_query = "SELECT * FROM laws";
-                        $laws = $conn->query($laws_query);
-                        foreach($laws as $l) : ?>
-                        <option class="law" value="<?php echo $l['law_id']; ?>"><?php echo $l["law_name"]; ?></option>
-                    <?php endforeach; ?>
-                    </select>
-                    <br />
-                    <label for="sel_book">Book: </label>
-                    <select name="sel_book" id="sel_book" data-table="books">
-                        <option selected="selected">-- Choose a Law First --</option>
-                    </select>
-                    <br />
-                    <label for="sel_title">Title: </label>
-                    <select name="sel_title" id="sel_title" data-table="titles">
-                        <option selected="selected">-- Choose a Book First --</option>
-                    </select>
-                    <input type="button" class="btn_add_meta" id="btn_add_title" value="add">
-                    <br />
-                    <label for="sel_ch">Chapter: </label>
-                    <select name="sel_ch" id="sel_ch" data-table="chapters">
-                        <option selected="selected">-- Choose a Title First --</option>
-                    </select>
-                    <input type="button" class="btn_add_meta" id="btn_add_ch" value="add">
-                    <br />
-                    <label for="sel_div">Division: </label>
-                    <select name="sel_div" id="sel_div" data-table="divisions">
-                        <option selected="selected">-- Choose a Chapter First --</option>
-                    </select>
-                    <input type="button" class="btn_add_meta" id="btn_add_div" value="add">
-                    <br />
-                    <label for="sel_sub_div">Sub-Division: </label>
-                    <select name="sel_sub_div" id="sel_sub_div" data-table="subdivisions">
-                        <option selected="selected">-- Choose a Division First --</option>
-                    </select>
-                    <input type="button" class="btn_add_meta" id="btn_add_sub_div" value="add">
-                    <br />
-                    <label for="sec_num">Section #: </label>
-                    <input type="text" name="sec_num">
-                    <br/>
-                    <label for="sec_title">Section Title: </label>
-                    <input type="text" name="sec_title">
-                    <br/>
-                    <label for="sec_text">Section Text: </label>
-                    <input type="text" name="sec_text">
-                    <br/>
-                    <label for="enact_yr">Year of Enactment: </label>
-                    <input type="text" name="enact_yr">
-                    <br/>
-                    <label for="enact_bill">Bill enacted: </label>
-                    <input type="text" name="enact_bill">
-                    <br>
-                    <label for="enact_sec">Section Enacted: </label>
-                    <input type="text" name="enact_sec">
-                    <br>
-                    <input type="button" id="btn_ins_sec" value="submit">
-                </form>
-            </div>
-            <p class="test"></p>
+<div id="container">
+    <header>
+        <div id="title">
+            <a href="#"><img src="img/icons/header_logo.png" alt="Project-Cumulus-Logo" id="logo"></a>
         </div>
+
+        <nav id="nav_controls">
+            <ul>
+                <li class="usr_control"><a href="#"><img src="img/icons/chat_icon_head.png" alt="Chat" title="Chat" class="icon"></a></li>
+                <li class="usr_control"><a href="#"><img src="img/icons/mail_icon_head.png" alt="Messages" title="Messages" class="icon"></a></li>
+                <li class="usr_control"><a href="#"><img src="img/icons/profile_icon_head.png" alt="Profile" title="Profile" class="icon"></a></li>
+                <li class="usr_control"><a href="#"><img src="img/icons/settings_icon_head.png" alt="Settings" title="Settings" class="icon"></a></li>
+                <li class="usr_control"><a href="#"><img src="img/icons/logout_icon_head.png" alt="Logout" title="Logout" class="icon"></a></li>
+            </ul>
+        </nav>
+        <nav id="nav_main">
+            <ul>
+                <li class="nav_header" class="nav_link"><a href="#">Home</a></li>
+                <li class="nav_header" class="nav_link"><a href="#">About</a></li>
+                <li class="nav_header" class="nav_link"><a href="#">Support</a></li>
+                <li class="nav_header" class="nav_link"><a href="#">Blog</a></li>
+                <li class="nav_header" class="nav_link"><a href="#">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="content_container">
+        <div id="add_section">
+            <form id="frm_add_section" name="frm_add_sections" method="post">
+                <label for="sel_law">Law: </label>
+                <select name="sel_law" id="sel_law" data-table="laws">
+                    <option selected="selected">-- Choose a Law --</option>
+                    <?php
+                        $law_class = new LawDB();
+                        $arr_laws = $law_class->selLaws();
+                        foreach($arr_laws as $l) : ?>
+                        <option class="law" value="<?php echo $l->getLaw_id(); ?>"><?php echo $l->getLaw_name(); ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <br />
+                <label for="sel_book">Book: </label>
+                <select name="sel_book" id="sel_book" data-table="books">
+                    <option selected="selected">-- Choose a Law First --</option>
+                </select>
+                <br />
+                <label for="sel_title">Title: </label>
+                <select name="sel_title" id="sel_title" data-table="titles">
+                    <option selected="selected">-- Choose a Book First --</option>
+                </select>
+                <input type="button" class="btn_add_meta" id="btn_add_title" value="add">
+                <br />
+                <label for="sel_ch">Chapter: </label>
+                <select name="sel_ch" id="sel_ch" data-table="chapters">
+                    <option selected="selected">-- Choose a Title First --</option>
+                </select>
+                <input type="button" class="btn_add_meta" id="btn_add_ch" value="add">
+                <br />
+                <label for="sel_div">Division: </label>
+                <select name="sel_div" id="sel_div" data-table="divisions">
+                    <option selected="selected">-- Choose a Chapter First --</option>
+                </select>
+                <input type="button" class="btn_add_meta" id="btn_add_div" value="add">
+                <br />
+                <label for="sel_sub_div">Sub-Division: </label>
+                <select name="sel_sub_div" id="sel_sub_div" data-table="subdivisions">
+                    <option selected="selected">-- Choose a Division First --</option>
+                </select>
+                <input type="button" class="btn_add_meta" id="btn_add_sub_div" value="add">
+                <br />
+                <label for="sec_num">Section #: </label>
+                <input type="text" name="sec_num">
+                <br/>
+                <label for="sec_title">Section Title: </label>
+                <input type="text" name="sec_title">
+                <br/>
+                <label for="sec_text">Section Text: </label>
+                <input type="text" name="sec_text">
+                <br/>
+                <label for="enact_yr">Year of Enactment: </label>
+                <input type="text" name="enact_yr">
+                <br/>
+                <label for="enact_bill">Bill enacted: </label>
+                <input type="text" name="enact_bill">
+                <br>
+                <label for="enact_sec">Section Enacted: </label>
+                <input type="text" name="enact_sec">
+                <br>
+                <input type="button" id="btn_ins_sec" value="submit">
+            </form>
+        </div> <!-- /add_section -->
+        <p class="test"></p>
+
         <div id="add" style="display:none;">
             <form id="add_meta" method="post" name="add_meta">
                 <h3 id="add_meta_head"></h3>
@@ -143,30 +151,32 @@ $conn = $dbcon->getConn();
                 <input type="button" id="btn_ins_meta" value="Add">
                 <input type="button" id="btn_cancel_meta" value="Cancel">
             </form>
+        </div> <!-- /add -->
+
+        <div id="test">
+
         </div>
+    </div> <!-- /content_container -->
 
-    </div>
-</div> <!-- /content_container -->
-
-<footer>
-    <nav id="nav_footer">
-        <ul>
-            <li><a href="#" class="nav_link">Home</a></li>
-            <li><a href="#" class="nav_link">Join</a></li>
-            <li><a href="#" class="nav_link">Login</a></li>
-            <li><a href="#" class="nav_link">Contact</a></li>
-            <li><a href="#" class="nav_link">Terms &amp; Legal</a></li>
-        </ul>
-    </nav>
-    <nav id="nav_social">
-        <ul>
-            <li><a href="#" class="share"><img src="img/icons/facebook_icon_foot.png" alt="Facebook" title="Facebook" class="share_icon"></a></li>
-            <li><a href="#" class="share"><img src="img/icons/twitter_icon_foot.png" alt="Twitter" title="Twitter" class="share_icon"></a></li>
-            <li><a href="#" class="share"><img src="" alt="" class="share_icon"></a></li>
-        </ul>
-    </nav>
-    <small id="copyright">&copy; Project Cumulus, 2013.</small>
-</footer>
+    <footer>
+        <nav id="nav_footer">
+            <ul>
+                <li><a href="#" class="nav_link">Home</a></li>
+                <li><a href="#" class="nav_link">Join</a></li>
+                <li><a href="#" class="nav_link">Login</a></li>
+                <li><a href="#" class="nav_link">Contact</a></li>
+                <li><a href="#" class="nav_link">Terms &amp; Legal</a></li>
+            </ul>
+        </nav>
+        <nav id="nav_social">
+            <ul>
+                <li><a href="#" class="share"><img src="img/icons/facebook_icon_foot.png" alt="Facebook" title="Facebook" class="share_icon"></a></li>
+                <li><a href="#" class="share"><img src="img/icons/twitter_icon_foot.png" alt="Twitter" title="Twitter" class="share_icon"></a></li>
+                <li><a href="#" class="share"><img src="" alt="" class="share_icon"></a></li>
+            </ul>
+        </nav>
+        <small id="copyright">&copy; Project Cumulus, 2013.</small>
+    </footer>
 </div> <!-- /container -->
 
 

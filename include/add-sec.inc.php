@@ -1,8 +1,8 @@
 <?php
 
-include_once '../classes/Dbconn.class.php';
-$dbcon = new Dbconn();
-$conn = $dbcon->getConn();
+require_once '../classes/Dbconn.class.php';
+require_once '../classes/section.class.php';
+require_once '../classes/section_db.class.php';
 
 $law_id     =$_POST['sel_law'];
 $book_id    =$_POST['sel_book'];
@@ -21,22 +21,9 @@ $enact_sec  =$_POST['enact_sec'];
 
 // $stmt = $conn->prepare("INSERT INTO sections (sec_num, sec_title, sec_txt, enact_yr, enact_bill, enact_sec, law_id, book_id, title_id, ch_id, div_id, sub_div_id) VALUES (:sec_num, :sec_title, :sec_txt, :enact_yr, :enact_bill, :enact_sec, :law_id, :book_id, :title_id, :ch_id, :div_id, :sub_div_id)")
 
-	$query = "INSERT INTO sections (sec_num, sec_title, sec_txt, enact_yr, enact_bill, enact_sec, law_id, book_id, title_id, ch_id, div_id, sub_div_id) VALUES (
-		'$sec_num',
-		'$sec_title',
-		'$sec_txt',
-		'$enact_yr',
-		'$enact_bill',
-		'$enact_sec',
-		'$law_id',
-		'$book_id',
-		'$title_id',
-		'$ch_id',
-		'$div_id',
-		'$sub_div_id'
-		)";
-	var_dump($query);
-	$conn->exec($query);
+	$insert = new SectionDB();
+	$insert->addSection($sec_num, $sec_title, $sec_txt, $enact_yr, $enact_bill, $enact_sec, $law_id, $book_id, $title_id, $ch_id, $div_id, $sub_div_id);
+
 	echo "Section Added Successfully!";
 
 

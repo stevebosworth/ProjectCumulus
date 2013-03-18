@@ -1,7 +1,19 @@
 <?php
-	include_once '../classes/Dbconn.class.php';
-	$dbcon = new Dbconn();
-	$conn = $dbcon->getConn();
+	require_once 'classes/Dbconn.class.php';
+	require_once 'classes/section.class.php';
+	require_once 'classes/section_db.class.php';
+	require_once 'classes/law.class.php';
+	require_once 'classes/law_db.class.php';
+	require_once 'classes/book.class.php';
+	require_once 'classes/book_db.class.php';
+	require_once 'classes/title.class.php';
+	require_once 'classes/title_db.class.php';
+	require_once 'classes/chapter.class.php';
+	require_once 'classes/chapter_db.class.php';
+	require_once 'classes/division.class.php';
+	require_once 'classes/division_db.class.php';
+	require_once 'classes/sub_division.class.php';
+	require_once 'classes/sub_division_db.class.php';
 
 	$table = $_POST['table'];
 	$num   = $_POST['num'];
@@ -10,26 +22,26 @@
 
 	switch ($table) {
 		case 'title':
-			$query = "INSERT INTO titles (title_num, title_title, book_id) VALUES ('$num', '$title', '$id')";
-			$conn->exec($query);
+			$insert = new TitleDB();
+			$insert->addTitle($num, $title, $id);
 			echo "success!";
 		break;
 
 		case 'chapter':
-			$query = "INSERT INTO chapters (ch_num, ch_title, title_id) VALUES ('$num', '$title', '$id')";
-			$conn->exec($query);
+			$insert = new ChapterDB();
+			$insert->addChapter($num, $title, $id);
 			echo "success!";
 		break;
 
 		case 'division':
-			$query = "INSERT INTO divisions (div_num, div_title, ch_id) VALUES ('$num', '$title', '$id')";
-			$conn->exec($query);
+			$insert = new DivisionDB();
+			$insert->addDivision($num, $title, $id);
 			echo "success!";
 		break;
 
 		case 'subdivisions':
-			$query = "INSERT INTO subdivisions (sub_div_num, sub_div_title, div_id) VALUES ('$num', '$title', '$id')";
-			$conn->exec($query);
+			$insert = new SubDivisionDB();
+			$insert->addSubDivision($num, $title, $id);
 			echo "success!";
 		break;
 	}
