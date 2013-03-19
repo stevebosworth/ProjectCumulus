@@ -19,31 +19,8 @@ if (!isset($_POST['submit'])){
 <!DOCTYPE html>
 <html>
 	<head>
-		<script type="text/javascript" src="js/validation.js"></script>
 		<script type="text/javascript" src="js/jquery.js"></script>
 
-		<script type="text/javascript">
-			
-		// 	jQuery(document).ready(function($) {
-				
-		// 		$('')
-
-		// 		$('#cl_edit').focusout(function(){
-		// 			var case_id = $('#case_id').val();
-		// 			var case_ref = $('#case_ref').val();
-		// 			$.post('update_caselaw.php', {
-		// 				caseID: case_id,
-		// 				caseRef: case_ref,
-		// 				courtID: court_id
-		// 			}, function(msg){
-		// 				alert(msg);
-		// 			});
-
-		// 		});
-
-		// 	});
-
-		</script>
 	</head>
     <body>
         

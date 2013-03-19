@@ -13,7 +13,6 @@ public function getConn(){
 
     try {
     $db = new PDO('mysql:host=mysql2.cloudsites.gearhost.com;dbname=cumulus', $this->username, $this->password);
-    
         } 
         catch (PDOException $e) {
             $error_message = $e->getMessage();

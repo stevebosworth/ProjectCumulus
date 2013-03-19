@@ -11,7 +11,7 @@ if (!empty($_POST['hidden']))
 
 		if(preg_match($pattern, $caseID))
 		{
-			$errmsg = "";
+		
 		}
 		else
 		{
@@ -30,11 +30,11 @@ if (!empty($_POST['hidden']))
 
 		if(preg_match($pattern, $caseRef))
 		{
-			$errmsg = "";
+		
 		}
 		else
 		{
-			$errmsg = "case reference may not contain special characters";
+			$errmsg = $errmsg . " & case reference may not contain special characters";
 		}
 	}
 	else 
@@ -52,15 +52,15 @@ if (!empty($_POST['hidden']))
 	if(!empty($_POST['courtID']))
 	{
 		$courtID = $_POST['courtID']; //Sets the courtID
-		$pattern = "/^[a-zA-Z]*$/";
+		$pattern =  "^[A-Za-z]+$^";
 
 		if(preg_match($pattern, $courtID))
 		{
-			$errmsg = "";
+		
 		}
 		else
 		{
-			$errmsg = "court id may only contain letters";
+			$errmsg = $errmsg . " & court id may only contain letters";
 		}
 	}
 	else
@@ -82,11 +82,11 @@ if (!empty($_POST['hidden']))
 
 		if(preg_match($pattern, $caseDate))
 		{
-			$errmsg = "";
+		
 		}
 		else
 		{
-			$errmsg = "case date should be between 1900 and today, and in the format YYYY-MM-DD";
+			$errmsg = $errmsg . " & case date should be between 1900 and today, and in the format YYYY-MM-DD";
 		}
 	}
 	else
@@ -108,11 +108,11 @@ if (!empty($_POST['hidden']))
 
 		if(preg_match($pattern, $url))
 		{
-			$errmsg = "";
+		
 		}
 		else
 		{
-			$errmsg = "invalid url - must begin with http://";
+			$errmsg = $errmsg . " & invalid url - must begin with http://";
 		}
 	}
 	else
@@ -127,41 +127,34 @@ if (!empty($_POST['hidden']))
 		}
 	}
 
-$caseDesc = $_POST['caseDesc'];
-$hidden = $_POST['hidden'];
+	$caseDesc = $_POST['caseDesc'];
+	$hidden = $_POST['hidden'];
 
-if ($errmsg == "")
-{
+	if ($errmsg == "")
+	{
 
-//requiring the cumulus database PDO connection
-require_once 'DBconn_test.php';
+	//requiring the cumulus database PDO connection
+	require_once 'DBconn_test.php';
 
-//creating an instance of the class to use for queries
-$mydbconn = new DBconn();
-$conn = $mydbconn->getConn();
+	//creating an instance of the class to use for queries
+	$mydbconn = new DBconn();
+	$conn = $mydbconn->getConn();
 
-//updates the database record based on caselaw id from previous page
-$udquery = "UPDATE caselaw SET case_id=$caseID, case_ref='$caseRef', court_id='$courtID', case_date='$caseDate', url='$url', case_desc='$caseDesc' WHERE case_id=$hidden";
-$conn->query($udquery);
+	//updates the database record based on caselaw id from previous page
+	$udquery = "UPDATE caselaw SET case_id=$caseID, case_ref='$caseRef', court_id='$courtID', case_date='$caseDate', url='$url', case_desc='$caseDesc' WHERE case_id=$hidden";
+	$conn->query($udquery);
 
-echo '
-    <script type="text/javascript">
-    alert("Update Successful");
-    </script>
-';
+	//redirect user to original page
+	header("Location: articlepageUD.php");
+  	exit;
 
-//echo "Update Successful!";
+	}
 
-include "articlepageUD.php";
-
-}
-
-else
-{
-	echo $errmsg;
-	return false;
-}
-
+	else
+	{
+		echo $errmsg;
+		return false;
+	}
 }
 
 
