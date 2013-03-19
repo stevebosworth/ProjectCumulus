@@ -16,16 +16,15 @@ if (empty($caseid) || empty($courtid) || empty($userid) || empty($casedate) ||
 }
 if (empty($casedesc))
 {
-    require_once 'DBconn_test.php';
+    require_once 'classes/Dbconn.class.php';
     
     $sql = "INSERT INTO caselaw (case_id, court_id, usr_id, case_date, 
                                 url, case_ref)
         VALUES ('$caseid','$courtid', '$userid', '$casedate', '$url', 
                 '$caseref')";
     
-    $mydb = new DBconn();
-    $conn = $mydb->getConn();
-    $conn->exec($sql);
+    $db = Dbconn::getDB();
+    $db->exec($sql);
     
     echo '
         <script type="text/javascript">
@@ -37,16 +36,15 @@ if (empty($casedesc))
 }
 else
 {    
-    require_once 'DBconn_test.php';
+    require_once 'classes/Dbconn.class.php';
     
     $sql = "INSERT INTO caselaw (case_id, court_id, usr_id, case_date, 
                                 url, case_ref, case_desc)
         VALUES ('$caseid','$courtid', '$userid', '$casedate', '$url', 
                 '$caseref', '$casedesc')";
     
-    $mydb = new DBconn();
-    $conn = $mydb->getConn();
-    $conn->exec($sql);
+    $db = Dbconn::getDB();
+    $db->exec($sql);
     
     echo '
         <script type="text/javascript">

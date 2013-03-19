@@ -1,17 +1,16 @@
 <?php
 
 //requiring the cumulus database PDO connection
-require_once 'DBconn_test.php';
+require_once 'classes/Dbconn.class.php';
 
 //creating an instance of the class to use for queries
-$mydbconn = new DBconn();
-$conn = $mydbconn->getConn();
+$db = Dbconn::getDB();
 
 //the sql query to pull records from the database
 $listsql = "SELECT * FROM caselaw";
 
 //variable to hold the query results
-$result = $conn->query($listsql);
+$result = $db->query($listsql);
 
 
 ?>

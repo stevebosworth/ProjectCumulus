@@ -134,15 +134,14 @@ if (!empty($_POST['hidden']))
 	{
 
 	//requiring the cumulus database PDO connection
-	require_once 'DBconn_test.php';
+	require_once 'classes/Dbconn.class.php';
 
 	//creating an instance of the class to use for queries
-	$mydbconn = new DBconn();
-	$conn = $mydbconn->getConn();
+	$db = Dbconn::getDB();
 
 	//updates the database record based on caselaw id from previous page
 	$udquery = "UPDATE caselaw SET case_id=$caseID, case_ref='$caseRef', court_id='$courtID', case_date='$caseDate', url='$url', case_desc='$caseDesc' WHERE case_id=$hidden";
-	$conn->query($udquery);
+	$db->query($udquery);
 
 	//redirect user to original page
 	header("Location: articlepageUD.php");

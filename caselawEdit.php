@@ -2,16 +2,15 @@
 
 if (!isset($_POST['submit'])){
 	//requiring the cumulus database PDO connection
-	require_once 'DBconn_test.php';
+	require_once 'classes/Dbconn.class.php';
 
 	//creating an instance of the class to use for queries
-	$mydbconn = new DBconn();
-	$conn = $mydbconn->getConn();
+	$db = Dbconn::getDB();
 
 	//the sql query to pull records from the database
 	$sql = "SELECT * FROM caselaw WHERE case_id = $_GET[case_id]";
 	//variable to hold the query results
-	$row = $conn->query($sql);
+	$row = $db->query($sql);
 }
 
 ?>
