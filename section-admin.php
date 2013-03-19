@@ -153,9 +153,6 @@ require_once 'classes/sub_division_db.class.php';
             </form>
         </div> <!-- /add -->
 
-        <div id="test">
-
-        </div>
     </div> <!-- /content_container -->
 
     <footer>

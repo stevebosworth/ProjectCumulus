@@ -1,3 +1,28 @@
+<?php
+    require_once 'classes/Dbconn.class.php';
+    require_once 'classes/section.class.php';
+    require_once 'classes/section_db.class.php';
+    require_once 'classes/law.class.php';
+    require_once 'classes/law_db.class.php';
+    require_once 'classes/book.class.php';
+    require_once 'classes/book_db.class.php';
+    require_once 'classes/title.class.php';
+    require_once 'classes/title_db.class.php';
+    require_once 'classes/chapter.class.php';
+    require_once 'classes/chapter_db.class.php';
+    require_once 'classes/division.class.php';
+    require_once 'classes/division_db.class.php';
+    require_once 'classes/sub_division.class.php';
+    require_once 'classes/sub_division_db.class.php';
+
+    $section = new SectionDB();
+    $sec_num = $_GET['section'];
+
+    $book = new BookDB();
+
+    $this_sec = $section->selSectionByNum($sec_num);
+ ?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -85,12 +110,20 @@
             	<ul id="breadcrumbs">
                 	<li><a href="#">Homepage</a> > </li>
                 	<li><a href="#">Search results</a> > </li>
-                    <li>Article 45</li>
+                    <li>Section: <?php
+                        echo $this_sec->getSec_Num() . " " . $this_sec->getSec_Title();
+                     ?></li>
                 </ul>
-            	<h2>Article 45</h2>
-                <p>"No person shall falsify personal information on a government form"</p>
-                <p>a. "except when working as an undercover law enforcement officer."</p>
-                <p>b. "because inscribing false information is considered obstruction of justice (Article 21 e.)"</p>
+                <ul>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+            	<h2>Section <?php echo $this_sec->getSec_Num(); ?></h2>
+                <p><?php echo $this_sec->getSec_Txt(); ?></p>
+                <p class="enact"><?php echo "[ " . $this_sec->getEnact_Yr() . ", " . $this_sec->getEnact_Bill() . ", a." . $this_sec->getEnact_Sec() . " ]"; ?></p>
             	<div id="relevant">
                 		<hr>
                 	<h4>Related Articles</h4>

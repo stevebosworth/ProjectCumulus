@@ -1,11 +1,13 @@
 <?php
 
+//, c.ch_num, c.ch_title, d.div_num, d.div_title, sd.sub_div_num, sd.sub_div_title
+
 class SectionDB {
 
 	public function selSections(){
 		$db = Dbconn::getDB();
 
-		$query = "SELECT * FROM sections";
+		$query = "SELECT s.* FROM sections s INNER JOIN books b ON s.book_id = b.book_id";
 
 		$result = $db->query($query);
 
@@ -13,17 +15,18 @@ class SectionDB {
 
 		foreach ($result as $row){
 			$section = new Section(
+									$row['sec_num'],
+									$row['sec_title'],
+									$row['sec_txt'],
+									$row['enact_yr'],
+									$row['enact_bill'],
+									$row['enact_sec'],
 									$row['law_id'],
 									$row['book_id'],
 									$row['title_id'],
 									$row['ch_id'],
 									$row['div_id'],
-									$row['$sub_div_id'],
-									$row['sec_num'],
-									$row['sec_txt'],
-									$row['enact_yr'],
-									$row['enact_bill'],
-									$row['enact_sec']);
+									$row['$sub_div_id']);
 
 		 	$sections[] = $section;
 		}
@@ -39,17 +42,18 @@ class SectionDB {
 		$row = $result->fetch();
 
 		$section = new Section(
+								$row['sec_num'],
+								$row['sec_title'],
+								$row['sec_txt'],
+								$row['enact_yr'],
+								$row['enact_bill'],
+								$row['enact_sec'],
 								$row['law_id'],
 								$row['book_id'],
 								$row['title_id'],
 								$row['ch_id'],
 								$row['div_id'],
-								$row['$sub_div_id'],
-								$row['sec_num'],
-								$row['sec_txt'],
-								$row['enact_yr'],
-								$row['enact_bill'],
-								$row['enact_sec']);
+								$row['$sub_div_id']);
 		return $section;
 	}
 
@@ -69,6 +73,7 @@ class SectionDB {
 								$row['div_id'],
 								$row['$sub_div_id'],
 								$row['sec_num'],
+								$row['sec_title'],
 								$row['sec_txt'],
 								$row['enact_yr'],
 								$row['enact_bill'],

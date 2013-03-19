@@ -9,6 +9,7 @@ class Section{
 	private $div_id;
 	private $sub_div_id;
 	private $sec_num;
+    private $sec_title;
 	private $sec_txt;
 	private $enact_yr;
 	private $enact_bill;
@@ -16,6 +17,7 @@ class Section{
 
 	public function __construct(
 		$sec_num,
+        $sec_title,
 		$sec_txt,
 		$enact_yr,
 		$enact_bill,
@@ -28,6 +30,7 @@ class Section{
         $sub_div_id)
     {
         $this->sec_num = $sec_num;
+        $this->sec_title = $sec_title;
         $this->sec_txt = $sec_txt;
         $this->enact_yr = $enact_yr;
         $this->enact_bill = $enact_bill;
@@ -178,6 +181,26 @@ class Section{
     public function setSec_Num($sec_num)
     {
         $this->sec_num = $sec_num;
+    }
+
+    /**
+     * Gets the value of sec_title.
+     *
+     * @return mixed
+     */
+    public function getSec_Title()
+    {
+        return $this->sec_title;
+    }
+
+    /**
+     * Sets the value of sec_title.
+     *
+     * @param mixed $sec_title the sec_title
+     */
+    public function setTec_Title($sec_title)
+    {
+        $this->sec_title = $sec_title;
     }
 
     /**
