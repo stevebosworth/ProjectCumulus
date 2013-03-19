@@ -146,6 +146,7 @@
             <section id="sidebar">
                 <aside id="word_cloud">
                     <h3>Parts of this law are mentioned in:</h3>
+<<<<<<< HEAD:article.php
  					<?php 
                     include ('db_connection.php');
                     foreach ($tagset as $tag) : ?>
@@ -159,6 +160,18 @@
 <<<<<<< HEAD:article.html
                     <p class="tag1">626</p>-->
                     <?php endforeach; ?>
+=======
+                    <?php
+                    	include ('list_tags.php') ?>
+                    <!--<?php
+                    	foreach ($tag_array as $single_tag) : ?>
+                    	<p>
+                        	<a href="#">
+                    			<?php echo $single_tag->getID(); ?>
+                            </a>
+                        </p>
+                    <?php endforeach; ?>-->
+>>>>>>> Adding updated search and tag files Mar 19/13:article.html
                 </aside>	
 =======
                     <p class="tag1">626</p>
@@ -188,7 +201,7 @@
                     <div class="panel">
                         <h5>Add descriptory tags by submitting the information below.</h5>
                         <p><label id="tags_label" name="tags_label">Tags:</label>
-                        <form id="create_tags" action="article_tags.php" method="post">
+                        <form id="create_tags" action="new_tag.php" method="post">
                         	<input type="text" id="txt_tags" name="txt_tags" /></p>
                         	<input type="submit" id="btn_subtags" name="btn_subtags" value="Submit" />
                     	</form>
