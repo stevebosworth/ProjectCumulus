@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Project Cumulus Home Page</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Add your styles and rename this link -->
+    <link rel="stylesheet" href="css/profile.css"> 
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <!--<script src="js/vendor/modernizr-2.6.2.min.js"></script>-->
+    <script src="http://use.edgefonts.net/arvo.js"></script>
+    <script src="js/profile.js" type="text/javascript"></script>
+  
+</head>
+<body>
+<form>
+    <!--[if lt IE 7]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div id="container">
+        <header>
+            <div id="title">
+                <a href="#"><img src="img/icons/header_logo.png" alt="Project-Cumulus-Logo" id="logo"></a>
+            </div>
+
+            <nav id="nav_controls">
+                <ul>
+                    <li class="usr_control"><a href="#"><img src="img/icons/chat_icon_head.png" alt="Chat" title="Chat" class="icon"></a></li>
+                    <li class="usr_control"><a href="#"><img src="img/icons/mail_icon_head.png" alt="Messages" title="Messages" class="icon"></a></li>
+                    <li class="usr_control"><a href="#"><img src="img/icons/profile_icon_head.png" alt="Profile" title="Profile" class="icon"></a></li>
+                    <li class="usr_control"><a href="#"><img src="img/icons/settings_icon_head.png" alt="Settings" title="Settings" class="icon"></a></li>
+                    <li class="usr_control"><a href="#"><img src="img/icons/logout_icon_head.png" alt="Logout" title="Logout" class="icon"></a></li>
+                </ul>
+            </nav>
+            <nav id="nav_main">
+                <ul>
+                    <li class="nav_header" class="nav_link"><a href="#">Home</a></li>
+                    <li class="nav_header" class="nav_link"><a href="#">About</a></li>
+                    <li class="nav_header" class="nav_link"><a href="#">Support</a></li>
+                    <li class="nav_header" class="nav_link"><a href="#">Blog</a></li>
+                    <li class="nav_header" class="nav_link"><a href="#">FAQ</a></li>
+                </ul>
+            </nav>
+
+        </header>
+        
+        
+        
+		<!--/////////////My codes for div content_container////////////-->
+        
+        <div id="content_container">
+        
+        	<div id="profile_photo">
+            profile photo
+        	</div><!--/profile_photo-->
+            
+            <div id="profileNameAnd_searchArea">
+            
+            <div id="activeUser_name">
+            <p>Welcome Nnabugwu</p>
+            </div><!--/activeUser_name-->
+            
+            <div id="searchBox_Area">
+            
+            	<div id="search_Box">
+                	<input type="text" name="txt_search" placeholder="Search All"/>
+                </div><!--/search_Box-->
+            	<div id="search_Button">
+                	<input type="button" name="btn_search" value="Search" autocomplete="on"/>
+                </div><!--/search_Button-->
+                <div id="advanced_Search">
+                	<a href="/advancedSearch_options">Advanced Search</a>
+                </div><!--/advanced_Search-->
+                
+            </div><!--/searchBoxArea-->
+            
+        </div><!--/profileNameAnd_searchArea-->
+        <div id="advancedSearch_options">
+        	
+        </div><!--/advancedSearch_options-->
+        
+        
+			<aside id="leftSide_bar">
+            <div id="profileMenu_title"><h3>My Profile Menu</h3></div>
+            	<nav id="profile_menu">
+                	<ul>
+                    	<li><a href="#">Discussions</a></li>
+                        <li><a href="#">Messages</a></li>
+                        <li><a href="#">Friends</a></li>
+                        <li><a href="#">Law Quick Link</a></li>
+                        <li><a href="#">Edit Profile</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li class="event"><a href="#">Events</a></li>
+                    </ul>
+            	</nav>               
+			</aside><!--/leftSide_bar-->           
+            <div id = "vetical_separatorLeft"></div><!--/vetical_separator-->
+            
+            <aside id="rightSide_bar">
+            <div id="rightSideBar_ActiveDiscussionTitle"><h3>Active Discussions</h3></div>
+            
+            <div class="accordion">
+    
+                    <div class="panelshow"><h4>Discussion 1</h4></div>
+                    <div class="panel">
+                        <h5>lorem loremskk sdkfjsdfjkdf  sodkjflskdfj sd  sdkfjlsdkf sdfk  sdkfjd df ldsf</h5>
+                        <p><label id="art_label" name="art_label">Article:</label>
+                        <input type="text" id="txt_article" name="txt_article" /></p>
+                        <input type="button" id="btn_subart" name="btn_subart" onClick="subArticle()" value="Submit" />
+                    </div>
+                    
+                    <div class="panelshow"><h4>Discussion 2</h4></div>
+                    <div class="panel">
+                        <h5>kdsjfdsfkl  dfkjsdfl ksdf  lskdf lsdlfsdl  sdlkfsd fl lormm k</h5>
+                        <p><label id="case_label" name="case_label">Case Law:</label>
+                        <input type="text" id="txt_case" name="txt_case" /></p>
+                        <p><label id="desc_label" name="desc_label">Description:</label>
+                        <input type="text" id="txt_desc" name="txt_desc" /></p>
+                        <input type="button" id="btn_subcase" name="btn_subcase" onClick="subCase()" value="Submit" />
+                    </div>
+                    
+                     <div class="panelshow"><h4>Discussion 3</h4></div>
+                    <div class="panel">
+                        <h5>lorem ldsfkdfkml jdkf ldsfk  ksjdlfkj ;dsfkl skdf sdkfdsk f</h5>
+                        <p><label id="tags_label" name="tags_label">Tags:</label>
+                        <input type="text" id="txt_tags" name="txt_tags" /></p>
+                        <input type="button" id="btn_subtags" name="btn_subtags" onClick="subTags()" value="Submit" />
+                    </div>
+                    
+                    <div class="panelshow"><h4>Discussion 4</h4></div>
+                    <div class="panel">
+                        <h5>lorem isp skm fkm  knslkdf iodk j sdfjlidsfok dsfj  </h5>
+                        <p><label id="comm_label" name="comm_label">Tags:</label>
+                        <input type="text" id="txt_comm" name="txt_comm" /></p>
+                        <input type="button" id="btn_subcomm" name="btn_subcomm" onClick="subComments()" value="Submit" />
+                    </div>
+                    
+            
+            
+            </aside><!--/rightSide_bar-->
+            <div id = "vetical_separatorRight"></div><!--/vetical_separator-->
+            
+            
+            
+            <div id="profileMain_content">
+           		<div id="EditProfilePage_title"><h2>Edit Profile</h2></div><!--/EditProfilePage_title-->
+                
+           		<div id="editProfile_content">
+            	<section id="edit_profilePhoto">
+                <div id="editPhoto_title">Photo</div>
+                	<figure id="edit_Photo">
+                		<img src="#" alt="profile photo" title="profile photo"/> 
+               		</figure><!--/edit_profilePhoto-->
+                    <div id="choose_photo">
+                    	<select id="ddl_editPhotoOption">
+                        	<option><a href="#">Choose Existing Photo</a></option>
+                            <option><a href="#">Take Photo</a></option>
+                        </select>
+                    </div>
+                </section><!--/edit_profilePhoto-->
+                
+                <section id="edit_name">
+                	<div id="editName_title">Name</div>
+                    <input id="txt_editName" type="text"/>
+                </section><!--/edit_name-->
+                
+                <section id="edit_email">
+                	<div id="editEmail_title">Email</div>
+                    <input type="text" id="txt_editEmail"/>
+                </section><!--/edit_email-->
+                
+                <section id="edit_password">
+                	<div id="current_passwordDetails">
+                    	<div id="editPasswordTitle">Password</div>
+                    	<input type="password" id="txt_editPassword"/>
+                    	<a id="chng_pswDropdown" href="/change_password">Edit</a>
+                    </div><!--/current_passwordDetails-->
+                	
+                    <div id="change_password">
+                    <section id="Edit_curPasw">
+                    	<div id="currentPasw_Title">Current Password</div><!--/currentPasw_Title-->
+                        <input id="txt_currentPassword" type="password"/></section>
+                    <section id="Edit_newPasw">
+                    	<div id = "newPasw_Title">New Password</div><!--/newPasw_Title-->
+                        <input id="txt_newPassword" type="password"/>
+                    </section>
+                    <section id="Edit_verNewPasw">
+                    	<div id = "verifyNewPasw_Title">Verify New Password</div><!--/verifyNewPasw_Title-->
+                        <input id="txt_verifyNewPassword" type="password"/>
+                    </section>
+                    <section id="btn_done">
+                    	<input type="submit" id="btn_pswDone" value="Done"/>   
+                    </section> 
+                    </div><!--/change_password-->
+                </section><!--/edit_password-->
+                
+                <section id="edit_JobTitle">
+                	<div id="editJobTitle_title">Job Title</div>
+                    <input type="text" id="txt_editJobTitle"/>
+                </section><!--/edit_JobStatus-->
+                
+                <section id="edit_location">
+                	<div id="editLocation_title">Location</div>
+                    <select id="sel_location">
+                    	<option>Australia</option>
+                        <option>Canada</option>
+                        <option>United States of America</option>
+                        <option>Zimbabwe</option>
+                    </select>
+                </section><!--/edit_location-->
+                
+                <section id="edit_bio">
+                	<div id="editBio_title">Bio</div>
+                    <textarea id="txt_editBio" ></textarea>
+                </section><!--/edit_bio-->
+                	
+            </div><!--/editProfile_content-->
+            <div id="save_changes">
+            <input type="submit" id="btn_saveChanges" value="Save Changes"/>
+            </div>
+            </div><!--/profileMain_content-->
+            
+        </div> <!-- /content_container -->
+        
+        
+  
+
+        <footer>
+            <nav id="nav_footer">
+                <ul>
+                    <li><a href="#" class="nav_link">Home</a></li>
+                    <li><a href="#" class="nav_link">Join</a></li>
+                    <li><a href="#" class="nav_link">Login</a></li>
+                    <li><a href="#" class="nav_link">Contact</a></li>
+                    <li><a href="#" class="nav_link">Terms & Legal</a></li>
+                </ul>
+            </nav>
+            <nav id="nav_social">
+                <ul>
+                    <li><a href="#" class="share"><img src="img/icons/facebook_icon_foot.png" alt="Facebook" title="Facebook" class="share_icon"></a></li>
+                    <li><a href="#" class="share"><img src="img/icons/twitter_icon_foot.png" alt="Twitter" title="Twitter" class="share_icon"></a></li>
+                    <li><a href="#" class="share"><img src="" alt="" class="share_icon"></a></li>
+                </ul>
+            </nav>
+            <small id="copyright">&copy; Project Cumulus, 2013.</small>
+        </footer>
+    </div> <!-- /container -->
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <!--<script>
+        var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>-->
+    
+    </form>
+</body>
+</html>

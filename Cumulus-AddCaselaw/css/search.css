@@ -1,0 +1,110 @@
+
+#search
+{
+	margin-top:75px;
+}
+
+#search_logo
+{
+	float:left;
+	padding-left:150px;
+	padding-right:50px;
+	margin-top:50px;
+}
+
+#bsc_search
+{
+	margin-top:25px;
+}
+
+#adv_option
+{
+    margin-top:12px;
+    padding-right:325px;
+    float:right;
+}
+
+#txt_search
+{
+	margin-right:10px;
+    width:400px;
+}
+
+#adv_search
+{
+    display:none;
+}
+
+#filter_container
+{
+	clear:both;
+	margin-left:60px;
+	margin-bottom:35px;
+	padding-top:75px;
+}
+
+#filter_button
+{
+	background-color:#FFF;
+	border:none;
+	font-family:arvo,serif;
+	font-size:20px;
+	font-weight:bold;
+	margin-left:85px;
+}
+
+#filters ul{
+	margin-top:12px;
+}
+
+#filters li{
+	display:inline;
+	font-family:Verdana, Geneva, sans-serif;
+	padding-left:150px;
+	font-weight:bold;
+}
+
+#filters a{
+	color:#000;
+	text-decoration:none;
+}
+
+#tabs {
+	background: transparent;
+	border: none;
+	height:500px;
+	margin:0 auto;
+	width:824px;
+}
+
+#tabs a {
+	font-family:arvo,serif;
+}
+
+#tabs .ui-widget-header {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #c0c0c0;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+}
+
+#tabs .ui-state-default {
+	background: transparent;
+	border: none;
+}
+
+#tabs .ui-state-active {
+	background: transparent url(img/uiTabsArrow.png) no-repeat bottom center;
+	border: none;
+}
+
+#tabs .ui-state-default a {
+	color: #BAC0C9;
+}
+
+#tabs .ui-state-active a {
+	color: #001A66;
+}
+
