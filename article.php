@@ -144,37 +144,38 @@
             <section id="sidebar">
                 <aside id="word_cloud">
                     <h3>Parts of this law are mentioned in:</h3>
+<<<<<<< HEAD
 <<<<<<< HEAD:article.php
  					<?php
                     include ('db_connection.php');
+=======
+ 					<?php 
+                    include ('classes/db_connection.class.php');
+>>>>>>> tags feature, now with OOP!
                     foreach ($tagset as $tag) : ?>
                     <p><a href="#"><?php echo $tag[1]; ?></a></p>
-                    <!--<p class="tag3">1230.1</p>
-                    <p class="tag2">391.4</p>
-                    <p class="tag1">45</p>
-                    <p class="tag3">1084</p>
-                    <p class="tag1">110.9b</p>
-                    <p class="tag2">127</p>
-<<<<<<< HEAD:article.html
-                    <p class="tag1">626</p>-->
                     <?php endforeach; ?>
-=======
                     <?php
                     	include ('list_tags.php') ?>
-                    <!--<?php
+                    <?php
                     	foreach ($tag_array as $single_tag) : ?>
                     	<p>
                         	<a href="#">
                     			<?php echo $single_tag->getID(); ?>
                             </a>
                         </p>
+<<<<<<< HEAD
                     <?php endforeach; ?>-->
 >>>>>>> Adding updated search and tag files Mar 19/13:article.html
                 </aside>
 =======
+=======
+                    <?php endforeach; ?>
+                </aside>	
+>>>>>>> tags feature, now with OOP!
                     <p class="tag1">626</p>
                 </aside>
->>>>>>> section-table-admin:article.php
+
                 <div class="accordion">
 
                     <div class="panelshow"><h4>Add Related Article</h4></div>

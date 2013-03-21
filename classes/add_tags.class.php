@@ -2,21 +2,24 @@
 	class add_tags {
 		
 		public function addTags($tag) {
-			$db = db_connection::getDB();
+			$db = Dbconn::getDB();
 			
-			$tagname = $tag->getTag();
+			//$tag = new tag_category();
+			//$tagname = $tag->getTag();
 			
 			$query = "INSERT INTO tags (tag) VALUES ('$tag')";
 			$db->exec($query);
 		}	
 	   
 	   	public function selectTag() {
-			db_connection::getDB();
+			$db = Dbconn::getDB();
 			$sqlquery = "SELECT * FROM tags";
        		$tagset = $db->query($sqlquery);
 			$tags = array();
-			foreach ($tagset as $page_tag) {
-				$tag = new Tag($page_tag['tag']);
+			foreach ($tagset as $page_tag) 
+			{
+				$tag = new tag_category($page_tag['tag']);	
+				//echo $page_tag['tag_id'];
 				$tag->setID($page_tag['tag_id']);
 				$tags[] = $tag;	
 			}

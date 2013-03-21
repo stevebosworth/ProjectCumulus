@@ -60,13 +60,12 @@ $result = $db->query($listsql);
                 <section id="sidebar">
                 <aside id="word_cloud">
                     <h3>Parts of this law are mentioned in:</h3>
-                    <p class="tag3">1230.1</p>
-                    <p class="tag2">391.4</p>
-                    <p class="tag1">45</p>
-                    <p class="tag3">1084</p>
-                    <p class="tag1">110.9b</p>
-                    <p class="tag2">127</p>
-                    <p class="tag1">626</p>
+                    <?php include ('list_tags.php'); ?>
+                    <?php
+						foreach ($tag_array as $single_tag) {
+							echo "<a href='#'>" . $single_tag->getTag() . "</a>";
+						}
+					?>
                 </aside>	
                 <div class="accordion">
     
@@ -106,8 +105,10 @@ $result = $db->query($listsql);
                     <div class="panel">
                         <h5>Add your comments below.</h5>
                         <p><label id="comm_label" name="comm_label">Tags:</label>
-                        <input type="text" id="txt_comm" name="txt_comm" /></p>
-                        <input type="button" id="btn_subcomm" name="btn_subcomm" onClick="subComments()" value="Submit" />
+                        <form id="create_tags" action="new_tag.php" method="post">
+                        	<input type="text" id="txt_tags" name="txt_tags" /></p>
+                        	<input type="submit" id="btn_subtags" name="btn_subtags" onClick="subTags()" value="Submit" />
+                        </form>
                     </div>
                     
                 </section>

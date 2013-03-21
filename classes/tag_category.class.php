@@ -4,9 +4,9 @@
 		private $id;
 		private $tag;
 		
-		public function __construct($id, $tag)
+		public function __construct($tag)
 		{
-			$this->id = $id;
+			//$this->id = $id;
 			$this->tag = $tag;	
 		}
 		
