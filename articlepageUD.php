@@ -15,9 +15,9 @@ $result = $db->query($listsql);
 
 ?>
 <!DOCTYPE html>
-<?php include 'head.php' ?>
+<?php include 'include/head.inc.php' ?>
 <body>
-    <?php include 'header.php' ?>
+    <?php include 'include/header.inc.php' ?>
     
         <div id="content_container">
             <hr>
@@ -26,8 +26,8 @@ $result = $db->query($listsql);
                 <?php
                     //displays caselaws from the database
                     foreach ($result as $row){
-                        echo "<p class='cms_rows'><a class='cms_button' href='caselawEdit.php?case_id=".$row['case_id']."'/>Edit</a>";
-                        echo "<a class='cms_button' href='caselawDelete.php?case_id=".$row['case_id']."'/>Delete</a>";
+                        echo "<p class='cms_rows'><a class='cms_button' href='include/caselawEdit.inc.php?case_id=".$row['case_id']."'/>Edit</a>";
+                        echo "<a class='cms_button' href='include/caselawDelete.inc.php?case_id=".$row['case_id']."'/>Delete</a>";
                         echo "<a href='".$row['url']."'>".$row['case_ref']."</a> "." ";
                         echo "(<i>".$row['case_date']."</i>) "." ";
                         echo $row['court_id']."-";
@@ -38,6 +38,6 @@ $result = $db->query($listsql);
                     <hr>
         </div><!-- end content_container -->
 
-    <?php include 'footer.php' ?>
-    <?php include 'closer.php' ?>
+    <?php include 'include/footer.inc.php' ?>
+    <?php include 'include/closer.inc.php' ?>
 </body>

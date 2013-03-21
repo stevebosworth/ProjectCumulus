@@ -16,7 +16,7 @@ if (empty($caseid) || empty($courtid) || empty($userid) || empty($casedate) ||
 }
 if (empty($casedesc))
 {
-    require_once 'classes/Dbconn.class.php';
+    require_once '../classes/Dbconn.class.php';
     
     $sql = "INSERT INTO caselaw (case_id, court_id, usr_id, case_date, 
                                 url, case_ref)
@@ -26,17 +26,10 @@ if (empty($casedesc))
     $db = Dbconn::getDB();
     $db->exec($sql);
     
-    echo '
-        <script type="text/javascript">
-        alert("Thank-you for your submission!");
-        </script>
-    ';
-    
-    include 'articlepage.php';
 }
 else
 {    
-    require_once 'classes/Dbconn.class.php';
+    require_once '../classes/Dbconn.class.php';
     
     $sql = "INSERT INTO caselaw (case_id, court_id, usr_id, case_date, 
                                 url, case_ref, case_desc)
@@ -46,13 +39,7 @@ else
     $db = Dbconn::getDB();
     $db->exec($sql);
     
-    echo '
-        <script type="text/javascript">
-        alert("Thank-you for your submission!");
-        </script>
-    ';
-    
-    include 'articlepage.php';
 }
 
+header('Location: ../articlepage.php');
 ?>

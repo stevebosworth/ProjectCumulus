@@ -15,12 +15,12 @@ $result = $db->query($listsql);
 
 <!DOCTYPE html>
 <html>
-    <?php include 'head.php' ?>
+    <?php include 'include/head.inc.php' ?>
     <body>
-        <?php include 'header.php' ?>
+        <?php include 'include/header.inc.php' ?>
         
             <div id="content_container">
-                <?php include 'search.php' ?>
+                <?php include 'include/search.inc.php' ?>
                 <article class="law_article">
             	<ul id="breadcrumbs">
                 	<li><a href="#">Homepage</a> > </li>
@@ -82,7 +82,7 @@ $result = $db->query($listsql);
                     <div class="panel">
                         <h5>You may add related case law by submitting the information below.</h5>
                         <p>* = denotes required field</p>
-                        <form action="insert_caselaw.php" method="POST">
+                        <form action="include/insert_caselaw.inc.php" method="POST">
                             <p>Case ID <input type="text" name="case_id" class="resized" />*</p>
                             <p>Court ID <input type="text" name="court_id" class="resized" />*</p>
                             <p>User ID <input type="text" name="user_id" class="resized" />*</p>
@@ -113,7 +113,7 @@ $result = $db->query($listsql);
                 </section>
             </div>
 
-        <?php include 'footer.php' ?>
-        <?php include 'closer.php' ?>
+        <?php include 'include/footer.inc.php' ?>
+        <?php include 'include/closer.inc.php' ?>
     </body>
 </html>
