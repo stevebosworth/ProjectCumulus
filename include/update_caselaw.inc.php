@@ -134,7 +134,7 @@ if (!empty($_POST['hidden']))
 	{
 
 	//requiring the cumulus database PDO connection
-	require_once 'classes/Dbconn.class.php';
+	require_once '../classes/Dbconn.class.php';
 
 	//creating an instance of the class to use for queries
 	$db = Dbconn::getDB();
@@ -144,7 +144,7 @@ if (!empty($_POST['hidden']))
 	$db->query($udquery);
 
 	//redirect user to original page
-	header("Location: articlepageUD.php");
+	header("Location: ../articlepageUD.php");
   	exit;
 
 	}

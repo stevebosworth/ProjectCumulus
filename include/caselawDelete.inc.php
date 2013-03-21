@@ -3,7 +3,7 @@
 if (isset($_GET['case_id']))
 {
 	//requiring the cumulus database PDO connection
-	require_once 'classes/Dbconn.class.php';
+	require_once '../classes/Dbconn.class.php';
 
 	//creating an instance of the class to use for queries
 	$db = Dbconn::getDB();
@@ -13,15 +13,14 @@ if (isset($_GET['case_id']))
 	//carrying out the query on the DB
 	$db->query($sql);
 
-	header("Location: articlepageUD.php");
-  	exit;
+	header("Location: ../articlepageUD.php");
 
 }
 else
 {
 	return false;
-	header("Location: articlepageUD.php");
-  	exit;
 }
+
+
 
 ?>

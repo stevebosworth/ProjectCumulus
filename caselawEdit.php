@@ -26,7 +26,7 @@ if (!isset($_POST['submit'])){
             <div id="content_container">
             	<hr>
                     <h4>Editing Relevant Case Law</h4>
-					<form name="cl_edit" action="update_caselaw.php"  method="POST">
+					<form name="cl_edit" action="include/update_caselaw.inc.php"  method="POST">
 						<?php foreach($row as $r) ?>
 						<p>Case ID: <input type="text" name="caseID" value="<?php echo $r['case_id']; ?>" /></p>
 						<p>Case Reference: <input type="text" name="caseRef" value="<?php echo $r['case_ref']; ?>" /></p>
