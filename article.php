@@ -18,8 +18,6 @@
     $section = new SectionDB();
     $sec_num = $_GET['section'];
 
-    $book = new BookDB();
-
     $this_sec = $section->selSectionByNum($sec_num);
  ?>
 
@@ -147,7 +145,7 @@
                 <aside id="word_cloud">
                     <h3>Parts of this law are mentioned in:</h3>
 <<<<<<< HEAD:article.php
- 					<?php 
+ 					<?php
                     include ('db_connection.php');
                     foreach ($tagset as $tag) : ?>
                     <p><a href="#"><?php echo $tag[1]; ?></a></p>
@@ -172,7 +170,7 @@
                         </p>
                     <?php endforeach; ?>-->
 >>>>>>> Adding updated search and tag files Mar 19/13:article.html
-                </aside>	
+                </aside>
 =======
                     <p class="tag1">626</p>
                 </aside>

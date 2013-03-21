@@ -153,6 +153,16 @@ require_once 'classes/sub_division_db.class.php';
             </form>
         </div> <!-- /add -->
 
+        <section>
+            <table>
+                <?php
+                    $sec_class = new SectionDB();
+                    $sec_array = $sec_class->selALLFromSections();
+                    foreach($sec_array as $s)
+                 ?>
+            </table>
+        </section>
+
     </div> <!-- /content_container -->
 
     <footer>
