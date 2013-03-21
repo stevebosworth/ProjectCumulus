@@ -30,7 +30,6 @@
 </head>
 <body>
 
-
 <form>
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
@@ -229,7 +228,40 @@
             
         </div> <!-- /content_container -->
         
-        
+         <footer>
+            <nav id="nav_footer">
+                <ul>
+                    <li><a href="#" class="nav_link">Home</a></li>
+                    <li><a href="#" class="nav_link">Join</a></li>
+                    <li><a href="#" class="nav_link">Login</a></li>
+                    <li><a href="#" class="nav_link">Contact</a></li>
+                    <li><a href="#" class="nav_link">Terms & Legal</a></li>
+                </ul>
+            </nav>
+            <nav id="nav_social">
+                <ul>
+                    <li><a href="#" class="share"><img src="img/icons/facebook_icon_foot.png" alt="Facebook" title="Facebook" class="share_icon"></a></li>
+                    <li><a href="#" class="share"><img src="img/icons/twitter_icon_foot.png" alt="Twitter" title="Twitter" class="share_icon"></a></li>
+                    <li><a href="#" class="share"><img src="" alt="" class="share_icon"></a></li>
+                </ul>
+            </nav>
+            <small id="copyright">&copy; Project Cumulus, 2013.</small>
+        </footer>
+    </div> <!-- /container -->
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <!--<script>
+        var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>-->
   		
    
 </body>
