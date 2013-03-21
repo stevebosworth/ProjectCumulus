@@ -60,7 +60,7 @@ $result = $db->query($listsql);
                 <section id="sidebar">
                 <aside id="word_cloud">
                     <h3>Parts of this law are mentioned in:</h3>
-                    <?php include ('list_tags.php'); ?>
+                    <?php include ('include/list_tags.include.php'); ?>
                     <?php
 						foreach ($tag_array as $single_tag) {
 							echo "<a href='#'>" . $single_tag->getTag() . "</a>";
@@ -105,7 +105,7 @@ $result = $db->query($listsql);
                     <div class="panel">
                         <h5>Add your comments below.</h5>
                         <p><label id="comm_label" name="comm_label">Tags:</label>
-                        <form id="create_tags" action="new_tag.php" method="post">
+                        <form id="create_tags" action="include/new_tag.inc.php" method="post">
                         	<input type="text" id="txt_tags" name="txt_tags" /></p>
                         	<input type="submit" id="btn_subtags" name="btn_subtags" onClick="subTags()" value="Submit" />
                         </form>
