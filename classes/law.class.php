@@ -5,9 +5,8 @@ class Law{
 	private $law_name;
     private $law_code;
 
-	public function __construct($law_name, $law_code){
+	public function __construct($law_name){
 		$this->law_name = $law_name;
-        $this->law_code = $law_code;
 	}
 
     /**

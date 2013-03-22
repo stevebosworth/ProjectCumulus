@@ -8,12 +8,10 @@ class Chapter{
 
 	public function __construct(
 		$ch_num,
-		$ch_title,
-		$title_id)
+		$ch_title)
 	{
 		$this->ch_num = $ch_num;
         $this->ch_title = $ch_title;
-        $this->title_id = $title_id;
 	}
 
 

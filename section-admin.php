@@ -155,11 +155,64 @@ require_once 'classes/sub_division_db.class.php';
 
         <section>
             <table>
+                <thead>
+                    <th>Sec #</th>
+                    <th>Title</th>
+                    <th>Section</th>
+                    <th>Book</th>
+                    <th>Title</th>
+                    <th>Chapter</th>
+                    <th>Division</th>
+                    <th>Sub Division</th>
+                </thead>
                 <?php
                     $sec_class = new SectionDB();
-                    $sec_array = $sec_class->selALLFromSections();
-                    foreach($sec_array as $s)
-                 ?>
+                    $sec_array = $sec_class->selAllFromSections();
+                    //echo "<pre>" . var_dump($sec_array) . "</pre>";
+                    foreach($sec_array as $s) : ?>
+                    <tr>
+                        <?php foreach($s as $i){
+                            switch($i){
+                                case is_a($i, 'section'):
+                                    echo "<td>" . $i->getSec_Num() . "</td>";
+                                    echo "<td>" . $i->getSec_Title(). "</td>";
+                                    echo "<td>" . $i->getSec_Txt() . "</td>";
+                                break;
+                                case is_a($i, 'book'):
+                                    if($i->getBook_Id() !== 0){
+                                        echo "<td>" . $i->getBook_Num(). ". " . $i->getBook_Title(). "</td>";
+                                    }else{
+                                        echo "<td></td>";
+                                    }
+                                break;
+                                case is_a($i, 'title'):
+                                    if($i->getTitle_Id() !== 0){
+                                        echo "<td>" . $i->getTitle_Num(). ". " . $i->getTitle_Title(). "</td>";
+                                    }else{
+                                        echo "<td></td>";
+                                    }
+                                break;
+                                case is_a($i, 'chapter'):
+                                    if($i->getCh_Num() !== 0){
+                                        echo "<td>" . $i->getCh_Num(). ". " . $i->getCh_Title(). "</td>";
+                                    }else{
+                                        echo "<td></td>";
+                                    }
+                                break;
+                                case is_a($i, 'division'):
+                                    if($i->getDiv_Id() !== 0){
+                                        echo "<td>" . $i->getDiv_Num(). ". " . $i->getDiv_Title(). "</td>";
+                                    }else{
+                                        echo "<td></td>";
+                                    }
+                                break;
+                                case is_a($i, 'subdivision'):
+                                    echo "<td>" . $i->getSub_div_num(). ". " . $i->getSub_div_title(). "</td>";
+                                break;
+                            }
+                        } ?>
+                    </tr>
+                <?php endforeach; ?>
             </table>
         </section>
 

@@ -13,8 +13,8 @@ class TitleDB{
 		foreach ($result as $row) {
 			$title = new Title(
 									$row['title_num'],
-									$row['title_title'],
-									$row['book_id']);
+									$row['title_title']);
+			$title->getBook_Id($row['book_id']);
 			$title->setTitle_Id($row['title_id']);
 			$titles[] = $title;
 		}
@@ -34,8 +34,8 @@ class TitleDB{
 		foreach ($result as $row) {
 			$title = new Title(
 									$row['title_num'],
-									$row['title_title'],
-									$row['book_id']);
+									$row['title_title']);
+			$title->getBook_Id($row['book_id']);
 			$title->setTitle_Id($row['title_id']);
 			$titles[] = $title;
 		}

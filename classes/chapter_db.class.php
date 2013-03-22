@@ -13,8 +13,8 @@ class ChapterDB{
 		foreach ($result as $row) {
 			$chapter = new Chapter(
 									$row['ch_num'],
-									$row['ch_title'],
-									$row['title_id']);
+									$row['ch_title']);
+			$chapter->getTitle_Id($row['title_id']);
 			$chapter->setCh_Id($row['ch_id']);
 			$chapters[] = $chapter;
 		}
@@ -34,8 +34,8 @@ class ChapterDB{
 		foreach ($result as $row) {
 			$chapter = new Chapter(
 									$row['ch_num'],
-									$row['ch_title'],
-									$row['title_id']);
+									$row['ch_title']);
+			$chapter->getTitle_Id($row['title_id']);
 			$chapter->setCh_Id($row['ch_id']);
 			$chapters[] = $chapter;
 		}
@@ -53,8 +53,8 @@ class ChapterDB{
 
 		$chapter = new Chapter(
 								$row['ch_num'],
-								$row['ch_title'],
-								$row['title_id']);
+								$row['ch_title']);
+		$chapter->getTitle_Id($row['title_id']);
 		$chapter->setCh_Id($row['ch_id']);
 		return $chapter;
 	}

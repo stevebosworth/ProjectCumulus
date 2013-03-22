@@ -5,7 +5,7 @@ class LawDB {
 	public function selLaws(){
 		$db = Dbconn::getDB();
 
-		$query = "SELECT * FROM laws";
+		$query = "SELECT * FROM laws WHERE law_id > 0";
 
 		$result = $db->query($query);
 

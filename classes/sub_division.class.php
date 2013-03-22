@@ -8,12 +8,10 @@ class SubDivision{
 
 	public function __construct(
 		$sub_div_num,
-		$sub_div_title,
-		$div_id)
+		$sub_div_title)
 	{
         $this->sub_div_num = $sub_div_num;
         $this->sub_div_title = $sub_div_title;
-        $this->div_id = $div_id;
 	}
 
 

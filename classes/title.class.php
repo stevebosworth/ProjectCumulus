@@ -8,12 +8,10 @@ class Title{
 
 	public function __construct(
 		$title_num,
-		$title_title,
-		$book_id)
+		$title_title)
 	{
 		$this->title_num = $title_num;
         $this->title_title = $title_title;
-        $this->book_id = $book_id;
 	}
 
     /**

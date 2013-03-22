@@ -14,8 +14,8 @@ class BookDB{
 		foreach ($result as $row){
 			$book = new Book(
 							$row['book_num'],
-							$row['book_title'],
-							$row['law_id']);
+							$row['book_title']);
+			$book->getLaw_Id($row['law_id']);
 			$book->setBook_id($row['book_id']);
 			$books[] = $book;
 		}
@@ -34,8 +34,9 @@ class BookDB{
 		foreach ($result as $row){
 			$book = new Book(
 							$row['book_num'],
-							$row['book_title'],
-							$row['law_id']);
+							$row['book_title']
+							);
+			$book->getLaw_Id($row['law_id']);
 			$book->setBook_id($row['book_id']);
 			$books[] = $book;
 		}

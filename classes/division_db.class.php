@@ -14,8 +14,8 @@ class DivisionDB{
 		foreach ($result as $row){
 			$division = new Division(
 							$row['div_num'],
-							$row['div_title'],
-							$row['ch_id']);
+							$row['div_title']);
+			$division->getCh_Id($row['ch_id']);
 			$division->setDiv_Id($row['div_id']);
 			$divisions[] = $division;
 		}
@@ -34,8 +34,8 @@ class DivisionDB{
 		foreach ($result as $row){
 			$division = new Division(
 							$row['div_num'],
-							$row['div_title'],
-							$row['ch_id']);
+							$row['div_title']);
+			$division->getCh_Id($row['ch_id']);
 			$division->setDiv_Id($row['div_id']);
 			$divisions[] = $division;
 		}
@@ -52,8 +52,8 @@ class DivisionDB{
 
 		$division = new Division(
 							$row['div_num'],
-							$row['div_title'],
-							$row['ch_id']);
+							$row['div_title']);
+		$division->getCh_Id($row['ch_id']);
 		$division->setDiv_Id($row['div_id']);
 		return $division;
 	}

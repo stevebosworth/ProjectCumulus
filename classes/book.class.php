@@ -6,10 +6,9 @@
 		private $book_title;
 		private $book_num;
 
-	public function __construct($book_num, $book_title, $law_id){
+	public function __construct($book_num, $book_title){
 		$this->book_num = $book_num;
         $this->book_title = $book_title;
-        $this->law_id = $law_id;
 	}
 
     /**

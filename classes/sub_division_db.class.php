@@ -14,8 +14,8 @@ class SubDivisionDB{
 		foreach ($result as $row){
 			$sub_division = new SubDivision(
 							$row['sub_div_num'],
-							$row['sub_div_title'],
-							$row['div_id']);
+							$row['sub_div_title']);
+			$sub_division->getDiv_Id($row['div_id']);
 			$sub_division->getDiv_Id($row['sub_div_id']);
 			$sub_divisions[] = $sub_division;
 		}

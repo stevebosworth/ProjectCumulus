@@ -135,7 +135,7 @@ $(document).ready(function() {
         var table = $('#sel_title').attr('data-table');
         var table = table.slice(0, -1);
         var tableVal = $('#sel_book option:selected').text();
-        console.log tableVal);
+        console.log (tableVal);
         console.log(table);
         console.log(id);
         //
@@ -156,7 +156,7 @@ $(document).ready(function() {
         var table = $('#sel_ch').attr('data-table');
         var table = table.slice(0, -1);
         var tableVal = $('#sel_title option:selected').text();
-        console.log tableVal);
+        console.log (tableVal);
         console.log(table);
         console.log(id);
         if(!isNaN(id)){
@@ -176,7 +176,7 @@ $(document).ready(function() {
         var table = $('#sel_div').attr('data-table');
         var table = table.slice(0, -1);
         var tableVal = $('#sel_ch option:selected').text();
-        console.log tableVal);
+        console.log (tableVal);
         console.log(table);
         console.log(id);
         if(!isNaN(id)){
@@ -195,7 +195,7 @@ $(document).ready(function() {
         var id = $('#sel_title').val();
         var table = $('#sel_sub_div').attr('data-table');
         var tableVal = $('#sel_title option:selected').text();
-        console.log tableVal);
+        console.log (tableVal);
         console.log(table);
         console.log(id);
         if(!isNaN(id)){

@@ -8,12 +8,10 @@ class Division{
 
 	public function __construct(
 		$div_num,
-		$div_title,
-		$ch_id)
+		$div_title)
 	{
 		$this->div_num = $div_num;
         $this->div_title = $div_title;
-        $this->ch_id = $ch_id;
 	}
 
     /**
