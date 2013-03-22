@@ -124,6 +124,7 @@ profile_photo a
 	float:left;
 	width:130px;
 	height:600px;
+	
          
 }
 
@@ -144,6 +145,7 @@ profile_photo a
 	text-decoration:none;
 	margin-left:10px;
 	font-size:18px;
+	font: 90% "Trebuchet MS", sans-serif;
 	color:#03F;
 
 }

@@ -133,7 +133,7 @@
            	<!------ Tabs --------->
             <div id="tabs">
                 <ul>
-                    <li><a href="#tabs-1">Create Events</a></li>
+                    <li><a href="#tabs-1">+ Create Events</a></li>
                     <li><a href="#tabs-2">Manage Events</a></li>
                     
                 </ul>

@@ -130,17 +130,66 @@
            		<!------ Tabs --------->
             <div id="tabs">
                 <ul>
-                    <li><a href="#tabs-1">Create Discussion</a></li>
-                    <li><a href="#tabs-2">Manage Discussion</a></li>
+                    <li><a href="#tab_createDiscus">+ Create Discussion</a></li>
+                    <li><a href="#tab_manageDiscus">Manage Discussion</a></li>
                     
                 </ul>
-                <div id="tabs-1">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 				veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-                <div id="tabs-2">
-                Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem 	non nisl. Fusce 			                sed lorem in enim dictum bibendum.</div>
-                <div id="tabs-3">
-                Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum,     	        lacus. Mauris porttitor ullamcorper augue.</div>
-            </div>
+                <div id="tab_createDiscus">
+                	<span>Discussion Title</span>
+                    <input type="text" name="txt_discusTitle"/><br/><br/>
+                    <span>Pivot Law</span>
+                    <input type="text" name="txt_pivotLaw"/><br/><br/>
+                    <span>Case Law</span>
+                    <input type="text" name="txt_caseLaw"/><br/><br/>
+                    <span>Argument</span>
+                    <input type="text" name="txt_argument"/><br/><br/>
+                    <span>Aim of Discussion</span>
+                    <input type="text" name="txt_aimOfDiscus"/><br/><br/>
+                    <span>Audience</span>
+                    <select name="ddl_option">
+                    	<option>All</option>
+                        <option>Friends Only</option>
+                    </select><br/><br/>
+                    <input type="submit" name="btn_createDiscus" value="Create Discussion"/>                                     
+               </div><!--/tab_createDiscus-->
+               
+                <div id="tab_manageDiscus">               
+                	<span>Author</span>
+                    <select name="ddl_author">
+                    	<option>Created by me</option>
+                        <option>Created by others</option>
+                    </select>
+                    <!--options below stay static as titles are selected and opened up.-->
+                    <a href="#">Edit</a>
+                    <a href="#">Leave</a><!--this option is only available if the user was not the creator of discussion-->
+                    <a href="#">Delete</a><!--this option is only available if the user is the creator of discussion-->
+                    <br/><br/>
+                    
+                    <input type="checkbox" name="cbx_selectDiscus"/>
+                    
+                    <span>Title</span>&nbsp;&nbsp;&nbsp;&nbsp;<!--to be modified later. no &nbsp; tags-->
+                    <span>Created</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>Last Modified</span>
+                    <br/><br/>
+                    <!--the data below is to be pulled from the database-->
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#">Criminal offence in high schools</a></span>&nbsp;&nbsp;
+                    <span>20-01-2013</span>&nbsp;&nbsp;
+                    <span>04-03-2013</span>
+                    <br/><br/>
+                    
+                    <!--the data below is to be pulled from the database-->
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#">Drinking and driving laws</a></span>&nbsp;&nbsp;
+                    <span>06-02-2013</span>&nbsp;&nbsp;
+                    <span>14-03-2013</span>
+                    
+                    <br/><br/>
+                    <input type="submit" name="btn_done" value="Done"/>
+                    
+                   
+                    
+                </div>
+                
+            </div><!--/tabs-->
             </div><!--/DiscussionsMain_content-->
             
             
