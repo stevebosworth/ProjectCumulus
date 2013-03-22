@@ -12,21 +12,23 @@
     <meta name="viewport" content="width=device-width">
      <!--Place favicon.ico and apple-touch-icon.png in the root directory--> 
 
-    <!-- All JQuery file links -->
+    <!-- Main Javascript and Jquery -->
     <script src="js/jquery.js"></script>
-            
-    <!--All Javascript file links -->
     <script src="js/profile.js" type="text/javascript"></script>
-    
+    <!--javascript for tab-->
+ 	<script src="tabs/js/jquery-1.9.1.js"></script>
+	<script src="tabs/js/jquery-ui-1.10.2.custom.js"></script>
+     
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
 <!--[if gte IE 8]><script src="js/cors/jquery.xdr-transport.js"></script><![endif]-->
 
     
-    <!-- All CSS file links --> 
+    <!-- Main CSS --> 
     <link type="text/css" rel="stylesheet" href="css/main.css"/>    
-    <link type="text/css" rel="stylesheet" href="css/profile1.css"/>
-   
-    
+    <link type="text/css" rel="stylesheet" href="css/profile1.css"/> 
+    <!--CSS for tab-->
+ 	<link href="tabs/css/smoothness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+ 	
 </head>
 <body>
 
@@ -64,10 +66,8 @@
 
         </header>
                 
-
  
- 
-		<!--/////////////My codes for div content_container////////////-->
+<!--/////////////My codes for div content_container////////////-->
         
         <div id="content_container">
         
@@ -104,13 +104,13 @@
             <div id="profileMenu_title"><h3>Profile Menu</h3></div>
             	<nav id="profile_menu">
                 	<ul>
-                    	<li><a href="Profile_Discussions.php">Discussions</a></li>
+                    	<li><a href="Profile_Home.php">Profile</a></li>
                         <li><a href="Profile_Messages.php">Messages</a></li>
-                        <li><a href="Profile_Friends.php">Friends</a></li>
-                        <li><a href="#">Law Quick Link</a></li>
-                        <li><a href="Profile_Edit.php">Edit Profile</a></li>
-                        <li><a href="Profile_Settings.php">Settings</a></li>
+                    	<li><a href="Profile_Discussions.php">Discussions</a></li>
                         <li class="event"><a href="Profile_Events.php">Events</a></li>
+                        <li><a href="Profile_Friends.php">Friends</a></li>                    
+                        <li><a href="#">Law Quick Link</a></li>
+                        <li><a href="Profile_Settings.php">Settings</a></li>
                     </ul>
             	</nav>               
 			</aside><!--/leftSide_bar-->           
@@ -125,11 +125,28 @@
             
             
             
-            <div id="profileMain_content">
-           		
-            </div><!--/profileMain_content-->
+            <div id="DiscussionsMain_content">
+            	
+           		<!------ Tabs --------->
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tabs-1">Create Discussion</a></li>
+                    <li><a href="#tabs-2">Manage Discussion</a></li>
+                    
+                </ul>
+                <div id="tabs-1">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 				veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                <div id="tabs-2">
+                Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem 	non nisl. Fusce 			                sed lorem in enim dictum bibendum.</div>
+                <div id="tabs-3">
+                Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum,     	        lacus. Mauris porttitor ullamcorper augue.</div>
+            </div>
+            </div><!--/DiscussionsMain_content-->
+            
+            
             
         </div> <!-- /content_container -->
+                  
         
          <footer>
             <nav id="nav_footer">
@@ -153,7 +170,7 @@
     </div> <!-- /container -->
 
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>-->
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>

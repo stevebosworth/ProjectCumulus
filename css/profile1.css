@@ -1,6 +1,12 @@
 @charset "utf-8";
 /* CSS Document */
 
+/*------Login-----*/
+#login_controls
+{
+	margin-top:20px;
+	margin-left:600px;
+}
 
 body
 {
@@ -485,28 +491,30 @@ profile_photo a
 }
 
 
-
-
-.accordion {
-	margin-top:20px;
-	margin-right:20px;
-	width:200px;
+/*-----Discussions------*/
+#DiscussionsMain_content
+{
+	float:right;
+	width:672px;
+	font: 62.5% "Trebuchet MS", sans-serif;	
 }
 
-.panelshow {
-	background:#D9D3B8;
-	border:1px solid #B59D6E;
-	border-radius:7px;
-	margin:1px;
-	padding:10px;
+/*------Events------*/
+#EventsMain_content
+{
+	float:right;
+	width:672px;
+	font: 62.5% "Trebuchet MS", sans-serif;	
 }
 
-.panel {
-	background:#FFF;
-	border:1px solid #CCC;
-	border-radius:7px;
-	display:none;
+/*Messages*/
+#messagesMain_content
+{
+	float:right;
+	width:672px;
+	font: 62.5% "Trebuchet MS", sans-serif;	
 }
+
 
 /**********css for edit profile photo button***************/
 * {
@@ -641,3 +649,43 @@ profile_photo a
     -moz-border-radius: 0 0 .5em .5em;
     border-radius: 0 0 .5em .5em;
 }
+
+/*------css for tab--------- */
+body{
+		/*font: 62.5% "Trebuchet MS", sans-serif;
+		margin: 50px;*/
+	}
+	.demoHeaders {
+		margin-top: 2em;
+	}
+	#dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+	#icons {
+		margin: 0;
+		padding: 0;
+	}
+	#icons li {
+		margin: 2px;
+		position: relative;
+		padding: 4px 0;
+		cursor: pointer;
+		float: left;
+		list-style: none;
+	}
+	#icons span.ui-icon {
+		float: left;
+		margin: 0 4px;
+	}
+	.fakewindowcontain .ui-widget-overlay {
+		position: absolute;
+	}

@@ -29,59 +29,8 @@ $(document).ready
 
 
 
-////////javascript codes for the web cam.////////
-$(function()
-	{
-		webcam.set_api_url('jpegcam/htdocs/upload.php' );
-		webcam.set_swf_url( 'jpegcam/htdocs/webcam.swf' );
-		webcam.set_quality( 90 );
-		webcam.set_shutter_sound( true, 'jpegcam/htdocs/shutter.mp3' );
-		$('#camera').html(webcam.get_html(320,240));
-		
-		webcam.set_stealth( true );
-		
-		setInterval(function()
-		{
-			$('#uploads').load('get_uploads.php');
-			
-		},1000);
-		
-	});
 
-//$(function()
-//	{
-//		webcam.set_hook()
-//	});
-
-
-
-
-/*$(document).ready(function(){
-  $("#btn_hide").click(function(){
-    $("#p2").hide();
-  });
-});*/
-/////////code for edit profile photo button/////////
-/*$(window).load(
-	function() {
-		
-                $(".btmiddle").click(function() {
-                    if ($(".btmiddle").hasClass("bt")) {
-                        $(".btmiddle").removeClass("bt");
-                        $(".btmiddle").addClass("clicked");
-                        $("#menu").show();
-						
-                    } else {
-                        $(".btmiddle").removeClass("clicked");
-                        $(".btmiddle").addClass("bt");
-                        $("#menu").hide();
-						
-                    }
-                });
-            
-});*/
-
-
+//jquery code for tool tip used in selecting options(take a profile picture or upload photo.);
 $(window).load(function() {
 	
                 $("#btmiddle").click(function() {
@@ -96,9 +45,24 @@ $(window).load(function() {
                     }
 					
 					return false;
-                });
-            
+                });         
     
 });
+
+/////jquery code for tab
+$(document).ready(function() {
+
+		$( "#tabs" ).tabs();
+
+		// Hover states on the static widgets
+		$( "#dialog-link, #icons li" ).hover(
+			function() {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function() {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+	});
 
 

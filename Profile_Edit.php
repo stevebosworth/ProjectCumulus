@@ -103,13 +103,14 @@
             <div id="profileMenu_title"><h3>Profile Menu</h3></div>
             	<nav id="profile_menu">
                 	<ul>
-                    	<li><a href="Profile_Discussions.php">Discussions</a></li>
+                    	<li><a href="Profile_Home.php">Profile</a></li>
                         <li><a href="Profile_Messages.php">Messages</a></li>
-                        <li><a href="Profile_Friends.php">Friends</a></li>
-                        <li><a href="#">Law Quick Link</a></li>
-                        <li><a href="Profile_Edit.php">Edit Profile</a></li>
-                        <li><a href="Profile_Settings.php">Settings</a></li>
+                    	<li><a href="Profile_Discussions.php">Discussions</a></li>
                         <li class="event"><a href="Profile_Events.php">Events</a></li>
+                        <li><a href="Profile_Friends.php">Friends</a></li>                    
+                        <li><a href="#">Law Quick Link</a></li>
+                        <li><a href="Profile_Settings.php">Settings</a></li>
+                        
                     </ul>
             	</nav>               
 			</aside><!--/leftSide_bar-->           
@@ -154,7 +155,7 @@
                               <img src="img/plugins/2.png"/>
                               Choose Existing Photo
                            </a>
-                          <a href="webCamTest.php">
+                          <a href="#">
                                <img src="img/plugins/3.png"/>
                                Take Photo
                           </a>
@@ -201,7 +202,7 @@
                 </section><!--/edit_password-->
                 
                 <section id="edit_JobTitle">
-                	<span id="editJobTitle_title">Job Title</span>
+                	<span id="editJobTitle_title">Qualification</span>
                     <input type="text" id="txt_editJobTitle"/>
                 </section><!--/edit_JobStatus-->
                 
@@ -228,6 +229,7 @@
             
         </div> <!-- /content_container -->
         
+                 
          <footer>
             <nav id="nav_footer">
                 <ul>
@@ -248,7 +250,10 @@
             <small id="copyright">&copy; Project Cumulus, 2013.</small>
         </footer>
     </div> <!-- /container -->
-
+    
+	
+    
+    
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>

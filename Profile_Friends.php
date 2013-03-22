@@ -104,13 +104,13 @@
             <div id="profileMenu_title"><h3>Profile Menu</h3></div>
             	<nav id="profile_menu">
                 	<ul>
-                    	<li><a href="Profile_Discussions.php">Discussions</a></li>
+                    	<li><a href="Profile_Home.php">Profile</a></li>
                         <li><a href="Profile_Messages.php">Messages</a></li>
-                        <li><a href="Profile_Friends.php">Friends</a></li>
-                        <li><a href="#">Law Quick Link</a></li>
-                        <li><a href="Profile_Edit.php">Edit Profile</a></li>
-                        <li><a href="Profile_Settings.php">Settings</a></li>
+                    	<li><a href="Profile_Discussions.php">Discussions</a></li>
                         <li class="event"><a href="Profile_Events.php">Events</a></li>
+                        <li><a href="Profile_Friends.php">Friends</a></li>                    
+                        <li><a href="#">Law Quick Link</a></li>
+                        <li><a href="Profile_Settings.php">Settings</a></li>
                     </ul>
             	</nav>               
 			</aside><!--/leftSide_bar-->           

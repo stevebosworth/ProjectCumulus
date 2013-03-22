@@ -61,6 +61,15 @@
                     <li class="nav_header" class="nav_link"><a href="#">FAQ</a></li>
                 </ul>
             </nav>
+            
+            <div id="login_controls">
+            <!--<span>Username:</span>-->
+            <input type="text" name="txt_username" placeholder="Username" autocomplete="on"/>
+            <!--<span>Password:</span>-->
+            <input type="password" name="txt_password" placeholder="Password"/>
+            <input type="submit" name="btn_submitLogin" value="Login"/> <br/>
+            <a href="include/passReset_inputEmailOrUsername.inc.php">Forgot your Password?</a>
+            </div><!--login_controls-->
 
         </header>
                 
@@ -104,13 +113,13 @@
             <div id="profileMenu_title"><h3>Profile Menu</h3></div>
             	<nav id="profile_menu">
                 	<ul>
-                    	<li><a href="#">Discussions</a></li>
-                        <li><a href="#">Messages</a></li>
-                        <li><a href="#">Friends</a></li>
+                    	<li><a href="Profile_Home.php">Profile</a></li>
+                        <li><a href="Profile_Messages.php">Messages</a></li>
+                    	<li><a href="Profile_Discussions.php">Discussions</a></li>
+                        <li class="event"><a href="Profile_Events.php">Events</a></li>
+                        <li><a href="Profile_Friends.php">Friends</a></li>                    
                         <li><a href="#">Law Quick Link</a></li>
-                        <li><a href="#">Edit Profile</a></li>
-                        <li><a href="#">Settings</a></li>
-                        <li class="event"><a href="#">Events</a></li>
+                        <li><a href="Profile_Settings.php">Settings</a></li>
                     </ul>
             	</nav>               
 			</aside><!--/leftSide_bar-->           
@@ -126,105 +135,7 @@
             
             
             <div id="profileMain_content">
-           		<span id="EditProfilePage_title">Edit Profile</span><!--/EditProfilePage_title-->
-                                
-           		<div id="editProfile_content">
-                
-                  <section id="edit_profilePhoto">
-                  <div id="editPhoto_title">Photo</div>
-                      <figure id="edit_Photo">
-                          <img src="#" alt="" title="profile photo"/>                     
-                      </figure><!--/edit_profilePhoto-->
-                      
-                      <div id="choose_photo">
-                          <!--copied codes for edit profile photo plugin-->
-                       <div id="box">
-                          <!--<a href="#" class="bt btleft"><span>&#9734;</span> Favorite</a>-->
-                          <a href="#" class="bt" id="btmiddle">Change Photo <span>&#9660;</span></a>
-                          <!--<a href="#" class="bt btright">Share this <span>&#9660;</span></a>-->
-                      </div><!--/box-->
-                      <div id="menu">
-                      <div id="triangle"></div>
-                      
-                      
-                      <div id="tooltip_menu">
-                                      
-                                                                  
-                      <!--edit photo menu list-->
-                           <a href="#" class="menu_top" >
-                              <img src="editProfilePhotoMenu/img/2.png"/>
-                              Choose Existing Photo
-                           </a>
-                          <a href="webCamTest.php">
-                               <img src="editProfilePhotoMenu/img/3.png"/>
-                               Take Photo
-                          </a>
-                      </div><!--/tooltip_menu-->
-                      </div><!--/menu-->
-                      </div><!--/choose_photo-->
-                      
-                         
-                  </section><!--/edit_profilePhoto-->
-                
-                <section id="edit_name">
-                	<div id="editName_title">Name</div>
-                    <input id="txt_editName" type="text"/>
-                </section><!--/edit_name-->
-                
-                <section id="edit_email">
-                	<div id="editEmail_title">Email</div>
-                    <input type="text" id="txt_editEmail"/>
-                </section><!--/edit_email-->
-                
-                <section id="edit_password">
-                	<div id="current_passwordDetails">
-                    	<div id="editPasswordTitle">Password</div>
-                    	<input type="password" id="txt_editPassword"/>
-                    	<a id="chng_pswDropdown" href="/change_password" class="link_color">Edit</a>
-                    </div><!--/current_passwordDetails-->
-                	
-                    <div id="change_password">
-                    <section id="Edit_curPasw">
-                    	<span id="currentPasw_Title">Current Password</span><!--/currentPasw_Title-->
-                        <input id="txt_currentPassword" type="password"/></section>
-                    <section id="Edit_newPasw">
-                    	<span id = "newPasw_Title">New Password</span><!--/newPasw_Title-->
-                        <input id="txt_newPassword" type="password"/>
-                    </section>
-                    <section id="Edit_verNewPasw">
-                    	<span id = "verifyNewPasw_Title">Verify New Password</span><!--/verifyNewPasw_Title-->
-                        <input id="txt_verifyNewPassword" type="password"/>
-                    </section>
-                    <section id="btn_done">
-                    	<input type="submit" id="btn_pswDone" value="Done"/>   
-                    </section> 
-                    </div><!--/change_password-->
-                </section><!--/edit_password-->
-                
-                <section id="edit_JobTitle">
-                	<span id="editJobTitle_title">Job Title</span>
-                    <input type="text" id="txt_editJobTitle"/>
-                </section><!--/edit_JobStatus-->
-                
-                <section id="edit_location">
-                	<span id="editLocation_title">Location</span>
-                    <select id="sel_location">
-                    	<option>Australia</option>
-                        <option>Canada</option>
-                        <option>United States of America</option>
-                        <option>Zimbabwe</option>
-                    </select>
-                </section><!--/edit_location-->
-                
-                <section id="edit_bio">
-                	<span id="editBio_title">Bio</span>
-                    <textarea id="txt_editBio" ></textarea>
-                </section><!--/edit_bio-->
-                	
-            </div><!--/editProfile_content-->
-            <div id="save_changes">
-            <input type="submit" id="btn_saveChanges" value="Save Changes" class="button_size"/>
-            </div>
+           		<a href="Profile_Edit.php">Edit Profile<a/>
             </div><!--/profileMain_content-->
             
         </div> <!-- /content_container -->
