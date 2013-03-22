@@ -7,3 +7,7 @@
 /Users/Steve/Dropbox/DevSites/ProjectCumulus/favicon.ico
 /Users/Steve/Dropbox/DevSites/ProjectCumulus/doc
 *.DS_Store
+
+*.sublime-project
+
+*.sublime-workspace
