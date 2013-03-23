@@ -20,6 +20,10 @@
  	<script src="tabs/js/jquery-1.9.1.js"></script>
 	<script src="tabs/js/jquery-ui-1.10.2.custom.js"></script>
     
+    <!--javascript for date picker-->
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+    
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
 <!--[if gte IE 8]><script src="js/cors/jquery.xdr-transport.js"></script><![endif]-->
 
@@ -27,10 +31,16 @@
     <!-- Main CSS --> 
     <link type="text/css" rel="stylesheet" href="css/main.css"/>    
     <link type="text/css" rel="stylesheet" href="css/profile1.css"/>
+    
      <!--CSS for tab-->
  	<link href="tabs/css/smoothness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
-   
+     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" href="/resources/demos/style.css" />
     
+    <!--CSS for date picker-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" href="/resources/demos/style.css" />
+       
 </head>
 <body>
 
@@ -68,8 +78,6 @@
 
         </header>
                 
-
- 
  
 		<!--/////////////My codes for div content_container////////////-->
         
@@ -114,7 +122,6 @@
                         <li class="event"><a href="Profile_Events.php">Events</a></li>
                         <li><a href="Profile_Friends.php">Friends</a></li>                    
                         <li><a href="#">Law Quick Link</a></li>
-                        <li><a href="Profile_Settings.php">Settings</a></li>
                     </ul>
             	</nav>               
 			</aside><!--/leftSide_bar-->           
@@ -133,21 +140,55 @@
            	<!------ Tabs --------->
             <div id="tabs">
                 <ul>
-                    <li><a href="#tabs-1">+ Create Events</a></li>
-                    <li><a href="#tabs-2">Manage Events</a></li>
+                    <li><a href="#tabs_createEvents">+ Create Events</a></li>
+                    <li><a href="#tabs_manageEvents">Manage Events</a></li>
                     
                 </ul>
-                <div id="tabs-1">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 				veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-                <div id="tabs-2">
-                Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem 	non nisl. Fusce 			                sed lorem in enim dictum bibendum.</div>
-                <div id="tabs-3">
-                Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum,     	        lacus. Mauris porttitor ullamcorper augue.</div>
+                <div id="tabs_createEvents">
+                	<span>Name</span>
+                    <input type="text" name="txt_name"/><br/><br/>
+                    <span>Date</span>
+                    <input type="text" id="datepicker" /><br/><br/>
+                    <span>Time</span>
+                    <input type="text" name="txt_time"/><br/><br/>
+                    <span>Venue</span>
+                    <input type="text" name="txt_location"/><br/><br/>
+                    <span>Description</span>
+                    <input type="text" name="txt_description"/><br/><br/>
+                    <span>Audience</span>
+                    <select>
+                    	<option>All</option>
+                        <option>Friends Only</option>
+                    </select>
+                 	
+                </div>
+                
+                <div id="tabs_manageEvents">
+                	 <!--options below stay static as titles are selected and opened up.-->
+                    <a href="#">Edit</a>
+                    <a href="#">Delete</a>
+                    <br/><br/>
+                    
+                    <input type="checkbox" name="cbx_selectDiscus"/>
+                    
+                	<span>Event Name</span>&nbsp;&nbsp;&nbsp;&nbsp;<!--to be modified later. no &nbsp; tags-->
+                    <span>Date</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <br/><br/>
+                    <!--the data below is to be pulled from the database-->
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#">Meeting of all law students</a></span>&nbsp;&nbsp;
+                    <span>20-01-2013</span>&nbsp;&nbsp;
+                    <br/><br/>
+                    
+                    <!--the data below is to be pulled from the database-->
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#">Lawyers meetup</a></span>&nbsp;&nbsp;
+                    <span>06-02-2013</span>&nbsp;&nbsp;
+                    
+               	</div>
+                
             </div>
             </div><!--/EventsMain_content-->
             
-            
-            
+                       
         </div> <!-- /content_container -->
         
          <footer>

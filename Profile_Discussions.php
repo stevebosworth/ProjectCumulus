@@ -18,6 +18,9 @@
     <!--javascript for tab-->
  	<script src="tabs/js/jquery-1.9.1.js"></script>
 	<script src="tabs/js/jquery-ui-1.10.2.custom.js"></script>
+     <!--javascript for date picker-->
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
      
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
 <!--[if gte IE 8]><script src="js/cors/jquery.xdr-transport.js"></script><![endif]-->
@@ -28,6 +31,9 @@
     <link type="text/css" rel="stylesheet" href="css/profile1.css"/> 
     <!--CSS for tab-->
  	<link href="tabs/css/smoothness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+    <!--CSS for date picker-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" href="/resources/demos/style.css" />
  	
 </head>
 <body>
@@ -110,7 +116,6 @@
                         <li class="event"><a href="Profile_Events.php">Events</a></li>
                         <li><a href="Profile_Friends.php">Friends</a></li>                    
                         <li><a href="#">Law Quick Link</a></li>
-                        <li><a href="Profile_Settings.php">Settings</a></li>
                     </ul>
             	</nav>               
 			</aside><!--/leftSide_bar-->           
@@ -137,13 +142,22 @@
                 <div id="tab_createDiscus">
                 	<span>Discussion Title</span>
                     <input type="text" name="txt_discusTitle"/><br/><br/>
-                    <span>Pivot Law</span>
-                    <input type="text" name="txt_pivotLaw"/><br/><br/>
-                    <span>Case Law</span>
-                    <input type="text" name="txt_caseLaw"/><br/><br/>
-                    <span>Argument</span>
-                    <input type="text" name="txt_argument"/><br/><br/>
-                    <span>Aim of Discussion</span>
+                    <span>Section</span>
+                    <input type="text" name="txt_section"/><br/><br/>
+                    
+                    <input type="checkbox" id="cbx_refCaseLaw" />  
+                    <span>Reference Case Law</span><br/><br/>
+                    
+                    <div id="refCaseLaw" style="display:none">
+                    
+                    	<span>Case Law</span>
+                    	<input type="text" name="txt_caseLaw"/>
+                    </div><!--/refCaseLaw-->
+                   <br/><br/>
+                   
+                    <span>Body</span>
+                    <textarea name="txt_argument"></textarea><br/><br/>
+                    <span>Subject</span>
                     <input type="text" name="txt_aimOfDiscus"/><br/><br/>
                     <span>Audience</span>
                     <select name="ddl_option">

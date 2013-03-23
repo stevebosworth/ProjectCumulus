@@ -115,7 +115,6 @@
                         <li class="event"><a href="Profile_Events.php">Events</a></li>
                         <li><a href="Profile_Friends.php">Friends</a></li>                    
                         <li><a href="#">Law Quick Link</a></li>
-                        <li><a href="Profile_Settings.php">Settings</a></li>
                     </ul>
             	</nav>               
 			</aside><!--/leftSide_bar-->           
@@ -144,16 +143,26 @@
                         <option>Unread</option>
                         <option>Archived</option>
                         <option>Spam</option>
-                    </select><br/><br/>
+                    </select>
+                    <input type="submit" name="btn_forward" value="Forward"/>
+                    <input type="submit" name="btn_delete" value="Delete"/>
                     
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim  	                       adminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-                    </p>
+                    <br/><br/>
+                    
+                   <input type="checkbox" name="cbx_selectMail"/>&nbsp;&nbsp;
+                   <a href="#">Michael Smith</a>&nbsp;&nbsp;
+                   <a href="#">Books now available</a>&nbsp;&nbsp;
+                   <a href="#">Mar 16</a>
+                   <br/><br/>
+                   <input type="checkbox" name="cbx_selectMail"/>&nbsp;&nbsp;
+                   <a href="#">Emeka Uka</a>&nbsp;&nbsp;
+                   <a href="#">HTTP508 Assignment</a>&nbsp;&nbsp;
+                   <a href="#">Mar 20</a>
                 </div>
                 <div id="tabs_newMessage">
                 	<span>To:</span>
-                	<input type="text" name="txt_emailTo"/>
-                    <span></span> 
-                    <textarea name="txt_message" placeholder="Write Message..."></textarea>
+                	<input type="text" name="txt_emailTo"/><br/><br/>
+                    <textarea name="txt_message" placeholder="Write Message..."></textarea><br/><br/>
                     <input type="submit" name="btn_submitMessage" value="Submit"/> 
                 </div>
                 

@@ -215,8 +215,6 @@ profile_photo a
 #editProfile_content
 {
 	margin-left:50px;
-	margin-top:80px;
-	
 }
 
 #edit_profilePhoto
@@ -517,6 +515,22 @@ profile_photo a
 	font: 62.5% "Trebuchet MS", sans-serif;	
 }
 
+/*------------Friends---------*/
+#friendsMain_content
+{
+	float:right;
+	width:672px;
+	font: 62.5% "Trebuchet MS", sans-serif;	
+}
+
+/*-------Profile-------*/
+#profileMain_content
+{
+	float:right;
+	width:672px;
+	font: 62.5% "Trebuchet MS", sans-serif;
+}
+
 
 /**********css for edit profile photo button***************/
 * {
@@ -618,7 +632,7 @@ profile_photo a
     -webkit-border-radius: .5em;
     -moz-border-radius: .5em;
     border-radius: .5em;
-    width: 180px;
+    width: 190px;
     -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,.5);
     -moz-box-shadow: 0px 0px 3px rgba(0,0,0,.5);
     box-shadow: 0px 0px 3px rgba(0,0,0,.5);

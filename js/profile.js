@@ -28,6 +28,22 @@ $(document).ready
 );
 
 
+//jquery code to show/hide the refCaseLaw div
+
+$(document).ready
+(
+	function(e) 
+	{
+		$.fn.subRefCaseLaw=function(){this.slideToggle(300)};
+		$("#cbx_refCaseLaw").change(function(){$("#refCaseLaw").subRefCaseLaw();
+			return false;//note that return false makes the page not jump to the top when you click on the "cbx_refCaseLaw" checkbox
+		});	
+		
+	}
+	
+);
+
+
 
 
 //jquery code for tool tip used in selecting options(take a profile picture or upload photo.);
@@ -64,5 +80,14 @@ $(document).ready(function() {
 			}
 		);
 	});
+	
+
+//Jquery for date picker
+
+$(document).ready(function() 
+	{
+		$( "#datepicker" ).datepicker();
+	});
+
 
 
