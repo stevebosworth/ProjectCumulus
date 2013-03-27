@@ -15,28 +15,6 @@ require_once '../classes/division_db.class.php';
 require_once '../classes/sub_division.class.php';
 require_once '../classes/sub_division_db.class.php';
 
-// if(isset($_POST['id']))
-// {
-
-// 	$id = $_POST['id'];
-// 	$table = $_POST['table'];
-// 	$id_type = $_POST['id_type'] . '_id';
-// 	$num = $_POST['next_type'] . '_num';
-// 	$title = $_POST['next_type'] . '_title';
-// 	$table_name = $_POST['next_type'];
-
-// 	$query = "SELECT * from $table WHERE $id_type = '$id'";
-// 	$result = $conn->query($query);
-// 	$book_num = 'book_num';
-
-// 	echo "<option> Please select a " . $table_name . "</option>";
-// 	foreach($result as $r)
-// 	{
-
-// 		echo '<option value="'.$r[0].'">'.$r[$num].'. '.$r[$title].'</option>';
-// 	}
-// }
-
 
 //Get Books by Law_id
 if(isset($_POST['law_id']))

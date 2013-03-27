@@ -156,15 +156,18 @@ require_once 'classes/sub_division_db.class.php';
         <section>
             <table>
                 <thead>
-                    <th>Sec #</th>
-                    <th>Title</th>
-                    <th>Section</th>
-                    <th>Book</th>
-                    <th>Title</th>
-                    <th>Chapter</th>
-                    <th>Division</th>
-                    <th>Sub Division</th>
+                    <tr>
+                        <th>Sec #</th>
+                        <th>Title</th>
+                        <th>Section</th>
+                        <th>Book</th>
+                        <th>Title</th>
+                        <th>Chapter</th>
+                        <th>Division</th>
+                        <th>Sub Division</th>
+                    </tr>
                 </thead>
+                <tbody>
                 <?php
                     $sec_class = new SectionDB();
                     $sec_array = $sec_class->selAllFromSections();
@@ -179,40 +182,45 @@ require_once 'classes/sub_division_db.class.php';
                                     echo "<td>" . $i->getSec_Txt() . "</td>";
                                 break;
                                 case is_a($i, 'book'):
-                                    if($i->getBook_Id() !== 0){
+                                    if($i->getBook_Id() > 0){
                                         echo "<td>" . $i->getBook_Num(). ". " . $i->getBook_Title(). "</td>";
                                     }else{
                                         echo "<td></td>";
                                     }
                                 break;
                                 case is_a($i, 'title'):
-                                    if($i->getTitle_Id() !== 0){
+                                    if($i->getTitle_Id() > 0){
                                         echo "<td>" . $i->getTitle_Num(). ". " . $i->getTitle_Title(). "</td>";
                                     }else{
                                         echo "<td></td>";
                                     }
                                 break;
                                 case is_a($i, 'chapter'):
-                                    if($i->getCh_Num() !== 0){
-                                        echo "<td>" . $i->getCh_Num(). ". " . $i->getCh_Title(). "</td>";
+                                    if($i->getCh_Id() > 0){
+                                        echo "<td>" . $i->getCh_Num() . ". " . $i->getCh_Title() . "</td>";
                                     }else{
                                         echo "<td></td>";
                                     }
                                 break;
                                 case is_a($i, 'division'):
-                                    if($i->getDiv_Id() !== 0){
+                                    if($i->getDiv_Id() > 0){
                                         echo "<td>" . $i->getDiv_Num(). ". " . $i->getDiv_Title(). "</td>";
                                     }else{
                                         echo "<td></td>";
                                     }
                                 break;
                                 case is_a($i, 'subdivision'):
-                                    echo "<td>" . $i->getSub_div_num(). ". " . $i->getSub_div_title(). "</td>";
+                                    if($i->getDiv_Id() > 0){
+                                        echo "<td>" . $i->getSub_div_num(). ". " . $i->getSub_div_title(). "</td>";
+                                    }else{
+                                        echo "<td></td>";
+                                    }
                                 break;
                             }
                         } ?>
                     </tr>
                 <?php endforeach; ?>
+                </tbody>
             </table>
         </section>
 
