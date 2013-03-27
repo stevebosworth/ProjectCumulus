@@ -42,16 +42,33 @@
 }
 
 #search {
-	margin-bottom:30px;	
+	margin-bottom:30px;
 }
 
 /* Content Styling */
+
+
+h1{
+	padding: 5px;
+}
+
+h4{
+	padding:0 3px 3px 15px;
+}
 
 h5 {
 	color:#999;
 	font-size:14px;
 	font-weight:normal;
 	margin:10px;
+}
+
+h2 {
+	margin:20px 10px;
+}
+
+p{
+	margin-right:15px;
 }
 
 #breadcrumbs {
@@ -69,6 +86,18 @@ h5 {
 	color:#003EF2;
 }
 
+
+
+#sec_heading{
+	margin-top: 15px;
+	margin-left: 10px;
+}
+
+#sec_body{
+	margin-top: 10px;
+	margin-left:10px;
+}
+
 .law_article {
 	clear:both;
 	float:left;
@@ -78,17 +107,13 @@ h5 {
 }
 
 .law_article p {
-	margin:30px 20px;	
-}
-
-h2 {
-	margin:20px 10px;	
+	margin:30px 20px;
 }
 
 #relevant h4 {
 	background:#BAC0C9;
 	padding:5px;
-	margin:10px 10px;	
+	margin:10px 10px;
 }
 
 #word_cloud {
@@ -142,15 +167,15 @@ h2 {
 }
 
 label {
-	margin-left:10px;	
+	margin-left:10px;
 }
 
 #sidebar {
-	float:right;	
+	float:right;
 }
 
 footer {
-	clear:both;	
+	clear:both;
 }
 
 i {

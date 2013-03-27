@@ -1,25 +1,23 @@
 <?php
-    require_once 'classes/Dbconn.class.php';
-    require_once 'classes/section.class.php';
-    require_once 'classes/section_db.class.php';
-    require_once 'classes/law.class.php';
-    require_once 'classes/law_db.class.php';
-    require_once 'classes/book.class.php';
-    require_once 'classes/book_db.class.php';
-    require_once 'classes/title.class.php';
-    require_once 'classes/title_db.class.php';
-    require_once 'classes/chapter.class.php';
-    require_once 'classes/chapter_db.class.php';
-    require_once 'classes/division.class.php';
-    require_once 'classes/division_db.class.php';
-    require_once 'classes/sub_division.class.php';
-    require_once 'classes/sub_division_db.class.php';
+require_once 'classes/Dbconn.class.php';
+require_once 'classes/section.class.php';
+require_once 'classes/section_db.class.php';
+require_once 'classes/law.class.php';
+require_once 'classes/law_db.class.php';
+require_once 'classes/book.class.php';
+require_once 'classes/book_db.class.php';
+require_once 'classes/title.class.php';
+require_once 'classes/title_db.class.php';
+require_once 'classes/chapter.class.php';
+require_once 'classes/chapter_db.class.php';
+require_once 'classes/division.class.php';
+require_once 'classes/division_db.class.php';
+require_once 'classes/sub_division.class.php';
+require_once 'classes/sub_division_db.class.php';
 
-    $section = new SectionDB();
-    $sec_num = $_GET['section'];
-
-    $this_sec = $section->selSectionByNum($sec_num);
- ?>
+$section = new SectionDB();
+$sec_num = $_GET['section'];
+?>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -106,144 +104,151 @@
 
             <article class="law_article">
             	<ul id="breadcrumbs">
-                	<li><a href="#">Homepage</a> > </li>
-                	<li><a href="#">Search results</a> > </li>
-                    <li>Section: <?php
-                        echo $this_sec->getSec_Num() . " " . $this_sec->getSec_Title();
-                     ?></li>
-                </ul>
-                <ul>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                </ul>
-            	<h2>Section <?php echo $this_sec->getSec_Num(); ?></h2>
-                <p><?php echo $this_sec->getSec_Txt(); ?></p>
-                <p class="enact"><?php echo "[ " . $this_sec->getEnact_Yr() . ", " . $this_sec->getEnact_Bill() . ", a." . $this_sec->getEnact_Sec() . " ]"; ?></p>
-            	<div id="relevant">
-                		<hr>
-                	<h4>Related Articles</h4>
-                    <p>13. Lorem ipsum dolor sit amet. Colum ser bit delocit celousm apilken.</p>
-                    <p>417. Lorem ipsum dolor sit amet. Colum ser bit delocit celousm apilken.
-                    Lorem ipsum dolor sit amet.</p>
-                    	<hr>
-                    <h4>Relevant Case Law</h4>
-                    <p>Johnson v. Blatche (2005) - Lorem ipsum dolor sit amet. Colum ser bit delocit celousm apilken.</p>
-                    <p>McDonald's v. PITA (2012) - Lorem ipsum dolor sit amet. Colum ser bit delocit celousm apilken.</p>
-                    <p>Kramer v. Kramer (1997) - Lorem ipsum dolor sit amet. Colum ser bit delocit celousm apilken.</p>
-                    <p>Primeau v. Gilmore (1993) - Lorem ipsum dolor sit amet. Colum ser bit delocit celousm apilken.</p>
-                    	<hr>
-                    <h4>User Comments</h4>
-                    <p>John Q. Public: "Lorem ipsum dolor sit amet. Colum ser bit delocit celousm apilken."</p>
-                    <p>Stretch Armstrong: "Colum ser bit delocit celousm apilken. Lorem ipsum dolor sit amet.
+                   <li><a href="#">Homepage</a> > </li>
+                   <li><a href="#">Search results</a> > </li>
+                   <li>Section: <?php echo $sec_num; ?> </li>
+               </ul>
+            <div id="section">
+                <div id="sec_heading">
+                <?php
+                    //Get all for specified section
+                    $this_sec = $section->selAllFromSection($sec_num);
+                    //take specified section and return array of that object
+                    $result = $section->getSectionAll($this_sec);
+
+                    foreach($result as $r){
+                        echo "<h3>Book " . $r['book_num'] . ". </h3><h4>" . $r['book_title'] . "</h4>";
+                        echo "<h3>Title " . $r['title_num'] . ". </h3><h4>" . $r['title_title'] . "</h4>";
+                        echo "<h3>Chapter " . $r['ch_num'] . ". </h3><h4>" . $r['ch_title'] . "</h4>";
+                        echo "<h3>Division " . $r['div_num'] . ". </h3><h4>" . $r['div_title'] . "</h4>";
+                        echo "<h3>&sect " . $r['sub_div_num'] . ". </h3><h4>" . $r['sub_div_num'] . "</h4>";
+                    }
+                ?>
+                </div>
+                <div id="sec_body">
+                <?php
+                    foreach($result as $r){
+                        echo "<h1> Section " . $r['sec_num'] . "</h1>";
+                        echo "<h5>" . $r['sec_title'] . "</h5>";
+                        echo "<p>" . $r['sec_txt'] . "</p>";
+                        echo "<p class='enact'>[" . $r['enact_yr'] . ", " . $r['enact_bill'] . ", " . $r['enact_sec'] . "]</p>";
+                    }
+                ?>
+                </div>
+            </div>
+            <p><?php //var_dump($this_sec) ?></p>
+
+            <div id="relevant">
+              <hr>
+              <h4>Related Articles</h4>
+              <p>13. Lorem ipsum dolor sit amet. Colum ser bit delocit celousm apilken.</p>
+              <p>417. Lorem ipsum dolor sit amet. Colum ser bit delocit celousm apilken.
+                Lorem ipsum dolor sit amet.</p>
+                <hr>
+                <h4>Relevant Case Law</h4>
+                <p>Johnson v. Blatche (2005) - Lorem ipsum dolor sit amet. Colum ser bit delocit celousm apilken.</p>
+                <p>McDonald's v. PITA (2012) - Lorem ipsum dolor sit amet. Colum ser bit delocit celousm apilken.</p>
+                <p>Kramer v. Kramer (1997) - Lorem ipsum dolor sit amet. Colum ser bit delocit celousm apilken.</p>
+                <p>Primeau v. Gilmore (1993) - Lorem ipsum dolor sit amet. Colum ser bit delocit celousm apilken.</p>
+                <hr>
+                <h4>User Comments</h4>
+                <p>John Q. Public: "Lorem ipsum dolor sit amet. Colum ser bit delocit celousm apilken."</p>
+                <p>Stretch Armstrong: "Colum ser bit delocit celousm apilken. Lorem ipsum dolor sit amet.
                     Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet."</p>
                 </div>
             </article>
             <section id="sidebar">
                 <aside id="word_cloud">
                     <h3>Parts of this law are mentioned in:</h3>
-<<<<<<< HEAD
-<<<<<<< HEAD:article.php
- 					<?php
+                    <?php
                     include ('db_connection.php');
-=======
- 					<?php 
+
                     include ('classes/db_connection.class.php');
->>>>>>> tags feature, now with OOP!
                     foreach ($tagset as $tag) : ?>
                     <p><a href="#"><?php echo $tag[1]; ?></a></p>
-                    <?php endforeach; ?>
-                    <?php
-                    	include ('list_tags.php') ?>
-                    <?php
-                    	foreach ($tag_array as $single_tag) : ?>
-                    	<p>
-                        	<a href="#">
-                    			<?php echo $single_tag->getID(); ?>
-                            </a>
-                        </p>
-<<<<<<< HEAD
-                    <?php endforeach; ?>-->
->>>>>>> Adding updated search and tag files Mar 19/13:article.html
-                </aside>
-=======
-=======
-                    <?php endforeach; ?>
-                </aside>	
->>>>>>> tags feature, now with OOP!
-                    <p class="tag1">626</p>
-                </aside>
+                <?php endforeach; ?>
+                <?php include ('list_tags.php') ?>
+                <?php foreach ($tag_array as $single_tag) : ?>
+                <p>
+                    <a href="#">
+                        <?php echo $single_tag->getID(); ?>
+                    </a>
+                </p>
+            <?php endforeach; ?>
+        </aside>
 
-                <div class="accordion">
+</aside>
+<p class="tag1">626</p>
+</aside>
 
-                    <div class="panelshow"><h4>Add Related Article</h4></div>
-                    <div class="panel">
-                        <h5>You may add an article related to this subject matter by submitting the information below.</h5>
-                        <p><label id="art_label" name="art_label">Article:</label>
-                        <input type="text" id="txt_article" name="txt_article" /></p>
-                        <input type="button" id="btn_subart" name="btn_subart" onClick="subArticle()" value="Submit" />
-                    </div>
+<div class="accordion">
 
-                    <div class="panelshow"><h4>Add Case Law</h4></div>
-                    <div class="panel">
-                        <h5>You may add related case law by submitting the information below.</h5>
-                        <p><label id="case_label" name="case_label">Case Law:</label>
-                        <input type="text" id="txt_case" name="txt_case" /></p>
-                        <p><label id="desc_label" name="desc_label">Description:</label>
-                        <input type="text" id="txt_desc" name="txt_desc" /></p>
-                        <input type="button" id="btn_subcase" name="btn_subcase" onClick="subCase()" value="Submit" />
-                    </div>
+    <div class="panelshow"><h4>Add Related Article</h4></div>
+    <div class="panel">
+        <h5>You may add an article related to this subject matter by submitting the information below.</h5>
+        <p><label id="art_label" name="art_label">Article:</label>
+            <input type="text" id="txt_article" name="txt_article" /></p>
+            <input type="button" id="btn_subart" name="btn_subart" onClick="subArticle()" value="Submit" />
+        </div>
 
-                     <div class="panelshow"><h4>Add Description Tags</h4></div>
-                    <div class="panel">
-                        <h5>Add descriptory tags by submitting the information below.</h5>
-                        <p><label id="tags_label" name="tags_label">Tags:</label>
+        <div class="panelshow"><h4>Add Case Law</h4></div>
+        <div class="panel">
+            <h5>You may add related case law by submitting the information below.</h5>
+            <p><label id="case_label" name="case_label">Case Law:</label>
+                <input type="text" id="txt_case" name="txt_case" /></p>
+                <p><label id="desc_label" name="desc_label">Description:</label>
+                    <input type="text" id="txt_desc" name="txt_desc" /></p>
+                    <input type="button" id="btn_subcase" name="btn_subcase" onClick="subCase()" value="Submit" />
+                </div>
+
+                <div class="panelshow"><h4>Add Description Tags</h4></div>
+                <div class="panel">
+                    <h5>Add descriptory tags by submitting the information below.</h5>
+                    <p><label id="tags_label" name="tags_label">Tags:</label>
                         <form id="create_tags" action="new_tag.php" method="post">
                         	<input type="text" id="txt_tags" name="txt_tags" /></p>
                         	<input type="submit" id="btn_subtags" name="btn_subtags" value="Submit" />
-                    	</form>
+                        </form>
                     </div>
 
                     <div class="panelshow"><h4>Comment</h4></div>
                     <div class="panel">
                         <h5>Add your comments below.</h5>
                         <p><label id="comm_label" name="comm_label">Tags:</label>
-                        <input type="text" id="txt_comm" name="txt_comm" /></p>
-                        <input type="button" id="btn_subcomm" name="btn_subcomm" onClick="subComments()" value="Submit" />
-                    </div>
+                            <input type="text" id="txt_comm" name="txt_comm" /></p>
+                            <input type="button" id="btn_subcomm" name="btn_subcomm" onClick="subComments()" value="Submit" />
+                        </div>
 
-                </section>
+                    </section>
 
-        </div> <!-- /content_container -->
-        <footer>
-            <nav id="nav_footer">
-                <ul>
-                    <li><a href="#" class="nav_link">Home</a></li>
-                    <li><a href="#" class="nav_link">Join</a></li>
-                    <li><a href="#" class="nav_link">Login</a></li>
-                    <li><a href="#" class="nav_link">Contact</a></li>
-                    <li><a href="#" class="nav_link">Terms & Legal</a></li>
-                </ul>
-            </nav>
-            <nav id="nav_social">
-                <ul>
-                    <li><a href="#" class="share"><img src="img/icons/facebook_icon_foot.png" alt="Facebook" title="Facebook" class="share_icon"></a></li>
-                    <li><a href="#" class="share"><img src="img/icons/twitter_icon_foot.png" alt="Twitter" title="Twitter" class="share_icon"></a></li>
-                    <li><a href="#" class="share"><img src="" alt="" class="share_icon"></a></li>
-                </ul>
-            </nav>
-            <small id="copyright">&copy; Project Cumulus, 2013.</small>
-        </footer>
-    </div> <!-- /container -->
+                </div> <!-- /content_container -->
+                <footer>
+                    <nav id="nav_footer">
+                        <ul>
+                            <li><a href="#" class="nav_link">Home</a></li>
+                            <li><a href="#" class="nav_link">Join</a></li>
+                            <li><a href="#" class="nav_link">Login</a></li>
+                            <li><a href="#" class="nav_link">Contact</a></li>
+                            <li><a href="#" class="nav_link">Terms & Legal</a></li>
+                        </ul>
+                    </nav>
+                    <nav id="nav_social">
+                        <ul>
+                            <li><a href="#" class="share"><img src="img/icons/facebook_icon_foot.png" alt="Facebook" title="Facebook" class="share_icon"></a></li>
+                            <li><a href="#" class="share"><img src="img/icons/twitter_icon_foot.png" alt="Twitter" title="Twitter" class="share_icon"></a></li>
+                            <li><a href="#" class="share"><img src="" alt="" class="share_icon"></a></li>
+                        </ul>
+                    </nav>
+                    <small id="copyright">&copy; Project Cumulus, 2013.</small>
+                </footer>
+            </div> <!-- /container -->
 
 
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+            <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+            <script src="js/plugins.js"></script>
+            <script src="js/main.js"></script>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+            <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <!--<script>
         var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
