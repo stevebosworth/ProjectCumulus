@@ -133,6 +133,8 @@ $sec_num = $_GET['section'];
                         echo "<p>" . $r['sec_txt'] . "</p>";
                         echo "<p class='enact'>[" . $r['enact_yr'] . ", " . $r['enact_bill'] . ", " . $r['enact_sec'] . "]</p>";
                     }
+
+                    var_dump($result);
                 ?>
                 </div>
             </div>

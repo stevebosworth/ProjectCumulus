@@ -94,24 +94,28 @@ require_once 'classes/sub_division_db.class.php';
                     <option selected="selected">-- Choose a Book First --</option>
                 </select>
                 <input type="button" class="btn_add_meta" id="btn_add_title" value="add">
+                <input type="button" class="btn_refresh" value="refresh">
                 <br />
                 <label for="sel_ch">Chapter: </label>
                 <select name="sel_ch" id="sel_ch" data-table="chapters">
                     <option selected="selected">-- Choose a Title First --</option>
                 </select>
                 <input type="button" class="btn_add_meta" id="btn_add_ch" value="add">
+                <input type="button" class="btn_refresh" value="refresh">
                 <br />
                 <label for="sel_div">Division: </label>
                 <select name="sel_div" id="sel_div" data-table="divisions">
                     <option selected="selected">-- Choose a Chapter First --</option>
                 </select>
                 <input type="button" class="btn_add_meta" id="btn_add_div" value="add">
+                <input type="button" class="btn_refresh" value="refresh">
                 <br />
                 <label for="sel_sub_div">Sub-Division: </label>
                 <select name="sel_sub_div" id="sel_sub_div" data-table="subdivisions">
                     <option selected="selected">-- Choose a Division First --</option>
                 </select>
                 <input type="button" class="btn_add_meta" id="btn_add_sub_div" value="add">
+                <input type="button" class="btn_refresh" value="refresh">
                 <br />
                 <label for="sec_num">Section #: </label>
                 <input type="text" name="sec_num">
@@ -154,7 +158,7 @@ require_once 'classes/sub_division_db.class.php';
         </div> <!-- /add -->
 
         <section>
-            <table>
+            <table id="tbl_all_sections">
                 <thead>
                     <tr>
                         <th>Sec #</th>
@@ -171,7 +175,6 @@ require_once 'classes/sub_division_db.class.php';
                 <?php
                     $sec_class = new SectionDB();
                     $sec_array = $sec_class->selAllFromSections();
-                    //echo "<pre>" . var_dump($sec_array) . "</pre>";
                     foreach($sec_array as $s) : ?>
                     <tr>
                         <?php foreach($s as $i){
