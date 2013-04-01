@@ -334,8 +334,10 @@ class SectionDB {
 		$query->bindParam('div_id', $div_id);
 		$query->bindParam('sub_div_id', $sub_div_id);
 
-		$insert = $query->execute();
-		return $insert;
+		if(isset($law_id) && isset($sec_num)){
+			$insert = $query->execute();
+			return $insert;
+		}
 	}
 
 }

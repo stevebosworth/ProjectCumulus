@@ -1,22 +1,21 @@
 $(document).ready(function() {
-    $('#add').hide();
+    $('#add').dialog({autoOpen: false});
 
+//Hide add meta div when a select is focused
+    // $('select').focus( function(){
+    //     $('#add').dialog("close");
+    // });
 
-    //Hide add meta div when a select is focused
-    $('select').focus( function(){
-        $('#add').hide();
-    });
-
-    //Cancel Adding Meta Categories
+//Cancel Adding Meta Categories
     $('#btn_cancel_meta').click(function(){
-        $('#add').hide();
+        $('#add').dialog("close");
         $('#meta_id').val('');
         $('#add_title').val('');
         $('#add_num').val('');
     });
 
 
-    //Set Book Drop Down
+//Set Book Drop Down
     $('#sel_law').change(function selectLaw(){
         var lawID = $(this).val();
         var dataString = 'law_id=' + lawID;
@@ -33,7 +32,7 @@ $(document).ready(function() {
         });
     });
 
-    //Set Title Drop Down
+//Set Title Drop Down
     $('#sel_book').change(function(){
 		var bookID = $(this).val();
 		var dataString = 'book_id=' + bookID;
@@ -51,7 +50,7 @@ $(document).ready(function() {
         });
     });
 
-    //Set Chapter Drop Down
+//Set Chapter Drop Down
     $('#sel_title').change(function(){
         var titleID = $(this).val();
         var dataString = 'title_id=' + titleID;
@@ -69,7 +68,7 @@ $(document).ready(function() {
         });
     });
 
-    //Set Division Drop Down
+//Set Division Drop Down
     $('#sel_ch').change(function(){
         var chID = $(this).val();
         var dataString = 'ch_id=' + chID;
@@ -87,7 +86,7 @@ $(document).ready(function() {
         });
     });
 
-    //Set Sub-Division Drop Down
+//Set Sub-Division Drop Down
     $('#sel_div').change(function(){
         var divID = $(this).val();
         var dataString = 'div_id=' + divID;
@@ -106,7 +105,7 @@ $(document).ready(function() {
     });
 
 
-    //Add title Button
+//Add title Button
     $('#btn_add_title').click(function(){
         //get
         var id = $('#sel_book').val();
@@ -118,7 +117,7 @@ $(document).ready(function() {
         console.log(id);
         //
         if(!isNaN(id)){
-            $('#add').show();
+            $('#add').dialog("open");
             $('#add_meta_head').html("Add new " + table + " under '" + tableVal + "'");
             $('#meta_table').val(table);
             $('#meta_id').val(id);
@@ -129,7 +128,7 @@ $(document).ready(function() {
         }
     })
 
-    //Add Chapter Button
+//Add Chapter Button
     $('#btn_add_ch').click(function(){
         var id = $('#sel_title').val();
         var table = $('#sel_ch').attr('data-table');
@@ -139,7 +138,7 @@ $(document).ready(function() {
         console.log(table);
         console.log(id);
         if(!isNaN(id)){
-            $('#add').show();
+            $('#add').dialog("open");
             $('#add_meta_head').html("Add new " + table + " under '" + tableVal + "'");
             $('#meta_table').val(table);
             $('#meta_id').val(id);
@@ -151,7 +150,7 @@ $(document).ready(function() {
     })
 
 
-    //Add Division Button
+//Add Division Button
     $('#btn_add_div').click(function(){
         var id = $('#sel_ch').val();
         var table = $('#sel_div').attr('data-table');
@@ -161,7 +160,7 @@ $(document).ready(function() {
         console.log(table);
         console.log(id);
         if(!isNaN(id)){
-            $('#add').show();
+            $('#add').dialog("open");
             $('#add_meta_head').html("Add new " + table + " under '" + tableVal + "'");
             $('#meta_table').val(table);
             $('#meta_id').val(id);
@@ -172,7 +171,7 @@ $(document).ready(function() {
         }
     })
 
-    //Sub-div add button
+//Sub-div add button
     $('#btn_add_sub_div').click(function(){
         var id = $('#sel_div').val();
         var table = $('#sel_sub_div').attr('data-table');
@@ -181,7 +180,7 @@ $(document).ready(function() {
         console.log(table);
         console.log(id);
         if(!isNaN(id)){
-            $('#add').show();
+            $('#add').dialog("open");
             $('#add_meta_head').html("Add new " + table + " under '" + tableVal + "'");
             $('#meta_table').val(table);
             $('#meta_id').val(id);
@@ -192,7 +191,7 @@ $(document).ready(function() {
         }
     });
 
-    //INSERT META USING AJAX
+//INSERT META USING AJAX
     $('#btn_ins_meta').click(function(){
         $.post('include/add-meta.inc.php', {
             id: $('#meta_id').val(),
@@ -207,7 +206,7 @@ $(document).ready(function() {
             });
     });
 
-    //INSERT SECTION USING AJAX
+//INSERT SECTION USING AJAX
     $('#btn_ins_sec').click(function(){
         //Create Blank value for database if no meta value is selected
         $('#frm_add_section  select option:first-of-type').each(function(){
@@ -216,12 +215,18 @@ $(document).ready(function() {
                 console.log($(this).val());
             }
         });
-
+        //Create array of field values excluding default values.
         var section = $('#frm_add_section').not('[selected="selected"]').serialize();
         console.log(section);
 
         $.post('include/add-sec.inc.php', section, function(msg){
-            $('.test').html(msg);
+            alert(msg);
+            $('#sec_num').val('');
+            $('#sec_title').val('');
+            $('#sec_text').val('');
+            $('#enact_yr').val('');
+            $('#enact_sec').val('');
+            $('#enact_bill').val('');
         });
     });
 });
