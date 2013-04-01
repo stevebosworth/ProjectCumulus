@@ -4,12 +4,22 @@ require_once 'classes/Dbconn.class.php';
 
 //creating an instance of the class to use for queries
 $db = Dbconn::getDB();
-
 //the sql query
 $listsql = "SELECT * FROM caselaw";
-
 //variable to hold the query results
 $result = $db->query($listsql);
+
+require_once 'classes/vote_db.class.php';
+require_once 'classes/vote.class.php';
+
+//creating an instance of the class
+$voteDB = new voteDB();
+$votes = $voteDB->getVotes();
+
+if (isset($_GET['vote'], $_GET['caselawID'])){
+    $voteDB->modifyVotes($_GET['caselawID'], $_GET['vote']);
+}
+
 
 ?>
 
@@ -47,6 +57,8 @@ $result = $db->query($listsql);
                             echo "(<i>".$row['case_date']."</i>) "."&nbsp;";
                             echo $row['court_id']."-";
                             echo $row['case_id']."</p>";
+                            echo "<a href='?vote=up&caselawID=".$row['caselaw_id']."'><img class='voteIcons' src='img/icons/thumb_up.png' alt='vote up' width='25' /></a>";
+                            echo "<a href='?vote=down&caselawID=".$row['caselaw_id']."'><img class='voteIcons' src='img/icons/thumb_down.png' alt='vote down' width='25' /></a>";
                         }
                     ?>
                     
