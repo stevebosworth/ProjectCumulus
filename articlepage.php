@@ -18,6 +18,8 @@ $votes = $voteDB->getVotes();
 
 if (isset($_GET['vote'], $_GET['caselawID'])){
     $voteDB->modifyVotes($_GET['caselawID'], $_GET['vote']);
+    header('Location: articlepage.php');
+    die();
 }
 
 
