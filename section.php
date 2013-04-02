@@ -76,7 +76,7 @@ $sec_num = $_GET['section'];
         <div id="content_container">
 
             <div id="search">
-                <form id="frm_search">
+                <form id="frm_search" action="include/search_engine.inc.php" method="POST" >
                     <div id="bsc_search">
                         <input type="text" id="txt_search" name="txt_search" placeholder="Search the legal code" />
                         <input type="button" id="btn_search" name="btn_search" value="Search" />
@@ -160,27 +160,15 @@ $sec_num = $_GET['section'];
             <section id="sidebar">
                 <aside id="word_cloud">
                     <h3>Parts of this law are mentioned in:</h3>
+
+                    <!-- tag "cloud" section -->
+                    <?php include ('include/list_tags.inc.php'); ?>
                     <?php
-                    include ('db_connection.php');
-
-                    include ('classes/db_connection.class.php');
-                    foreach ($tagset as $tag) : ?>
-                    <p><a href="#"><?php echo $tag[1]; ?></a></p>
-                <?php endforeach; ?>
-                <?php include ('list_tags.php') ?>
-                <?php foreach ($tag_array as $single_tag) : ?>
-                <p>
-                    <a href="#">
-                        <?php echo $single_tag->getID(); ?>
-                    </a>
-                </p>
-            <?php endforeach; ?>
-        </aside>
-
-</aside>
-<p class="tag1">626</p>
-</aside>
-
+                        foreach ($tag_array as $single_tag) {
+                            echo "<a href='search_tags.php?txt_search=" . $single_tag->getTag() . "'>" . $single_tag->getTag() . "</a>";
+                        }
+                    ?>
+                </aside>
 <div class="accordion">
 
     <div class="panelshow"><h4>Add Related Article</h4></div>

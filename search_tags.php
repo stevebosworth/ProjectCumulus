@@ -27,7 +27,6 @@
   
 	$j(document).ready(function(e)
 	{
-	
 		$j("#filter_button").click(function(e) 
 		{
 			$j("#filters").slideToggle("slow");
@@ -91,7 +90,12 @@
                 <p id="result_number">Displaying <strong>(number)</strong> results</p>
             </div>-->
             <div id="filter_container">
-            	<h3>Displaying Results for <?php echo '"' . $_POST['txt_search'] . '"'; ?></h3>
+            	<h3>Displaying Results for <?php
+                
+                $search_query = $_GET['txt_search'];
+
+                echo '"' . $search_query . '"'; ?></h3>
+                
                 <!--<input id="filter_button" type="button" value="Filter Results" />-->
                 <div id="filters" style="display: none">
                     <ul>
@@ -114,7 +118,7 @@
 							require_once('classes/search_db.class.php');
 							require_once('classes/Search.class.php');
 
-							$search_query = $_POST['txt_search'];
+							//$search_query = $_GET['txt_search'];
 
 							if(isset($search_query)){
 
@@ -122,7 +126,7 @@
 								$result = $new_search->searchSections($search_query);
 
 								foreach ($result as $resultset) {
-						        	echo "<a href='article.php?section=" . $resultset->getSec_Num() . "'>" . $resultset->getSec_Title() . "</a><br /><br />" ;
+						        	echo "<a href='#'>" . $resultset->getSec_Title() . "</a><br /><br />" ;
 								}
 							}
 							else {
