@@ -76,10 +76,10 @@ $sec_num = $_GET['section'];
         <div id="content_container">
 
             <div id="search">
-                <form id="frm_search" action="include/search_engine.inc.php" method="POST" >
+                <form id="frm_search" action="search_engine.php" method="POST" >
                     <div id="bsc_search">
                         <input type="text" id="txt_search" name="txt_search" placeholder="Search the legal code" />
-                        <input type="button" id="btn_search" name="btn_search" value="Search" />
+                        <input type="submit" id="btn_search" name="btn_search" value="Search" />
                         <div id="adv_option">
                             <label for="cbk_adv">Advanced Search</label>
                             <input type="checkbox" id="cbk_adv" name="chk_adv" value="1" />
@@ -193,7 +193,7 @@ $sec_num = $_GET['section'];
                 <div class="panel">
                     <h5>Add descriptory tags by submitting the information below.</h5>
                     <p><label id="tags_label" name="tags_label">Tags:</label>
-                        <form id="create_tags" action="new_tag.php" method="post">
+                        <form id="create_tags" action="include/new_tag.inc.php" method="post">
                         	<input type="text" id="txt_tags" name="txt_tags" /></p>
                         	<input type="submit" id="btn_subtags" name="btn_subtags" value="Submit" />
                         </form>

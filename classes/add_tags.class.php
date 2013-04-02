@@ -2,7 +2,11 @@
 	class add_tags {
 		
 		public function addTags($tag) {
-			$db = Dbconn::getDB();	
+			$db = Dbconn::getDB();
+			
+			//$tag = new tag_category();
+			//$tagname = $tag->getTag();
+			
 			$query = "INSERT INTO tags (tag) VALUES ('$tag')";
 			$db->exec($query);
 		}	
@@ -15,13 +19,11 @@
 			foreach ($tagset as $page_tag) 
 			{
 				$tag = new tag_category($page_tag['tag']);	
+				//echo $page_tag['tag_id'];
 				$tag->setID($page_tag['tag_id']);
 				$tags[] = $tag;	
 			}
-			
-		return $tags;
-		   
+		return $tags;	   
 	   }
 	}
-	
 ?>
