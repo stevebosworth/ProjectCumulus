@@ -23,12 +23,31 @@
 
 // Place any jQuery/helper plugins in here.
 
-// This plugin added by Chris Voorberg - February 9 2013 for the Articles page
+
 
 $(document).ready(function(e){
+
+// This plugin added by Chris Voorberg - February 9 2013 for the Articles page
 
 	$(".panelshow").click(function(){
 	$(this).toggleClass("active");
 	$(this).next(".panel").stop('true','true').slideToggle("slow");
 	});
+
+
+// This plugin added by Chris Voorberg - April 2, 2013 for Voting
+
+    $('.voteIcons').click(function(){
+
+        var caselawID = $(".caselawID").text();
+        var vote = $(".voteIcons").value();
+
+        $.post(
+        '../include/vote.inc.php',
+        { caselawID: caselawID, vote: vote },
+        function (data){
+        $('.voteIcons').html(data);
+        });
+    });
+
 });

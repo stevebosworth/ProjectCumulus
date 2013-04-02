@@ -9,18 +9,8 @@ $listsql = "SELECT * FROM caselaw";
 //variable to hold the query results
 $result = $db->query($listsql);
 
-require_once 'classes/vote_db.class.php';
-require_once 'classes/vote.class.php';
-
-//creating an instance of the class
-$voteDB = new voteDB();
-
-if (isset($_GET['vote'], $_GET['caselawID'])){
-    $voteDB->modifyVotes($_GET['caselawID'], $_GET['vote']);
-    header('Location: articlepage.php');
-    die();
-}
-
+require 'classes/vote_db.class.php';
+require 'classes/vote.class.php';
 
 ?>
 
@@ -28,10 +18,11 @@ if (isset($_GET['vote'], $_GET['caselawID'])){
 <html>
     <?php include 'include/head.inc.php' ?>
     <body>
+        
         <?php include 'include/header.inc.php' ?>
         
             <div id="content_container">
-                <?php include 'include/search.inc.php' ?>
+                <?php //include 'include/search_engine.inc.php' ?>
                 <article class="law_article">
             	<ul id="breadcrumbs">
                 	<li><a href="#">Homepage</a> > </li>
@@ -66,15 +57,20 @@ if (isset($_GET['vote'], $_GET['caselawID'])){
                             ?>
                                 <div class='votes'>
                                     <?php
-                                    echo "<a href='?vote=up&caselawID=".$row['caselaw_id']."'><img src='img/icons/thumb_up.png' class='voteIcons' alt='vote up' width='25' /></a>";
+                                    echo "<p style='display:none;' class='caselawID'>".$row['caselaw_id']."</p><button type='submit' class='voteIcons' value='up' style='border: 0; background: transparent'>
+    <img src='img/icons/thumb_up.png' width='26' alt='submit vote up' />
+</button>";
                                     echo $v['votes_up'];
                                     ?>
                                 </div>
                                 <div class='votes'>
                                     <?php
-                                    echo "<a href='?vote=down&caselawID=".$row['caselaw_id']."'><img src='img/icons/thumb_down.png' class='voteIcons' alt='vote down' width='25' /></a>";
+                                    echo "<p style='display:none;' class='caselawID'>".$row['caselaw_id']."</p><button type='submit' class='voteIcons' value='down' style='border: 0; background: transparent'>
+    <img src='img/icons/thumb_down.png' width='26' alt='submit vote down' />
+</button>";
                                     echo $v['votes_down'];
                                     ?>
+                                    
                                 </div>
                     <?php            
                             }
@@ -93,7 +89,7 @@ if (isset($_GET['vote'], $_GET['caselawID'])){
                 <section id="sidebar">
                 <aside id="word_cloud">
                     <h3>Parts of this law are mentioned in:</h3>
-                    <?php include ('include/list_tags.inc.php'); ?>
+                    <?php //include ('include/list_tags.inc.php'); ?>
                     <?php
 						foreach ($tag_array as $single_tag) {
 							echo "<a href='#'>" . $single_tag->getTag() . "</a>";
@@ -146,7 +142,6 @@ if (isset($_GET['vote'], $_GET['caselawID'])){
                     
                 </section>
             </div>
-
         <?php include 'include/footer.inc.php' ?>
         <?php include 'include/closer.inc.php' ?>
     </body>
