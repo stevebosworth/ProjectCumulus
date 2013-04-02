@@ -214,8 +214,32 @@ form p {
 	text-decoration: none;
 }
 
+.relCaselaws {
+	margin-bottom:20px;
+}
+
+.indCaselaw {
+	border-radius:6px;
+	border:1px solid #CCC;
+	clear:both;
+	height:140px;
+	margin:0 10px 10px 10px;
+}
+
 .voteIcons {
-	margin-left:20px;
+	margin-right:10px;
+}
+
+.votes {
+	border-radius:6px;
+	color:#808080;
+	float:left;
+	margin-top:0px;
+	margin-left:40px;
+	padding:10px 20px;
+	background:#ededed;
+	font-size:20px;
+	font-style:italic;
 }
 
 

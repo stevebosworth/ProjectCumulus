@@ -14,7 +14,6 @@ require_once 'classes/vote.class.php';
 
 //creating an instance of the class
 $voteDB = new voteDB();
-$votes = $voteDB->getVotes();
 
 if (isset($_GET['vote'], $_GET['caselawID'])){
     $voteDB->modifyVotes($_GET['caselawID'], $_GET['vote']);
@@ -51,19 +50,39 @@ if (isset($_GET['vote'], $_GET['caselawID'])){
                     Lorem ipsum dolor sit amet.</p>
                     	<hr>
                     <h4>Relevant Case Law</h4>
-                    
+                    <aside class='relCaselaws'>
                     <?php
                         //displays caselaws from the database
                         foreach ($result as $row){
+                            echo "<div class='indCaselaw'>";
                             echo "<p><a href='".$row['url']."'>".$row['case_ref']."</a> "."&nbsp;";
                             echo "(<i>".$row['case_date']."</i>) "."&nbsp;";
                             echo $row['court_id']."-";
                             echo $row['case_id']."</p>";
-                            echo "<a href='?vote=up&caselawID=".$row['caselaw_id']."'><img class='voteIcons' src='img/icons/thumb_up.png' alt='vote up' width='25' /></a>";
-                            echo "<a href='?vote=down&caselawID=".$row['caselaw_id']."'><img class='voteIcons' src='img/icons/thumb_down.png' alt='vote down' width='25' /></a>";
+                            $voteDB = new voteDB();
+                            $votes = $voteDB->getVotesByCaselawID($row['caselaw_id']);
+                            foreach ($votes as $v)
+                            {
+                            ?>
+                                <div class='votes'>
+                                    <?php
+                                    echo "<a href='?vote=up&caselawID=".$row['caselaw_id']."'><img src='img/icons/thumb_up.png' class='voteIcons' alt='vote up' width='25' /></a>";
+                                    echo $v['votes_up'];
+                                    ?>
+                                </div>
+                                <div class='votes'>
+                                    <?php
+                                    echo "<a href='?vote=down&caselawID=".$row['caselaw_id']."'><img src='img/icons/thumb_down.png' class='voteIcons' alt='vote down' width='25' /></a>";
+                                    echo $v['votes_down'];
+                                    ?>
+                                </div>
+                    <?php            
+                            }
+                            echo "</div>";
                         }
+                        
                     ?>
-                    
+                    </aside>
                     	<hr>
                     <h4>User Comments</h4>
                     <p>John Q. Public: "Lorem ipsum dolor sit amet. Colum ser bit delocit celousm apilken."</p>

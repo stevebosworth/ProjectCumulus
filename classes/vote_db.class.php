@@ -29,14 +29,16 @@ class VoteDB {
 	}
 
 	//fetches votes based on the caselaw they relate to
-	public function getVotesByCaselawID($caselawid) {
+	public function getVotesByCaselawID($caselaw_id) {
 
 		//DataBase connection & query
 		$db = Dbconn::getDB();
 		$query = "SELECT * FROM votes WHERE caselaw_id = '$caselaw_id'";
 		$result = $db->query($query);
 
-		$row = $result->fetch();
+		$row[] = $result->fetch();
+
+		return $row;
 	}
 
 	//adds votes up or down to casel
