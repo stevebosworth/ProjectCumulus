@@ -74,7 +74,7 @@ if (isset($_GET['vote'], $_GET['caselawID'])){
                 <section id="sidebar">
                 <aside id="word_cloud">
                     <h3>Parts of this law are mentioned in:</h3>
-                    <?php include ('include/list_tags.include.php'); ?>
+                    <?php include ('include/list_tags.inc.php'); ?>
                     <?php
 						foreach ($tag_array as $single_tag) {
 							echo "<a href='#'>" . $single_tag->getTag() . "</a>";
@@ -111,18 +111,18 @@ if (isset($_GET['vote'], $_GET['caselawID'])){
                     <div class="panel">
                         <h5>Add descriptory tags by submitting the information below.</h5>
                         <p><label id="tags_label" name="tags_label">Tags:</label>
-                        <input type="text" id="txt_tags" name="txt_tags" /></p>
-                        <input type="button" id="btn_subtags" name="btn_subtags" onClick="subTags()" value="Submit" />
+                        <form id="create_tags" action="include/new_tag.inc.php" method="post">
+                            <input type="text" id="txt_tags" name="txt_tags" /></p>
+                            <input type="submit" id="btn_subtags" name="btn_subtags" onClick="subTags()" value="Submit" />
+                        </form>
                     </div>
                     
                     <div class="panelshow"><h4>Comment</h4></div>
                     <div class="panel">
                         <h5>Add your comments below.</h5>
                         <p><label id="comm_label" name="comm_label">Tags:</label>
-                        <form id="create_tags" action="include/new_tag.inc.php" method="post">
-                        	<input type="text" id="txt_tags" name="txt_tags" /></p>
-                        	<input type="submit" id="btn_subtags" name="btn_subtags" onClick="subTags()" value="Submit" />
-                        </form>
+                        <input type="text" id="txt_comm" name="txt_comm" /></p>
+                        <input type="button" id="btn_subcomm" name="btn_subcomm" onClick="subComments()" value="Submit" />
                     </div>
                     
                 </section>

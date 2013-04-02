@@ -2,11 +2,7 @@
 	class add_tags {
 		
 		public function addTags($tag) {
-			$db = Dbconn::getDB();
-			
-			//$tag = new tag_category();
-			//$tagname = $tag->getTag();
-			
+			$db = Dbconn::getDB();	
 			$query = "INSERT INTO tags (tag) VALUES ('$tag')";
 			$db->exec($query);
 		}	
@@ -19,7 +15,6 @@
 			foreach ($tagset as $page_tag) 
 			{
 				$tag = new tag_category($page_tag['tag']);	
-				//echo $page_tag['tag_id'];
 				$tag->setID($page_tag['tag_id']);
 				$tags[] = $tag;	
 			}
@@ -29,19 +24,4 @@
 	   }
 	}
 	
-	/*
-	//gets input from form (textbox)
-	$tag = $_POST['txt_tags'];
-	
-	//validation
-	if (!empty($tag))
-	{
-	require_once('db_connection.php');
-	$query = "INSERT INTO tags (tag) VALUES ('$tag')";
-	$db->exec($query);	
-	}
-
-	include('article.html');
-	*/
-
 ?>
