@@ -60,6 +60,7 @@ class VoteDB {
 		}
 		else {
 			return false;
+			echo "error in script";
 		}
 	}
 

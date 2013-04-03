@@ -34,20 +34,4 @@ $(document).ready(function(e){
 	$(this).next(".panel").stop('true','true').slideToggle("slow");
 	});
 
-
-// This plugin added by Chris Voorberg - April 2, 2013 for Voting
-
-    $('.voteIcons').click(function(){
-
-        var caselawID = $(".caselawID").text();
-        var vote = $(".voteIcons").value();
-
-        $.post(
-        '../include/vote.inc.php',
-        { caselawID: caselawID, vote: vote },
-        function (data){
-        $('.voteIcons').html(data);
-        });
-    });
-
 });

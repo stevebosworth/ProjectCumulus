@@ -1,22 +1,19 @@
 <?php
 
+require '../classes/Dbconn.class.php';
 require '../classes/vote.class.php';
 require '../classes/vote_db.class.php';
 
+
 //creating an instance of the class
-$voteDB = new voteDB();
+$voteDB = new VoteDB();
+//defining the value of the variables to be used
+$caselawID = $_POST['caselawID'];
+$vote = $_POST['vote'];
 
-if ($_POST){
-	//defining the value of the variables to be used
-	$caselawID = $_POST['caselawID'];
-	$vote = $_POST['vote'];
+$voteDB->modifyVotes($caselawID, $vote);
 
-    $voteDB->modifyVotes($caselawID, $vote);
-    // header('Location: articlepage.php');
-    // die();
-}
-else {
-	return false;
-}
+echo json_encode($voteDB->getVotesByCaselawID($caselawID));
+
 
 ?>

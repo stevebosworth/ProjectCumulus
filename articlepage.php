@@ -57,27 +57,41 @@ require 'classes/vote.class.php';
                             ?>
                                 <div class='votes'>
                                     <?php
-                                    echo "<p style='display:none;' class='caselawID'>".$row['caselaw_id']."</p><button type='submit' class='voteIcons' value='up' style='border: 0; background: transparent'>
+                                    echo "<button type='submit' class='voteIcons' name='up' value='up' style='border: 0; background: transparent'>
     <img src='img/icons/thumb_up.png' width='26' alt='submit vote up' />
-</button>";
-                                    echo $v['votes_up'];
+</button><span style='display:none;' id='".$row['caselawID']."' class='caselawID'>".$row['caselaw_id']."</span>";
+                                    echo "<div class='vote_result' style='float:left;'>".$v['votes_up']."</div>";
                                     ?>
                                 </div>
                                 <div class='votes'>
                                     <?php
-                                    echo "<p style='display:none;' class='caselawID'>".$row['caselaw_id']."</p><button type='submit' class='voteIcons' value='down' style='border: 0; background: transparent'>
+                                    echo "<button type='submit' class='voteIcons' name='down' value='down' style='border: 0; background: transparent'>
     <img src='img/icons/thumb_down.png' width='26' alt='submit vote down' />
-</button>";
-                                    echo $v['votes_down'];
+</button><span style='display:none;' id='".$row['caselawID']."' class='caselawID'>".$row['caselaw_id']."</span>";
+                                    echo "<div class='vote_result' style='float:left;'>".$v['votes_down']."</div>";
                                     ?>
-                                    
+
                                 </div>
                     <?php            
                             }
                             echo "</div>";
                         }
-                        
                     ?>
+                    <script>
+                        $(".voteIcons").click(function(){
+
+                            var caselawIDVar = $(this).next().text();
+                            var voteVar = $(this).val();
+
+                            $.post(
+                            '../include/vote.inc.php',
+                            { caselawID: caselawIDVar, vote: voteVar },
+                            function (data){
+                                $('.caselawID').next().html(data);
+                            alert(data);
+                            });
+                        });
+                    </script>
                     </aside>
                     	<hr>
                     <h4>User Comments</h4>
@@ -89,7 +103,7 @@ require 'classes/vote.class.php';
                 <section id="sidebar">
                 <aside id="word_cloud">
                     <h3>Parts of this law are mentioned in:</h3>
-                    <?php //include ('include/list_tags.inc.php'); ?>
+                    <?php include ('include/list_tags.inc.php'); ?>
                     <?php
 						foreach ($tag_array as $single_tag) {
 							echo "<a href='#'>" . $single_tag->getTag() . "</a>";
