@@ -41,58 +41,53 @@ require 'classes/vote.class.php';
                     Lorem ipsum dolor sit amet.</p>
                     	<hr>
                     <h4>Relevant Case Law</h4>
-                    <aside class='relCaselaws'>
+                    <aside id='relCaselaws'>
                     <?php
                         //displays caselaws from the database
-                        foreach ($result as $row){
-                            echo "<div class='indCaselaw'>";
-                            echo "<p><a href='".$row['url']."'>".$row['case_ref']."</a> "."&nbsp;";
+                        foreach ($result as $row){ ?>
+                            <div class='indCaselaw'>
+                    <?php   echo "<p><a href='".$row['url']."'>".$row['case_ref']."</a> "."&nbsp;";
                             echo "(<i>".$row['case_date']."</i>) "."&nbsp;";
                             echo $row['court_id']."-";
                             echo $row['case_id']."</p>";
                             $voteDB = new voteDB();
                             $votes = $voteDB->getVotesByCaselawID($row['caselaw_id']);
-                            foreach ($votes as $v)
-                            {
+                            foreach ($votes as $v) {
                             ?>
                                 <div class='votes'>
-                                    <?php
-                                    echo "<button type='submit' class='voteIcons' name='up' value='up' style='border: 0; background: transparent'>
-    <img src='img/icons/thumb_up.png' width='26' alt='submit vote up' />
-</button><span style='display:none;' id='".$row['caselawID']."' class='caselawID'>".$row['caselaw_id']."</span>";
-                                    echo "<div class='vote_result' style='float:left;'>".$v['votes_up']."</div>";
-                                    ?>
-                                </div>
-                                <div class='votes'>
-                                    <?php
-                                    echo "<button type='submit' class='voteIcons' name='down' value='down' style='border: 0; background: transparent'>
-    <img src='img/icons/thumb_down.png' width='26' alt='submit vote down' />
-</button><span style='display:none;' id='".$row['caselawID']."' class='caselawID'>".$row['caselaw_id']."</span>";
-                                    echo "<div class='vote_result' style='float:left;'>".$v['votes_down']."</div>";
-                                    ?>
+                                    <button type='submit' class='voteIcons' name='up' value='up'>
+                                        <img src='img/icons/thumb_up.png' class='voteButton' width='26' alt='submit vote up' />
+                                    </button>
+                                    <span style='display:none;' class='caselawID'><?= $row['caselaw_id'] ?></span>
+                                    <div class='vote_result'><?= $v['votes_up'] ?></div><!-- end vote_result -->
+                                </div><!-- end votes -->
 
-                                </div>
-                    <?php            
-                            }
-                            echo "</div>";
-                        }
-                    ?>
+                                <div class='votes'>
+                                    <button type='submit' class='voteIcons' name='down' value='down'>
+                                        <img src='img/icons/thumb_down.png' class='voteButton' width='26' alt='submit vote down' />
+                                    </button>
+                                    <span style='display:none;' class='caselawID'><?= $row['caselaw_id'] ?></span>
+                                    <div class='vote_result'><?= $v['votes_down'] ?></div><!-- end vote_result -->
+                                </div><!-- end votes -->
+                    <?php   } ?>
+                            </div><!-- end indCaselaw -->
+                    <?php } ?>
+                    </aside>
                     <script>
                         $(".voteIcons").click(function(){
 
                             var caselawIDVar = $(this).next().text();
                             var voteVar = $(this).val();
+                            var results = $(this).next();
 
                             $.post(
                             '../include/vote.inc.php',
                             { caselawID: caselawIDVar, vote: voteVar },
                             function (data){
-                                $('.caselawID').next().html(data);
-                            alert(data);
+                                $(results).next().html(data);
                             });
                         });
                     </script>
-                    </aside>
                     	<hr>
                     <h4>User Comments</h4>
                     <p>John Q. Public: "Lorem ipsum dolor sit amet. Colum ser bit delocit celousm apilken."</p>

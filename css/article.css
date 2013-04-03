@@ -214,33 +214,41 @@ form p {
 	text-decoration: none;
 }
 
-.relCaselaws {
+#relCaselaws {
 	margin-bottom:20px;
 }
 
 .indCaselaw {
+	border:1px solid #ededed;
 	border-radius:6px;
-	border:1px solid #CCC;
 	clear:both;
 	height:140px;
 	margin:0 10px 10px 10px;
 }
 
 .voteIcons {
+	background:#CCC;
+	border-radius:8px;
 	margin-right:10px;
+	margin-top:-8px;
+	float:left;
 }
+
+.voteButton {
+	float:left;
+}
+
+.vote_result {
+	float:left;
+	width:50px;
 }
 
 .votes {
-	border-radius:6px;
 	color:#808080;
 	float:left;
-	margin-top:0px;
-	margin-left:40px;
-	padding:10px 20px;
-	background:#ededed;
-	font-size:20px;
+	font-size:18px;
 	font-style:italic;
+	margin-left:40px;
 }
 
 

@@ -13,7 +13,15 @@ $vote = $_POST['vote'];
 
 $voteDB->modifyVotes($caselawID, $vote);
 
-echo json_encode($voteDB->getVotesByCaselawID($caselawID));
+$row = $voteDB->getVotesByCaselawID($caselawID);
 
+foreach($row as $r) {
+	if($vote === 'up'){
+		echo $r['votes_up'];
+	}
+	elseif($vote === 'down'){
+		echo $r['votes_down'];
+	}
+};
 
 ?>
