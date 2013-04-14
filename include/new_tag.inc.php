@@ -5,6 +5,7 @@
     include ('../classes/add_tags.class.php');
 					
 	$new_tag = $_POST['txt_tags'];
+	$tag_sec_num = $_GET['section']; //added 02/04/2013
 	
 	$tag_class = new add_tags();
 	
@@ -13,7 +14,7 @@
 		$tag_class->addTags($new_tag);
 	}
 	
-	header("location:../section.php");
+	header("location:../section.php?section=" . $tag_sec_num);
 
 
 ?>

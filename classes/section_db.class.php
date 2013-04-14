@@ -248,7 +248,7 @@ class SectionDB {
 						'div_num' => $div_num,
 						'div_title' => $div_title,
 						'sub_div_num' => $sub_div_num,
-						'sub_dib_title' => $sub_dib_title,
+						'sub_div_title' => $sub_div_title,
 	    				'enact_yr' => $enact_yr,
 	    				'enact_bill' => $enact_bill,
 	    				'enact_sec' => $enact_sec);
