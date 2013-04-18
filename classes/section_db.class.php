@@ -32,7 +32,7 @@ class SectionDB {
 									$row['$sub_div_id']);
 		 	$sections[] = $section;
 		}
-		return $books;
+		return $sections;
 	}
 
 
@@ -166,7 +166,7 @@ class SectionDB {
 									$row['ch_id'],
 									$row['div_id'],
 									$row['$sub_div_id']);
-		 	$sectionAll[] = array($section,$law,$book, $title, $chapter, $division, $sub_division);
+		 	$sectionAll[] = array($section, $law, $book, $title, $chapter, $division, $sub_division);
 		}
 		return $sectionAll;
 	}
@@ -334,10 +334,11 @@ class SectionDB {
 		$query->bindParam('div_id', $div_id);
 		$query->bindParam('sub_div_id', $sub_div_id);
 
-		if(isset($law_id) && isset($sec_num)){
+
+		//if(isset($law_id) && isset($sec_num)){
 			$insert = $query->execute();
-			return $insert;
-		}
+		//}
+			var_dump($query);
 	}
 
 }

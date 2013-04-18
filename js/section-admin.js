@@ -220,7 +220,7 @@ $(document).ready(function() {
         console.log(section);
 
         $.post('include/add-sec.inc.php', section, function(msg){
-            alert(msg);
+            $('.test').html(msg);
             $('#sec_num').val('');
             $('#sec_title').val('');
             $('#sec_text').val('');
