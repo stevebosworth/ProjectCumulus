@@ -164,8 +164,6 @@
             <section id="sidebar">
                 <aside id="word_cloud">
                     <h3>Parts of this law are mentioned in:</h3>
-<<<<<<< HEAD
-
                     <!-- tag "cloud" section -->
                     <?php include ('include/list_tags.inc.php'); ?>
                     <?php
@@ -174,28 +172,7 @@
                         }
                     ?>
                 </aside>
-<div class="accordion">
-=======
-                    <?php
-                    include ('db_connection.php');
-
-                    include ('classes/db_connection.class.php');
-                    foreach ($tagset as $tag) : ?>
-                    <p><a href="#"><?php echo $tag[1]; ?></a></p>
-                    <?php endforeach; ?>
-                    <?php include ('list_tags.php') ?>
-                    <?php foreach ($tag_array as $single_tag) : ?>
-                        <p>
-                            <a href="#">
-                                <?php echo $single_tag->getID(); ?>
-                            </a>
-                        </p>
-                    <?php endforeach; ?>
-                </aside> <!-- /word_cloud -->
-
-                <div class="accordion">
->>>>>>> update section.php to well formed html
-
+        <div class="accordion">
                     <div class="panelshow"><h4>Add Related Section</h4></div>
                     <div class="panel">
                         <h5>You may add a related section by submitting the information below.</h5>
@@ -221,7 +198,6 @@
                         <input type="button" id="btn_subcase" name="btn_subcase" onClick="subCase()" value="Submit" />
                     </div> <!-- /panel case law-->
 
-<<<<<<< HEAD
                 <div class="panelshow"><h4>Add Description Tags</h4></div>
                 <div class="panel">
                     <h5>Add descriptory tags by submitting the information below.</h5>
@@ -231,19 +207,7 @@
                         	<input type="submit" id="btn_subtags" name="btn_subtags" value="Submit" />
                         </form>
                     </div>
-=======
-                    <div class="panelshow"><h4>Add Description Tags</h4></div>
-                    <div class="panel">
-                        <h5>Add descriptory tags by submitting the information below.</h5>
-                        <p>
-                            <label id="tags_label" name="tags_label">Tags:</label>
-                            <form id="create_tags" action="new_tag.php" method="post">
-                            	<input type="text" id="txt_tags" name="txt_tags" />
-                                <input type="submit" id="btn_subtags" name="btn_subtags" value="Submit" />
-                            </form>
-                        </p>
-                    </div> <!-- /panel add desc tags-->
->>>>>>> update section.php to well formed html
+
 
                     <div class="panelshow"><h4>Comment</h4></div>
                     <div class="panel">
