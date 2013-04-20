@@ -307,19 +307,32 @@ class SectionDB {
 	public function addSection($sec_num, $sec_title, $sec_txt, $enact_yr, $enact_bill, $enact_sec, $law_id, $book_id, $title_id, $ch_id, $div_id, $sub_div_id){
 		$db = Dbconn::getDb();
 
-		$query = $db->prepare("INSERT INTO sections (sec_num, sec_title, sec_txt, enact_yr, enact_bill, enact_sec, law_id, book_id, title_id, ch_id, div_id, sub_div_id)
-		VALUES (:sec_num,
-				:sec_title,
-				:sec_txt,
-				:enact_yr,
-				:enact_bill,
-				:enact_sec,
-				:law_id,
-				:book_id,
-				:title_id,
-				:ch_id,
-				:div_id,
-				:sub_div_id)");
+		try{
+		$query = $db->prepare("INSERT INTO sections(
+													sec_num,
+													sec_title,
+													sec_txt,
+													enact_yr,
+													enact_bill,
+													enact_sec,
+													law_id,
+													book_id,
+													title_id,
+													ch_id,
+													div_id,
+													sub_div_id)
+											VALUES (:sec_num,
+													:sec_title,
+													:sec_txt,
+													:enact_yr,
+													:enact_bill,
+													:enact_sec,
+													:law_id,
+													:book_id,
+													:title_id,
+													:ch_id,
+													:div_id,
+													:sub_div_id)");
 
 		$query->bindParam('sec_num', $sec_num);
 		$query->bindParam('sec_title', $sec_title);
@@ -336,9 +349,13 @@ class SectionDB {
 
 
 		//if(isset($law_id) && isset($sec_num)){
-			$insert = $query->execute();
+		$insert = $query->execute();
 		//}
-			var_dump($query);
+		}
+		catch(PDOException $e)
+		{
+			echo $e;
+		}
 	}
 
 }

@@ -147,15 +147,13 @@
                   <?php
                     $related = new RelatedDB();
                     $sec_num = $_GET['section'];
-                    $rel_sec = $related->selRelated();
-                    var_dump($related);
+                    $rel_sec = $related->selRelated($sec_num);
+
                     foreach($rel_sec as $r){
-                        echo "<h4><a href='section.php?section=". $r['sec_num'] . "'>Section: " . $r['sec_num'] . "</a></h4>";
-                        //$section = new SectionDB();
-                        // $sec_txt = $section->selSectionByNum($r['rel_sec_num']);
-                        // foreach($sec_txt as $s){
-                        //     echo "<p>" . $s["sec_txt"] . "</p>";
-                        // }
+                        echo "<h5><a href='section.php?section=". $r->getSec_num() . "'>Section: " . $r->getSec_num() . "</a></h5>";
+                        $section = new SectionDB();
+                        $sec_txt = $section->selSectionByNum($r->getSec_num());
+                        echo "<p>" . $sec_txt->getSec_txt() . "</p>";
                     }
                    ?>
                 </div> <!-- /relevant -->
@@ -164,6 +162,7 @@
             <section id="sidebar">
                 <aside id="word_cloud">
                     <h3>Parts of this law are mentioned in:</h3>
+
                     <!-- tag "cloud" section -->
                     <?php include ('include/list_tags.inc.php'); ?>
                     <?php
@@ -172,16 +171,14 @@
                         }
                     ?>
                 </aside>
-        <div class="accordion">
+                <div class="accordion">
                     <div class="panelshow"><h4>Add Related Section</h4></div>
                     <div class="panel">
                         <h5>You may add a related section by submitting the information below.</h5>
                         <p><label id="sec_label" name="sec_label">Section:</label>
                         <p>You can quick add a section or enter a search to find sections</p>
-                        <form>
-                            <input type="text" id="txt_section" name="txt_section" /></p>
-                            <input type="button" id="btn_subsec" name="btn_subsec" value="Submit" />
-                        </form>
+                        <input type="text" id="txt_section" name="txt_section" />
+                        <input type="button" id="btn_subsec" name="btn_subsec" value="Submit" />
                     </div> <!-- /panel -->
 
                     <div class="panelshow"><h4>Add Case Law</h4></div>
@@ -198,16 +195,17 @@
                         <input type="button" id="btn_subcase" name="btn_subcase" onClick="subCase()" value="Submit" />
                     </div> <!-- /panel case law-->
 
-                <div class="panelshow"><h4>Add Description Tags</h4></div>
-                <div class="panel">
-                    <h5>Add descriptory tags by submitting the information below.</h5>
-                    <p><label id="tags_label" name="tags_label">Tags:</label>
-                        <form id="create_tags" action="include/new_tag.inc.php" method="post">
-                        	<input type="text" id="txt_tags" name="txt_tags" /></p>
-                        	<input type="submit" id="btn_subtags" name="btn_subtags" value="Submit" />
-                        </form>
-                    </div>
-
+                    <div class="panelshow"><h4>Add Description Tags</h4></div>
+                    <div class="panel">
+                        <h5>Add descriptory tags by submitting the information below.</h5>
+                        <p>
+                            <label id="tags_label" name="tags_label">Tags:</label>
+                            <form id="create_tags" action="new_tag.php" method="post">
+                            	<input type="text" id="txt_tags" name="txt_tags" />
+                                <input type="submit" id="btn_subtags" name="btn_subtags" value="Submit" />
+                            </form>
+                        </p>
+                    </div> <!-- /panel add desc tags-->
 
                     <div class="panelshow"><h4>Comment</h4></div>
                     <div class="panel">

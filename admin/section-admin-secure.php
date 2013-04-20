@@ -147,7 +147,7 @@
                                     }
                                 break;
                             }
-                        } ?>
+                    } ?>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>

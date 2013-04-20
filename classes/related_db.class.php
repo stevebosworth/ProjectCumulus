@@ -1,21 +1,37 @@
 <?php
+// include 'Dbconn.class.php';
+// include 'related.class.php';
+
+// $test = new RelatedDB();
+
+
+// $test2 = $test->selRelated();
+
+
+
+// foreach($test2 as $t){
+// 	var_dump($t);
+// 	echo $t->getRel_sec_id();
+// 	echo $t->getSec_num();
+// }
 
 class RelatedDB{
 
-public function selRelated(){
+public function selRelated($sec_num){
 	$db = Dbconn::getDB();
 
-	$query = "SELECT * FROM related WHERE rel_sec_num = '522'";
+	$query = "SELECT * FROM related WHERE rel_sec_num = '$sec_num'";
 
 	$result = $db->query($query);
 
-	$related = array();
+	$related_secs = array();
 
 	foreach($result as $row){
 		$related = new Related(
 								$row['sec_num'],
 								$row['rel_sec_num']);
 		$related->setRel_id($row['rel_id']);
+		$related->setComm_txt($row['comm_txt']);
 		$related_secs[] = $related;
 	}
 

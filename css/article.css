@@ -42,7 +42,7 @@
 }
 
 #search {
-	margin-bottom:30px;
+	margin-bottom:60px;
 }
 
 /* Content Styling */
@@ -171,6 +171,7 @@ label {
 }
 
 #sidebar {
+	margin-top:30px;
 	float:right;
 }
 

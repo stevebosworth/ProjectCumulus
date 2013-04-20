@@ -24,10 +24,6 @@ $enact_sec  =$_POST['enact_sec'];
 
 
 	$insert = new SectionDB();
-	try{
-		$insert->addSection($sec_num, $sec_title, $sec_txt, $enact_yr, $enact_bill, $enact_sec, $law_id, $book_id, $title_id, $ch_id, $div_id, $sub_div_id);
-	}
-	catch(PDOException $e)
-	{
-		echo $e->getMessage();
-	}
+
+	$insert->addSection($sec_num, $sec_title, $sec_txt, $enact_yr, $enact_bill, $enact_sec, $law_id, $book_id, $title_id, $ch_id, $div_id, $sub_div_id);
+

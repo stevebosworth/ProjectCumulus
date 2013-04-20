@@ -1,5 +1,6 @@
 <?php
 
+
 class Related{
 	private $rel_id;
 	private $usr_id;
@@ -7,7 +8,7 @@ class Related{
 	private $rel_sec_id;
 	private $comm_txt;
 
-	public function __construct($sec_id, $rel_sec_id)
+	public function __construct($sec_num, $rel_sec_id)
 	{
 		$this->sec_num = $sec_num;
 		$this->rel_sec_id = $rel_sec_id;

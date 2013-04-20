@@ -75,10 +75,10 @@ require_once 'classes/sub_division_db.class.php';
     <div id="content_container">
         <div id="login">
             <?php
-                $user = $_POST['user'];
-                $pass = $_POST['pass'];
+                $user = md5($_POST['user']);
+                $pass = md5($_POST['pass']);
 
-                if($user == "adam" && $pass == "fbwizard")
+                if($user == md5("adam") && $pass == md5("fbwizard"))
                 {
                     include_once("admin/section-admin-secure.php");
                 }
@@ -87,13 +87,14 @@ require_once 'classes/sub_division_db.class.php';
                     echo "You must enter a password and username to view this page.";
                 }
                 if(isset($_POST))
-                {?>
-                    <form method="POST" action="section-admin.php">
-                        User <input type="text" name="user"></input>
-                        Pass <input type="password" name="pass"></input>
-                        <input type="submit" name="submit" id="submit"></input>
-                    </form>
-                <?}?>
+                {
+            ?>
+            <form method="POST" action="section-admin.php">
+                User <input type="text" name="user">
+                Pass <input type="password" name="pass">
+                <input type="submit" name="submit" id="submit" value="Login">
+            </form>
+            <?}?>
         </div>
 
 
