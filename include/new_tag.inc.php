@@ -11,7 +11,7 @@
 	
 	if (!empty($new_tag))
 	{
-		$tag_class->addTags($new_tag);
+		$tag_class->addTags($new_tag, $tag_sec_num);
 	}
 	
 	header("location:../section.php?section=" . $tag_sec_num);

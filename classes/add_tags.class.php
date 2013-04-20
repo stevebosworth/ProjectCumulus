@@ -1,13 +1,13 @@
 <?php
 	class add_tags {
 		
-		public function addTags($tag) {
+		public function addTags($tag, $section) { //added $section
 			$db = Dbconn::getDB();
 			
 			//$tag = new tag_category();
 			//$tagname = $tag->getTag();
 			
-			$query = "INSERT INTO tags (tag) VALUES ('$tag')";
+			$query = "INSERT INTO tags (tag, article_ref) VALUES ('$tag', '$section')";
 			$db->exec($query);
 		}	
 	   
