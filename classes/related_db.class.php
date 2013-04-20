@@ -20,7 +20,7 @@ class RelatedDB{
 public function selRelated($sec_num){
 	$db = Dbconn::getDB();
 
-	$query = "SELECT * FROM related WHERE rel_sec_num = '$sec_num'";
+	$query = "SELECT * FROM related WHERE rel_sec_num = '$sec_num' OR sec_num = '$sec_num'";
 
 	$result = $db->query($query);
 
