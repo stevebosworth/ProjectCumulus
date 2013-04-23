@@ -41,7 +41,7 @@ class VoteDB {
 		return $row;
 	}
 
-	//adds votes up or down to casel
+	//adds votes up or down to caselaws
 	public function modifyVotes($caselawID, $vote) {
 		$caselawID = (int)$caselawID;
 
