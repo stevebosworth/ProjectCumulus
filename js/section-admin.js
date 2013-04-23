@@ -1,22 +1,96 @@
 $(document).ready(function() {
-    $('#add').dialog({autoOpen: false});
+
+    $('#add').dialog({
+        autoOpen: false,
+        modal: true,
+        width: 500,
+        buttons: {
+            "Add": function(){
+                $.post(
+                    'include/add-meta.inc.php',
+                    {
+                        id: $('#meta_id').val(),
+                        num: $('#add_num').val(),
+                        title: $('#add_title').val(),
+                        table: $('#meta_table').val()
+                    },
+                    function(html) {
+                        console.log(html);
+                        $('.test').html(html);
+                        $('#add_title').val('');
+                        $('#add_num').val('');
+                        //reset drop down list with new value
+
+                });
+            },
+            "Cancel": function(){
+               $('#add').dialog("close");
+               $('#meta_id').val('');
+               $('#add_title').val('');
+               $('#add_num').val('');
+            }
+        }
+    });
+
+    $('#update').dialog({
+        autoOpen: false,
+        modal: true,
+        width: 500,
+        buttons: {
+            "Add" : function(){
+               section = $('#frm_update_sec').serialize();
+               //add update command to serialized update form
+               //section += "&cmd='update'";
+               console.log(section);
+               $.post(
+                    'include/update_sec.inc.php',
+                    section,
+                    function(html){
+                        $('#update').dialog("close");
+                        alert(html);
+                    });
+            },
+            "Cancel": function(){
+                $('#update').dialog("close");
+            }
+        }
+    });
 
 //Hide add meta div when a select is focused
     // $('select').focus( function(){
     //     $('#add').dialog("close");
     // });
 
-//Cancel Adding Meta Categories
-    $('#btn_cancel_meta').click(function(){
-        $('#add').dialog("close");
-        $('#meta_id').val('');
-        $('#add_title').val('');
-        $('#add_num').val('');
+//Show update section Modal
+    $('.sec_edit').click(function(){
+        var secNum = $(this).attr('data-value');
+        console.log(secNum);
+        $.post(
+            'include/update-sec.inc.php',
+            {sec_num: secNum, cmd: 'get'},
+            function(html){
+                $('#update').html(html);
+                $('#update').dialog('open');
+            });
+    });
+
+//Delete Section
+    $('.sec_del').click(function(){
+        if(confirm('Are you sure')) {
+            var secNum = $(this).attr('data-value');
+            console.log(secNum);
+            $.post(
+                'include/update-sec.inc.php',
+                {sec_num: secNum, cmd: 'delete'},
+                function(html){
+                   alert(html);
+                });
+        }
     });
 
 
 //Set Book Drop Down
-    $('#sel_law').change(function selectLaw(){
+    $('#sel_law').change(function setLaw(){
         var lawID = $(this).val();
         var dataString = 'law_id=' + lawID;
         $.ajax
@@ -33,7 +107,7 @@ $(document).ready(function() {
     });
 
 //Set Title Drop Down
-    $('#sel_book').change(function(){
+    $('#sel_book').change(function setTitle(){
 		var bookID = $(this).val();
 		var dataString = 'book_id=' + bookID;
 		$.ajax
@@ -51,7 +125,7 @@ $(document).ready(function() {
     });
 
 //Set Chapter Drop Down
-    $('#sel_title').change(function(){
+    $('#sel_title').change(function setChapter(){
         var titleID = $(this).val();
         var dataString = 'title_id=' + titleID;
         $.ajax
@@ -69,7 +143,7 @@ $(document).ready(function() {
     });
 
 //Set Division Drop Down
-    $('#sel_ch').change(function(){
+    $('#sel_ch').change(function setDivision(){
         var chID = $(this).val();
         var dataString = 'ch_id=' + chID;
         $.ajax
@@ -87,7 +161,7 @@ $(document).ready(function() {
     });
 
 //Set Sub-Division Drop Down
-    $('#sel_div').change(function(){
+    $('#sel_div').change(function setSubDivision(){
         var divID = $(this).val();
         var dataString = 'div_id=' + divID;
         $.ajax
@@ -179,6 +253,7 @@ $(document).ready(function() {
         console.log (tableVal);
         console.log(table);
         console.log(id);
+        //Check to make sure a div id is set before inserting a a new sub_div
         if(!isNaN(id)){
             $('#add').dialog("open");
             $('#add_meta_head').html("Add new " + table + " under '" + tableVal + "'");
@@ -191,20 +266,6 @@ $(document).ready(function() {
         }
     });
 
-//INSERT META USING AJAX
-    $('#btn_ins_meta').click(function(){
-        $.post('include/add-meta.inc.php', {
-            id: $('#meta_id').val(),
-            num: $('#add_num').val(),
-            title: $('#add_title').val(),
-            table: $('#meta_table').val()
-             }, function(html) {
-                console.log(html);
-                $('.test').html(html);
-                $('#add_title').val('');
-                $('#add_num').val('');
-            });
-    });
 
 //INSERT SECTION USING AJAX
     $('#btn_ins_sec').click(function(){
@@ -215,9 +276,11 @@ $(document).ready(function() {
                 console.log($(this).val());
             }
         });
+
         //Create array of field values excluding default values.
-        var section = $('#frm_add_section').not('[selected="selected"]').serialize();
+        var section = $('#frm_add_section').serialize();
         console.log(section);
+
 
         $.post('include/add-sec.inc.php', section, function(msg){
             $('.test').html(msg);

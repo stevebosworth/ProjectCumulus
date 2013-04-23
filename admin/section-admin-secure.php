@@ -45,22 +45,22 @@
                 <input type="button" class="btn_refresh" value="refresh">
                 <br />
                 <label for="sec_num">Section #: </label>
-                <input type="text" id="sec_num">
+                <input type="text" id="sec_num" name="sec_num">
                 <br/>
                 <label for="sec_title">Section Title: </label>
-                <input type="text" id="sec_title">
+                <input type="text" id="sec_title" name="sec_title">
                 <br/>
                 <label for="sec_text">Section Text: </label>
-                <textarea id="sec_text" cols="35" rows="10" ></textarea>
+                <textarea id="sec_text" name="sec_text" cols="35" rows="10" ></textarea>
                 <br/>
                 <label for="enact_yr">Year of Enactment: </label>
-                <input type="text" id="enact_yr">
+                <input type="text" id="enact_yr" name="enact_yr">
                 <br/>
                 <label for="enact_bill">Bill enacted: </label>
-                <input type="text" id="enact_bill">
+                <input type="text" id="enact_bill" name="enact_bill">
                 <br>
                 <label for="enact_sec">Section Enacted: </label>
-                <input type="text" id="enact_sec">
+                <input type="text" id="enact_sec" name="enact_sec">
                 <br>
                 <input type="button" id="btn_ins_sec" value="submit">
             </form>
@@ -78,9 +78,6 @@
                 <br/>
                 <label for="title_title">Title: </label>
                 <input type="text" id="add_title" name="title_title">
-                <br/>
-                <input type="button" id="btn_ins_meta" value="Add">
-                <input type="button" id="btn_cancel_meta" value="Cancel">
             </form>
         </div> <!-- /add -->
 

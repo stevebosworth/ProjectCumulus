@@ -6,7 +6,6 @@ class Related{
 	private $usr_id;
 	private $sec_num;
 	private $rel_sec_id;
-	private $comm_txt;
 
 	public function __construct($sec_num, $rel_sec_id)
 	{
@@ -107,30 +106,6 @@ class Related{
     public function setRel_sec_id($rel_sec_id)
     {
         $this->rel_sec_id = $rel_sec_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of comm_txt.
-     *
-     * @return mixed
-     */
-    public function getComm_txt()
-    {
-        return $this->comm_txt;
-    }
-
-    /**
-     * Sets the value of comm_txt.
-     *
-     * @param mixed $comm_txt the comm_txt
-     *
-     * @return self
-     */
-    public function setComm_txt($comm_txt)
-    {
-        $this->comm_txt = $comm_txt;
 
         return $this;
     }

@@ -17,13 +17,11 @@ $enact_yr   =$_POST['enact_yr'];
 $enact_bill =$_POST['enact_bill'];
 $enact_sec  =$_POST['enact_sec'];
 
+//Insert a new section
 
-//PREPARED STATEMENT
+$insert = new SectionDB();
 
-// $stmt = $conn->prepare("INSERT INTO sections (sec_num, sec_title, sec_txt, enact_yr, enact_bill, enact_sec, law_id, book_id, title_id, ch_id, div_id, sub_div_id) VALUES (:sec_num, :sec_title, :sec_txt, :enact_yr, :enact_bill, :enact_sec, :law_id, :book_id, :title_id, :ch_id, :div_id, :sub_div_id)")
+$insert->addSection($sec_num, $sec_title, $sec_txt, $enact_yr, $enact_bill, $enact_sec, $law_id, $book_id, $title_id, $ch_id, $div_id, $sub_div_id);
 
 
-	$insert = new SectionDB();
-
-	$insert->addSection($sec_num, $sec_title, $sec_txt, $enact_yr, $enact_bill, $enact_sec, $law_id, $book_id, $title_id, $ch_id, $div_id, $sub_div_id);
 

@@ -1,19 +1,4 @@
 <?php
-// include 'Dbconn.class.php';
-// include 'related.class.php';
-
-// $test = new RelatedDB();
-
-
-// $test2 = $test->selRelated();
-
-
-
-// foreach($test2 as $t){
-// 	var_dump($t);
-// 	echo $t->getRel_sec_id();
-// 	echo $t->getSec_num();
-// }
 
 class RelatedDB{
 
@@ -31,7 +16,6 @@ public function selRelated($sec_num){
 								$row['sec_num'],
 								$row['rel_sec_num']);
 		$related->setRel_id($row['rel_id']);
-		$related->setComm_txt($row['comm_txt']);
 		$related_secs[] = $related;
 	}
 
@@ -58,14 +42,13 @@ public function selRelatedBySec($sec_num){
 	echo $related_secs;
 }
 
-public function addRelatedSec($sec_num, $rel_sec_num, $comm_txt){
+public function addRelatedSec($sec_num, $rel_sec_num){
 	$db = Dbconn::getDB();
 
-	$query = $db->prepare("INSERT INTO related (sec_num, rel_sec_num, comm_txt) VALUES (:sec_num, :rel_sec_num, :comm_txt)");
+	$query = $db->prepare("INSERT INTO related (sec_num, rel_sec_num) VALUES (:sec_num, :rel_sec_num)");
 
 	$query->bindParam('sec_num', $sec_num);
 	$query->bindParam('rel_sec_num', $rel_sec_num);
-	$query->bindParam('comm_txt', $comm_txt);
 
 	$insert = $query->execute();
 

@@ -1,7 +1,5 @@
 <?php
 
-//, c.ch_num, c.ch_title, d.div_num, d.div_title, sd.sub_div_num, sd.sub_div_title
-
 class SectionDB {
 
 
@@ -350,6 +348,8 @@ class SectionDB {
 
 		//if(isset($law_id) && isset($sec_num)){
 		$insert = $query->execute();
+
+		echo $insert;
 		//}
 		}
 		catch(PDOException $e)
@@ -358,4 +358,32 @@ class SectionDB {
 		}
 	}
 
+	public function updateSection($sec_num, $sec_title, $sec_txt)
+	{
+		$db = Dbconn::getDB();
+
+		$query = $db->prepare("UPDATE sections SET sec_title = :sec_title, sec_txt = :sec_txt WHERE sec_num = :sec_num");
+
+		$query->bindParam('sec_num', $sec_num);
+		$query->bindParam('sec_title', $sec_title);
+		$query->bindParam('sec_txt', $sec_txt);
+		// $query->bindParam('enact_yr', $enact_yr);
+		// $query->bindParam('enact_bill', $enact_bill);
+		// $query->bindParam('enact_sec', $enact_sec);
+
+		$update = $query->execute();
+
+		return "Success";
+	}
+
+	public function deleteSection($sec_num)
+	{
+		$db = Dbconn::getDB();
+
+		$query = $db->prepare("DELETE FROM sections WHERE sec_num = :sec_num");
+
+		$query->bindParam('sec_num', $sec_num);
+
+		$delete = $query->execute();
+	}
 }
