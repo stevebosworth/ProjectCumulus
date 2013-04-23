@@ -16,11 +16,13 @@ require_once '../classes/sub_division.class.php';
 require_once '../classes/sub_division_db.class.php';
 require_once '../classes/related.class.php';
 require_once '../classes/related_db.class.php';
+require_once '../classes/source.class.php';
+require_once '../classes/sourcedb.class.php';
 
 $section = new SectionDB();
 $sec_num = $_POST['secNum'];
 $curr_sec = $_POST['currSec'];
-$comm_txt = $_POST['commTxt'];
+$src_url = $_POST['srcUrl'];
 
 $command = $_POST['command'];
 
@@ -41,9 +43,7 @@ switch($command)
             echo"<h1> Section " . $r['sec_num'] . "</h1>".
                 "<h5>" . $r['sec_title'] . "</h5>".
                 "<p>" . $r['sec_txt'] . "</p>".
-                "<p class='enact'>[" . $r['enact_yr'] . ", " . $r['enact_bill'] . ", " . $r['enact_sec'] . "]</p>".
-                "<h4>Comment: </h4>".
-                "<textarea id='txt_rel_comments' cols='15' rows='5'></textarea>";
+                "<p class='enact'>[" . $r['enact_yr'] . ", " . $r['enact_bill'] . ", " . $r['enact_sec'] . "]</p>";
             }
         }catch(Exception $ex){
             echo "<p>Error: Please try again</p>";
@@ -51,8 +51,18 @@ switch($command)
     break;
     case "confirm":
         $related = new RelatedDB();
-        $add_rel = $related->addRelatedSec($curr_sec, $sec_num, $comm_txt);
-        echo $related;
+        $add_rel = $related->addRelatedSec($curr_sec, $sec_num);
+        echo "Success!!";
+    break;
+    case "addSource":
+        if(isset($curr_sec) && isset($src_url))
+        {
+            $source = new SourceDB();
+            $add_src = $source->addSource($curr_sec, $src_url);
+            echo "success!!";
+        }else{
+            echo "failed";
+        }
     break;
 }
 

@@ -18,6 +18,8 @@
     require_once 'classes/related_db.class.php';
     require_once 'classes/vote_db.class.php';
     require_once 'classes/vote.class.php';
+    require_once 'classes/source.class.php';
+    require_once 'classes/sourcedb.class.php';
 
     $section = new SectionDB();
     $sec_num = $_GET['section'];
@@ -110,35 +112,42 @@
                 <div id="section">
                     <div id="sec_heading">
                         <?php
-                            //Get all for specified section
-                            $this_sec = $section->selAllFromSection($sec_num);
-                            //take specified section and return array of that object
-                            $result = $section->getSectionAll($this_sec);
+                            if(isset($sec_num))
+                            {
+                                //Get all for specified section
+                                $this_sec = $section->selAllFromSection($sec_num);
+                                //take specified section and return array of that object
+                                $result = $section->getSectionAll($this_sec);
 
-                            foreach($result as $r){
-                                echo "<h3>Book " . $r['book_num'] . ". </h3><h4>" . $r['book_title'] . "</h4>";
-                                echo "<h3>Title " . $r['title_num'] . ". </h3><h4>" . $r['title_title'] . "</h4>";
-                                echo "<h3>Chapter " . $r['ch_num'] . ". </h3><h4>" . $r['ch_title'] . "</h4>";
-                                echo "<h3>Division " . $r['div_num'] . ". </h3><h4>" . $r['div_title'] . "</h4>";
-                                echo "<h3>&sect " . $r['sub_div_num'] . ". </h3><h4>" . $r['sub_div_num'] . "</h4>";
+                                foreach($result as $r){
+                                    echo "<h3>Book " . $r['book_num'] . ". </h3><h4>" . $r['book_title'] . "</h4>";
+                                    echo "<h3>Title " . $r['title_num'] . ". </h3><h4>" . $r['title_title'] . "</h4>";
+                                    echo "<h3>Chapter " . $r['ch_num'] . ". </h3><h4>" . $r['ch_title'] . "</h4>";
+                                    echo "<h3>Division " . $r['div_num'] . ". </h3><h4>" . $r['div_title'] . "</h4>";
+                                    echo "<h3>&sect " . $r['sub_div_num'] . ". </h3><h4>" . $r['sub_div_num'] . "</h4>";
+                                }
                             }
                         ?>
                     </div> <!-- /sec_heading -->
                     <div id="sec_body">
-
                         <?php
-                            foreach($result as $r){
-                                echo "<h1 data-value=" . $r['sec_num'] . "> Section " . $r['sec_num'] . "</h1>"
-                                . "<h5>" . $r['sec_title'] . "</h5>"
-                                . "<p>" . $r['sec_txt'] . "</p>"
-                                . "<p class='enact'>[" . $r['enact_yr'] . ", " . $r['enact_bill'] . ", " . $r['enact_sec'] . "]</p>";
+                            if(isset($sec_num))
+                            {
+
+                                foreach($result as $r){
+                                    echo "<h1 data-value=" . $r['sec_num'] . "> Section " . $r['sec_num'] . "</h1>"
+                                    . "<h5>" . $r['sec_title'] . "</h5>"
+                                    . "<p>" . $r['sec_txt'] . "</p>"
+                                    . "<p class='enact'>[" . $r['enact_yr'] . ", " . $r['enact_bill'] . ", " . $r['enact_sec'] . "]</p>";
+                                }
+                            }else{
+                                echo "<h1>No Section Selected</h1><p>Please try a search</p>";
                             }
                         ?>
                     </div> <!-- /sec_body -->
                 </div>
-                <p><?php //var_dump($this_sec) ?></p>
 
-                <aside id="relevant">
+                <aside id="rel_section">
                   <hr>
                   <h4>Related Sections</h4>
                   <?php
@@ -162,7 +171,22 @@
                         }
                     }
                    ?>
-                </aside> <!-- /relevant -->
+                </aside> <!-- /relevant sections -->
+
+                <aside id="rel_source">
+                    <hr>
+                    <h4>Related Reading</h4>
+                    <ul>
+                    <?php
+                        $sources = new SourceDB();
+                        $rel_src = $sources->getSourcesBySec($sec_num);
+
+                        foreach($rel_src as $r){
+                            echo "<li><a href='" . $r->getUrl() . "'>" . $r->getUrl() . "</a></li>";
+                        }
+                     ?>
+                    </ul>
+                </aside>
 
                 <aside id='relCaselaws'>
                     <hr>
@@ -197,7 +221,7 @@
                     <?php   } ?>
                             </div><!-- end indCaselaw -->
                     <?php } ?>
-                    </aside>
+                </aside>
                     <script>
                         $(".voteIcons").click(function(){
 
@@ -235,7 +259,15 @@
                         <input type="text" id="txt_section" name="txt_section" />
                         <input type="button" id="btn_subsec" name="btn_subsec" value="Submit" />
                         <h5>You can quick add a section or enter a search to find sections</h5>
-                    </div> <!-- /panel -->
+                    </div> <!-- /panel related section -->
+
+                    <div class="panelshow"><h4>Add External Source</h4></div>
+                    <div class="panel">
+                        <h5>Add a link to an external source related to this section.  You can click also <a id="lkb_upload" href="#">upload a file</a>.</h5>
+                        <h4>Url:</h4>
+                        <input type="text" id="txt_source" name="txt_source" />
+                        <input type="button" id="btn_subsrc" name="btn_subsrc" value="Submit" />
+                    </div> <!-- /panel source -->
 
                     <div class="panelshow"><h4>Add Case Law</h4></div>
                     <div class="panel">
@@ -301,7 +333,16 @@
 
     <!-- MODAL FOR ADDING RELEVANT CASE LAW/SECTIONS -->
     <div id="relevant_modal" style="display:none;">
-        <input type="button" id='btn_conf_add'>Add</input><input type="button" id='btn_conf_cancel'>Cancel</input>
+
+    </div>
+
+    <!-- MODAL FOR UPLOADING SRCS LAW/SECTIONS -->
+    <div id="upload_modal" style="display:none;">
+        <form id="frm_upload" action="include/upload_src.inc.php" method="post" enctype="multipart/form-data">
+            <?php echo '<input type="hidden" name="sec_num" value="'. $sec_num . '">' ?>
+            <input type="file" name="txt_path">
+            <input type="submit" name="submit">
+        </form>
     </div>
 
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
