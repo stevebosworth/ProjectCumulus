@@ -1,5 +1,5 @@
-<?php 
-session_start(); 
+<?php
+session_start();
 //includes
 require_once('classes/UserProfileClasses/database.class.php');
 require_once('classes/UserProfileClasses/login_db.class.php');
@@ -21,7 +21,7 @@ if($_POST)
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
+<!--[if gt IE 8]><!-->
 
 	<html class="no-js"> <!--<![endif]--><head>
     <meta charset="utf-8">
@@ -29,7 +29,7 @@ if($_POST)
     <title>Project Cumulus Home Page</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-     <!--Place favicon.ico and apple-touch-icon.png in the root directory--> 
+     <!--Place favicon.ico and apple-touch-icon.png in the root directory-->
 
     <!-- Main Javascript and Jquery -->
     <script src="js/jquery.js"></script>
@@ -40,21 +40,21 @@ if($_POST)
      <!--javascript for date picker-->
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-     
+
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
 <!--[if gte IE 8]><script src="js/cors/jquery.xdr-transport.js"></script><![endif]-->
 
-    
-    <!-- Main CSS --> 
-    <link type="text/css" rel="stylesheet" href="css/main.css"/>    
-    <link type="text/css" rel="stylesheet" href="css/profile1.css"/> 
+
+    <!-- Main CSS -->
+    <link type="text/css" rel="stylesheet" href="css/main.css"/>
+    <link type="text/css" rel="stylesheet" href="css/profile1.css"/>
     <!--CSS for tab-->
  	<link href="tabs/css/smoothness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
     <!--CSS for date picker-->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
 	<link rel="stylesheet" href="/resources/demos/style.css" />
     <link href="img/test.PNG"
-    
+
 </head>
 <body>
 
@@ -88,40 +88,39 @@ if($_POST)
                     <li class="nav_header" class="nav_link"><a href="#">FAQ</a></li>
                 </ul>
             </nav>
-            
+
             <div id="login_controls">
             <form  method="post" action="profile_TestHome.php">
-            
+
             <br/><br/>
             <!--<span>Username:</span>-->
             <input type="text" name="txt_email" placeholder="Email" autocomplete="on"/>
             <!--<span>Password:</span>-->
             <input type="password" name="txt_password" placeholder="Password"/>
-           
+
             <input type="submit" name="btn_submitLogin" value="Login" /> <br/>
             <a href="include/profile_includes/passReset_inputEmailOrUsername.inc.php">Forgot your Password?</a>
             </form>
             </div><!--login_controls-->
 
         </header>
-                
+
 
 
 
 
 		<!--/////////////My codes for div content_container////////////-->
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        
         			<h1>THIS IS MY PROFILE TEST HOME PAGE</h1>
-         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-            
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
         </div> <!-- /content_container -->
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
           <footer>
             <nav id="nav_footer">
                 <ul>
@@ -156,8 +155,8 @@ if($_POST)
         g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>-->
-        
-  		
-   
+
+
+
 </body>
 </html>
