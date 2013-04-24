@@ -166,10 +166,6 @@ session_start();
                         <input type='submit' id='delete_message' name='delete_message' value='Delete' />
                         <input type='submit' id='mark_read' name='mark_read' value='Mark as Read' />
                     </form>
-<<<<<<< HEAD
-                    
-=======
->>>>>>> added search functionality to all pages
                 </div>
                 <div id="tabs_newMessage">
                     <form id="create_message" action="include/new_message.inc.php" method="post">

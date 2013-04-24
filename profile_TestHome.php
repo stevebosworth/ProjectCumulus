@@ -105,23 +105,13 @@ if($_POST)
 
         </header>
 
-<<<<<<< HEAD:profile_TestHome.php
-=======
         <div id="content_container">
-<<<<<<< HEAD:template.html
->>>>>>> added search functionality to all pages:template.html
 
-
-
-
-<<<<<<< HEAD:profile_TestHome.php
 		<!--/////////////My codes for div content_container////////////-->
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         			<h1>THIS IS MY PROFILE TEST HOME PAGE</h1>
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
-=======
-=======
             <div id="main_logo_title">
                 <img src="img/icons/logo.png" alt="Project Cumulus Logo" class="logo_big">
                 <h1>Welcome to Project Cumulus</h1>
@@ -143,8 +133,6 @@ if($_POST)
                 <p class="fancy">learn more...</p>
                 <img id="img_vid" src="img/youtube.jpg" width="250" height="150">
             </div>
->>>>>>> added search functionality to all pages:home.html
->>>>>>> added search functionality to all pages:template.html
         </div> <!-- /content_container -->
 
 
