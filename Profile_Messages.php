@@ -147,7 +147,6 @@ session_start();
                     
                 </ul>
                 <div id="tabs_inbox">
-<<<<<<< HEAD
                 <select>
                     	<option>All Mail</option>
                         <option>Unread</option>
@@ -159,7 +158,6 @@ session_start();
                     <input type="submit" name="btn_delete" value="Delete"/>
                     
                     <br/><br/>
-=======
                     <form id="msg_form" action="include/delete_message.inc.php" method="post">
                         <select id='message_filter' name='message_filter' onchange='filter()'>
                             <option value="All">All Messages</option>
@@ -179,7 +177,6 @@ session_start();
                         <input type='submit' id='delete_message' name='delete_message' value='Delete' />
                         <input type='submit' id='mark_read' name='mark_read' value='Mark as Read' />
                     </form>
->>>>>>> updates to everything
                     
                 </div>
                 <div id="tabs_newMessage">
@@ -211,7 +208,7 @@ session_start();
                     <li><a href="#" class="nav_link">Join</a></li>
                     <li><a href="#" class="nav_link">Login</a></li>
                     <li><a href="#" class="nav_link">Contact</a></li>
-                    <li><a href="#" class="nav_link">Terms & Legal</a></li>
+                    <li><a href="#" class="nav_link">Terms &amp; Legal</a></li>
                 </ul>
             </nav>
             <nav id="nav_social">
