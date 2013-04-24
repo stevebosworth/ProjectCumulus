@@ -53,6 +53,7 @@ jQuery(document).ready(function($) {
 		$('#upload_modal').dialog("open");
 	});
 
+	//Voting function controlling ajax post to database on user click
 	$(".voteIcons").click(function(){
 
         var caselawIDVar = $(this).next().text();

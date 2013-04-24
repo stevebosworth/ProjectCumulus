@@ -24,11 +24,11 @@
     $section = new SectionDB();
     $sec_num = $_GET['section'];
 
-    //creating an instance of the class to use for queries
+    //creating an instance of the DB class to use for queries
     $db = Dbconn::getDB();
-    //the sql query
+    //the sql query to get related caselaws
     $listsql = "SELECT * FROM caselaw WHERE sec_num = $sec_num";
-    //variable to hold the query results
+    //variable to hold the related caselaw results
     $caselaws = $db->query($listsql);
 
 ?> <!-- /requires -->
@@ -193,17 +193,22 @@
                     <h4>Related Case Law</h4>
                     <?php
                         if(isset($sec_num)){
-                        //displays caselaws from the database
+                        //displays related caselaws from the database based on $sec_num
                         foreach ($caselaws as $cl){ ?>
                             <div class='indCaselaw'>
                     <?php   echo "<p><a href='".$cl['url']."'>".$cl['case_ref']."</a> "."&nbsp;";
                             echo "(<i>".$cl['case_date']."</i>) "."&nbsp;";
                             echo $cl['court_id']."-";
                             echo $cl['case_id']."</p>";
+
+                            //instantiating the voteDB class
                             $voteDB = new voteDB();
+                            //getting votes by caselawID
                             $votes = $voteDB->getVotesByCaselawID($cl['caselaw_id']);
+                            //echoing outputs
                             foreach ($votes as $v) {
                             ?>
+                                <!-- displaying "up" vote totals -->
                                 <div class='votes'>
                                     <button type='submit' class='voteIcons' name='up' value='up'>
                                         <img src='img/icons/thumb_up.png' class='voteButton' width='26' alt='submit vote up' />
@@ -211,7 +216,8 @@
                                     <span style='display:none;' class='caselawID'><?= $cl['caselaw_id'] ?></span>
                                     <div class='vote_result'><?= $v['votes_up'] ?></div><!-- end vote_result -->
                                 </div><!-- end votes -->
-
+                                    
+                                <!-- displaying "down" vote totals -->
                                 <div class='votes'>
                                     <button type='submit' class='voteIcons' name='down' value='down'>
                                         <img src='img/icons/thumb_down.png' class='voteButton' width='26' alt='submit vote down' />
@@ -221,7 +227,7 @@
                                 </div><!-- end votes -->
                     <?php   } ?>
                             </div><!-- end indCaselaw -->
-                    <?php } } else { } ?>
+                    <?php } } else {} ?>
                 </aside>
             </article> <!-- /law_article -->
 
