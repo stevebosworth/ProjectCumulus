@@ -1,9 +1,13 @@
 <?php 
 
+//Carrying out server side validation
+
+//validating the hidden field has been set
 if (!empty($_POST['hidden']))
 {
 	$errmsg = ""; //Starting the error string
 
+	//validating the caseID
 	if(!empty($_POST['caseID']))
 	{
 		$caseID = $_POST['caseID']; //Sets the caseID
@@ -23,6 +27,7 @@ if (!empty($_POST['hidden']))
 		$errmsg = "Please enter the case ID";
 	}
 
+	//validating the caseRef
 	if(!empty($_POST['caseRef']))
 	{
 		$caseRef = $_POST['caseRef']; //Sets the caseRef
@@ -49,6 +54,7 @@ if (!empty($_POST['hidden']))
 		}
 	}
 
+	//validating the courtID
 	if(!empty($_POST['courtID']))
 	{
 		$courtID = $_POST['courtID']; //Sets the courtID
@@ -75,6 +81,7 @@ if (!empty($_POST['hidden']))
 		}
 	}
 
+	//validating the caseDate
 	if(!empty($_POST['caseDate']))
 	{
 		$caseDate = $_POST['caseDate']; //Sets the caseDate
@@ -101,6 +108,7 @@ if (!empty($_POST['hidden']))
 		}
 	}
 
+	//validating the url
 	if(!empty($_POST['url']))
 	{
 		$url = $_POST['url']; //Sets the url
@@ -130,6 +138,7 @@ if (!empty($_POST['hidden']))
 	$caseDesc = $_POST['caseDesc'];
 	$hidden = $_POST['hidden'];
 
+	//Ensuring no errors have occurred
 	if ($errmsg == "")
 	{
 
@@ -149,6 +158,7 @@ if (!empty($_POST['hidden']))
 
 	}
 
+	//echo error string if errors were encountered above
 	else
 	{
 		echo $errmsg;

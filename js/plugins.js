@@ -24,11 +24,11 @@
 // Place any jQuery/helper plugins in here.
 
 
-
 $(document).ready(function(e){
 
-// This plugin added by Chris Voorberg - February 9 2013 for the Articles page
+// This plugin added by Chris Voorberg - February 9 2013 for the section.php page
 
+    //this function operates the accordion on the right side
 	$(".panelshow").click(function(){
 	$(this).toggleClass("active");
 	$(this).next(".panel").stop('true','true').slideToggle("slow");
