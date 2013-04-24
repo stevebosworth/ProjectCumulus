@@ -118,15 +118,24 @@
 							require_once('classes/search_db.class.php');
 							require_once('classes/Search.class.php');
 
-							//$search_query = $_GET['txt_search'];
+							$search_query = $_GET['txt_search'];
 
 							if(isset($search_query)){
 
 								$new_search = new search_class();
 								$result = $new_search->searchSections($search_query);
 
+                                //returns search results with sections and subsections
 								foreach ($result as $resultset) {
-						        	echo "<a href='section.php?section=" . $resultset->getSec_Num() . "'>" . $resultset->getSec_Title() . "</a><br /><br />" ;
+						        	echo "<h5>" . $resultset->getLaw_Name() . " > " . $resultset->getBook_Title() . " > " . $resultset->getTitle_Title() . " > 
+                                    " . $resultset->getCh_Title() . " > " . $resultset->getDiv_Title() . " > Section " . "
+                                    <a href='section.php?section=" . $resultset->getSec_Num() . "'>" .  $resultset->getSec_Num() . "
+                                    </h5>
+                                    <br /><a href='section.php?section=" . $resultset->getSec_Num() . "'>
+                                    &quot;" . substr($resultset->getSec_Txt(), 0, 50) . "...&quot;</a>
+                                    <br /><br />
+                                    " ;
+                                    //echo "<a href='section.php?section=" . $resultset->getSec_Num() . "'>" . $resultset->getSec_Txt() . "</a><br /><br />" ;
 								}
 							}
 							else {

@@ -2,6 +2,7 @@
 	class add_tags {
 		
 		public function addTags($tag, $section) { //added $section
+			
 			$db = Dbconn::getDB();
 			
 			//$tag = new tag_category();
@@ -11,9 +12,9 @@
 			$db->exec($query);
 		}	
 	   
-	   	public function selectTag() {
+	   	public function selectTag($section) { //added $section apr/21/13
 			$db = Dbconn::getDB();
-			$sqlquery = "SELECT * FROM tags";
+			$sqlquery = "SELECT * FROM tags WHERE article_ref = '$section'"; //added where clause apr/21/13
        		$tagset = $db->query($sqlquery);
 			$tags = array();
 			foreach ($tagset as $page_tag) 
@@ -25,5 +26,6 @@
 			}
 		return $tags;	   
 	   }
+
 	}
 ?>

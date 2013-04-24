@@ -236,12 +236,18 @@
                     <h3>Parts of this law are mentioned in:</h3>
 
                     <!-- tag "cloud" section -->
-                    <?php include ('include/list_tags.inc.php'); ?>
                     <?php
+                        include ('classes/tag_category.class.php');
+                        include ('classes/add_tags.class.php'); 
+
+                        $tag_class = new add_tags();
+                        $tag_array = $tag_class->selectTag($sec_num); 
+
                         foreach ($tag_array as $single_tag) {
-                            echo "<a href='search_tags.php?txt_search=" . $single_tag->getTag() . "'>" . $single_tag->getTag() . "</a>";
+                            echo "<a href='search_tags.php?txt_search=" . $single_tag->getTag() . "'>" . $single_tag->getTag() . "</a>&nbsp;";
                         }
                     ?>
+
                 </aside>
                 <div class="accordion">
                     <div class="panelshow"><h4>Add Related Section</h4></div>
@@ -283,7 +289,8 @@
                         <h5>Add descriptory tags by submitting the information below.</h5>
                         <p>
                             <label id="tags_label" name="tags_label">Tags:</label>
-                            <form id="create_tags" action="new_tag.php" method="post">
+                            <form id="create_tags" action="include/new_tag.inc.php" method="post">
+                                <?php echo "<input type='hidden' name='tag_section' value=".$sec_num." />" ?>
                             	<input type="text" id="txt_tags" name="txt_tags" />
                                 <input type="submit" id="btn_subtags" name="btn_subtags" value="Submit" />
                             </form>
