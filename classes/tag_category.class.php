@@ -1,13 +1,15 @@
 <?php
 
 	class tag_category {
-		private $id;
+		//private $id;
 		private $tag;
+		//private $article_ref;
 		
 		public function __construct($tag)
 		{
 			//$this->id = $id;
 			$this->tag = $tag;	
+			//$this->article_ref = $article_ref;
 		}
 		
 		//gets the value of id
@@ -34,6 +36,17 @@
 			$this->tag = $value;	
 		}
 		
+		//gets value of article_ref
+		/*public function getArticle_Ref()
+		{
+			return $this->article_ref;
+		}
+
+		//sets value of article_ref
+		public function setArticle_Ref($value)
+		{
+			$this->article_ref = $value;
+		}*/
 	}
 
 
