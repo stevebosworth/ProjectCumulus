@@ -105,15 +105,34 @@ if($_POST)
 
         </header>
 
-
-
-
+        <div id="content_container">
 
 		<!--/////////////My codes for div content_container////////////-->
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         			<h1>THIS IS MY PROFILE TEST HOME PAGE</h1>
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
+            <div id="main_logo_title">
+                <img src="img/icons/logo.png" alt="Project Cumulus Logo" class="logo_big">
+                <h1>Welcome to Project Cumulus</h1>
+                <h2>Legal Wiki</h2>
+            </div> <!-- /main_logo_title -->
+            <div id="search">
+                <form id="frm_search" action="search_engine.php" method="POST">
+                    <div id="bsc_search">
+                        <input type="text" id="txt_search" name="txt_search" placeholder="Search the legal code" />
+                        <input type="submit" id="btn_search" name="btn_search" value="Search" />
+                        <div id="adv_option">
+                            <label for="cbk_adv">Advanced Search</label>
+                            <input type="checkbox" id="cbk_adv" name="chk_adv" value="1" />
+                        </div> <!-- /adv_option -->
+                    </div> <!-- /bsc_search -->
+                </form>
+            </div> <!-- /search -->
+            <div id="video">
+                <p class="fancy">learn more...</p>
+                <img id="img_vid" src="img/youtube.jpg" width="250" height="150">
+            </div>
         </div> <!-- /content_container -->
 
 

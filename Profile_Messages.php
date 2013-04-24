@@ -96,16 +96,16 @@ session_start();
             </div><!--/activeUser_name-->
             
             <div id="searchBox_Area">
-            
-            	<div id="search_Box">
-                	<input type="text" name="txt_search" placeholder="Search All" autocomplete="on"/>
-                </div><!--/search_Box-->
-            	<div id="search_Button">
-                	<input type="button" name="btn_search" value="Search" class="button_size"/>
-                </div><!--/search_Button-->
-                <div id="advanced_Search">
-                	<a href="#" class="link_color">Advanced Search</a>
-                </div><!--/advanced_Search-->
+            	<form id="frm_search" action="search_engine.php" method="POST">
+                    <div id="bsc_search">
+                        <input type="text" id="txt_search" name="txt_search" placeholder="Search the legal code" style="width:400px;" />
+                        <input type="submit" id="btn_search" name="btn_search" value="Search" />
+                        <div id="adv_option">
+                            <!--<label for="cbk_adv">Advanced Search</label>
+                            <input type="checkbox" id="cbk_adv" name="chk_adv" value="1" />-->
+                        </div> <!-- /adv_option -->
+                    </div> <!-- /bsc_search -->
+                </form>
             </div><!--/searchBoxArea-->
             
         </div><!--/profileNameAnd_searchArea-->
@@ -166,7 +166,6 @@ session_start();
                         <input type='submit' id='delete_message' name='delete_message' value='Delete' />
                         <input type='submit' id='mark_read' name='mark_read' value='Mark as Read' />
                     </form>
-                    
                 </div>
                 <div id="tabs_newMessage">
                     <form id="create_message" action="include/new_message.inc.php" method="post">

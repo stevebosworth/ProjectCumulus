@@ -13,7 +13,7 @@
 						INNER JOIN chapters c ON s.ch_id = c.ch_id
 						INNER JOIN divisions d ON s.div_id = d.div_id
 						INNER JOIN subdivisions sd ON s.sub_div_id = sd.sub_div_id
-						WHERE s.sec_txt /* || s.sec_title || s.sec_num || l.law_name || b.book_title || t.title_title || c.ch_title || d.div_title*/
+						WHERE s.sec_txt  || s.sec_title || s.sec_num || l.law_name || b.book_title || t.title_title || c.ch_title || d.div_title
 						LIKE '%" . $search_query . "%'";
 			$result = $db->query($query);
 
@@ -42,21 +42,14 @@
 			}
 			return $sections;
 		}
-/*
+		/*
 		public function searchTags($search_query){
 
 			$db = Dbconn::getDB();
 
-			$query = "SELECT s.sec_num, s.sec_title, s.sec_txt, l.law_name, b.book_title, t.title_title, c.ch_title, d.div_title 
-						FROM sections s
-						INNER JOIN tags g ON 
-						INNER JOIN laws l ON s.law_id = l.law_id
-						INNER JOIN books b ON s.book_id = b.book_id
-						INNER JOIN titles t ON s.title_id = t.title_id
-						INNER JOIN chapters c ON s.ch_id = c.ch_id
-						INNER JOIN divisions d ON s.div_id = d.div_id
-						INNER JOIN subdivisions sd ON s.sub_div_id = sd.sub_div_id
-						WHERE s.sec_txt 
+			$query = "SELECT article_ref, tag 
+						FROM tags
+						WHERE tag 
 						LIKE '%" . $search_query . "%'";
 			$result = $db->query($query);
 
@@ -64,14 +57,8 @@
 
 			foreach ($result as $row){
 				$section = new Search(
-					$row['sec_num'], 
-					$row['sec_title'], 
-					$row['sec_txt'],
-					$row['law_name'], 
-					$row['book_title'], 
-					$row['title_title'], 
-					$row['ch_title'],
-					$row['div_title']
+					$row['article_ref'], 
+					$row['tag'], 
 					); 
 				$section->getSec_Num($row['sec_num']); 
 				$section->getSec_Title($row['sec_title']);
@@ -84,8 +71,6 @@
 				$sections[] = $section;
 			}
 			return $sections;
-
-		}
-		*/
+		}*/
 	}
 ?>
