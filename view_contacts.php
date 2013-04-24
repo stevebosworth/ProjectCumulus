@@ -42,6 +42,7 @@ $list = $ContactDB->getContacts();
     						<td><?= $l->getMessage() ?></td>
     					</tr>
     				</table>
+                    <div class=""></div>
     			</div>
     			<?php } ?>
 
