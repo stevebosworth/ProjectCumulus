@@ -1,23 +1,16 @@
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<?php include 'include/head.inc.php' ?>
+
+<!-- Additional head items -->
 <title>Search Results</title>
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width">
-        
 <link href="css/search.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <link href='http://fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/main.css">
 <script type="text/javascript" language="javascript" src="js/search.js"></script>
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
-<script src="js/vendor/modernizr-2.6.2.min.js"></script>
 <script>var $j = jQuery.noConflict();</script>
 
 <script>
@@ -38,31 +31,7 @@
 </head>
 
 <body>
-    <div id="container">
-        <header>
-            <div id="title">
-                <a href="#"><img src="img/icons/header_logo.png" alt="Project-Cumulus-Logo" id="logo"></a>
-            </div>
-                
-            <nav id="nav_controls">
-                <ul>
-                    <li class="usr_control"><a href="#"><img src="img/icons/chat_icon_head.png" alt="Chat" title="Chat" class="icon"></a></li>
-                    <li class="usr_control"><a href="#"><img src="img/icons/mail_icon_head.png" alt="Messages" title="Messages" class="icon"></a></li>
-                    <li class="usr_control"><a href="#"><img src="img/icons/profile_icon_head.png" alt="Profile" title="Profile" class="icon"></a></li>
-                    <li class="usr_control"><a href="#"><img src="img/icons/settings_icon_head.png" alt="Settings" title="Settings" class="icon"></a></li>
-                    <li class="usr_control"><a href="#"><img src="img/icons/logout_icon_head.png" alt="Logout" title="Logout" class="icon"></a></li>       	   </ul>
-            </nav>
-            <nav id="nav_main">
-                <ul>
-                    <li class="nav_header" class="nav_link"><a href="home.html">Home</a></li>
-                    <li class="nav_header" class="nav_link"><a href="#">About</a></li>
-                    <li class="nav_header" class="nav_link"><a href="#">Support</a></li>
-                    <li class="nav_header" class="nav_link"><a href="#">Blog</a></li>
-                    <li class="nav_header" class="nav_link"><a href="#">FAQ</a></li>
-                </ul>
-            </nav>
-
-        </header>
+    <?php include 'include/header.inc.php' ?>
         
             <div id="search_logo">
                 <img src="img/icons/logo.png" alt="Project Cumulus Logo" class="logo_big">
@@ -160,40 +129,7 @@
             </div><!--/tabs-->
         </div><!--/content-->
     
-    
-    
-        <footer>
-            <nav id="nav_footer">
-                <ul>
-                    <li><a href="#" class="nav_link">Home</a></li>
-                    <li><a href="#" class="nav_link">Join</a></li>
-                    <li><a href="#" class="nav_link">Login</a></li>
-                    <li><a href="#" class="nav_link">Contact</a></li>
-                    <li><a href="#" class="nav_link">Terms & Legal</a></li>
-                </ul>
-            </nav>
-            <nav id="nav_social">
-                <ul>
-                    <li><a href="#" class="share"><img src="img/icons/facebook_icon_foot.png" alt="Facebook" title="Facebook" class="share_icon"></a></li>
-                    <li><a href="#" class="share"><img src="img/icons/twitter_icon_foot.png" alt="Twitter" title="Twitter" class="share_icon"></a></li>
-                    <li><a href="#" class="share"><img src="" alt="" class="share_icon"></a></li>
-                </ul>
-            </nav>
-            <small id="copyright">&copy; Project Cumulus, 2013.</small>
-        </footer>
-    </div> <!-- /container -->
-    
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. 
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script> -->
+        <?php include 'include/footer.inc.php' ?>
+    <?php include 'include/closer.inc.php' ?>
 </body>
 </html>
