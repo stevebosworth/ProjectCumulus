@@ -147,17 +147,6 @@ session_start();
                     
                 </ul>
                 <div id="tabs_inbox">
-                <select>
-                    	<option>All Mail</option>
-                        <option>Unread</option>
-                        <option>Archived</option>
-                        <option>Spam</option>
-                        <option>Sent</option>
-                    </select>
-                    <input type="submit" name="btn_forward" value="Forward"/>
-                    <input type="submit" name="btn_delete" value="Delete"/>
-                    
-                    <br/><br/>
                     <form id="msg_form" action="include/delete_message.inc.php" method="post">
                         <select id='message_filter' name='message_filter' onchange='filter()'>
                             <option value="All">All Messages</option>
