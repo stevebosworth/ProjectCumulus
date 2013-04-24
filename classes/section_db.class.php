@@ -362,7 +362,7 @@ class SectionDB {
 	{
 		$db = Dbconn::getDB();
 
-		$query = $db->prepare("UPDATE sections SET sec_title = :sec_title, sec_txt = :sec_txt WHERE sec_num = :sec_num");
+		$query = $db->prepare("UPDATE sections SET sec_title=:sec_title, sec_txt=:sec_txt WHERE sec_num=:sec_num");
 
 		$query->bindParam('sec_num', $sec_num);
 		$query->bindParam('sec_title', $sec_title);
@@ -373,7 +373,7 @@ class SectionDB {
 
 		$update = $query->execute();
 
-		return "Success";
+		return $update;
 	}
 
 	public function deleteSection($sec_num)
@@ -385,5 +385,7 @@ class SectionDB {
 		$query->bindParam('sec_num', $sec_num);
 
 		$delete = $query->execute();
+
+		return $delete;
 	}
 }

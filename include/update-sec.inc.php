@@ -29,12 +29,14 @@ $sec_title = $_POST['sec_title'];
 $sec_txt = $_POST['sec_txt'];
 $command = $_POST['cmd'];
 
+//echo $sec_num . $sec_title . $sec_txt;
 
-$section = new SectionDB();
+//echo $command;
 
 switch($command)
 {
 	case "get":
+		$section = new SectionDB();
 		$this_sec = $section->selAllFromSection($sec_num);
 
 		//take specified section and return array of that object
@@ -48,17 +50,32 @@ switch($command)
 		    	"<h3>&sect " . $r['sub_div_num'] . ". </h3><h4>" . $r['sub_div_num'] . "</h4>".
 		    	"<h2>Section: " . $r['sec_num'] . "</h2>".
 		    	"<h3>Title: </h3>" .
+		    	"<input type='hidden' name='sec_num' value='" . $r['sec_num'] . "'>".
 		    	"<input type='text' name='sec_title' value=" . $r['sec_title'] . ">".
 		    	"<h4>Section: </h4>".
 		    	"<textarea name='sec_txt' rows='10' cols='35'>". $r['sec_txt'] . "</textarea></form>";
 		}
 	break;
 	case "update":
+		$section = new SectionDB();
 		$update = $section->updateSection($sec_num, $sec_title, $sec_txt);
-		echo $update;
+		if($update == 1){
+			echo "Success!";
+		}
+		else
+		{
+			echo "Error: Please Try Again!";
+		}
 	break;
 	case "delete":
+		$section = new SectionDB();
 		$delete = $section->deleteSection($sec_num);
-		echo $delete;
+		if($delete == 1){
+			echo "Success!";
+		}
+		else
+		{
+			echo "Error: Please Try Again!";
+		}
 	break;
 }

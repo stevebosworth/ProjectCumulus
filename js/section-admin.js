@@ -37,13 +37,13 @@ $(document).ready(function() {
         modal: true,
         width: 500,
         buttons: {
-            "Add" : function(){
+            "Update" : function(){
                section = $('#frm_update_sec').serialize();
                //add update command to serialized update form
-               //section += "&cmd='update'";
+               section += "&cmd=update";
                console.log(section);
                $.post(
-                    'include/update_sec.inc.php',
+                    'include/update-sec.inc.php',
                     section,
                     function(html){
                         $('#update').dialog("close");
