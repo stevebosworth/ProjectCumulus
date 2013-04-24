@@ -1,4 +1,9 @@
 <html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><! <html class="no-js"> <![endif]-->
+
 <head>
 
 <?php include 'include/head.inc.php' ?>
@@ -110,7 +115,7 @@
                                     </h5>
                                     <br /><a href='section.php?section=" . $resultset->getSec_Num() . "'>
                                     &quot;" . substr($resultset->getSec_Txt(), 0, 50) . "...&quot;</a>
-                                    <br /><br />
+                                    <br /><br /><br />
                                     " ;
 								}
 							}

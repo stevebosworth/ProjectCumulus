@@ -63,11 +63,6 @@
 				$section->getSec_Num($row['sec_num']); 
 				$section->getSec_Title($row['sec_title']);
 				$section->getSec_Txt($row['sec_txt']);
-				$section->getLaw_Name($row['law_name']);
-				$section->getBook_Title($row['book_title']);
-				$section->getTitle_Title($row['title_title']);
-				$section->getCh_Title($row['ch_title']);
-				$section->getDiv_Title($row['div_title']);
 				$sections[] = $section;
 			}
 			return $sections;

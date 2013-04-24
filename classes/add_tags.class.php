@@ -19,10 +19,33 @@
 			$tags = array();
 			foreach ($tagset as $page_tag) 
 			{
-				$tag = new tag_category($page_tag['tag']);	
-				//echo $page_tag['tag_id'];
-				$tag->setID($page_tag['tag_id']);
+				$tag = new tag_category($page_tag['tag_id'],
+					$page_tag['tag'],
+					$page_tag['article_ref']
+					);	
+				$tag->getID($page_tag['tag_id']);
+				$tag->getTag($page_tag['tag']);
+				$tag->getArticle_Ref($page_tag['article_ref']);
 				$tags[] = $tag;	
+			}
+		return $tags;	   
+	   }
+
+	   public function selectTagByTag($tag) { 
+			$db = Dbconn::getDB();
+			$sqlquery = "SELECT * FROM tags WHERE tag = '$tag'"; 
+       		$tagset = $db->query($sqlquery);
+			$tags = array();
+			foreach ($tagset as $page_tag) 
+			{
+				$tag = new tag_category($page_tag['tag_id'],
+					$page_tag['tag'],
+					$page_tag['article_ref']
+					);	
+				$tag->getID($page_tag['tag_id']);
+				$tag->getTag($page_tag['tag']);
+				$tag->getArticle_Ref($page_tag['article_ref']);
+				$tags[] = $tag;		
 			}
 		return $tags;	   
 	   }

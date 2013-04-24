@@ -90,7 +90,7 @@
                 <p id="result_number">Displaying <strong>(number)</strong> results</p>
             </div>-->
             <div id="filter_container">
-            	<h3>Displaying Results for <?php
+            	<h3>Sections tagged with <?php
                 
                 $search_query = $_GET['txt_search'];
 
@@ -117,16 +117,25 @@
 							require_once('classes/Dbconn.class.php');
 							require_once('classes/search_db.class.php');
 							require_once('classes/Search.class.php');
+                            require_once('classes/add_tags.class.php');
+                            require_once('classes/tag_category.class.php');
 
 							$search_query = $_GET['txt_search'];
 
 							if(isset($search_query)){
 
-								$new_search = new search_class();
-								$result = $new_search->searchSections($search_query);
+                                $new_search = new add_tags();
+                                $result = $new_search->selectTagByTag($search_query);
+
+                                foreach ($result as $resultset) {
+                                    echo "<h5><a href='section.php?section=" . $resultset->getArticle_Ref() . "'>" . 
+                                    "Section " . $resultset->getArticle_Ref() . "</a></h5><br />";
+                                }
+								//$new_search = new search_class();
+							    //$result = $new_search->searchSections($search_query);
 
                                 //returns search results with sections and subsections
-								foreach ($result as $resultset) {
+								/*foreach ($result as $resultset) {
 						        	echo "<h5>" . $resultset->getLaw_Name() . " > " . $resultset->getBook_Title() . " > " . $resultset->getTitle_Title() . " > 
                                     " . $resultset->getCh_Title() . " > " . $resultset->getDiv_Title() . " > Section " . "
                                     <a href='section.php?section=" . $resultset->getSec_Num() . "'>" .  $resultset->getSec_Num() . "
@@ -136,7 +145,7 @@
                                     <br /><br />
                                     " ;
                                     //echo "<a href='section.php?section=" . $resultset->getSec_Num() . "'>" . $resultset->getSec_Txt() . "</a><br /><br />" ;
-								}
+								}*/
 							}
 							else {
 								echo "Error: Invalid Search Query";
