@@ -91,7 +91,20 @@
                 <p id="result_number">Displaying <strong>(number)</strong> results</p>
             </div>-->
             <div id="filter_container">
-            	<h3>Displaying Results for <?php echo '"' . $_POST['txt_search'] . '"'; ?></h3>
+            	<h3>
+                    <?php
+                        $search_query = $_POST['txt_search'];
+
+
+                        if(!empty($search_query)){
+                            echo 'Displaying Results for "' . $search_query . '"';
+                        } 
+                        else{
+                            echo 'Please Enter a Search Query';
+                        }
+                        ?>
+
+                </h3>
                 <!--<input id="filter_button" type="button" value="Filter Results" />-->
                 <div id="filters" style="display: none">
                     <ul>
@@ -116,17 +129,24 @@
 
 							$search_query = $_POST['txt_search'];
 
-							if(isset($search_query)){
+							if(!empty($search_query)){
 
 								$new_search = new search_class();
 								$result = $new_search->searchSections($search_query);
 
 								foreach ($result as $resultset) {
-						        	echo "<a href='section.php?section=" . $resultset->getSec_Num() . "'>" . $resultset->getSec_Title() . "</a><br /><br />" ;
+						        	echo "<h5>" . $resultset->getLaw_Name() . " > " . $resultset->getBook_Title() . " > " . $resultset->getTitle_Title() . " > 
+                                    " . $resultset->getCh_Title() . " > " . $resultset->getDiv_Title() . " > Section " . "
+                                    <a href='section.php?section=" . $resultset->getSec_Num() . "'>" .  $resultset->getSec_Num() . "
+                                    </h5>
+                                    <br /><a href='section.php?section=" . $resultset->getSec_Num() . "'>
+                                    &quot;" . substr($resultset->getSec_Txt(), 0, 50) . "...&quot;</a>
+                                    <br /><br />
+                                    " ;
 								}
 							}
 							else {
-								echo "Error: Invalid Search Query";
+								echo "Invalid Search Query";
 							}
 						?>
 					</article>

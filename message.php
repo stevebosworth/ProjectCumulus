@@ -1,8 +1,3 @@
-<?php 
-//declare session
-session_start(); 
-?>
-
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -35,10 +30,7 @@ session_start();
     <link type="text/css" rel="stylesheet" href="css/profile1.css"/>
      <!--CSS for tab-->
  	<link href="tabs/css/smoothness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
-    <script type="text/javascript">
-        function filter(){
-            document.getElementById("msg_form").submit();
-    </script>   
+   
    
     
 </head>
@@ -86,7 +78,7 @@ session_start();
         <div id="content_container">
         
         	<div id="profile_photo">
-            	<img src="<?php echo $_SESSION['photourl'] ?>" alt="profile photo" />
+            profile photo
         	</div><!--/profile_photo-->
             
             <div id="profileNameAnd_searchArea">
@@ -136,72 +128,32 @@ session_start();
             </aside><!--/rightSide_bar-->
             <div id = "vetical_separatorRight"></div><!--/vetical_separator-->
             
-            
-            
             <div id="messagesMain_content">
-            <!--Tabs -->
-            <div id="tabs">
-                <ul>
-                    <li><a href="#tabs_inbox">Inbox</a></li>
-                    <li><a href="#tabs_newMessage">+ New Message</a></li>
-                    
-                </ul>
-                <div id="tabs_inbox">
-<<<<<<< HEAD
-                <select>
-                    	<option>All Mail</option>
-                        <option>Unread</option>
-                        <option>Archived</option>
-                        <option>Spam</option>
-                        <option>Sent</option>
-                    </select>
-                    <input type="submit" name="btn_forward" value="Forward"/>
-                    <input type="submit" name="btn_delete" value="Delete"/>
-                    
-                    <br/><br/>
-=======
-                    <form id="msg_form" action="include/delete_message.inc.php" method="post">
-                        <select id='message_filter' name='message_filter' onchange='filter()'>
-                            <option value="All">All Messages</option>
-                            <option value="Unread" >Unread</option>
-                            <option value="Read" >Read</option>
-                        </select>
-                        <script type="text/javascript">
-                            function filter(){
-                                document.getElementById("msg_form").submit();
-                            }
-                        </script>
-                    <br /><br />
-                        <?php
-                        include ('include/edit_messages.inc.php');
-                        ?>
+                <?php
+                    include ('classes/Dbconn.class.php');
+                    include ('classes/messages_db.class.php');
+                    include ('classes/Messages.class.php');
 
-                        <input type='submit' id='delete_message' name='delete_message' value='Delete' />
-                        <input type='submit' id='mark_read' name='mark_read' value='Mark as Read' />
-                    </form>
->>>>>>> updates to everything
-                    
-                </div>
-                <div id="tabs_newMessage">
-                    <form id="create_message" action="include/new_message.inc.php" method="post">
-                        <!-- <input type="hidden" name="msg_from" /> -->
-                        <textarea name="msg_title" cols="40" rows="1" placeholder="Title:" ></textarea>
-                        <br /><br />
-                        <textarea name="msg_from" cols="40" rows="1" placeholder="From:" ></textarea>
-                        <br /><br />
-                        <textarea name="msg_to" cols="40" rows="1" placeholder="To:" ></textarea>
-                        <br /><br />
-                        <textarea name="msg_body" placeholder="Write Message..." cols="40" rows="5" ></textarea>
-                        <br /><br />
-                        <input type="submit" name="btn_submitMessage" value="Send"/> 
-                    </form>
-                </div>
-                
-            </div>
+                    $message_id = $_GET['id'];
+
+                    $msg_class = new message_class();
+
+                    //marks specified message as read
+                    $msg_class->messageMarkRead($message_id);
+
+                    $msg_array = $msg_class->selectMessageByID($message_id);
+
+                    foreach ($msg_array as $single_message) {
+                        echo "<h2>" . $single_message->getTitle() . "</h2>
+                        <br /><br /><p style='font-size:12px;'>From: " . $single_message->getUsr_From() . "&nbsp;&nbsp;" . $single_message->getMsg_Date() . "</p>
+                        <br /><br /><p style='font-size:15px;'>" . $single_message->getMsg_Text() . "</p>";
+                    }
+
+                ?>
+                <br />
+                <br />
+                <a href="Profile_Messages.php">Return to inbox</a>
             </div><!--/messagesMain__content-->
-            
-            
-            
         </div> <!-- /content_container -->
         
          <footer>

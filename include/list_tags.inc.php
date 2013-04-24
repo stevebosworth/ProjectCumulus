@@ -1,5 +1,7 @@
 <?php
 
+//this file is no longer necessary and has been merged with section.php
+
 include ('classes/tag_category.class.php');
 include ('classes/add_tags.class.php'); 
 
