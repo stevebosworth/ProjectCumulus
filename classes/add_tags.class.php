@@ -1,6 +1,7 @@
 <?php
 	class add_tags {
 		
+		//adds tags into database
 		public function addTags($tag, $section) { //added $section
 			
 			$db = Dbconn::getDB();
@@ -12,6 +13,7 @@
 			$db->exec($query);
 		}	
 	   
+	   	//retrieves tags from database
 	   	public function selectTag($section) { //added $section apr/21/13
 			$db = Dbconn::getDB();
 			$sqlquery = "SELECT * FROM tags WHERE article_ref = '$section'"; //added where clause apr/21/13
@@ -31,6 +33,7 @@
 		return $tags;	   
 	   }
 
+	   //retrieves tags based on id
 	   public function selectTagByTag($tag) { 
 			$db = Dbconn::getDB();
 			$sqlquery = "SELECT * FROM tags WHERE tag = '$tag'"; 

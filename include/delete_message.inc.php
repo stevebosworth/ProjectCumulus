@@ -3,19 +3,31 @@
 	include ('../classes/messages_db.class.php');
 	include ('../classes/Messages.class.php');
 
-	$id = $_POST['message_id'];
-	//$filter = $_POST['message_filter'];
+	$id = $_POST['message_idcheck'];
 
 	$messages_class = new message_class();
 
+	//loops through array and deletes selected items
 	if($_POST['delete_message'])
 	{
-		$messages_class->deleteMessage($id);
+		foreach($id as $i) 
+		{
+			$messages_class->deleteMessage($i);	
+		}
+		
 	}
+	//loops through array and marks selected items as read
 	elseif($_POST['mark_read'])
 	{
-		$messages_class->messageMarkRead($id);
+		foreach($id as $i) 
+		{
+			$messages_class->messageMarkRead($i);
+		}
 	}
+	
+	
+	header("location:../Profile_Messages.php");
+
 	/*
 	else //highly experimental
 	{
@@ -56,6 +68,6 @@
 	*/
 
 
-	header("location:../Profile_Messages.php");
+	
 
 ?>

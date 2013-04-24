@@ -3,6 +3,7 @@
 	include ('../classes/messages_db.class.php');
 	include ('../classes/Messages.class.php');
 
+	//creates a new message
 	$title = $_POST['msg_title'];
 	$body = $_POST['msg_body'];
 	$to = $_POST['msg_to'];

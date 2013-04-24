@@ -162,7 +162,7 @@ session_start();
                         <?php
                         include ('include/edit_messages.inc.php');
                         ?>
-
+                        
                         <input type='submit' id='delete_message' name='delete_message' value='Delete' />
                         <input type='submit' id='mark_read' name='mark_read' value='Mark as Read' />
                     </form>

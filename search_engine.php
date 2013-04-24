@@ -110,8 +110,8 @@
 
 								foreach ($result as $resultset) {
 						        	echo "<h5>" . $resultset->getLaw_Name() . " > " . $resultset->getBook_Title() . " > " . $resultset->getTitle_Title() . " > 
-                                    " . $resultset->getCh_Title() . " > " . $resultset->getDiv_Title() . " > Section " . "
-                                    <a href='section.php?section=" . $resultset->getSec_Num() . "'>" .  $resultset->getSec_Num() . "
+                                    " . $resultset->getCh_Title() . " > " . $resultset->getDiv_Title() . "
+                                    ><a href='section.php?section=" . $resultset->getSec_Num() . "'>" . " Section " .  $resultset->getSec_Num() . "
                                     </h5>
                                     <br /><a href='section.php?section=" . $resultset->getSec_Num() . "'>
                                     &quot;" . substr($resultset->getSec_Txt(), 0, 50) . "...&quot;</a>

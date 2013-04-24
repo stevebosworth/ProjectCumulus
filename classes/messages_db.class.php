@@ -73,6 +73,7 @@ class message_class {
 
 	}
 
+	//selects unread messages
 	public function selectNewMessage() {
 		$db = Dbconn::getDB();
 		$query = "SELECT msg_text, usr_to, usr_from, title, msg_read, msg_date FROM messages WHERE msg_read = 'Unread' ORDER BY msg_date DESC";

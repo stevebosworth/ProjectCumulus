@@ -1,6 +1,7 @@
 <?php
 	class search_class {
 
+		//returns categories of legal code from database based on query
 		public function searchSections($search_query){
 
 			$db = Dbconn::getDB();
@@ -42,30 +43,5 @@
 			}
 			return $sections;
 		}
-		/*
-		public function searchTags($search_query){
-
-			$db = Dbconn::getDB();
-
-			$query = "SELECT article_ref, tag 
-						FROM tags
-						WHERE tag 
-						LIKE '%" . $search_query . "%'";
-			$result = $db->query($query);
-
-			$sections = array();
-
-			foreach ($result as $row){
-				$section = new Search(
-					$row['article_ref'], 
-					$row['tag'], 
-					); 
-				$section->getSec_Num($row['sec_num']); 
-				$section->getSec_Title($row['sec_title']);
-				$section->getSec_Txt($row['sec_txt']);
-				$sections[] = $section;
-			}
-			return $sections;
-		}*/
 	}
 ?>
