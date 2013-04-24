@@ -1,7 +1,9 @@
 /* Added by Chris Voorberg - April 23, 2013 */
 
 #contact_form {
-	margin: 100px;
+	padding:50px 0;
+	margin:0 auto;
+	width:550px;
 }
 
 #contact_list {

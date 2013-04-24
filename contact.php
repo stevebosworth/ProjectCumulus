@@ -11,25 +11,26 @@
     	<?php //include 'include/search_engine.inc.php' ?>
     	<div id="contact_form">
 
-    		<h2>We LOVE Feedback!</h2>
-    		<h3>Please enter your question or comment and information below!</h3>
+    		<h2 style="text-align:center">We LOVE Feedback!</h2>
+    		<h3>Please enter your question or comment and information below!</h3><br />
+            <p>All fields marked with "*" are required.</p>
     		<!-- Form to collect information, submits to the database -->
     		<form action="include/process_contact.inc.php" method="POST">
     			<table>
     				<tr>
-    					<td>First Name: </td>
+    					<td>*First Name: </td>
     					<td><input type="text" name="firstname" /></td>
     				</tr>
     				<tr>
-    					<td>Last Name: </td>
+    					<td>*Last Name: </td>
     					<td><input type="text" name="lastname" /></td>
     				</tr>
     				<tr>
-    					<td>Email: </td>
+    					<td>*Email: </td>
     					<td><input type="text" name="email" /></td>
     				</tr>
     				<tr>
-    					<td>Confirm Email: </td>
+    					<td>*Confirm Email: </td>
     					<td><input type="text" name="emailconf" /></td>
     				</tr>
     				<tr>
@@ -37,12 +38,14 @@
     					<td><input type="text" name="phone" /></td>
     				</tr>
     				<tr>
-    					<td>Message: </td>
+    					<td>*Message: </td>
     					<td><textarea name="message" cols="40" rows="5"></textarea><p>Limit of 500 characters.</p></td>
     				</tr>
     				<tr>
     					<td></td>
-    					<td><input type="submit" value="Submit!" /></td>
+    					<td><input type="submit" value="Submit!" />
+                            <p>You will automatically be subsribed to our daily newsletter!</p>
+                        </td>
     				</tr>
     			</table>
     		</form>
