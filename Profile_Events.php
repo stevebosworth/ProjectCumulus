@@ -1,3 +1,8 @@
+<?php 
+//declare session
+session_start(); 
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -84,7 +89,7 @@
         <div id="content_container">
         
         	<div id="profile_photo">
-            profile photo
+            	<img src="<?php echo $_SESSION['photourl'] ?>" alt="profile photo" />
         	</div><!--/profile_photo-->
             
             <div id="profileNameAnd_searchArea">
@@ -145,18 +150,18 @@
                     
                 </ul>
                 <div id="tabs_createEvents">
-                	<span>Name</span>
-                    <input type="text" name="txt_name"/><br/><br/>
-                    <span>Date</span>
-                    <input type="text" id="datepicker" /><br/><br/>
-                    <span>Time</span>
-                    <input type="text" name="txt_time"/><br/><br/>
-                    <span>Venue</span>
-                    <input type="text" name="txt_location"/><br/><br/>
+                	<span>Title of Event</span>
+                    <input type="text" name="txt_title"/><br/><br/>
+                    <span>Email</span>
+                    <input type="text" id="txt_email" /><br/><br/>
+                    <span>Date of Event</span>
+                    <input type="text" name="txt_date"/><br/><br/>
                     <span>Description</span>
-                    <input type="text" name="txt_description"/><br/><br/>
+                    <textarea name="txt_description"></textarea> <br/><br/>
+                    <span>Venue</span>
+                    <input type="text" name="txt_venue"/> <br/><br/>
                     <span>Audience</span>
-                    <select>
+                    <select name=ddl_audience>
                     	<option>All</option>
                         <option>Friends Only</option>
                     </select>

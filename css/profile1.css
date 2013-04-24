@@ -8,6 +8,34 @@
 	margin-left:600px;
 }
 
+#loginErrorRelogin_content
+{
+	
+	margin-top:200px;
+	border:solid;
+	border-width:1px;
+	border-color:#F06;
+}
+
+#loginErrorRelogin_content table
+{
+	margin-left:180px;
+	margin-top:10px;
+}
+
+#loginErrorRelogin_content h2, h3
+{
+	padding-top: 10px;
+	margin-left: 10px;
+}
+
+/*------Logout-----*/
+#logout_controls
+{
+	margin-top:20px;
+	margin-left:600px;
+}
+
 body
 {
 	background-image:none;
@@ -164,10 +192,10 @@ profile_photo a
 
 #profileMenu_title
 {
-	height:20px;
-	width:130px;
-	background-color:#001c2e;
-	margin-bottom:20px;	
+	height: 30px;
+	width: 130px;
+	background-color: #001c2e;
+	margin-bottom: 20px;
 }
 
 #profileMenu_title h3
@@ -198,10 +226,14 @@ profile_photo a
 	margin-left:5px;
 }
 
+
+/*-------Profile-------*/
 #profileMain_content
 {
 	float:right;
 	width:672px;
+	/*height:2000px;*/
+	font: 62.5% "Trebuchet MS", sans-serif;
 }
 
 #EditProfilePage_title
@@ -249,20 +281,41 @@ profile_photo a
 	width:150px;
 }
 
-#edit_name
+#edit_firstName
 {
 	width:600px;
 	height:40px;
 	margin-top:40px;
 }
 
-#editName_title
+#editFirstName_title
 {
 	float:left;
 	margin-top:5px;
 }
 
-#edit_name input
+#edit_firstName input
+{
+	float:left;
+	margin-left:33px;
+	width:198px;
+}
+
+
+#edit_lastName
+{
+	width:600px;
+	height:40px;
+	margin-top:40px;
+}
+
+#editLastName_title
+{
+	float:left;
+	margin-top:5px;
+}
+
+#edit_lastName input
 {
 	float:left;
 	margin-left:33px;
@@ -463,9 +516,9 @@ profile_photo a
 
 #rightSideBar_ActiveDiscussionTitle
 {
-	width:200px;
-	height:20px;
-	background-color:#001c2e;
+	width: 200px;
+	height: 30px;
+	background-color: #001c2e;
 	
 }
 
@@ -523,13 +576,6 @@ profile_photo a
 	font: 62.5% "Trebuchet MS", sans-serif;	
 }
 
-/*-------Profile-------*/
-#profileMain_content
-{
-	float:right;
-	width:672px;
-	font: 62.5% "Trebuchet MS", sans-serif;
-}
 
 
 /**********css for edit profile photo button***************/
@@ -670,6 +716,7 @@ profile_photo a
 body{
 		/*font: 62.5% "Trebuchet MS", sans-serif;
 		margin: 50px;*/
+		font-size:larger;
 	}
 	.demoHeaders {
 		margin-top: 2em;
@@ -705,3 +752,37 @@ body{
 	.fakewindowcontain .ui-widget-overlay {
 		position: absolute;
 	}
+
+#tabs
+{
+	overflow: auto;
+}
+#tabs h3
+{
+	font-size:18px;
+}
+
+/*-----css for table in tab-------*/
+.pretty-table
+{
+	border-collapse: collapse;
+}
+.pretty-table th, .pretty-table td { padding: 0.5em; }
+.pretty-table { border: 1px solid #333; }
+.pretty-table th, .pretty-table td { border: 1px dotted #666; }
+.pretty-table th[scope=col]
+{
+  border-bottom: 2px solid #333;
+  border-right: 2px solid #333;
+}
+.pretty-table th+th[scope=col] { border-right: 1px dotted #666; }
+.pretty-table th[scope=row] { border-right: 2px solid #333; }
+.pretty-table th, .pretty-table td { color: #001c2e; }
+
+.pretty-table th[scope=row] { background-color: #b8cfe5; }
+.pretty-table th
+{
+ font-weight:bolder;
+}
+
+

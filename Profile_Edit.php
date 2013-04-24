@@ -1,3 +1,9 @@
+<?php 
+//declare session
+session_start(); 
+?>
+
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -39,7 +45,6 @@
 </head>
 <body>
 
-<form>
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
@@ -80,7 +85,7 @@
         <div id="content_container">
         
         	<div id="profile_photo">
-            profile photo
+            	<img src="<?php echo $_SESSION['photourl'] ?>" alt="profile photo" />
         	</div><!--/profile_photo-->
             
             <div id="profileNameAnd_searchArea">
@@ -178,11 +183,20 @@
                       
                          
                   </section><!--/edit_profilePhoto-->
-                
-                <section id="edit_name">
+                   <!--<section id="edit_name">
                 	<div id="editName_title">Name</div>
                     <input id="txt_editName" type="text"/>
-                </section><!--/edit_name-->
+                </section>-->
+                
+                <section id="edit_firstName">
+                	<div id="editFirstName_title">First Name</div>
+                    <input id="txt_editFirstName" type="text"/>
+                </section><!--/edit_firstName-->
+                
+                <section id="edit_lastName">
+                	<div id="editLastName_title">Last Name</div>
+                    <input id="txt_editLastName" type="text"/>
+                </section><!--/edit_lastName-->
                 
                 <section id="edit_email">
                 	<div id="editEmail_title">Email</div>

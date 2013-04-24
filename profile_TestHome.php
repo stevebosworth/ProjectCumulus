@@ -1,8 +1,22 @@
 <?php 
-//declare session
 session_start(); 
-?>
+//includes
+require_once('classes/UserProfileClasses/database.class.php');
+require_once('classes/UserProfileClasses/login_db.class.php');
+require_once('classes/UserProfileClasses/login.class.php');
+require_once('classes/UserProfileClasses/validation.class.php');
 
+//set the location of the re-register file and profile_home page file to redirect to
+$reLoginurl="location:include/profile_includes/Profile_LoginErrorTryTillLoginSuccessful.inc.php";
+$profileHomeurl="location:Profile_Home.php";
+
+//if the page posts back to itself, do the following
+if($_POST)
+{
+	$myValidation=new Validation();
+	$myValidation->validateLogin($reLoginurl,$profileHomeurl);
+}
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -12,12 +26,12 @@ session_start();
 	<html class="no-js"> <!--<![endif]--><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Edit Profile</title>
+    <title>Project Cumulus Home Page</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
      <!--Place favicon.ico and apple-touch-icon.png in the root directory--> 
 
-   <!-- Main Javascript and Jquery -->
+    <!-- Main Javascript and Jquery -->
     <script src="js/jquery.js"></script>
     <script src="js/profile.js" type="text/javascript"></script>
     <!--javascript for tab-->
@@ -39,13 +53,12 @@ session_start();
     <!--CSS for date picker-->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
 	<link rel="stylesheet" href="/resources/demos/style.css" />
-   
+    <link href="img/test.PNG"
     
 </head>
 <body>
 
 
-<form>
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
@@ -75,98 +88,41 @@ session_start();
                     <li class="nav_header" class="nav_link"><a href="#">FAQ</a></li>
                 </ul>
             </nav>
+            
+            <div id="login_controls">
+            <form  method="post" action="profile_TestHome.php">
+            
+            <br/><br/>
+            <!--<span>Username:</span>-->
+            <input type="text" name="txt_email" placeholder="Email" autocomplete="on"/>
+            <!--<span>Password:</span>-->
+            <input type="password" name="txt_password" placeholder="Password"/>
+           
+            <input type="submit" name="btn_submitLogin" value="Login" /> <br/>
+            <a href="include/profile_includes/passReset_inputEmailOrUsername.inc.php">Forgot your Password?</a>
+            </form>
+            </div><!--login_controls-->
 
         </header>
                 
- 
+
+
+
+
 		<!--/////////////My codes for div content_container////////////-->
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         
-        <div id="content_container">
-        
-        	<div id="profile_photo">
-            	<img src="<?php echo $_SESSION['photourl'] ?>" alt="profile photo" />
-        	</div><!--/profile_photo-->
-            
-            <div id="profileNameAnd_searchArea">
-            
-            <div id="activeUser_name">
-            <p>Welcome Nnabugwu</p>
-            </div><!--/activeUser_name-->
-            
-            <div id="searchBox_Area">
-            
-            	<div id="search_Box">
-                	<input type="text" name="txt_search" placeholder="Search All" autocomplete="on"/>
-                </div><!--/search_Box-->
-            	<div id="search_Button">
-                	<input type="button" name="btn_search" value="Search" class="button_size"/>
-                </div><!--/search_Button-->
-                <div id="advanced_Search">
-                	<a href="#" class="link_color">Advanced Search</a>
-                </div><!--/advanced_Search-->
-            </div><!--/searchBoxArea-->
-            
-        </div><!--/profileNameAnd_searchArea-->
-        
-        <div id="advancedSearch_options">        	
-        </div><!--/advancedSearch_options-->
-        
-        
-			<aside id="leftSide_bar">
-            <div id="profileMenu_title"><h3>Profile Menu</h3></div>
-            	<nav id="profile_menu">
-                	<ul>
-                    	<li><a href="Profile_Home.php">Profile</a></li>
-                        <li><a href="Profile_Messages.php">Messages</a></li>
-                    	<li><a href="Profile_Discussions.php">Discussions</a></li>
-                        <li class="event"><a href="Profile_Events.php">Events</a></li>
-                        <li><a href="Profile_Friends.php">Friends</a></li>                    
-                        <li><a href="#">Law Quick Link</a></li>
-                    </ul>
-            	</nav>               
-			</aside><!--/leftSide_bar-->           
-            <div id = "vetical_separatorLeft"></div><!--/vetical_separator-->
-            
-            
-            <aside id="rightSide_bar">
-            <div id="rightSideBar_ActiveDiscussionTitle"><h3>Active Discussions</h3></div>
-         
-            </aside><!--/rightSide_bar-->
-            <div id = "vetical_separatorRight"></div><!--/vetical_separator-->
-            
-            
-            
-            <div id="friendsMain_content">
-           		<!------ Tabs --------->
-            <div id="tabs">
-                <ul>
-                    <li><a href="#tab_friends">Friends</a></li>
-                                     
-                </ul>
-                
-                <div id="tab_friends"> <!--NOTE that all data is to be pulled from database and should be in rows-->
-                	<a href="Profile_Messages.php">Message</a>
-                    <a href="Profile_FindFriends.php">Find Friends</a>
-                    <a href="#">Delete</a>
-                    <br/><br/>
-                    
-                	 <input type="checkbox" id="cbx_refCaseLaw" />
-                                                       	                   
-                     <figure class="friendProfilePhoto">
-                     <img src="img/test.PNG" alt="me"/>
-                     </figure><!--/friendProfilePhoto--> 
-                     
-                     <span class="friendProfileName">
-                     	Obiora Nwokoye
-                     </span>                        
-               </div><!--/tab_friends-->     
-                
-            </div><!--/tabs-->
-            </div><!--/friendsMain_content-->
+        			<h1>THIS IS MY PROFILE TEST HOME PAGE</h1>
+         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             
         </div> <!-- /content_container -->
         
-         <footer>
+        
+        
+        
+        
+        
+          <footer>
             <nav id="nav_footer">
                 <ul>
                     <li><a href="#" class="nav_link">Home</a></li>
@@ -188,7 +144,7 @@ session_start();
     </div> <!-- /container -->
 
 
-    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>-->
+   <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>-->
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
@@ -200,6 +156,7 @@ session_start();
         g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>-->
+        
   		
    
 </body>

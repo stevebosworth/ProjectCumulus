@@ -1,3 +1,20 @@
+<?php 
+//declare session
+session_start(); 
+
+//if session has ended or expired, redirect to login page
+if(empty($_SESSION['email'])||empty($_SESSION['password']))
+{
+	header("location:include/profile_includes/Profile_LoginErrorTryTillLoginSuccessful.inc.php");
+}
+
+//includes
+require_once('classes/UserProfileClasses/database.class.php');
+require_once('classes/UserProfileClasses/login_db.class.php');
+require_once('classes/UserProfileClasses/login.class.php');
+
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -36,10 +53,9 @@
 	<link rel="stylesheet" href="/resources/demos/style.css" />
     
 </head>
+<!--<link href="../../classes/UserProfileClasses/database.class.php"-->
 <body>
 
-
-<form>
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
@@ -48,16 +64,16 @@
     <div id="container">
         <header>
             <div id="title">
-                <a href="#"><img src="img/icons/header_logo.png" alt="Project-Cumulus-Logo" id="logo"></a>
+                <a href="#"><img src="../../img/icons/header_logo.png" alt="Project-Cumulus-Logo" id="logo"></a>
             </div>
 
             <nav id="nav_controls">
                 <ul>
-                    <li class="usr_control"><a href="#"><img src="img/icons/chat_icon_head.png" alt="Chat" title="Chat" class="icon"></a></li>
-                    <li class="usr_control"><a href="#"><img src="img/icons/mail_icon_head.png" alt="Messages" title="Messages" class="icon"></a></li>
-                    <li class="usr_control"><a href="#"><img src="img/icons/profile_icon_head.png" alt="Profile" title="Profile" class="icon"></a></li>
-                    <li class="usr_control"><a href="#"><img src="img/icons/settings_icon_head.png" alt="Settings" title="Settings" class="icon"></a></li>
-                    <li class="usr_control"><a href="#"><img src="img/icons/logout_icon_head.png" alt="Logout" title="Logout" class="icon"></a></li>
+                    <li class="usr_control"><a href="#"><img src="../../img/icons/chat_icon_head.png" alt="Chat" title="Chat" class="icon"></a></li>
+                    <li class="usr_control"><a href="#"><img src="../../img/icons/mail_icon_head.png" alt="Messages" title="Messages" class="icon"></a></li>
+                    <li class="usr_control"><a href="#"><img src="../../img/icons/profile_icon_head.png" alt="Profile" title="Profile" class="icon"></a></li>
+                    <li class="usr_control"><a href="#"><img src="../../img/icons/settings_icon_head.png" alt="Settings" title="Settings" class="icon"></a></li>
+                    <li class="usr_control"><a href="#"><img src="../../img/icons/logout_icon_head.png" alt="Logout" title="Logout" class="icon"></a></li>
                 </ul>
             </nav>
             <nav id="nav_main">
@@ -70,25 +86,19 @@
                 </ul>
             </nav>
             
-            <div id="login_controls">
-            <!--<span>Username:</span>-->
-            <input type="text" name="txt_username" placeholder="Username" autocomplete="on"/>
-            <!--<span>Password:</span>-->
-            <input type="password" name="txt_password" placeholder="Password"/>
-            <input type="submit" name="btn_submitLogin" value="Login"/> <br/>
-            <a href="include/passReset_inputEmailOrUsername.inc.php">Forgot your Password?</a>
+            <div id="logout_controls">
+            	<a href="Profile_Logout.php">Logout</a>
             </div><!--login_controls-->
-
         </header>
                 
-
 		<!--/////////////My codes for div content_container////////////-->
         
         <div id="content_container">
-        
-        	<div id="profile_photo">
-            profile photo
-        	</div><!--/profile_photo-->
+        	<figure id="profile_photo">
+            <!--NOTE that the logout page temporarilly redirects to the re-login page-->
+            	<img src="<?php echo $_SESSION['photourl'] ?>" alt="profile photo" />
+                
+        	</figure><!--/profile_photo-->
             
             <div id="profileNameAnd_searchArea">
             
@@ -113,7 +123,6 @@
         
         <div id="advancedSearch_options">        	
         </div><!--/advancedSearch_options-->
-        
         
 			<aside id="leftSide_bar">
             <div id="profileMenu_title"><h3>Profile Menu</h3></div>
@@ -152,15 +161,31 @@
                     <br/><br/>
                     <h2>Basic Info</h2>
                     <br/><br/>
-                    <span>Name</span>&nbsp;&nbsp; <span>Nnabugwu Kalu</span> 
-                    <br/><br/> 
-                    <span>Email</span>&nbsp;&nbsp; <span>nnabugwu@yahoo.com</span> 
-                    <br/><br/>
-                    <span>Qualification</span>&nbsp;&nbsp; <span>Junior Web Developer</span> 
-                    <br/><br/>
-                    <span>Location</span>&nbsp;&nbsp; <span>Canada</span> 
-                    <br/><br/>
-                    <span>Bio</span>&nbsp;&nbsp; <span>B.Eng Elect/Elect. Engineering, Web Developer</span>                             
+                    
+                    <table width="639" height="224">
+                    	<tr>
+                        	<td width="142"><h3>Name</h3></td>
+                            <td width="485"><?php echo $_SESSION['firstname'].' '.$_SESSION['lastname']; ?></td>
+                        </tr> 
+                        <tr>
+                        	<td><h3>Email</h3></td>
+                            <td><?php echo $_SESSION['email']; ?></td>
+                        </tr>
+                        <tr>
+                        	<td><h3>Qualification</h3></td>
+                            <td><?php echo $_SESSION['qualification']; ?></td>
+                        </tr>
+                        <tr>
+                        	<td><h3>Location</h3></td>
+                            <td><?php echo $_SESSION['location']; ?></td>
+                        </tr>
+                        <tr>
+                       	  <td><h3>Bio</h3></td>
+                            <td><?php echo $_SESSION['bio']; ?></td>
+                        </tr>                   
+                    </table>
+                                      
+                                           
                	</div><!--/tab_profile-->
                 
                  <div id="tab_recentActivity">
@@ -186,8 +211,8 @@
             </nav>
             <nav id="nav_social">
                 <ul>
-                    <li><a href="#" class="share"><img src="img/icons/facebook_icon_foot.png" alt="Facebook" title="Facebook" class="share_icon"></a></li>
-                    <li><a href="#" class="share"><img src="img/icons/twitter_icon_foot.png" alt="Twitter" title="Twitter" class="share_icon"></a></li>
+                    <li><a href="#" class="share"><img src="../../img/icons/facebook_icon_foot.png" alt="Facebook" title="Facebook" class="share_icon"></a></li>
+                    <li><a href="#" class="share"><img src="../../img/icons/twitter_icon_foot.png" alt="Twitter" title="Twitter" class="share_icon"></a></li>
                     <li><a href="#" class="share"><img src="" alt="" class="share_icon"></a></li>
                 </ul>
             </nav>
@@ -198,8 +223,8 @@
 
    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>-->
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../../js/plugins.js"></script>
+    <script src="../../js/main.js"></script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <!--<script>

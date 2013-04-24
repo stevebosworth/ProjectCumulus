@@ -1,3 +1,8 @@
+<?php 
+//declare session
+session_start(); 
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -81,7 +86,7 @@
         <div id="content_container">
         
         	<div id="profile_photo">
-            profile photo
+            	<img src="<?php echo $_SESSION['photourl'] ?>" alt="profile photo" />
         	</div><!--/profile_photo-->
             
             <div id="profileNameAnd_searchArea">

@@ -1,3 +1,28 @@
+<?php 
+//includes
+include 'classes/UserProfileClasses/database.class.php';
+include 'classes/UserProfileClasses/validation.class.php';
+//declare session
+session_start();
+if($_POST)
+{
+	if(isset($_POST['btn_createDiscus']))
+	{	//note that date of creation and author is pulled from current date and current users name
+		$disAuthor=$_SESSION['firstname'].' '.$_SESSION['lastname'];
+		$dateTimeCreated=date("Y-m-d H:i:s");
+		$disTitle=$_POST['txt_discusTitle'];
+		$disSection=$_POST['txt_section'];
+		$disCaseLaw=$_POST['txt_caseLaw'];
+		$disBody=$_POST['txt_body'];
+		$disAudience=$_POST['ddl_Audience'];
+		
+		$val=new Validation();
+		$val->validateCreateDiscusn($disAuthor,$dateTimeCreated,$disTitle,$disSection,$disCaseLaw,$disBody,$disAudience);
+	}
+	
+	
+}
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -39,7 +64,6 @@
 <body>
 
 
-<form>
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
@@ -78,7 +102,7 @@
         <div id="content_container">
         
         	<div id="profile_photo">
-            profile photo
+            	<img src="<?php echo $_SESSION['photourl'] ?>" alt="profile photo" />
         	</div><!--/profile_photo-->
             
             <div id="profileNameAnd_searchArea">
@@ -105,7 +129,7 @@
         <div id="advancedSearch_options">        	
         </div><!--/advancedSearch_options-->
         
-        
+
 			<aside id="leftSide_bar">
             <div id="profileMenu_title"><h3>Profile Menu</h3></div>
             	<nav id="profile_menu">
@@ -139,7 +163,8 @@
                     <li><a href="#tab_manageDiscus">Manage Discussion</a></li>
                     
                 </ul>
-                <div id="tab_createDiscus">
+                <div id="tab_createDiscus" class="overflow">
+                <form action="Profile_Discussions.php" method="post">
                 	<span>Discussion Title</span>
                     <input type="text" name="txt_discusTitle"/><br/><br/>
                     <span>Section</span>
@@ -156,52 +181,274 @@
                    <br/><br/>
                    
                     <span>Body</span>
-                    <textarea name="txt_argument"></textarea><br/><br/>
-                    <span>Subject</span>
-                    <input type="text" name="txt_aimOfDiscus"/><br/><br/>
+                    <textarea name="txt_body"></textarea><br/><br/>
                     <span>Audience</span>
-                    <select name="ddl_option">
+                    <select name="ddl_Audience">
                     	<option>All</option>
                         <option>Friends Only</option>
                     </select><br/><br/>
-                    <input type="submit" name="btn_createDiscus" value="Create Discussion"/>                                     
+                    
+                    	<input type="submit" name="btn_createDiscus" value="Create Discussion"/>  
+                    </form>                                   
                </div><!--/tab_createDiscus-->
                
-                <div id="tab_manageDiscus">               
-                	<span>Author</span>
-                    <select name="ddl_author">
-                    	<option>Created by me</option>
-                        <option>Created by others</option>
-                    </select>
-                    <!--options below stay static as titles are selected and opened up.-->
-                    <a href="#">Edit</a>
-                    <a href="#">Leave</a><!--this option is only available if the user was not the creator of discussion-->
-                    <a href="#">Delete</a><!--this option is only available if the user is the creator of discussion-->
-                    <br/><br/>
-                    
-                    <input type="checkbox" name="cbx_selectDiscus"/>
-                    
-                    <span>Title</span>&nbsp;&nbsp;&nbsp;&nbsp;<!--to be modified later. no &nbsp; tags-->
-                    <span>Created</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>Last Modified</span>
-                    <br/><br/>
-                    <!--the data below is to be pulled from the database-->
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#">Criminal offence in high schools</a></span>&nbsp;&nbsp;
-                    <span>20-01-2013</span>&nbsp;&nbsp;
-                    <span>04-03-2013</span>
-                    <br/><br/>
-                    
-                    <!--the data below is to be pulled from the database-->
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#">Drinking and driving laws</a></span>&nbsp;&nbsp;
-                    <span>06-02-2013</span>&nbsp;&nbsp;
-                    <span>14-03-2013</span>
-                    
-                    <br/><br/>
-                    <input type="submit" name="btn_done" value="Done"/>
-                    
-                   
-                    
-                </div>
+                <div id="tab_manageDiscus" class="overflow"> 
+                
+				  <?php
+				 	
+					if(isset($_POST['lnk_delete']))
+					{
+						//code to execute when the delete button is clicked
+						echo $_POST['id'];
+					}	
+					elseif(isset($_POST['lnk_edit']))
+					{
+						
+						echo $_POST['author'] .  '<br />';
+						//var_dump($_POST);
+						echo '<input type="text" name=' . $_POST['id'] . ' value='. $_POST['id'] . ' />';
+						echo $_POST['dateTimeofcreation'];
+						echo $_POST['title'];
+						echo $_POST['section'];
+						echo $_POST['caselaw'];
+						echo $_POST['body'];
+						echo $_POST['audience'];
+							
+						//code to execute when the edit button is clicked
+						 function valid($id, $author, $dateTimeCreated,$title,$section,$caselaw,$body,$audience, $error)
+						 {
+						 
+						 if (!isset($error))
+						 {
+						 echo '<div style="padding:4px; border:1px solid red; color:red;">'.$error.'</div>';
+						 }
+						
+						echo 'hello world';
+						 echo'<form action="" method="post">';
+						 echo'<input type="hidden" name="id" value="'.$id.'"/>';
+						
+						 echo'<table pretty-table>
+							<tr>
+							  <td ><b>Edit Discussion </b></td>
+							  </tr>
+						 <tr>
+							 <td ><b>Author</b></td>
+							 <td><label>';
+							  echo'<input type="text" name="txt_author" value="'.$author.'" />
+							 </label></td>
+						   </tr>
+						
+						   <tr>
+							   <td >Date of Creation</td>
+							   <td><label>';
+								echo'<input type="text" name="txt_dateTimeCreated" value="'.$dateTimeCreated.'" />
+							   </label></td>
+						   </tr>
+						
+						   <tr>
+							   <td >Title</td>
+							   <td><label>';
+								echo'<input type="text" name="txt_title" value="'.$title.'" />
+							   </label></td>
+						   </tr>
+						   
+						   <tr>
+							   <td>Section</td>
+							   <td><label>';
+								echo'<input type="text" name="txt_section" value="'.$section.'" />
+							   </label></td>
+						   </tr>
+						   
+						   <tr>
+							   <td >Case Law</td>
+							   <td><label>';
+								echo'<input type="text" name="txt_caselaw" value="'.$caselaw.'" />
+							   </label></td>
+						   </tr>
+						   
+						   <tr>
+							   <td >Body</td>
+							   <td><label>';
+								echo'<textarea name="txt_body" >'.$body.'</textarea>
+							   </label></td>
+						   </tr>
+						   
+						   <tr>
+							   <td >Audience</td>
+							   <td><label>';
+								echo'<select type="text" name="ddl_audience" >';
+									echo'<option'; if($audience=="All"){echo"selected";} echo'>All</option>';
+									echo'<option'; if($audience=="Friends Only"){echo"selected";} echo'>Friends Only</option>
+								</select>
+							   </label></td>
+						   </tr>
+						
+						   <tr align="Right">
+							   <td ><label>
+								  <input type="submit" name="submit" value="Update Discussion">
+							   </label></td>
+							   </tr>
+						</table>
+						 </form>
+						 </body>
+						 </html>';
+					
+						 }
+						
+						 //include('config.php');
+						 $db = Database::getDB();
+						
+						 if (isset($_POST['submit']))
+						 {
+						
+						 if (is_numeric($_POST['id']))
+						 {
+						
+						 $id = $_POST['id'];
+						 $author = mysql_real_escape_string(htmlspecialchars($_POST['txt_author']));
+						 $dateTimeCreated = mysql_real_escape_string(htmlspecialchars($_POST['txt_dateTimeCreated']));
+						 $title = mysql_real_escape_string(htmlspecialchars($_POST['txt_title']));
+						 $section = mysql_real_escape_string(htmlspecialchars($_POST['txt_section']));
+						 $caselaw = mysql_real_escape_string(htmlspecialchars($_POST['txt_caselaw']));
+						 $body = mysql_real_escape_string(htmlspecialchars($_POST['txt_body']));
+						 $audience = mysql_real_escape_string(htmlspecialchars($_POST['ddl_audience']));
+						
+						
+						 if ($author ==''||$dateTimeCreated==''||$title==''||$section==''||$caselaw==''||$body==''||$audience=='')
+						 {
+						
+						 $error = 'ERROR: Please fill in all required fields!';
+						
+						
+						valid($id, $author, $dateTimeCreated,$title,$section,$caselaw,$body,$audience, $error);
+						 }
+						 else
+						 {
+						//changed
+						 $query="UPDATE discussions SET author='$author', dateTimeofcreation='$dateTimeCreated' ,title='$title', section='$section', caselaw='$caselaw', body='$body', audience='$audience' WHERE id='$id'"
+						 or die(mysql_error());
+						
+						 header("Location: #tab_manageDiscus");//changed
+						 }
+						 }
+						 else
+						 {
+						
+						 echo 'Error!';
+						 }
+						 }
+						 else
+						
+						 {
+						
+						 if (isset($_POST['id']) && is_numeric($_POST['id']) && $_POST['id'] > 0)
+						 {
+							$id = $_POST['id'];
+							$db = Database::getDB();
+							$query="SELECT * FROM discussions WHERE id=$id";					
+							$result=$db->exec($query)
+							or die(mysql_error());
+							mysql_fetch_array($result);
+				
+						 
+						// $result = mysql_query("SELECT * FROM discussions WHERE id=$id")
+//						 or die(mysql_error());
+//						 $row = mysql_fetch_array($result);
+						
+						 if($row)
+						 {
+						 $author = $row['author'];
+						 $dateTimeCreated = $row['dateTimeofcreation'];
+						 $title = $row['title'];
+						 $section = $row['section'];
+						 $caselaw = $row['caselaw'];
+						 $body = $row['body'];
+						 $audience = $row['audience'];
+						
+						 valid($id, $author, $dateTimeCreated,$title,$section,$caselaw,$body,$audience,'');
+						 }
+						 else
+						 {
+						 echo "No results!";
+						 }
+						 }
+						 else
+						
+						 {
+						 echo 'Error!';
+						 }
+						 }
+				
+						
+					}
+					else
+					{
+						//code to display all discussion information for current user
+					  $currentUser=$_SESSION['firstname'].' '.$_SESSION['lastname'];
+					  $db=Database::getDB();
+					  $query= 'SELECT * FROM discussions WHERE author='."'".$currentUser."'";
+					  $result = $db->query($query)
+					  or die(mysql_error());
+					  
+					  echo "<table  class='pretty-table' >";
+					  echo "<tr>
+					  <th>Id</th>
+					  <th>Author</th>
+					  <th>Date of Created</th>
+					  <th>Title</th>
+					  <th>Section</th>
+					  <th>Case Law</th>
+					  <th>Body</th>
+					  <th>Audience</th>
+					  <th>Edit</th>
+					  <th>Delete</th>
+					  </tr>";
+					  
+					  while($row=$result->fetch())
+					  {
+									  
+						echo "<tr>";
+						echo '<td>' . $row['id'] . '</td>';
+						echo '<td>' . $row['author'] . '</td>';
+						echo '<td>' . $row['dateTimeofcreation'] . '</td>';
+						echo '<td>' . $row['title'] . '</td>';
+						echo '<td>' . $row['section'] . '</td>';
+						echo '<td>' . $row['caselaw'] . '</td>';
+						echo '<td>' . $row['body'] . '</td>';
+						echo '<td>' . $row['audience'] . '</td>';
+						
+						//note the position of the form. Must be here to ensure that only the currently selected item ID is captured
+						echo'<td>
+						<form name="form_ManageDisc" action="#tab_manageDiscus" method="post"> 
+						<input type="submit"  name="lnk_edit" value="Edit" /></td>';
+						echo'<td><input type="submit" name="lnk_delete" value="Delete" />
+						</td>'; 
+						
+						//hidden field to hold the value of currently selected item
+						echo'<input type="hidden" name="id" value="'. $row['id'].'"/></td>';
+						echo'<input type="hidden" name="author" value="'. $row['author'].'"/></td>';
+						echo'<input type="hidden" name="dateTimeofcreation" value="'. $row['dateTimeofcreation'].'"/></td>';
+						echo'<input type="hidden" name="title" value="'. $row['title'].'"/></td>';
+						echo'<input type="hidden" name="section" value="'. $row['section'].'"/></td>';
+						echo'<input type="hidden" name="caselaw" value="'. $row['caselaw'].'"/></td>';
+						echo'<input type="hidden" name="body" value="'. $row['body'].'"/></td>';
+						echo'<input type="hidden" name="audience" value="'. $row['audience'].'"/></td>';
+						echo '</form> ';
+
+						echo "</tr>";
+					  	
+					  }	
+					  echo "</table>";  
+					  
+                        
+                    } 
+                   ?>
+                 
+                 
+                 	
+						
+                                                 
+              </div><!--/tab_manageDiscus-->
                 
             </div><!--/tabs-->
             </div><!--/DiscussionsMain_content-->
@@ -209,7 +456,6 @@
             
             
         </div> <!-- /content_container -->
-                  
         
          <footer>
             <nav id="nav_footer">
