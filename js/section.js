@@ -47,11 +47,25 @@ jQuery(document).ready(function($) {
 			function(msg){
 				alert(msg);
 		});
-	})
+	});
 
 	$('#lkb_upload').click(function(){
 		$('#upload_modal').dialog("open");
-	})
+	});
+
+	$(".voteIcons").click(function(){
+
+        var caselawIDVar = $(this).next().text();
+        var voteVar = $(this).val();
+        var results = $(this).next();
+
+        $.post(
+        '../include/vote.inc.php',
+        { caselawID: caselawIDVar, vote: voteVar },
+        function (data){
+            $(results).next().html(data);
+        });
+    });
 
 
 

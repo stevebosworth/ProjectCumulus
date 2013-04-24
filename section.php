@@ -192,6 +192,7 @@
                     <hr>
                     <h4>Related Case Law</h4>
                     <?php
+                        if(isset($sec_num)){
                         //displays caselaws from the database
                         foreach ($caselaws as $cl){ ?>
                             <div class='indCaselaw'>
@@ -220,23 +221,8 @@
                                 </div><!-- end votes -->
                     <?php   } ?>
                             </div><!-- end indCaselaw -->
-                    <?php } ?>
+                    <?php } } else { } ?>
                 </aside>
-                    <script>
-                        $(".voteIcons").click(function(){
-
-                            var caselawIDVar = $(this).next().text();
-                            var voteVar = $(this).val();
-                            var results = $(this).next();
-
-                            $.post(
-                            '../include/vote.inc.php',
-                            { caselawID: caselawIDVar, vote: voteVar },
-                            function (data){
-                                $(results).next().html(data);
-                            });
-                        });
-                    </script>
             </article> <!-- /law_article -->
 
             <section id="sidebar">
