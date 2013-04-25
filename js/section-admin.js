@@ -15,10 +15,10 @@ $(document).ready(function() {
                         table: $('#meta_table').val()
                     },
                     function(html) {
-                        console.log(html);
-                        $('.test').html(html);
-                        $('#add_title').val('');
-                        $('#add_num').val('');
+                        $('#add_meta_message').html(html);
+                        // $('.test').html(html);
+                        // $('#add_title').val('');
+                        // $('#add_num').val('');
                         //reset drop down list with new value
 
                 });
@@ -98,7 +98,7 @@ $(document).ready(function() {
 
 
 //Set Book Drop Down
-    $('#sel_law').change(function setLaw(){
+    $('#sel_law').change(function setBook(){
         var lawID = $(this).val();
         var dataString = 'law_id=' + lawID;
         $.ajax
@@ -288,17 +288,17 @@ $(document).ready(function() {
         // Get the editor instance that you want to interact with.
         var editor = CKEDITOR.instances.sec_text;
 
-        var str = editor.getData();
-        $('#sec_text').text(str);
+
         // Get editor contents
         // http://docs.ckeditor.com/#!/api/CKEDITOR.editor-method-getData
-        //text = $('#sec_text').val(editor.getData());
+        var str = editor.getData();
+        $('#sec_text').text(str);
         console.log($('#sec_text').val());
         var section = $('#frm_add_section').serialize();
         console.log(section);
 
         $.post('include/add-sec.inc.php', section, function(msg){
-            $('.test').html(msg);
+            alert(msg);
             $('#sec_num').val('');
             $('#sec_title').val('');
             $('#sec_text').val('');

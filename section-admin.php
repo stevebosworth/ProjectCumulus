@@ -94,7 +94,7 @@ require_once 'classes/sub_division_db.class.php';
                 <input type="text" id="sec_title" name="sec_title">
                 <br/>
                 <label for="sec_text">Section Text: </label>
-                <textarea class="ckeditor" id="sec_text" name="sec_text" cols="35" rows="10" ></textarea>
+                <textarea class="ckeditor" id="sec_text" name="sec_text"></textarea>
                 <br/>
                 <label for="enact_yr">Year of Enactment: </label>
                 <input type="text" id="enact_yr" name="enact_yr">
@@ -194,6 +194,7 @@ require_once 'classes/sub_division_db.class.php';
     <div id="add" style="display:none;">
         <form id="add_meta" method="post" name="add_meta">
             <h3 id="add_meta_head"></h3>
+            <h5 id="add_meta_message"></h5>
             <br />
             <input type="hidden" id="meta_id" name="meta_id">
             <input type="hidden" id="meta_table" name="meta_table"

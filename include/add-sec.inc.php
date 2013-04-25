@@ -20,11 +20,18 @@ $enact_sec  =$_POST['enact_sec'];
 
 //Insert a new section
 
-$insert = new SectionDB();
+if(isset($law_id) && isset($sec_num) && isset($sec_txt) && !empty($sec_txt) && is_numeric($sec_num))
+{
+	$insert = new SectionDB();
 
-$insert->addSection($sec_num, $sec_title, $sec_txt, $enact_yr, $enact_bill, $enact_sec, $law_id, $book_id, $title_id, $ch_id, $div_id, $sub_div_id);
+	$insert->addSection($sec_num, $sec_title, $sec_txt, $enact_yr, $enact_bill, $enact_sec, $law_id, $book_id, $title_id, $ch_id, $div_id, $sub_div_id);
 
-echo $sec_txt;
+	echo $sec_txt;
+}else{
+	echo "You must select a Law and declare a Section Number and define the Section.";
+}
+
+
 
 
 

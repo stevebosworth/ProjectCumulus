@@ -45,7 +45,7 @@ jQuery(document).ready(function($) {
 			'include/section.inc.php',
 			{currSec: $('#sec_body h1').attr('data-value'), srcUrl: $('#txt_source').val(), command: 'addSource'},
 			function(msg){
-				alert(msg);
+				console.log(msg);
 		});
 	});
 

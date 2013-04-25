@@ -35,11 +35,6 @@ switch($command)
             $result = $section->getSectionAll($this_section);
 
             foreach($result as $r){
-            // echo"<h3>Book " . $r['book_num'] . ". </h3><h4>" . $r['book_title'] . "</h4>".
-            //     "<h3>Title " . $r['title_num'] . ". </h3><h4>" . $r['title_title'] . "</h4>".
-            //     "<h3>Chapter " . $r['ch_num'] . ". </h3><h4>" . $r['ch_title'] . "</h4>".
-            //     "<h3>Division " . $r['div_num'] . ". </h3><h4>" . $r['div_title'] . "</h4>".
-            //     "<h3>&sect " . $r['sub_div_num'] . ". </h3><h4>" . $r['sub_div_num'] . "</h4>".
             echo"<h1> Section " . $r['sec_num'] . "</h1>".
                 "<h5>" . $r['sec_title'] . "</h5>".
                 "<p>" . $r['sec_txt'] . "</p>".
@@ -55,14 +50,18 @@ switch($command)
         echo "Success!!";
     break;
     case "addSource":
-        if(isset($curr_sec) && isset($src_url))
-        {
+        //check valid url Regex from http://regexlib.com/REDetails.aspx?regexp_id=96
+        //$pattern = "(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?";
+
+        //if(isset($curr_sec) && isset($src_url) && preg_match($pattern, $src_url));
+        //{
+
+        //RAN INTO PROBLEMS WITH MY REGEX AT THE LAST MINUTE AN DIDN"T HAVE TIME TO FIX
+
             $source = new SourceDB();
             $add_src = $source->addSource($curr_sec, $src_url);
             echo "success!!";
-        }else{
-            echo "failed";
-        }
+        //}
     break;
 }
 
