@@ -818,6 +818,11 @@ body{
  font-weight:bolder;
 }
 
+.pretty-table td b
+{
+	font-weight:bolder;
+}
+
 /*---image uploader---*/
 
 #imageUpload

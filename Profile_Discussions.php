@@ -205,38 +205,23 @@ if($_POST)
 				 	
 					if(isset($_POST['lnk_delete']))
 					{
-						//code to execute when the delete button is clicked
-						echo $_POST['id'];
-					}	
-					elseif(isset($_POST['lnk_edit']))
-					{
 						
-						echo $_POST['author'] .  '<br />';
-						//var_dump($_POST);
-						echo '<input type="text" name=' . $_POST['id'] . ' value='. $_POST['id'] . ' />';
-						echo $_POST['dateTimeofcreation'];
-						echo $_POST['title'];
-						echo $_POST['section'];
-						echo $_POST['caselaw'];
-						echo $_POST['body'];
-						echo $_POST['audience'];
+						
+						$id = $_POST['id'];	
+						$author = $_POST['author'];
+						$dateTimeCreated = $_POST['dateTimeofcreation'];
+						$title = $_POST['title'];
+						$section= $_POST['section'];
+						$caselaw = $_POST['caselaw'];
+						$body = $_POST['body'];
+						$audience = $_POST['audience'];
 							
-						//code to execute when the edit button is clicked
-						 function valid($id, $author, $dateTimeCreated,$title,$section,$caselaw,$body,$audience, $error)
-						 {
-						 
-						 if (!isset($error))
-						 {
-						 echo '<div style="padding:4px; border:1px solid red; color:red;">'.$error.'</div>';
-						 }
-						
-						echo 'hello world';
 						 echo'<form action="" method="post">';
 						 echo'<input type="hidden" name="id" value="'.$id.'"/>';
 						
-						 echo'<table pretty-table>
-							<tr>
-							  <td ><b>Edit Discussion </b></td>
+						 echo'<table class="pretty-table">
+							<tr align="center">
+							  <td colspan="2" style="color:blue"><b>Delete Discussion </b></td>
 							  </tr>
 						 <tr>
 							 <td ><b>Author</b></td>
@@ -246,42 +231,42 @@ if($_POST)
 						   </tr>
 						
 						   <tr>
-							   <td >Date of Creation</td>
+							   <td ><b>Date of Creation<b></td>
 							   <td><label>';
 								echo'<input type="text" name="txt_dateTimeCreated" value="'.$dateTimeCreated.'" />
 							   </label></td>
 						   </tr>
 						
 						   <tr>
-							   <td >Title</td>
+							   <td><b>Title</b></td>
 							   <td><label>';
 								echo'<input type="text" name="txt_title" value="'.$title.'" />
 							   </label></td>
 						   </tr>
 						   
 						   <tr>
-							   <td>Section</td>
+							   <td><b>Section</b></td>
 							   <td><label>';
 								echo'<input type="text" name="txt_section" value="'.$section.'" />
 							   </label></td>
 						   </tr>
 						   
 						   <tr>
-							   <td >Case Law</td>
+							   <td ><b>Case Law</b></td>
 							   <td><label>';
 								echo'<input type="text" name="txt_caselaw" value="'.$caselaw.'" />
 							   </label></td>
 						   </tr>
 						   
 						   <tr>
-							   <td >Body</td>
+							   <td ><b>Body</b></td>
 							   <td><label>';
 								echo'<textarea name="txt_body" >'.$body.'</textarea>
 							   </label></td>
 						   </tr>
 						   
 						   <tr>
-							   <td >Audience</td>
+							   <td ><b>Audience</b></td>
 							   <td><label>';
 								echo'<select type="text" name="ddl_audience" >';
 									echo'<option'; if($audience=="All"){echo"selected";} echo'>All</option>';
@@ -291,100 +276,184 @@ if($_POST)
 						   </tr>
 						
 						   <tr align="Right">
-							   <td ><label>
-								  <input type="submit" name="submit" value="Update Discussion">
+						   <td></td>
+							   <td >
+								  <input type="submit" name="btn_DeleteDiscussion" value="Delete Discussion" onClick="confirmDelete">
+							   </td>
+							   </tr>
+						</table>
+						 </form>
+						 </body>
+						 </html>';
+						 
+						
+					}	
+					elseif(isset($_POST['lnk_edit']))
+					{
+											
+						$id = $_POST['id'];	
+						$author = $_POST['author'];
+						$dateTimeCreated = $_POST['dateTimeofcreation'];
+						$title = $_POST['title'];
+						$section= $_POST['section'];
+						$caselaw = $_POST['caselaw'];
+						$body = $_POST['body'];
+						$audience = $_POST['audience'];
+							
+						 echo'<form action="" method="post">';
+						 echo'<input type="hidden" name="id" value="'.$id.'"/>';
+						
+						 echo'<table class="pretty-table">
+							<tr align="center">
+							  <td colspan="2" style="color:blue"><b>Edit Discussion </b></td>
+							  </tr>
+						 <tr>
+							 <td ><b>Author</b></td>
+							 <td><label>';
+							  echo'<input type="text" name="txt_author" value="'.$author.'" />
+							 </label></td>
+						   </tr>
+						
+						   <tr>
+							   <td ><b>Date of Creation<b></td>
+							   <td><label>';
+								echo'<input type="text" name="txt_dateTimeCreated" value="'.$dateTimeCreated.'" />
 							   </label></td>
+						   </tr>
+						
+						   <tr>
+							   <td><b>Title</b></td>
+							   <td><label>';
+								echo'<input type="text" name="txt_title" value="'.$title.'" />
+							   </label></td>
+						   </tr>
+						   
+						   <tr>
+							   <td><b>Section</b></td>
+							   <td><label>';
+								echo'<input type="text" name="txt_section" value="'.$section.'" />
+							   </label></td>
+						   </tr>
+						   
+						   <tr>
+							   <td ><b>Case Law</b></td>
+							   <td><label>';
+								echo'<input type="text" name="txt_caselaw" value="'.$caselaw.'" />
+							   </label></td>
+						   </tr>
+						   
+						   <tr>
+							   <td ><b>Body</b></td>
+							   <td><label>';
+								echo'<textarea name="txt_body" >'.$body.'</textarea>
+							   </label></td>
+						   </tr>
+						   
+						   <tr>
+							   <td ><b>Audience</b></td>
+							   <td><label>';
+								echo'<select type="text" name="ddl_audience" >';
+									echo'<option'; if($audience=="All"){echo"selected";} echo'>All</option>';
+									echo'<option'; if($audience=="Friends Only"){echo"selected";} echo'>Friends Only</option>
+								</select>
+							   </label></td>
+						   </tr>
+						
+						   <tr align="Right">
+						   <td></td>
+							   <td >
+								  <input type="submit" name="btn_updateDiscussion" value="Update Discussion">
+							   </td>
 							   </tr>
 						</table>
 						 </form>
 						 </body>
 						 </html>';
 					
-						 }
-						
-						 //include('config.php');
-						 $db = Database::getDB();
-						
-						 if (isset($_POST['submit']))
-						 {
-						
-						 if (is_numeric($_POST['id']))
-						 {
-						
-						 $id = $_POST['id'];
-						 $author = mysql_real_escape_string(htmlspecialchars($_POST['txt_author']));
-						 $dateTimeCreated = mysql_real_escape_string(htmlspecialchars($_POST['txt_dateTimeCreated']));
-						 $title = mysql_real_escape_string(htmlspecialchars($_POST['txt_title']));
-						 $section = mysql_real_escape_string(htmlspecialchars($_POST['txt_section']));
-						 $caselaw = mysql_real_escape_string(htmlspecialchars($_POST['txt_caselaw']));
-						 $body = mysql_real_escape_string(htmlspecialchars($_POST['txt_body']));
-						 $audience = mysql_real_escape_string(htmlspecialchars($_POST['ddl_audience']));
 						
 						
-						 if ($author ==''||$dateTimeCreated==''||$title==''||$section==''||$caselaw==''||$body==''||$audience=='')
-						 {
-						
-						 $error = 'ERROR: Please fill in all required fields!';
-						
-						
-						valid($id, $author, $dateTimeCreated,$title,$section,$caselaw,$body,$audience, $error);
-						 }
-						 else
-						 {
-						//changed
-						 $query="UPDATE discussions SET author='$author', dateTimeofcreation='$dateTimeCreated' ,title='$title', section='$section', caselaw='$caselaw', body='$body', audience='$audience' WHERE id='$id'"
-						 or die(mysql_error());
-						
-						 header("Location: #tab_manageDiscus");//changed
-						 }
-						 }
-						 else
-						 {
-						
-						 echo 'Error!';
-						 }
-						 }
-						 else
-						
-						 {
-						
-						 if (isset($_POST['id']) && is_numeric($_POST['id']) && $_POST['id'] > 0)
-						 {
-							$id = $_POST['id'];
-							$db = Database::getDB();
-							$query="SELECT * FROM discussions WHERE id=$id";					
-							$result=$db->exec($query)
-							or die(mysql_error());
-							mysql_fetch_array($result);
-				
-						 
-						// $result = mysql_query("SELECT * FROM discussions WHERE id=$id")
+						 //$db = Database::getDB();
+//						
+//						 if (isset($_POST['submit']))
+//						 {
+//						
+//						 if (is_numeric($_POST['id']))
+//						 {
+//						
+//						 $id = $_POST['id'];
+//						 $author = mysql_real_escape_string(htmlspecialchars($_POST['txt_author']));
+//						 $dateTimeCreated = mysql_real_escape_string(htmlspecialchars($_POST['txt_dateTimeCreated']));
+//						 $title = mysql_real_escape_string(htmlspecialchars($_POST['txt_title']));
+//						 $section = mysql_real_escape_string(htmlspecialchars($_POST['txt_section']));
+//						 $caselaw = mysql_real_escape_string(htmlspecialchars($_POST['txt_caselaw']));
+//						 $body = mysql_real_escape_string(htmlspecialchars($_POST['txt_body']));
+//						 $audience = mysql_real_escape_string(htmlspecialchars($_POST['ddl_audience']));
+//						
+//						
+//						 if ($author ==''||$dateTimeCreated==''||$title==''||$section==''||$caselaw==''||$body==''||$audience=='')
+//						 {
+//						
+//						 $error = 'ERROR: Please fill in all required fields!';
+//						
+//						
+//						valid($id, $author, $dateTimeCreated,$title,$section,$caselaw,$body,$audience, $error);
+						// }
+//						 else
+//						 {
+//						//changed
+//						 $query="UPDATE discussions SET author='$author', dateTimeofcreation='$dateTimeCreated' ,title='$title', section='$section', caselaw='$caselaw', body='$body', audience='$audience' WHERE id='$id'"
 //						 or die(mysql_error());
-//						 $row = mysql_fetch_array($result);
-						
-						 if($row)
-						 {
-						 $author = $row['author'];
-						 $dateTimeCreated = $row['dateTimeofcreation'];
-						 $title = $row['title'];
-						 $section = $row['section'];
-						 $caselaw = $row['caselaw'];
-						 $body = $row['body'];
-						 $audience = $row['audience'];
-						
-						 valid($id, $author, $dateTimeCreated,$title,$section,$caselaw,$body,$audience,'');
-						 }
-						 else
-						 {
-						 echo "No results!";
-						 }
-						 }
-						 else
-						
-						 {
-						 echo 'Error!';
-						 }
-						 }
+//						
+//						 header("Location: #tab_manageDiscus");//changed
+//						 }
+//						 }
+//						 else
+//						 {
+//						
+//						 echo 'Error!';
+//						 }
+//						 }
+//						 else
+//						
+//						 {
+//						
+//						 if (isset($_POST['id']) && is_numeric($_POST['id']) && $_POST['id'] > 0)
+//						 {
+//							$id = $_POST['id'];
+//							$db = Database::getDB();
+//							$query="SELECT * FROM discussions WHERE id=$id";					
+//							$result=$db->exec($query)
+//							or die(mysql_error());
+//							mysql_fetch_array($result);
+//				
+//						 
+//						// $result = mysql_query("SELECT * FROM discussions WHERE id=$id")
+////						 or die(mysql_error());
+////						 $row = mysql_fetch_array($result);
+//						
+//						 if($row)
+//						 {
+//						 $author = $row['author'];
+//						 $dateTimeCreated = $row['dateTimeofcreation'];
+//						 $title = $row['title'];
+//						 $section = $row['section'];
+//						 $caselaw = $row['caselaw'];
+//						 $body = $row['body'];
+//						 $audience = $row['audience'];
+//						
+//						 valid($id, $author, $dateTimeCreated,$title,$section,$caselaw,$body,$audience,'');
+//						 }
+//						 else
+//						 {
+//						 echo "No results!";
+//						 }
+//						 }
+//						 else
+//						
+//						 {
+//						 echo 'Error!';
+//						 }
+//						 }
 				
 						
 					}

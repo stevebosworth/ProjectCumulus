@@ -205,24 +205,210 @@ if($_POST)
                 </div>
                 
                 <div id="tabs_manageEvents">
-                	 <!--options below stay static as titles are selected and opened up.-->
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
-                    <br/><br/>
-                    
-                    <input type="checkbox" name="cbx_selectDiscus"/>
-                    
-                	<span>Event Name</span>&nbsp;&nbsp;&nbsp;&nbsp;<!--to be modified later. no &nbsp; tags-->
-                    <span>Date</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <br/><br/>
-                    <!--the data below is to be pulled from the database-->
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#">Meeting of all law students</a></span>&nbsp;&nbsp;
-                    <span>20-01-2013</span>&nbsp;&nbsp;
-                    <br/><br/>
-                    
-                    <!--the data below is to be pulled from the database-->
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#">Lawyers meetup</a></span>&nbsp;&nbsp;
-                    <span>06-02-2013</span>&nbsp;&nbsp;
+                	 <?php
+				 	
+					if(isset($_POST['lnk_delete']))
+					{
+						
+						
+						$id = $_POST['id'];	
+						$author = $_POST['author'];
+						$dateTimeCreated = $_POST['dateTimeofcreation'];
+						$title = $_POST['title'];
+						$section= $_POST['section'];
+						$caselaw = $_POST['caselaw'];
+						$body = $_POST['body'];
+						$audience = $_POST['audience'];
+							
+						 echo'<form action="" method="post">';
+						 echo'<input type="hidden" name="id" value="'.$id.'"/>';
+						
+						 echo'<table class="pretty-table">
+							<tr align="center">
+							  <td colspan="2" style="color:blue"><b>Delete Event </b></td>
+							  </tr>
+							  
+							   <tr>
+							   <td><b>Title of Event</b></td>
+							   <td><label>';
+								echo'<input type="text" name="txt_title" value="'.$title.'" />
+							   </label></td>
+						   </tr>
+						 <tr>
+							 <td ><b>Creator Of Event</b></td>
+							 <td><label>';
+							  echo'<input type="text" name="txt_author" value="'.$author.'" />
+							 </label></td>
+						   </tr>
+						
+						   <tr>
+							   <td ><b>Date of Event<b></td>
+							   <td><label>';
+								echo'<input type="text" name="txt_dateTimeCreated" value="'.$dateTimeCreated.'" />
+							   </label></td>
+						   </tr>
+						
+						  
+						   
+						   <tr>
+							   <td ><b>Description</b></td>
+							   <td><label>';
+								echo'<textarea name="txt_body" >'.$body.'</textarea>
+							   </label></td>
+						   </tr>
+						   
+						   <tr>
+							   <td ><b>Audience</b></td>
+							   <td><label>';
+								echo'<select type="text" name="ddl_audience" >';
+									echo'<option'; if($audience=="All"){echo"selected";} echo'>All</option>';
+									echo'<option'; if($audience=="Friends Only"){echo"selected";} echo'>Friends Only</option>
+								</select>
+							   </label></td>
+						   </tr>
+						
+						   <tr align="Right">
+						   <td></td>
+							   <td >
+								  <input type="submit" name="btn_DeleteDiscussion" value="Delete Discussion" onClick="confirmDelete">
+							   </td>
+							   </tr>
+						</table>
+						 </form>
+						 </body>
+						 </html>';
+						 
+						
+					}	
+					elseif(isset($_POST['lnk_edit']))
+					{
+											
+						$id = $_POST['id'];	
+						$author = $_POST['author'];
+						$dateTimeCreated = $_POST['dateTimeofcreation'];
+						$title = $_POST['title'];
+						$section= $_POST['section'];
+						$caselaw = $_POST['caselaw'];
+						$body = $_POST['body'];
+						$audience = $_POST['audience'];
+							
+						 echo'<form action="" method="post">';
+						 echo'<input type="hidden" name="id" value="'.$id.'"/>';
+						
+						 echo'<table class="pretty-table">
+							<tr align="center">
+							  <td colspan="2" style="color:blue"><b>Edit Event </b></td>
+							  </tr>
+						 <tr>
+							 <td ><b>Creator of Event</b></td>
+							 <td><label>';
+							  echo'<input type="text" name="txt_author" value="'.$author.'" />
+							 </label></td>
+						   </tr>
+						
+						   <tr>
+							   <td ><b>Date of Creation<b></td>
+							   <td><label>';
+								echo'<input type="text" name="txt_dateTimeCreated" value="'.$dateTimeCreated.'" />
+							   </label></td>
+						   </tr>
+						
+						   <tr>
+							   <td><b>Title</b></td>
+							   <td><label>';
+								echo'<input type="text" name="txt_title" value="'.$title.'" />
+							   </label></td>
+						   </tr>
+						   
+						   <tr>
+							   <td ><b>Description</b></td>
+							   <td><label>';
+								echo'<textarea name="txt_body" >'.$body.'</textarea>
+							   </label></td>
+						   </tr>
+						   
+						   <tr>
+							   <td ><b>Audience</b></td>
+							   <td><label>';
+								echo'<select type="text" name="ddl_audience" >';
+									echo'<option'; if($audience=="All"){echo"selected";} echo'>All</option>';
+									echo'<option'; if($audience=="Friends Only"){echo"selected";} echo'>Friends Only</option>
+								</select>
+							   </label></td>
+						   </tr>
+						
+						   <tr align="Right">
+						   <td></td>
+							   <td >
+								  <input type="submit" name="btn_updateDiscussion" value="Update Discussion">
+							   </td>
+							   </tr>
+						</table>
+						 </form>
+						 </body>
+						 </html>';
+					
+			
+						
+					}
+					else
+					{
+						//code to display all discussion information for current user
+					  $currentUser=$_SESSION['firstname'].' '.$_SESSION['lastname'];
+					  $db=Database::getDB();
+					  $query= 'SELECT * FROM discussions WHERE author='."'".$currentUser."'";
+					  $result = $db->query($query)
+					  or die(mysql_error());
+					  
+					  echo "<table  class='pretty-table' >";
+					  echo "<tr>
+					  <th>Id</th>
+					  <th>Creator of Event</th>
+					  <th>Date of Created</th>
+					  <th>Title</th>
+					  <th>Description</th>
+					  <th>Audience</th>
+					  <th>Edit</th>
+					  <th>Delete</th>
+					  </tr>";
+					  
+					  while($row=$result->fetch())
+					  {
+									  
+						echo "<tr>";
+						echo '<td>' . $row['id'] . '</td>';
+						echo '<td>' . $row['author'] . '</td>';
+						echo '<td>' . $row['dateTimeofcreation'] . '</td>';
+						echo '<td>' . $row['title'] . '</td>';
+						echo '<td>' . $row['body'] . '</td>';
+						echo '<td>' . $row['audience'] . '</td>';
+						
+						//note the position of the form. Must be here to ensure that only the currently selected item ID is captured
+						echo'<td>
+						<form name="form_ManageDisc" action="#tab_manageDiscus" method="post"> 
+						<input type="submit"  name="lnk_edit" value="Edit" /></td>';
+						echo'<td><input type="submit" name="lnk_delete" value="Delete" />
+						</td>'; 
+						
+						//hidden field to hold the value of currently selected item
+						echo'<input type="hidden" name="id" value="'. $row['id'].'"/></td>';
+						echo'<input type="hidden" name="author" value="'. $row['author'].'"/></td>';
+						echo'<input type="hidden" name="dateTimeofcreation" value="'. $row['dateTimeofcreation'].'"/></td>';
+						echo'<input type="hidden" name="title" value="'. $row['title'].'"/></td>';
+						echo'<input type="hidden" name="section" value="'. $row['section'].'"/></td>';
+						echo'<input type="hidden" name="caselaw" value="'. $row['caselaw'].'"/></td>';
+						echo'<input type="hidden" name="body" value="'. $row['body'].'"/></td>';
+						echo'<input type="hidden" name="audience" value="'. $row['audience'].'"/></td>';
+						echo '</form> ';
+
+						echo "</tr>";
+					  	
+					  }	
+					  echo "</table>";  
+					  
+                        
+                    } 
+                   ?>
                     
                	</div>
                 
