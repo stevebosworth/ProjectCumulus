@@ -19,49 +19,22 @@ if (empty($caseid) || empty($sec_num) || empty($courtid) || empty($userid) || em
 }
 
 //If no description was entered execute this command
-if (empty($casedesc))
-{
-    require_once '../classes/Dbconn.class.php';
-    
-    //inserting caselaw into the database
-    $sql = "INSERT INTO caselaw (case_id, sec_num, court_id, usr_id, case_date, 
-                                url, case_ref)
-        VALUES ('$caseid', '$sec_num', '$courtid', '$userid', '$casedate', '$url', 
-                '$caseref')";
-    
-    //creating a row in the votes table for the new caselaw
-    $query = "INSERT INTO votes (votes_up, votes_down, user_id)
-        VALUES (0, 0, 1)";
+else {
 
-    $db = Dbconn::getDB();
-    $db->exec($sql);
-    $db->exec($query);
+    require_once '../classes/Dbconn.class.php';
+    require_once '../classes/caselaw.class.php';
+    require_once '../classes/caselaw_db.class.php';
+    require_once '../classes/vote_db.class.php';
+
+    $CaselawDB = new CaselawDB();
+    $CaselawDB->addCaselaw($caseid, $sec_num, $courtid, $userid, $casedate, $url, $caseref, $casedesc);
+
+    $VoteDB = new VoteDB();
+    $VoteDB->insertVoteRow();
     
     //redirecting the user after success
     header('Location: ../section.php?section='.$sec_num);
-}
-//Else execute full insert command
-else
-{    
-    require_once '../classes/Dbconn.class.php';
-    
-    //inserting caselaw into the database
-    $sql = "INSERT INTO caselaw (case_id, sec_num, court_id, usr_id, case_date, 
-                                url, case_ref, case_desc)
-        VALUES ('$caseid', '$sec_num', '$courtid', '$userid', '$casedate', '$url', 
-                '$caseref', '$casedesc')";
-    
-    //creating a row in the votes table for the new caselaw
-    $query = "INSERT INTO votes (votes_up, votes_down, user_id)
-        VALUES (0, 0, 1)";
 
-    $db = Dbconn::getDB();
-    $db->exec($sql);
-    $db->exec($query);
-    
-    //redirecting the user after success
-    header('Location: ../section.php?section='.$sec_num);
 }
-
 
 ?>

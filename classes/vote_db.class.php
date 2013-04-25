@@ -1,9 +1,20 @@
 <?php
 
-//Class to carry out DataBase queries
+//Class to carry out DataBase queries for Voting
 
 class VoteDB {
 	
+	//inserts row into vote table for each new caselaw
+	public function insertVoteRow() {
+
+		//DataBase connection & query
+		$db = Dbconn::getDB();
+		$query = "INSERT INTO votes (votes_up, votes_down, user_id)
+        VALUES (0, 0, 1)";
+
+        $db->exec($query);
+	}
+
 	//fetches all votes and puts them into an array
 	public function getVotes() {
 

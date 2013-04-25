@@ -1,6 +1,7 @@
 <?php
 
-//class to carry out DB commands/queries
+//class to carry out DB commands/queries for Contacts
+
 class ContactDB {
 
 	//function for adding new contacts to the database

@@ -1,18 +1,20 @@
 <?php
 
+//checking if the query string is set
 if (isset($_GET['case_id']))
 {
 	//requiring the cumulus database PDO connection
 	require_once '../classes/Dbconn.class.php';
+	require_once '../classes/caselaw_db.class.php';
 
-	//creating an instance of the class to use for queries
-	$db = Dbconn::getDB();
+	//getting case id from the query string
+	$case_id = $_GET['case_id'];
 
-	//the sql query to delete the record
-	$sql = "DELETE FROM caselaw WHERE case_id = $_GET[case_id]";
-	//carrying out the query on the DB
-	$db->query($sql);
+	//executing the delete function
+	$CaselawDB = new CaselawDB();
+	$CaselawDB->deleteCaselawsByID($case_id);
 
+	//redirecting
 	header("Location: ../caselawUD.php");
 
 }
