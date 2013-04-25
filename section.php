@@ -269,13 +269,7 @@
                 </div> <!-- /accordion -->
             </section> <!-- /sidebar -->
         </div> <!-- /content_container -->
-<<<<<<< HEAD
-        <?php include 'include/footer.inc.php' ?>
-    <?php include 'include/closer.inc.php' ?>
-=======
 
-
->>>>>>> Added CKEditor Functionality to section-admin.php
 
     <!-- MODAL FOR ADDING RELEVANT CASE LAW/SECTIONS -->
     <div id="relevant_modal" style="display:none;">
