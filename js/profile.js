@@ -28,6 +28,23 @@ $(document).ready
 );
 
 
+
+//jquery code to show the image uploader div
+
+$(document).ready
+(
+	function(e) 
+	{
+		$.fn.subShowImgUploader=function(){this.slideToggle("slow")};
+		$("#chooseImg").click(function(){$("#imageUpload").subShowImgUploader();
+			return false;//note that return false makes the page not jump to the top when you click on the "chooseImg" link
+		});	
+		
+	}
+	
+);
+
+
 //jquery code to show/hide the refCaseLaw div
 
 $(document).ready

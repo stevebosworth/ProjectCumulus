@@ -104,10 +104,16 @@ body
 
 #profile_photo
 {
-	width:130px;
-	height:130px;
+	width:120px;
+	height:120px;
 	background-color:#e8e4d9;
 	border-radius:8px;
+}
+
+#profilePIC
+{
+	width:120px;
+	height:120px;
 }
 
 profile_photo a
@@ -236,6 +242,7 @@ profile_photo a
 	font: 62.5% "Trebuchet MS", sans-serif;
 }
 
+
 #EditProfilePage_title
 {
 	font-size:24px;
@@ -263,6 +270,12 @@ profile_photo a
 	Font: Geneva, Arial, Sans-Serif;
 }
 
+#newProfileImg
+{
+	width:80px;
+	height:80px;
+}
+
 #edit_Photo
 {
 	float:left;
@@ -279,6 +292,26 @@ profile_photo a
 	margin-left:15px;
 	margin-top:10px;
 	width:150px;
+}
+
+#edit_imageUrl
+{
+	width:600px;
+	height:40px;
+	margin-top:40px;
+}
+
+#editImageUrl_title
+{
+	float:left;
+	margin-top:5px;
+}
+
+#edit_imageUrl input
+{
+	float:left;
+	margin-left:33px;
+	width:198px;
 }
 
 #edit_firstName
@@ -785,4 +818,11 @@ body{
  font-weight:bolder;
 }
 
+/*---image uploader---*/
+
+#imageUpload
+{
+	padding-top:50px;
+	display:none;
+}
 

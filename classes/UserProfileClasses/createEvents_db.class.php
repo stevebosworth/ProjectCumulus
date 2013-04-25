@@ -21,58 +21,65 @@ class createEventDB
 	//GETTERS AND SETTERS
 	
 	 public function getTitle() {
-        return $this->disAuthor;
-    }
-    public function setAuthor($value) {
-        $this->disAuthor = $value;
-    }
-	
-	
-	public function getDateTimeCreated() {
-        return $this->dateTimeCreated;
-    }
-    public function setDateTimeCreated($value) {
-        $this->dateTimeCreated = $value;
-    }
-	
-	
-	public function getTitle() {
-        return $this->disTitle;
+        return $this->Title;
     }
     public function setTitle($value) {
-        $this->disTitle = $value;
+        $this->Title = $value;
     }
 	
 	
-	public function getSection() {
-        return $this->disSection;
+	public function getNameOfCreator() {
+        return $this->nameOfCreator;
     }
-    public function setSection($value) {
-        $this->disSection = $value;
-    }
-	
-	
-	public function getCaseLaw() {
-        return $this->disCaseLaw;
-    }
-    public function setCaseLaw($value) {
-        $this->disCaseLaw = $value;
+    public function setNameOfCreator($value) {
+        $this->nameOfCreator = $value;
     }
 	
 	
-	public function getBody() {
-        return $this->disBody;
+	public function getEmailOfCreator() {
+        return $this->emailOfCreator;
     }
-    public function setBody($value) {
-        $this->disBody = $value;
+    public function setEmailOfCreator($value) {
+        $this->emailOfCreator = $value;
+    }
+	
+	
+	public function getDateOfEvent() {
+        return $this->dateOfEvent;
+    }
+    public function setDateOfEvent($value) {
+        $this->dateOfEvent = $value;
+    }
+	
+	
+	public function getDescription() {
+        return $this->description;
+    }
+    public function setDescription($value) {
+        $this->description = $value;
+    }
+	
+	
+	public function getVenue() {
+        return $this->venue;
+    }
+    public function setVenue($value) {
+        $this->venue = $value;
     }
 	
 	
 	public function getAudience() {
-        return $this->disAudience;
+        return $this->audience;
     }
     public function setAudience($value) {
-        $this->disAudience = $value;
+        $this->audience = $value;
+    }
+	
+	public function getDateTimeOfCreation() {
+        return $this->dateTimeOfCreation;
+    }
+    public function setDateTimeOfCreation($value) {
+        $this->dateTimeOfCreation = $value;
     }
 
 	

@@ -1,6 +1,13 @@
 <?php 
 //declare session
 session_start(); 
+
+//if session has ended or expired, redirect to login page
+if(empty($_SESSION['email'])||empty($_SESSION['password']))
+{
+	header("location:include/profile_includes/Profile_LoginErrorTryTillLoginSuccessful.inc.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -90,7 +97,7 @@ session_start();
             <div id="profileNameAnd_searchArea">
             
             <div id="activeUser_name">
-            <p>Welcome Nnabugwu</p>
+            <p><?php echo'Welcome '.$_SESSION['firstname']; ?></p>
             </div><!--/activeUser_name-->
             
             <div id="searchBox_Area">
@@ -149,16 +156,22 @@ session_start();
                     <a href="Profile_FindFriends.php">Find Friends</a>
                     <a href="#">Delete</a>
                     <br/><br/>
-                    
-                	 <input type="checkbox" id="cbx_refCaseLaw" />
-                                                       	                   
-                     <figure class="friendProfilePhoto">
-                     <img src="img/test.PNG" alt="me"/>
-                     </figure><!--/friendProfilePhoto--> 
+                     <table class="pretty-table">
+                     	<tr>
+                        	<th></th>
+                            <th>Profile Image</th>
+                            <th>Name of Friend</th>
+                        </tr>
+                        <tr>
+                        	<td><input type="checkbox" id="cbx_refCaseLaw" /></td>
+                            <td><img src="img/test.PNG" alt="me"/></td>
+                            <td>Obiora Nwokoye</td>
+                        </tr>
+                     </table>                               	                   
                      
-                     <span class="friendProfileName">
-                     	Obiora Nwokoye
-                     </span>                        
+                     
+                     <!--/friendProfilePhoto--> 
+                                             
                </div><!--/tab_friends-->     
                 
             </div><!--/tabs-->

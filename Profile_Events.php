@@ -1,15 +1,47 @@
 <?php 
-//declare session
-session_start(); 
-?>
+//includes
+include 'classes/UserProfileClasses/database.class.php';
+include 'classes/UserProfileClasses/validation.class.php';
 
+//declare session
+session_start();
+
+//if session has ended or expired, redirect to login page
+if(empty($_SESSION['email'])||empty($_SESSION['password']))
+{
+	header("location:include/profile_includes/Profile_LoginErrorTryTillLoginSuccessful.inc.php");
+}
+
+if($_POST)
+{
+	if(isset($_POST['btn_createEvents']))
+	{	//note that date of creation and author is pulled from current date and current users name
+		$EvTitle =$_POST['txt_title'];
+		$EvNameOfCreator=$_SESSION['firstname'].' '.$_SESSION['lastname'];
+		$EvEmailOfCreator=$_POST['txt_email'];
+		$EvDateOfEvent=$_POST['txt_date'];
+		$EvDescription=$_POST['txt_description'];
+		$EvVenue=$_POST['txt_venue'];
+		$EvAudience=$_POST['ddl_audience'];
+		$EvDateTimeOfCreation=date("Y-m-d H:i:s");
+		
+		
+		$val=new Validation();
+	$val->validateCreateEvents($EvTitle,$EvNameOfCreator,$EvEmailOfCreator,$EvDateOfEvent,$EvDescription,$EvVenue,$EvAudience, $EvDateTimeOfCreation);
+		
+	}
+	
+	
+}
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> 
 
-	<html class="no-js"> <!--<![endif]--><head>
+	<html class="no-js"> <!--<![endif]-->
+    <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Edit Profile</title>
@@ -50,7 +82,6 @@ session_start();
 <body>
 
 
-<form>
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
@@ -95,7 +126,7 @@ session_start();
             <div id="profileNameAnd_searchArea">
             
             <div id="activeUser_name">
-            <p>Welcome Nnabugwu</p>
+            <p><?php echo'Welcome '.$_SESSION['firstname']; ?></p>
             </div><!--/activeUser_name-->
             
             <div id="searchBox_Area">
@@ -143,17 +174,18 @@ session_start();
             
             <div id="EventsMain_content">
            	<!------ Tabs --------->
-            <div id="tabs">
+            <div id="tabs" class="overflow">
                 <ul>
                     <li><a href="#tabs_createEvents">+ Create Events</a></li>
                     <li><a href="#tabs_manageEvents">Manage Events</a></li>
                     
                 </ul>
-                <div id="tabs_createEvents">
+                <div id="tabs_createEvents" class="overflow">
+                <form action="Profile_Events.php" method="post">
                 	<span>Title of Event</span>
                     <input type="text" name="txt_title"/><br/><br/>
                     <span>Email</span>
-                    <input type="text" id="txt_email" /><br/><br/>
+                    <input type="text" name="txt_email" /><br/><br/>
                     <span>Date of Event</span>
                     <input type="text" name="txt_date"/><br/><br/>
                     <span>Description</span>
@@ -161,11 +193,15 @@ session_start();
                     <span>Venue</span>
                     <input type="text" name="txt_venue"/> <br/><br/>
                     <span>Audience</span>
-                    <select name=ddl_audience>
+                    <select name="ddl_audience">
                     	<option>All</option>
                         <option>Friends Only</option>
-                    </select>
-                 	
+                    </select><br/><br/>
+                    
+                   <input type="submit" name="btn_createEvents" value="Create Events"/> 
+                    
+                   </form>
+            
                 </div>
                 
                 <div id="tabs_manageEvents">

@@ -103,7 +103,7 @@ require_once('classes/UserProfileClasses/login.class.php');
             <div id="profileNameAnd_searchArea">
             
             <div id="activeUser_name">
-            <p>Welcome Nnabugwu</p>
+            <p><?php echo'Welcome '.$_SESSION['firstname']; ?></p>
             </div><!--/activeUser_name-->
             
             <div id="searchBox_Area">

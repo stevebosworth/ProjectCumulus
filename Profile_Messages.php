@@ -1,6 +1,13 @@
 <?php 
 //declare session
 session_start(); 
+
+//if session has ended or expired, redirect to login page
+if(empty($_SESSION['email'])||empty($_SESSION['password']))
+{
+	header("location:include/profile_includes/Profile_LoginErrorTryTillLoginSuccessful.inc.php");
+}
+
 ?>
 
 
@@ -92,7 +99,7 @@ session_start();
             <div id="profileNameAnd_searchArea">
             
             <div id="activeUser_name">
-            <p>Welcome Nnabugwu</p>
+            <p><?php echo'Welcome '.$_SESSION['firstname']; ?></p>
             </div><!--/activeUser_name-->
             
             <div id="searchBox_Area">

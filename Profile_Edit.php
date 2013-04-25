@@ -1,8 +1,85 @@
 <?php 
-//declare session
-session_start(); 
-?>
+//includes
+include 'classes/UserProfileClasses/database.class.php';
+include 'classes/UserProfileClasses/validation.class.php';
 
+//declare session
+session_start();
+
+//if session has ended or expired, redirect to login page
+if(empty($_SESSION['email'])||empty($_SESSION['password']))
+{
+	header("location:include/profile_includes/Profile_LoginErrorTryTillLoginSuccessful.inc.php");
+}
+
+//code to perform when upload image button is clicked
+if(isset($_POST['btn_uploadImage']))
+					{
+						$allowedExts = array("gif", "jpeg", "jpg", "png");
+						$valu=explode(".", $_FILES["file"]["name"]);
+						$extension = end($valu);
+						if ((($_FILES["file"]["type"] == "image/gif")
+						|| ($_FILES["file"]["type"] == "image/jpeg")
+						|| ($_FILES["file"]["type"] == "image/jpg")
+						|| ($_FILES["file"]["type"] == "image/pjpeg")
+						|| ($_FILES["file"]["type"] == "image/x-png")
+						|| ($_FILES["file"]["type"] == "image/png"))
+						&& ($_FILES["file"]["size"] < 40000)
+						&& in_array($extension, $allowedExts))
+						  {
+						  if ($_FILES["file"]["error"] > 0)
+							{
+								echo '<script type="text/javascript"> window.onload=function(){alert("Image size must not exceed 40kb and must be in jpeg, jpg, gif or png");}</script>';
+							}
+						  else
+							{
+																					
+							if (file_exists("upload/" . $_FILES["file"]["name"]))
+							  {
+							  echo '<script type="text/javascript"> window.onload=function(){alert("Image name already exists!!. Please rename your image file or choose another image");}</script>';
+							  }
+							else
+							  {
+							  move_uploaded_file($_FILES["file"]["tmp_name"],
+							  "upload/" . $_FILES["file"]["name"]);							  
+							  //set profile image to currently selected image
+							  $_SESSION['imgsrc']="upload/" . $_FILES["file"]["name"];
+							  echo '<script type="text/javascript"> window.onload=function(){alert("Image was successfully uploaded");}</script>';
+							  
+							  }
+							}
+						  }
+						else
+						  {
+						   echo '<script type="text/javascript"> window.onload=function(){alert("Image is invalid. please check size and format");}</script>';
+						  }
+					}
+					
+					
+
+//calling the method from the validation class
+if($_POST)
+{
+	 
+	if(isset($_POST['btn_saveChanges']))
+	{	
+	//note that date of creation and author is pulled from current date and current users name
+		$firstname=$_SESSION['firstname'];
+		$lastname=$_SESSION['lastname'];
+		$email=$_POST['txt_editEmail'];
+		$password=$_POST['txt_verifyNewPassword'];
+		$photoUrl=$_POST['txt_imgUrl'];
+		$qualification=$_POST['txt_editJobTitle'];
+		$location=$_POST['edit_loc'];
+		$bio=$_POST['txt_editBio'];
+		
+		$val=new Validation();
+		$val->validateEditProfile($firstname,$lastname,$email,$password,$photoUrl,$qualification,$location,$bio);
+	}
+	
+	
+}
+?>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -40,8 +117,7 @@ session_start();
     <!--CSS for date picker-->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
 	<link rel="stylesheet" href="/resources/demos/style.css" />
-   
-    
+   	
 </head>
 <body>
 
@@ -85,13 +161,13 @@ session_start();
         <div id="content_container">
         
         	<div id="profile_photo">
-            	<img src="<?php echo $_SESSION['photourl'] ?>" alt="profile photo" />
+            	<img id="profilePIC" src="<?php echo $_SESSION['photourl'] ?>" alt="profile photo" />
         	</div><!--/profile_photo-->
             
             <div id="profileNameAnd_searchArea">
             
             <div id="activeUser_name">
-            <p>Welcome Nnabugwu</p>
+            <p><?php echo'Welcome '.$_SESSION['firstname']; ?></p>
             </div><!--/activeUser_name-->
             
             <div id="searchBox_Area">
@@ -145,13 +221,28 @@ session_start();
                 </ul>
                 
                 <div id="tab_editProfile">
-                	   
+                <form action="Profile_Edit.php" method="post">
                      <div id="editProfile_content">
                 
                   <section id="edit_profilePhoto">
                   <div id="editPhoto_title">Photo</div>
-                      <figure id="edit_Photo">
-                          <img src="#" alt="" title="profile photo"/>                     
+				  
+                      <figure id="edit_Photo" >
+                      <?php 
+					  	if(isset($_POST['btn_uploadImage']))
+						{
+							//show the image that has been selected
+							if(empty($_SESSION['imgsrc']))
+							{
+								echo'<img id="newProfileImg" src="" alt="New image" />';
+							}
+							else
+							{
+								echo'<img id="newProfileImg" src="'.$_SESSION['imgsrc'].'" alt="New image" />';
+							}
+						}
+					  ?>
+						
                       </figure><!--/edit_profilePhoto-->
                       
                       <div id="choose_photo">
@@ -169,7 +260,7 @@ session_start();
                                       
                                                                   
                       <!--edit photo menu list-->
-                           <a href="#" class="menu_top" >
+                           <a href="#" id="chooseImg" class="menu_top" >
                               <img src="img/plugins/2.png"/>
                               Choose Existing Photo
                            </a>
@@ -188,54 +279,61 @@ session_start();
                     <input id="txt_editName" type="text"/>
                 </section>-->
                 
-                <section id="edit_firstName">
-                	<div id="editFirstName_title">First Name</div>
-                    <input id="txt_editFirstName" type="text"/>
+                <!--image uploader div-->
+                
+                <div id="imageUpload" >
+               
+                	<!--<form action="Profile_Edit.php" method="post"
+                    enctype="multipart/form-data">-->
+                    <label for="file">Filename:</label>
+                    <input type="file" name="file" id="file"><br>
+                    <input type="submit" name="btn_uploadImage" value="Upload Image" formenctype="multipart/form-data">
+                    <!--</form>-->
+                </div>
+                
+                
+                <section id="edit_imageUrl">
+                	<div id="editImageUrl_title">Image Url</div>
+                    <input name="txt_imgUrl" type="text" readonly="readonly" value="<?php if(empty( $_SESSION['imgsrc'])){echo $_SESSION['photourl'];}else{ echo $_SESSION['imgsrc'];} ?>"/>
                 </section><!--/edit_firstName-->
                 
-                <section id="edit_lastName">
-                	<div id="editLastName_title">Last Name</div>
-                    <input id="txt_editLastName" type="text"/>
-                </section><!--/edit_lastName-->
+                
                 
                 <section id="edit_email">
                 	<div id="editEmail_title">Email</div>
-                    <input type="text" id="txt_editEmail"/>
+                    <input type="text" name="txt_editEmail" value="<?php echo $_SESSION['email']; ?>"/>
                 </section><!--/edit_email-->
                 
                 <section id="edit_password">
                 	<div id="current_passwordDetails">
                     	<div id="editPasswordTitle">Password</div>
-                    	<input type="password" id="txt_editPassword"/>
+                    	<input type="password" name="txt_editPassword" value="<?php echo $_SESSION['password']; ?>"/>
                     	<a id="chng_pswDropdown" href="/change_password" class="link_color">Edit</a>
                     </div><!--/current_passwordDetails-->
                 	
                     <div id="change_password">
-                    <section id="Edit_curPasw">
-                    	<span id="currentPasw_Title">Current Password</span><!--/currentPasw_Title-->
-                        <input id="txt_currentPassword" type="password"/></section>
                     <section id="Edit_newPasw">
                     	<span id = "newPasw_Title">New Password</span><!--/newPasw_Title-->
-                        <input id="txt_newPassword" type="password"/>
+                        <input name="txt_newPassword" type="password"/>
                     </section>
                     <section id="Edit_verNewPasw">
                     	<span id = "verifyNewPasw_Title">Verify New Password</span><!--/verifyNewPasw_Title-->
-                        <input id="txt_verifyNewPassword" type="password"/>
+                        <input name="txt_verifyNewPassword" type="password"/>
                     </section>
                     <section id="btn_done">
-                    	<input type="submit" id="btn_pswDone" value="Done"/>   
+                    	<!--<input type="submit" id="btn_pswDone" value="Done"/>-->   
                     </section> 
                     </div><!--/change_password-->
                 </section><!--/edit_password-->
                 
                 <section id="edit_JobTitle">
                 	<span id="editJobTitle_title">Qualification</span>
-                    <input type="text" id="txt_editJobTitle"/>
+                    <input type="text" name="txt_editJobTitle" value="<?php echo $_SESSION['qualification']; ?>"/>
                 </section><!--/edit_JobStatus-->
                 
                 <section id="edit_location">
                 	<span id="editLocation_title">Location</span>
-                    <select id="sel_location">
+                    <select id="sel_location" name="edit_loc">
                     	<option>Australia</option>
                         <option>Canada</option>
                         <option>United States of America</option>
@@ -245,15 +343,15 @@ session_start();
                 
                 <section id="edit_bio">
                 	<span id="editBio_title">Bio</span>
-                    <textarea id="txt_editBio" ></textarea>
+                    <textarea name="txt_editBio" ><?php echo $_SESSION['bio']; ?>"</textarea>
                 </section><!--/edit_bio-->
                 	
             </div><!--/editProfile_content-->
             <div id="save_changes">
-            <input type="submit" id="btn_saveChanges" value="Save Changes" class="button_size"/>
+            <input type="submit" name="btn_saveChanges" value="Save Changes" class="button_size"/>
             </div>
             
-                                                    
+                  </form>                                  
                	</div><!--/tab_profile-->
                 
            </div><!--/tabs-->                                
@@ -292,6 +390,7 @@ session_start();
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <!--<script>
