@@ -13,7 +13,7 @@ if (isset($_GET['case_id']))
 	//carrying out the query on the DB
 	$db->query($sql);
 
-	header("Location: ../articlepageUD.php");
+	header("Location: ../caselawUD.php");
 
 }
 else

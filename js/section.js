@@ -56,16 +56,18 @@ jQuery(document).ready(function($) {
 	//Voting function controlling ajax post to database on user click
 	$(".voteIcons").click(function(){
 
+		//setting variables for use in the ajax post
         var caselawIDVar = $(this).next().text();
         var voteVar = $(this).val();
         var results = $(this).next();
 
-        $.post(
-        '../include/vote.inc.php',
-        { caselawID: caselawIDVar, vote: voteVar },
-        function (data){
-            $(results).next().html(data);
-        });
+		$.post(
+		'../include/vote.inc.php',
+		{ caselawID: caselawIDVar, vote: voteVar },
+		function (data){
+			$(results).next().html(data);
+		});
+
     });
 
 

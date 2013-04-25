@@ -153,7 +153,7 @@ if (!empty($_POST['hidden']))
 	$db->query($udquery);
 
 	//redirect user to original page
-	header("Location: ../articlepageUD.php");
+	header("Location: ../caselawUD.php");
   	exit;
 
 	}

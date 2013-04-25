@@ -27,9 +27,11 @@
     //creating an instance of the DB class to use for queries
     $db = Dbconn::getDB();
     //the sql query to get related caselaws
-    $listsql = "SELECT * FROM caselaw WHERE sec_num = $sec_num";
+    $listsql = "SELECT * FROM caselaw WHERE sec_num = $sec_num ORDER BY case_date";
     //variable to hold the related caselaw results
     $caselaws = $db->query($listsql);
+
+    session_start();
 
 ?> <!-- /requires -->
 
@@ -265,7 +267,6 @@
                 </div> <!-- /accordion -->
             </section> <!-- /sidebar -->
         </div> <!-- /content_container -->
-
         <?php include 'include/footer.inc.php' ?>
     <?php include 'include/closer.inc.php' ?>
 
