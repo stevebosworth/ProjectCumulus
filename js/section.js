@@ -53,6 +53,10 @@ jQuery(document).ready(function($) {
 		$('#upload_modal').dialog("open");
 	});
 
+	$('#btn_sub_upload').click(function(){
+		$('#upload_modal').dialog("close");
+	})
+
 	//Voting function controlling ajax post to database on user click
 	$(".voteIcons").click(function(){
 
@@ -70,7 +74,4 @@ jQuery(document).ready(function($) {
 		});
 
     });
-
-
-
 });

@@ -21,12 +21,10 @@
     require_once '../classes/source.class.php';
     require_once '../classes/sourcedb.class.php';
 
-
-
-
-$sec_num = $_POST['sec_num'];
-$sec_title = $_POST['sec_title'];
-$sec_txt = $_POST['sec_txt'];
+$sec_num = $_POST['sec_numU'];
+$sec_title = $_POST['sec_titleU'];
+//DECODE URL INFO TO GET HTML FOR DATABASE INSERT
+$sec_txt = urldecode($_POST['sec_textU']);
 $command = $_POST['cmd'];
 
 //echo $sec_num . $sec_title . $sec_txt;
@@ -50,17 +48,17 @@ switch($command)
 		    	"<h3>&sect " . $r['sub_div_num'] . ". </h3><h4>" . $r['sub_div_num'] . "</h4>".
 		    	"<h2>Section: " . $r['sec_num'] . "</h2>".
 		    	"<h3>Title: </h3>" .
-		    	"<input type='hidden' name='sec_num' value='" . $r['sec_num'] . "'>".
-		    	"<input type='text' name='sec_title' value=" . $r['sec_title'] . ">".
+		    	"<input type='hidden' name='sec_numU' value='" . $r['sec_num'] . "'>".
+		    	"<input type='text' name='sec_titleU' value=" . $r['sec_title'] . ">".
 		    	"<h4>Section: </h4>".
-		    	"<textarea name='sec_txt' rows='10' cols='35'>". $r['sec_txt'] . "</textarea></form>";
+		    	"<textarea class='ckeditor' name='sec_textU' id='sec_textU' rows='10' cols='35'>". $r['sec_txt'] . "</textarea></form>";
 		}
 	break;
 	case "update":
 		$section = new SectionDB();
 		$update = $section->updateSection($sec_num, $sec_title, $sec_txt);
 		if($update == 1){
-			echo "Success!";
+			echo "Success!  Thank You for Uploading.";
 		}
 		else
 		{
@@ -78,4 +76,6 @@ switch($command)
 			echo "Error: Please Try Again!";
 		}
 	break;
+
+
 }

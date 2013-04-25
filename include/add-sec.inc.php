@@ -12,7 +12,8 @@ $div_id     =$_POST['sel_div'];
 $sub_div_id =$_POST['sel_sub_div'];
 $sec_num    =$_POST['sec_num'];
 $sec_title  =$_POST['sec_title'];
-$sec_txt    =$_POST['sec_text'];
+//DECODE URL INFO TO GET HTML FOR DATABASE INSERT
+$sec_txt    = urldecode($_POST['sec_text']);
 $enact_yr   =$_POST['enact_yr'];
 $enact_bill =$_POST['enact_bill'];
 $enact_sec  =$_POST['enact_sec'];
@@ -22,6 +23,8 @@ $enact_sec  =$_POST['enact_sec'];
 $insert = new SectionDB();
 
 $insert->addSection($sec_num, $sec_title, $sec_txt, $enact_yr, $enact_bill, $enact_sec, $law_id, $book_id, $title_id, $ch_id, $div_id, $sub_div_id);
+
+echo $sec_txt;
 
 
 

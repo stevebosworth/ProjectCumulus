@@ -38,10 +38,17 @@ $(document).ready(function() {
         width: 500,
         buttons: {
             "Update" : function(){
+                //new instance of the editor
+                var editor = CKEDITOR.instances.sec_textU;
+                //get the data from the CKEditor iFrame
+                var str = editor.getData();
+                //set the textarea with the CKEditor iFrame
+                $('#sec_textU').text(str);
+                //console.log($('#sec_textU').val());
                section = $('#frm_update_sec').serialize();
                //add update command to serialized update form
                section += "&cmd=update";
-               console.log(section);
+               //console.log(section);
                $.post(
                     'include/update-sec.inc.php',
                     section,
@@ -67,9 +74,10 @@ $(document).ready(function() {
         console.log(secNum);
         $.post(
             'include/update-sec.inc.php',
-            {sec_num: secNum, cmd: 'get'},
+            {sec_numU: secNum, cmd: 'get'},
             function(html){
                 $('#update').html(html);
+                CKEDITOR.replace('sec_textU');
                 $('#update').dialog('open');
             });
     });
@@ -277,10 +285,17 @@ $(document).ready(function() {
             }
         });
 
-        //Create array of field values excluding default values.
+        // Get the editor instance that you want to interact with.
+        var editor = CKEDITOR.instances.sec_text;
+
+        var str = editor.getData();
+        $('#sec_text').text(str);
+        // Get editor contents
+        // http://docs.ckeditor.com/#!/api/CKEDITOR.editor-method-getData
+        //text = $('#sec_text').val(editor.getData());
+        console.log($('#sec_text').val());
         var section = $('#frm_add_section').serialize();
         console.log(section);
-
 
         $.post('include/add-sec.inc.php', section, function(msg){
             $('.test').html(msg);

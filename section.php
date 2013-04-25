@@ -43,6 +43,7 @@
     <!-- Additional items for the head section -->
     <title>Project Cumulus - Section <?php echo $sec_num; ?></title>
     <link rel="stylesheet" href="css/jquery-ui-1.10.1.custom.css">
+    <link rel="stylesheet" href="css/section-admin.css">
 </head>
 <body>
     <?php include 'include/header.inc.php' ?>
@@ -175,7 +176,7 @@
                                     <span style='display:none;' class='caselawID'><?= $cl['caselaw_id'] ?></span>
                                     <div class='vote_result'><?= $v['votes_up'] ?></div><!-- end vote_result -->
                                 </div><!-- end votes -->
-                                    
+
                                 <!-- displaying "down" vote totals -->
                                 <div class='votes'>
                                     <button type='submit' class='voteIcons' name='down' value='down'>
@@ -197,10 +198,10 @@
                     <!-- tag "cloud" section -->
                     <?php
                         include ('classes/tag_category.class.php');
-                        include ('classes/add_tags.class.php'); 
+                        include ('classes/add_tags.class.php');
 
                         $tag_class = new add_tags();
-                        $tag_array = $tag_class->selectTag($sec_num); 
+                        $tag_array = $tag_class->selectTag($sec_num);
 
                         foreach ($tag_array as $single_tag) {
                             echo "<a href='search_tags.php?txt_search=" . $single_tag->getTag() . "'>" . $single_tag->getTag() . "</a>&nbsp;";
@@ -268,8 +269,13 @@
                 </div> <!-- /accordion -->
             </section> <!-- /sidebar -->
         </div> <!-- /content_container -->
+<<<<<<< HEAD
         <?php include 'include/footer.inc.php' ?>
     <?php include 'include/closer.inc.php' ?>
+=======
+
+
+>>>>>>> Added CKEditor Functionality to section-admin.php
 
     <!-- MODAL FOR ADDING RELEVANT CASE LAW/SECTIONS -->
     <div id="relevant_modal" style="display:none;">
@@ -278,15 +284,18 @@
 
     <!-- MODAL FOR UPLOADING SRCS LAW/SECTIONS -->
     <div id="upload_modal" style="display:none;">
-        <form id="frm_upload" action="include/upload_src.inc.php" method="post" enctype="multipart/form-data">
+        <form id="frm_upload" action="include/upload_src.inc.php" method="post" enctype="multipart/form-data" target="_blank">
             <?php echo '<input type="hidden" name="sec_num" value="'. $sec_num . '">' ?>
             <input type="file" name="txt_path">
-            <input type="submit" name="submit">
+            <input type="submit" name="submit" id="btn_sub_upload">
         </form>
     </div>
 
     <script type="text/javascript" src="js/section.js"></script>
     <script type="text/javascript" src="js/vendor/jquery-ui-1.10.1.custom.js"></script>
+
+    <?php include 'include/footer.inc.php' ?>
+    <?php include 'include/closer.inc.php' ?>
 
 </body>
 </html>

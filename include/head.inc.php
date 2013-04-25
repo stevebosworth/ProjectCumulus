@@ -11,6 +11,9 @@
     <link rel='stylesheet' href='css/normalize.css'>
     <link rel='stylesheet' href='css/main.css'>
     <link rel='stylesheet' href='css/article.css'>
+    <link rel="stylesheet" href="css/jquery-ui-1.10.1.custom.css">
     <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
     <script src='js/vendor/modernizr-2.6.2.min.js'></script>
     <script src='http://use.edgefonts.net/arvo.js'></script>
+
+

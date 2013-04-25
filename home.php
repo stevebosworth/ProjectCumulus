@@ -6,7 +6,13 @@
 </head>
 <body>
     <?php include 'include/header.inc.php' ?>
-
+        <!-- <div id="lgn_main">
+            <form method="post" name="frm_login">
+                <input type="text" name="email">
+                <input type="password" name="pass">
+                <button id="btn_login">Login</button>
+            </form>
+        </div> -->
         <div id="content_container">
             <div id="main_logo_title">
                 <img src="img/icons/logo.png" alt="Project Cumulus Logo" class="logo_big">
@@ -44,7 +50,7 @@
                 <img id="img_vid" src="img/youtube.jpg" width="250" height="150">
             </div>
         </div> <!-- /content_container -->
-            
+
         <?php include 'include/footer.inc.php' ?>
     <?php include 'include/closer.inc.php' ?>
 </body>
