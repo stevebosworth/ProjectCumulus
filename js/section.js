@@ -61,6 +61,7 @@ jQuery(document).ready(function($) {
         var voteVar = $(this).val();
         var results = $(this).next();
 
+        //executing the ajax post
 		$.post(
 		'../include/vote.inc.php',
 		{ caselawID: caselawIDVar, vote: voteVar },

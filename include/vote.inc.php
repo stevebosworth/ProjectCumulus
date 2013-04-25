@@ -5,6 +5,7 @@ require '../classes/Dbconn.class.php';
 require '../classes/vote.class.php';
 require '../classes/vote_db.class.php';
 
+//Denying vote if session is present, reloading totals
 session_start();
 if(isset($_SESSION['vote'])){
 
@@ -31,6 +32,8 @@ if(isset($_SESSION['vote'])){
 	};
 
 }
+
+//if no session, create a session and then execute the vote
 else{
 
 	//setting a vote session

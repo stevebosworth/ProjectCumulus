@@ -31,6 +31,7 @@
     //variable to hold the related caselaw results
     $caselaws = $db->query($listsql);
 
+    //starting vote session
     session_start();
 
 ?> <!-- /requires -->
