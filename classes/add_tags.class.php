@@ -53,5 +53,12 @@
 		return $tags;	   
 	   }
 
+		//deletes tag based on comparison
+		public function deleteTag($tag, $article) {
+			$db = Dbconn::getDB();
+			$query = "DELETE FROM tags WHERE tag = '$tag' AND article_ref = '$article'";
+			$db->exec($query);
+	   }
+
 	}
 ?>
