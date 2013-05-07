@@ -21,14 +21,8 @@
     // require_once 'classes/source.class.php';
     // require_once 'classes/sourcedb.class.php';
 
-<<<<<<< HEAD
     function my_autoloader($class){
         require "classes/". $class . ".class.php";
-=======
-
-    function my_autoloader($class) {
-        include 'classes/' . $class . '.class.php';
->>>>>>> tryout autoloader
     }
 
     spl_autoload_register('my_autoloader');
