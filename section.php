@@ -257,17 +257,14 @@
                         </p>
                     </div> <!-- /panel add desc tags-->
 
-
-                    <div class="panelshow"><h4>Remove tags</h4></div>
+                    <div class="panelshow"><h4>Remove Tags</h4></div>
                     <div class="panel">
                         <h5>Remove a tag on this page by entering its value below.</h5>
                         <form id="remove_tags" action="include/remove_tag.inc.php" method="post">
                             <input type="text" id="remove_tagname" name="remove_tagname" />
                             <?php echo "<input type='hidden' name='tag_sec' value=".$sec_num." />" ?>
                             <input type="submit" id="btn_removetag" name="btn_removetag" value="Delete Tag" />
-                    </div>
-
-
+                    </div><!-- /panel delete tag -->
 
                     <div class="panelshow"><h4>Comment</h4></div>
                     <div class="panel">
