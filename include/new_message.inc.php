@@ -1,7 +1,15 @@
 <?php
+/*
 	include ('../classes/Dbconn.class.php');
 	include ('../classes/messages_db.class.php');
 	include ('../classes/Messages.class.php');
+*/
+	function my_autoloader($class_name) 
+	{
+    	include '../classes/' . $class_name . '.class.php';
+	}
+
+	spl_autoload_register('my_autoloader');
 
 	//creates a new message
 	$title = $_POST['msg_title'];
@@ -10,7 +18,7 @@
 	$from = $_POST['msg_from'];
 	$date = date('Y-m-d');
 
-	$messages_class = new message_class();
+	$messages_class = new messages_db();
 
 	if(!empty($body) && (!empty($to)) && (!empty($from)))
 	{

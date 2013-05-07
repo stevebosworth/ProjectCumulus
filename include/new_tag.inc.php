@@ -11,7 +11,7 @@
     	include '../classes/' . $class_name . '.class.php';
 	}
 
-	spl_autoload_register('my_autoloader');
+	spl_autoload_register('my_autoloader');	
 
     //adds a new tag to the section
 	$new_tag = $_POST['txt_tags'];

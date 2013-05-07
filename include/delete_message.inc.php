@@ -1,11 +1,20 @@
 <?php
+	/*
 	include ('../classes/Dbconn.class.php');
 	include ('../classes/messages_db.class.php');
 	include ('../classes/Messages.class.php');
+	*/
+
+	function my_autoloader($class_name) 
+	{
+    	include '../classes/' . $class_name . '.class.php';
+	}
+
+	spl_autoload_register('my_autoloader');
 
 	$id = $_POST['message_idcheck'];
 
-	$messages_class = new message_class();
+	$messages_class = new messages_db();
 
 	//loops through array and deletes selected items
 	if($_POST['delete_message'])

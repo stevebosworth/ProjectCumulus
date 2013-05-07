@@ -131,9 +131,16 @@
             
             <div id="messagesMain_content">
                 <?php
-                    include ('classes/Dbconn.class.php');
-                    include ('classes/messages_db.class.php');
-                    include ('classes/Messages.class.php');
+                    // include ('classes/Dbconn.class.php');
+                    // include ('classes/messages_db.class.php');
+                    // include ('classes/Messages.class.php');
+
+                    function my_autoloader($class_name) 
+                    {
+                        include 'classes/' . $class_name . '.class.php';
+                    }
+
+                    spl_autoload_register('my_autoloader');
 
                     $message_id = $_GET['id'];
 

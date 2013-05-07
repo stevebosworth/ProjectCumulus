@@ -1,5 +1,5 @@
 <?php
-	class search_class {
+	class search_db {
 
 		//returns categories of legal code from database based on query
 		public function searchSections($search_query){

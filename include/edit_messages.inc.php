@@ -1,9 +1,18 @@
 <?php
-	include ('classes/Dbconn.class.php');
+	/*
+    include ('classes/Dbconn.class.php');
 	include ('classes/messages_db.class.php');
 	include ('classes/Messages.class.php');
+    */
+    
+    function my_autoloader($class_name) 
+    {
+        include '../classes/' . $class_name . '.class.php';
+    }
 
-    $msg_class = new message_class();
+    spl_autoload_register('my_autoloader');
+
+    $msg_class = new messages_db();
 
     $msg_array = $msg_class->selectMessages();
 

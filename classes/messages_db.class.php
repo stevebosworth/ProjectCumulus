@@ -1,6 +1,6 @@
 <?php
 
-class message_class {
+class messages_db {
 
 	//creates a new message
 	public function newMessage($body, $to, $from, $title, $date){

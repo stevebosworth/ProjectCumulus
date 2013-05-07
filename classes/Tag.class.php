@@ -1,6 +1,6 @@
 <?php
 
-	class tag_category {
+	class Tag {
 		private $id;
 		private $tag;
 		private $article_ref;
