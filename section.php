@@ -203,7 +203,7 @@
 
                     <!-- tag "cloud" section -->
                     <?php
-                        //include ('classes/tag_category.class.php');
+                        //include ('classes/Tag.class.php');
                         //include ('classes/add_tags.class.php');
 
                         $tag_class = new add_tags();

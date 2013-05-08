@@ -21,7 +21,7 @@
 			$tags = array();
 			foreach ($tagset as $page_tag) 
 			{
-				$tag = new tag_category($page_tag['tag_id'],
+				$tag = new Tag($page_tag['tag_id'],
 					$page_tag['tag'],
 					$page_tag['article_ref']
 					);	
@@ -41,7 +41,7 @@
 			$tags = array();
 			foreach ($tagset as $page_tag) 
 			{
-				$tag = new tag_category($page_tag['tag_id'],
+				$tag = new Tag($page_tag['tag_id'],
 					$page_tag['tag'],
 					$page_tag['article_ref']
 					);	
