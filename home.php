@@ -1,3 +1,8 @@
+<?php
+
+    session_start();
+
+?>
 <!DOCTYPE html>
 <head>
     <?php include 'include/head.inc.php' ?>

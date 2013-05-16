@@ -1,4 +1,3 @@
-
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 <![endif]-->
@@ -15,7 +14,17 @@
                 <li class="usr_control"><a href="#"><img src="img/icons/mail_icon_head.png" alt="Messages" title="Messages" class="icon"></a></li>
                 <li class="usr_control"><a href="#"><img src="img/icons/profile_icon_head.png" alt="Profile" title="Profile" class="icon"></a></li>
                 <li class="usr_control"><a href="#"><img src="img/icons/settings_icon_head.png" alt="Settings" title="Settings" class="icon"></a></li>
-                <li class="usr_control"><a href="#"><img id="login" src="img/icons/logout_icon_head.png" alt="Logout" title="Logout" class="icon"></a></li>
+                <li class="usr_control">
+                    <?php
+                        if(isset($_SESSION['user']))
+                        { ?>
+                            <span style='color:#CCC;'>Welcome, <?php echo $_SESSION['user'] ?>!</span>
+                    <?php }
+                        else
+                        { ?>
+                            <a href="userLogin.php"><img id="login" src="img/icons/logout_icon_head.png" alt="Logout" title="Logout" class="icon">
+                    <?php } ?>
+                </a></li>
             </ul>
         </nav>
         <nav id="nav_main">
