@@ -2,8 +2,8 @@
 
 //requiring classes necessary for functionality
 require '../classes/Dbconn.class.php';
-require '../classes/vote.class.php';
-require '../classes/vote_db.class.php';
+require '../classes/Vote.class.php';
+require '../classes/VoteDB.class.php';
 
 //Denying vote if session is present, reloading totals
 session_start();

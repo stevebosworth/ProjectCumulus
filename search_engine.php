@@ -22,11 +22,11 @@
 	$j(function() {
     	$j( "#tabs" ).tabs();
   	});
-  
+
 	$j(document).ready(function(e)
 	{
-	
-		$j("#filter_button").click(function(e) 
+
+		$j("#filter_button").click(function(e)
 		{
 			$j("#filters").slideToggle("slow");
 		});
@@ -37,7 +37,7 @@
 
 <body>
     <?php include 'include/header.inc.php' ?>
-        
+
             <div id="search_logo">
                 <img src="img/icons/logo.png" alt="Project Cumulus Logo" class="logo_big">
                 <!--<h1>Welcome to Project Cumulus</h1>
@@ -51,15 +51,15 @@
                     <form id="frm_search" action="search_engine.php" method="POST" >
                         <input type="text" id="txt_search" name="txt_search" placeholder="Search the legal code" />
                         <input type="submit" id="btn_search" name="btn_search" value="Search" />
-                    </form>    
+                    </form>
                     <div id="adv_option">
                         <label for="cbk_adv">Advanced Search</label>
                         <input type="checkbox" id="cbk_adv" name="chk_adv" value="1" />
                     </div> <!-- /adv_option -->
-                </div> <!-- /bsc_search -->               
+                </div> <!-- /bsc_search -->
                 <span id="search_text" />
             </div><!--/search-->
-        
+
         <div id="content">
             <!--<div id="result">
                 <p id="result_number">Displaying <strong>(number)</strong> results</p>
@@ -72,7 +72,7 @@
 
                         if(!empty($search_query)){
                             echo 'Displaying Results for "' . $search_query . '"';
-                        } 
+                        }
                         else{
                             echo 'Please Enter a Search Query';
                         }
@@ -86,14 +86,14 @@
                         <li><a href="#">View Count</a></li>
                         <li><a href="#">Rating</a></li>
                     </ul>
-                </div> 	
+                </div>
             </div><!--/filter_container-->
             <div id="tabs">
                 <ul>
                     <li><a href="#tabs-1">Results</a></li>
                     <li><a href="#tabs-2">Visualize (PRO)</a></li>
                 </ul>
-                
+
                 <div id="tabs-1"><!--Search results tab-->
                     <article class="result">
 						<?php
@@ -105,11 +105,11 @@
 
 							if(!empty($search_query)){
 
-								$new_search = new search_class();
+								$new_search = new search_db();
 								$result = $new_search->searchSections($search_query);
 
 								foreach ($result as $resultset) {
-						        	echo "<h5>" . $resultset->getLaw_Name() . " > " . $resultset->getBook_Title() . " > " . $resultset->getTitle_Title() . " > 
+						        	echo "<h5>" . $resultset->getLaw_Name() . " > " . $resultset->getBook_Title() . " > " . $resultset->getTitle_Title() . " >
                                     " . $resultset->getCh_Title() . " > " . $resultset->getDiv_Title() . "
                                     ><a href='section.php?section=" . $resultset->getSec_Num() . "'>" . " Section " .  $resultset->getSec_Num() . "
                                     </h5>
@@ -125,7 +125,7 @@
 						?>
 					</article>
                 </div><!--/tabs-1-->
-                
+
                 <div id="tabs-2"><!--Visualization tab-->
                     <section class="result">
                     visualization tab
@@ -133,7 +133,7 @@
                 </div><!--/tabs-2-->
             </div><!--/tabs-->
         </div><!--/content-->
-    
+
         <?php include 'include/footer.inc.php' ?>
     <?php include 'include/closer.inc.php' ?>
 </body>
