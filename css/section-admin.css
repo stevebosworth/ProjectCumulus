@@ -1,8 +1,45 @@
-input, select{
-	margin:3px;
+#all_sections{
+    margin-top: 5%;
 }
 
+h1{
+    padding-top:20px;
+    padding-bottom:20px;
+    text-align:center;
+}
+
+input, select{
+	margin:5px;
+}
+
+input[type="text"], select{
+    margin-left:20px;
+}
 
 label{
-	display:block;
+	display:block;;
+    font-family:arvo, serif;
+    color:#001c2e;
+}
+
+input[type="submit"], input[type="button"], button{
+    border-radius:3px;
+    font-family:arvo, serif;
+    color:#001c2e;
+    background-color: #CFCABC;
+}
+
+th{
+    font-family:arvo, serif;
+    color:#001c2e;
+    padding:0 3px;
+    text-align:center;
+}
+
+tr{
+    border-bottom:1px solid #001c2e;
+}
+
+td{
+    padding:6px;
 }

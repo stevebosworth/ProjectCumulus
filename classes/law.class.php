@@ -9,6 +9,9 @@ class Law{
 		$this->law_name = $law_name;
 	}
 
+
+
+
     /**
      * Gets the value of law_id.
      *
@@ -23,30 +26,14 @@ class Law{
      * Sets the value of law_id.
      *
      * @param mixed $law_id the law_id
+     *
+     * @return self
      */
     public function setLaw_id($law_id)
     {
         $this->law_id = $law_id;
-    }
 
-    /**
-     * Gets the value of law_code.
-     *
-     * @return mixed
-     */
-    public function getLaw_code()
-    {
-        return $this->law_code;
-    }
-
-    /**
-     * Sets the value of law_code.
-     *
-     * @param mixed $law_code the law_code
-     */
-    public function setLaw_code($law_code)
-    {
-        $this->law_code = $law_code;
+        return $this;
     }
 
     /**
@@ -63,9 +50,37 @@ class Law{
      * Sets the value of law_name.
      *
      * @param mixed $law_name the law_name
+     *
+     * @return self
      */
     public function setLaw_name($law_name)
     {
         $this->law_name = $law_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of law_code.
+     *
+     * @return mixed
+     */
+    public function getLaw_code()
+    {
+        return $this->law_code;
+    }
+
+    /**
+     * Sets the value of law_code.
+     *
+     * @param mixed $law_code the law_code
+     *
+     * @return self
+     */
+    public function setLaw_code($law_code)
+    {
+        $this->law_code = $law_code;
+
+        return $this;
     }
 }

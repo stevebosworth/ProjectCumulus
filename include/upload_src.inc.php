@@ -1,7 +1,11 @@
 <?php
-    require_once '../classes/Dbconn.class.php';
-    require_once '../classes/source.class.php';
-    require_once '../classes/sourcedb.class.php';
+
+function my_autoloader($class){
+    require "../classes/". $class . ".class.php";
+}
+
+spl_autoload_register('my_autoloader');
+
 
 //define ('SITE_ROOT', realpath(dirname(__FILE__)));
 
