@@ -163,7 +163,7 @@ class SectionDB {
 									$row['title_id'],
 									$row['ch_id'],
 									$row['div_id'],
-									$row['$sub_div_id']);
+									$row['sub_div_id']);
 		 	$sectionAll[] = array($section, $law, $book, $title, $chapter, $division, $sub_division);
 		}
 		return $sectionAll;
