@@ -55,7 +55,7 @@ jQuery(document).ready(function($) {
 
 	$('#btn_sub_upload').click(function(){
 		$('#upload_modal').dialog("close");
-	})
+	});
 
 	//Voting function controlling ajax post to database on user click
 	$(".voteIcons").click(function(){
