@@ -125,22 +125,20 @@ p{
 	width:350px;
 }
 
-.tag1 {
+.tag0 {
 	color:#001A66;
 	font-size:16px;
-	margin:5px 30px;
+    text-decoration: none;
+}
+
+.tag1 {
+	color:#001A66;
+	font-size:24px;
 }
 
 .tag2 {
 	color:#001A66;
-	font-size:19px;
-	margin:5px 200px;
-}
-
-.tag3 {
-	color:#001A66;
-	font-size:24px;
-	margin:5px 85px;
+	font-size:32px;
 }
 
 .accordion {

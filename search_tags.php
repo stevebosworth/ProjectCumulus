@@ -1,3 +1,16 @@
+<?php
+    function my_autoloader($class_name)
+    {
+        include 'classes/' . $class_name . '.class.php';
+    }
+
+    spl_autoload_register('my_autoloader');
+
+    $cloud_id = $_GET['tag'];
+    $tag_class = new add_tags();
+    //calls update function
+    $tag_class->updateTagCloudClass($cloud_id)
+?>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -8,7 +21,7 @@
 <title>Search Results</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width">
-        
+
 <link href="css/search.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <link href='http://fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -24,10 +37,10 @@
 	$j(function() {
     	$j( "#tabs" ).tabs();
   	});
-  
+
 	$j(document).ready(function(e)
 	{
-		$j("#filter_button").click(function(e) 
+		$j("#filter_button").click(function(e)
 		{
 			$j("#filters").slideToggle("slow");
 		});
@@ -42,7 +55,7 @@
             <div id="title">
                 <a href="#"><img src="img/icons/header_logo.png" alt="Project-Cumulus-Logo" id="logo"></a>
             </div>
-                
+
             <nav id="nav_controls">
                 <ul>
                     <li class="usr_control"><a href="#"><img src="img/icons/chat_icon_head.png" alt="Chat" title="Chat" class="icon"></a></li>
@@ -62,7 +75,7 @@
             </nav>
 
         </header>
-        
+
             <div id="search_logo">
                 <img src="img/icons/logo.png" alt="Project Cumulus Logo" class="logo_big">
                 <!--<h1>Welcome to Project Cumulus</h1>
@@ -76,26 +89,26 @@
                     <form id="frm_search" action="search_engine.php" method="POST" >
                         <input type="text" id="txt_search" name="txt_search" placeholder="Search the legal code" />
                         <input type="submit" id="btn_search" name="btn_search" value="Search" />
-                    </form>    
+                    </form>
                     <div id="adv_option">
                         <label for="cbk_adv">Advanced Search</label>
                         <input type="checkbox" id="cbk_adv" name="chk_adv" value="1" />
                     </div> <!-- /adv_option -->
-                </div> <!-- /bsc_search -->               
+                </div> <!-- /bsc_search -->
                 <span id="search_text" />
             </div><!--/search-->
-        
+
         <div id="content">
             <!--<div id="result">
                 <p id="result_number">Displaying <strong>(number)</strong> results</p>
             </div>-->
             <div id="filter_container">
             	<h3>Sections tagged with <?php
-                
+
                 $search_query = $_GET['txt_search'];
 
                 echo '"' . $search_query . '"'; ?></h3>
-                
+
                 <!--<input id="filter_button" type="button" value="Filter Results" />-->
                 <div id="filters" style="display: none">
                     <ul>
@@ -103,22 +116,22 @@
                         <li><a href="#">View Count</a></li>
                         <li><a href="#">Rating</a></li>
                     </ul>
-                </div> 	
+                </div>
             </div><!--/filter_container-->
             <div id="tabs">
                 <ul>
                     <li><a href="#tabs-1">Results</a></li>
                     <li><a href="#tabs-2">Visualize (PRO)</a></li>
                 </ul>
-                
+
                 <div id="tabs-1"><!--Search results tab-->
                     <article class="result">
 						<?php
-							require_once('classes/Dbconn.class.php');
-							require_once('classes/search_db.class.php');
-							require_once('classes/Search.class.php');
-                            require_once('classes/add_tags.class.php');
-                            require_once('classes/tag_category.class.php');
+							// require_once('classes/Dbconn.class.php');
+							// require_once('classes/search_db.class.php');
+							// require_once('classes/Search.class.php');
+       //                      require_once('classes/add_tags.class.php');
+       //                      require_once('classes/Tag.class.php');
 
 							$search_query = $_GET['txt_search'];
 
@@ -128,7 +141,7 @@
                                 $result = $new_search->selectTagByTag($search_query);
 
                                 foreach ($result as $resultset) {
-                                    echo "<h5><a href='section.php?section=" . $resultset->getArticle_Ref() . "'>" . 
+                                    echo "<h5><a href='section.php?section=" . $resultset->getArticle_Ref() . "'>" .
                                     "Section " . $resultset->getArticle_Ref() . "</a></h5><br />";
                                 }
 								//$new_search = new search_class();
@@ -136,7 +149,7 @@
 
                                 //returns search results with sections and subsections
 								/*foreach ($result as $resultset) {
-						        	echo "<h5>" . $resultset->getLaw_Name() . " > " . $resultset->getBook_Title() . " > " . $resultset->getTitle_Title() . " > 
+						        	echo "<h5>" . $resultset->getLaw_Name() . " > " . $resultset->getBook_Title() . " > " . $resultset->getTitle_Title() . " >
                                     " . $resultset->getCh_Title() . " > " . $resultset->getDiv_Title() . " > Section " . "
                                     <a href='section.php?section=" . $resultset->getSec_Num() . "'>" .  $resultset->getSec_Num() . "
                                     </h5>
@@ -153,7 +166,7 @@
 						?>
 					</article>
                 </div><!--/tabs-1-->
-                
+
                 <div id="tabs-2"><!--Visualization tab-->
                     <section class="result">
                     visualization tab
@@ -161,9 +174,9 @@
                 </div><!--/tabs-2-->
             </div><!--/tabs-->
         </div><!--/content-->
-    
-    
-    
+
+
+
         <footer>
             <nav id="nav_footer">
                 <ul>
@@ -184,13 +197,13 @@
             <small id="copyright">&copy; Project Cumulus, 2013.</small>
         </footer>
     </div> <!-- /container -->
-    
+
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. 
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

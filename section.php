@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7c30df3309f9c96bbe96359d9719492b56e43e9b
     function my_autoloader($class){
         require "classes/". $class . ".class.php";
     }
@@ -68,7 +71,7 @@
                                     echo "<h3>Title " . $r['title_num'] . ". </h3><h4>" . $r['title_title'] . "</h4>";
                                     echo "<h3>Chapter " . $r['ch_num'] . ". </h3><h4>" . $r['ch_title'] . "</h4>";
                                     echo "<h3>Division " . $r['div_num'] . ". </h3><h4>" . $r['div_title'] . "</h4>";
-                                    echo "<h3>&sect " . $r['sub_div_num'] . ". </h3><h4>" . $r['sub_div_num'] . "</h4>";
+                                    echo "<h3>&sect; " . $r['sub_div_num'] . ". </h3><h4>" . $r['sub_div_num'] . "</h4>";
                                 }
                             }
                         ?>
@@ -181,14 +184,11 @@
 
                     <!-- tag "cloud" section -->
                     <?php
-                        //include ('classes/Tag.class.php');
-                        //include ('classes/add_tags.class.php');
-
                         $tag_class = new add_tags();
                         $tag_array = $tag_class->selectTag($sec_num);
 
                         foreach ($tag_array as $single_tag) {
-                            echo "<a href='search_tags.php?txt_search=" . $single_tag->getTag() . "'>" . $single_tag->getTag() . "</a>&nbsp;";
+                            echo "<a href='search_tags.php?txt_search=" . $single_tag->getTag() . " &&tag=" . $single_tag->getID() . "' class='tag" . $single_tag->getCloud_Class() . "'>" . $single_tag->getTag() . "</a>&nbsp;";
                         }
                     ?>
 
