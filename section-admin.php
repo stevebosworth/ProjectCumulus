@@ -1,19 +1,9 @@
 <?php
-require_once 'classes/Dbconn.class.php';
-require_once 'classes/section.class.php';
-require_once 'classes/section_db.class.php';
-require_once 'classes/law.class.php';
-require_once 'classes/law_db.class.php';
-require_once 'classes/book.class.php';
-require_once 'classes/book_db.class.php';
-require_once 'classes/title.class.php';
-require_once 'classes/title_db.class.php';
-require_once 'classes/chapter.class.php';
-require_once 'classes/chapter_db.class.php';
-require_once 'classes/division.class.php';
-require_once 'classes/division_db.class.php';
-require_once 'classes/sub_division.class.php';
-require_once 'classes/sub_division_db.class.php';
+function my_autoloader($class){
+        require "classes/". $class . ".class.php";
+    }
+
+    spl_autoload_register('my_autoloader');
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +30,7 @@ require_once 'classes/sub_division_db.class.php';
     <?php include 'include/header.inc.php' ?>
 
     <div id="content_container">
-
+        <h1>Add a New Section</h1>
         <div id="add_section">
             <form id="frm_add_section" name="frm_add_sections" method="post">
                 <label for="sel_law">Law: </label>
@@ -110,7 +100,8 @@ require_once 'classes/sub_division_db.class.php';
         </div> <!-- /add_section -->
         <p class="test"></p>
 
-        <section>
+        <section id="all_sections">
+            <h1>Manage Sections</h1>
             <table id="tbl_all_sections">
                 <thead>
                     <tr>
@@ -121,7 +112,9 @@ require_once 'classes/sub_division_db.class.php';
                         <th>Title</th>
                         <th>Chapter</th>
                         <th>Division</th>
-                        <th>Sub Division</th>
+                        <th>&sect;</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
