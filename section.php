@@ -203,14 +203,11 @@
 
                     <!-- tag "cloud" section -->
                     <?php
-                        //include ('classes/Tag.class.php');
-                        //include ('classes/add_tags.class.php');
-
                         $tag_class = new add_tags();
                         $tag_array = $tag_class->selectTag($sec_num);
 
                         foreach ($tag_array as $single_tag) {
-                            echo "<a href='search_tags.php?txt_search=" . $single_tag->getTag() . "'>" . $single_tag->getTag() . "</a>&nbsp;";
+                            echo "<a href='search_tags.php?txt_search=" . $single_tag->getTag() . " &&tag=" . $single_tag->getID() . "' class='tag" . $single_tag->getCloud_Class() . "'>" . $single_tag->getTag() . "</a>&nbsp;";
                         }
                     ?>
 
