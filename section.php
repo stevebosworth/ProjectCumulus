@@ -1,8 +1,5 @@
 <?php
-<<<<<<< HEAD
 
-=======
->>>>>>> 7c30df3309f9c96bbe96359d9719492b56e43e9b
     function my_autoloader($class){
         require "classes/". $class . ".class.php";
     }
