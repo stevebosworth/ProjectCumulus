@@ -19,6 +19,7 @@
                         if(isset($_SESSION['user']))
                         { ?>
                             <span style='color:#CCC;'>Welcome, <?php echo $_SESSION['user'] ?>!</span>
+                            <a href="include/logout.inc.php"><span style='color:#CCC;'>Logout</span></a>
                     <?php }
                         else
                         { ?>
