@@ -76,6 +76,18 @@ class CaselawDB{
 
 	}
 
+	//finding the last caselaw for to add a row to votes table
+	public function getLastCaselaw(){
+		//DataBase connection & query
+		$db = Dbconn::getDB();
+		$query = "SELECT * FROM caselaw ORDER BY caselaw_id DESC LIMIT 1";
+		$result = $db->query($query);
+
+		$row[] = $result->fetch();
+
+		return $row;
+	}
+
 }
 
 ?>

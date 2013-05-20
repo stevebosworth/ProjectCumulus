@@ -2,8 +2,8 @@
 
 //requiring the cumulus database PDO connection
 require_once 'classes/Dbconn.class.php';
-require_once 'classes/caselaw_db.class.php';
-require_once 'classes/caselaw.class.php';
+require_once 'classes/CaselawDB.class.php';
+require_once 'classes/Caselaw.class.php';
 
 $CaselawDB = new CaselawDB();
 $result = $CaselawDB->getCaselaws();
@@ -13,11 +13,11 @@ $result = $CaselawDB->getCaselaws();
 <?php include 'include/head.inc.php' ?>
 <body>
     <?php include 'include/header.inc.php' ?>
-    
+
         <div id="content_container">
             <hr>
                 <h4>Relevant Case Law</h4>
-                
+
                 <?php
                     //displays caselaws from the database
                     foreach ($result as $row){
@@ -29,7 +29,7 @@ $result = $CaselawDB->getCaselaws();
                         echo $row->getCase_id()."</p>";
                     }
                 ?>
-                
+
                     <hr>
         </div><!-- end content_container -->
 

@@ -17,11 +17,11 @@
     $caselaws = $db->query($listsql);
 
     session_start();
-
 ?> <!-- /requires -->
 
 <!DOCTYPE html>
 <head>
+    <br /><br /><br /><br />
     <?php include 'include/head.inc.php'; ?>
 
     <!-- Additional items for the head section -->
@@ -146,11 +146,13 @@
                             echo $cl['case_id']."</p>";
 
                             //instantiating the voteDB class
-                            $voteDB = new voteDB();
+                            $voteDB = new VoteDB();
                             //getting votes by caselawID
-                            $votes = $voteDB->getVotesByCaselawID($cl['caselaw_id']);
+                            //$votes = $voteDB->getVotesByCaselawID($cl['caselaw_id']);
+                            $upVotes = $voteDB->getVotesUpByCaselawID($cl['caselaw_id']);
+                            $downVotes = $voteDB->getVotesDownByCaselawID($cl['caselaw_id']);
                             //echoing outputs
-                            foreach ($votes as $v) {
+                            foreach ($upVotes as $uV) {
                             ?>
                                 <!-- displaying "up" vote totals -->
                                 <div class='votes'>
@@ -158,16 +160,19 @@
                                         <img src='img/icons/thumb_up.png' class='voteButton' width='26' alt='submit vote up' />
                                     </button>
                                     <span style='display:none;' class='caselawID'><?= $cl['caselaw_id'] ?></span>
-                                    <div class='vote_result'><?= $v['votes_up'] ?></div><!-- end vote_result -->
+                                    <div class='vote_result'><?= $uV['total'] ?></div><!-- end vote_result -->
                                 </div><!-- end votes -->
-
+                            <?php
+                            }
+                            foreach ($downVotes as $dV) {
+                            ?>
                                 <!-- displaying "down" vote totals -->
                                 <div class='votes'>
                                     <button type='submit' class='voteIcons' name='down' value='down'>
                                         <img src='img/icons/thumb_down.png' class='voteButton' width='26' alt='submit vote down' />
                                     </button>
                                     <span style='display:none;' class='caselawID'><?= $cl['caselaw_id'] ?></span>
-                                    <div class='vote_result'><?= $v['votes_down'] ?></div><!-- end vote_result -->
+                                    <div class='vote_result'><?= $dV['total'] ?></div><!-- end vote_result -->
                                 </div><!-- end votes -->
                     <?php   } ?>
                             </div><!-- end indCaselaw -->
@@ -216,7 +221,6 @@
                             <?php echo "<input type='hidden' name='sec_num' value=".$sec_num." />" ?>
                             <p>Case ID <input type="text" name="case_id" class="resized" />*</p>
                             <p>Court ID <input type="text" name="court_id" class="resized" />*</p>
-                            <p>User ID <input type="text" name="user_id" class="resized" />*</p>
                             <p>Case Date <input type="text" name="case_date" class="resized" />*</p>
                             <p>URL <input type="text" name="url" class="resized" />*</p>
                             <p>Case Reference <input type="text" name="case_ref" class="resized" />*</p>

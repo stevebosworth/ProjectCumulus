@@ -5,8 +5,8 @@ if (!isset($_POST['submit'])){
 
 	//requiring the cumulus database PDO connection
 	require_once 'classes/Dbconn.class.php';
-	require_once 'classes/caselaw_db.class.php';
-	require_once 'classes/caselaw.class.php';
+	require_once 'classes/CaselawDB.class.php';
+	require_once 'classes/Caselaw.class.php';
 
 	//selecting caselaws based on case id in query string
 	$CaselawDB = new CaselawDB();
@@ -23,7 +23,7 @@ if (!isset($_POST['submit'])){
 
 	</head>
     <body>
-        
+
             <div id="content_container">
             	<hr>
             		<!-- Edit template -->
