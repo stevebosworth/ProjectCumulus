@@ -4,6 +4,7 @@ $(document).ready(function() {
         autoOpen: false,
         modal: true,
         width: 500,
+        title: "Add Meta",
         buttons: {
             "Add": function(){
                 $.post(
@@ -36,6 +37,7 @@ $(document).ready(function() {
         autoOpen: false,
         modal: true,
         width: 500,
+        title: "Update Section",
         buttons: {
             "Update" : function(){
                 //new instance of the editor

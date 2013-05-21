@@ -49,8 +49,8 @@
 
             <article class="law_article">
             	<ul id="breadcrumbs">
-                   <li><a href="#">Homepage</a> > </li>
-                   <li><a href="#">Search results</a> > </li>
+                   <li><a href="#">Homepage</a> &gt; </li>
+                   <li><a href="#">Search results</a> &gt; </li>
                    <li>Section: <?php echo $sec_num; ?> </li>
                 </ul>
                 <div id="section">

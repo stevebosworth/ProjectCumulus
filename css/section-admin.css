@@ -32,8 +32,9 @@ input[type="submit"], input[type="button"], button{
 th{
     font-family:arvo, serif;
     color:#001c2e;
-    padding:0 3px;
+    padding:0 5px;
     text-align:center;
+    /*border-left:1px solid #001c2e;*/
 }
 
 tr{

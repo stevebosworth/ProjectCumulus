@@ -105,7 +105,7 @@ function my_autoloader($class){
             <table id="tbl_all_sections">
                 <thead>
                     <tr>
-                        <th>Sec #</th>
+                        <th>Section #</th>
                         <th>Title</th>
                         <th>Section</th>
                         <th>Book</th>
